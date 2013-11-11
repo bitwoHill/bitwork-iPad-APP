@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>Telefonbuch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hauptmenue">
+    <meta name="author" content="bitwork GmbH">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-responsive.min" rel="stylesheet">
+    <!--<link href="css/bootstrap-theme.min" rel="stylesheet">-->
+    <link href="css/bitworkBranding.css" rel="stylesheet">
+    <link href="css/Glyphicons.css" rel="stylesheet">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="lib/html5shiv.js"></script>
+        <![endif]-->
+    <style>
+        .NavElements {
+            padding-top: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--navigation-->
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Navigation einblenden</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="Hauptmenue.html">
+                <img src="content/logo.png" height="35" alt="bitwork">
+                <div class="sprite-logos "></div>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <span class="add-on"><i class="glyphicon glyphicon-search"></i></span>
+                            <input id="txtSuche" type="text" class="form-control" placeholder="Suchkriterium">
+                        </div>
+                        <button type="submit" class="btn btn-default">Suchen</button>
+                    </form>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Angemeldet als xyz<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="LoginPage.html">Als anderer Benutzer anmelden</a></li>
+
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <!-- /.navbar-collapse -->
+    </nav>
+    <!--navigation ende-->
+
+   
+    <!--content-->
+
+
+        <!--        ende content-->
+
+    
+    <form class="Content-Main">
+                <!-- Default panel contents -->
+              
+            <div class="panel panel-default">
+       
+              
+                <div class="panel-heading"><h1>Telefonbuch</h1></div>
+                <div class="panel-body">
+                    <p>Mit dem Telefonbuch finden sie schnell alle Kontakte</p>
+                </div>
+
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                
+
+    </form>
+
+
+
+
+    <!-- Le javascript
+        ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="lib/jquery.js"></script>
+    <script src="lib/bootstrap.js"></script>
+</body>
+</html>

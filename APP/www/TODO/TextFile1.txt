@@ -1,0 +1,59 @@
+﻿
+<!-- 
+    <div class="bs-example">
+      <ul class="media-list">
+        <li class="media">
+          <a class="pull-left" href="#">
+            <img class="media-object" data-src="content/folder.png" alt="Generic placeholder image" src="content/folder.png">
+          </a>
+          <div class="media-body">
+           <a href="#"> <h4 class="media-heading">1. Geschäftsführung</h4></a>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+          
+      <!-- Nested media object -->
+            <div class="media">
+              <a class="pull-left" href="#">
+                <img class="media-object" data-src="content/folder.png" alt="Generic placeholder image" src="content/folder.png">
+              </a>
+              <div class="media-body">
+                 <a href="#">  <h4 class="media-heading">1.1</h4> </a>
+                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+             
+                     <!-- Nested media object -->
+                <div class="media">
+                  <a class="pull-left" href="#">
+                    <img class="media-object" data-src="content/folder.png" alt="Generic placeholder image" src="content/folder.png">
+                  </a>
+                  <div class="media-body">
+                     <a href="#">  <h4 class="media-heading">1.1.1</h4></a>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+  <!-- Nested media object -->
+            <div class="media">
+              <a class="pull-left" href="#">
+                <img class="media-object" data-src="content/folder.png" alt="Generic placeholder image" src="content/folder.png">
+              </a>
+              <div class="media-body">
+               <a href="#">    <h4 class="media-heading">1.2</h4> </a>
+                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="media">
+          <a class="pull-left" href="#">
+            <img class="media-object" data-src="content/folder.png" alt="Generic placeholder image" src="content/folder.png">
+          </a>
+          <div class="media-body">
+             <a href="#">  <h4 class="media-heading">2. Business Line Industrial Air - AII</h4></a>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+          </div>
+        </li>
+      </ul>
+    </div> 
+
+ //-->
