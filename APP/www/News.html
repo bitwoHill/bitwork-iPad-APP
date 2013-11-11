@@ -12,7 +12,7 @@
     <link href="css/bootstrap-responsive.min" rel="stylesheet">
     <!--<link href="css/bootstrap-theme.min" rel="stylesheet">-->
     <link href="css/bitworkBranding.css" rel="stylesheet">
-      <link href="css/Glyphicons.css" rel="stylesheet">
+    <link href="css/Glyphicons.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
         <script src="lib/html5shiv.js"></script>
@@ -28,33 +28,33 @@
 <body>
     <!--navigation-->
 
-      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav id="NavbarMain" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-NavbarMain-collapse">
                 <span class="sr-only">Navigation einblenden</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="Hauptmenue.html">
-                <img src="content/logo.png" height="35" alt="bitwork">
+            <a class="navbar-brand"  href="Hauptmenue.html">
+                <img src="content/logo.png" height="30" alt="bitwork">
                 <div class="sprite-logos "></div>
             </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
 
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="collapse navbar-collapse navbar-NavbarMain-collapse">
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <form class="navbar-form navbar-right" role="search">
-                        <div class="form-group">
-                            <span class="add-on"><i class="glyphicon glyphicon-search"></i></span>
+                   <form class="navbar-form navbar-right" role="search" action="suchergebnisse.html">
+                        <div class="input-group" style="width: 200px;">
                             <input id="txtSuche" type="text" class="form-control" placeholder="Suchkriterium">
+                            <span class="input-group-addon"><a href="suchergebnisse.html"><i class="glyphicon glyphicon-search"></i></a></span>
                         </div>
-                        <button type="submit" class="btn btn-default">Suchen</button>
+
                     </form>
                 </li>
                 <li class="dropdown">
@@ -71,10 +71,10 @@
 
         <!-- /.navbar-collapse -->
     </nav>
-        <!--navigation ende-->
-      <!--Überschrift-->
-   <!-- <nav class="navbar navbar-default navbar-top" role="navigation">
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <!--navigation ende-->
+    <!--Überschrift-->
+    <!-- <nav class="navbar navbar-default navbar-top" role="navigation">
+        <div class="collapse navbar-collapse navbar-NavbarMain-collapse">
                         <ul class="nav navbar-nav navbar-center">
                 <li>
                     <h2>News</h2>
@@ -84,132 +84,130 @@
     </nav>-->
     <!--Überschrift Ende-->
 
-
-
-    <!--Content -->
-     <form class="Content-Main">
+    <!-- content -->
+    <form class="Content-Main">
         <div class="panel panel-default">
-            <!-- Default panel contents -->
+            <!-- headerpanel  text -->
             <div class="panel-heading">
                 <h1>News</h1>
             </div>
+
+            <!--body-->
             <div class="panel-body">
-    <div class="row">
-         <!--news 1-->
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="content/logo.png" alt="..."  HEIGHT="150" WIDTH="200">
-      <div class="caption">
-        <h3>News 1</h3>
-        <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
-          <br />
-          <p> ... </p>
-        <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
-      </div>
-    </div>
-  </div>
-        <!--news 2-->
-          <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="content/logo.png" alt="..."  HEIGHT="150" WIDTH="200">
-      <div class="caption">
-        <h3>News 2</h3>
-        <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik.</p>
-             <br />
-          <p> ... </p>
-        <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
-      </div>
-    </div>
-  </div>
-           <!--news 3-->
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="content/logo.png" alt="..."  HEIGHT="150" WIDTH="200">
-      <div class="caption">
-        <h3>News 3</h3>
-        <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
-             <br />
-          <p> ... </p>
-        <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
-      </div>
-    </div>
-  </div>
-        <!--news 4-->
-          <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="content/logo.png" alt="..."  HEIGHT="150" WIDTH="200">
-      <div class="caption">
-        <h3>News 4</h3>
-        <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
-             <br />
-          <p> ... </p>
-        <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
-      </div>
-    </div>
-  </div>
 
-             <!--news 5-->
-          <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="content/logo.png" alt="..."  HEIGHT="150" WIDTH="200">
-      <div class="caption">
-        <h3>News 5</h3>
-        <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
-             <br />
-          <p> ... </p>
-        <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
-      </div>
-    </div>
-  </div>
+                <!-- responsive Layout -->
+                <div class="row">
+
+                      <div class="col-xs-12 col-md-3 col-sm-4 bitworkPadding">
+                        <div class="thumbnail">
+                            <img src="content/logo.png" alt="..." height="150" width="200">
+                            <div class="caption">
+                                                               <h3>News 1</h3>
+                                  </div>
+
+                                <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
+                                <br />
+                                <p>... </p>
+                                <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
+                           
+                        </div>
+                    </div>
+
+                      <div class="col-xs-12 col-md-3 col-sm-4 bitworkPadding">
+                        <div class="thumbnail">
+                            <img src="content/logo.png" alt="..." height="150" width="200">
+                            <div class="caption">
+                                <h3>News 1</h3>
+                                <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
+                                <br />
+                                <p>... </p>
+                                <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="col-xs-12 col-md-3 col-sm-4 bitworkPadding">
+                        <div class="thumbnail">
+                            <img src="content/logo.png" alt="..." height="150" width="200">
+                            <div class="caption">
+                                <h3>News 1</h3>
+                                <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
+                                <br />
+                                <p>... </p>
+                                <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="col-xs-12 col-md-3 col-sm-4 bitworkPadding">
+                        <div class="thumbnail">
+                            <img src="content/logo.png" alt="..." height="150" width="200">
+                            <div class="caption">
+                                <h3>News 1</h3>
+                                <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
+                                <br />
+                                <p>... </p>
+                                <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                      <div class="col-xs-12 col-md-3 col-sm-4 bitworkPadding">
+                        <div class="thumbnail">
+                            <img src="content/logo.png" alt="..." height="150" width="200">
+                            <div class="caption">
+                                <h3>News 1</h3>
+                                <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
+                                <br />
+                                <p>... </p>
+                                <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
+                            </div>
+                        </div>
+                    </div>
+
+                      <div class="col-xs-12 col-md-3 col-sm-4 bitworkPadding">
+                        <div class="thumbnail">
+                            <img src="content/logo.png" alt="..." height="150" width="200">
+                            <div class="caption">
+                                <h3>News 1</h3>
+                                <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
+                                <br />
+                                <p>... </p>
+                                <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="col-xs-12 col-md-3 col-sm-4 bitworkPadding">
+                        <div class="thumbnail">
+                            <img src="content/logo.png" alt="..." height="150" width="200">
+                            <div class="caption">
+                                <h3>News 1</h3>
+                                <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
+                                <br />
+                                <p>... </p>
+                                <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="col-xs-12 col-md-3 col-sm-4 bitworkPadding">
+                        <div class="thumbnail">
+                            <img src="content/logo.png" alt="..." height="150" width="200">
+                            <div class="caption">
+                                <h3>News 1</h3>
+                                <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
+                                <br />
+                                <p>... </p>
+                                <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
+                            </div>
+                        </div>
+                    </div>
 
 
-             <!--news 6-->
-          <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="content/logo.png" alt="..."  HEIGHT="150" WIDTH="200">
-      <div class="caption">
-        <h3>News 6</h3>
-        <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
-             <br />
-          <p> ... </p>
-        <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
-      </div>
-    </div>
-  </div>
-
-
-             <!--news 7-->
-          <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="content/logo.png" alt="..."  HEIGHT="150" WIDTH="200">
-      <div class="caption">
-        <h3>News 7</h3>
-        <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
-             <br />
-          <p> ... </p>
-        <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
-      </div>
-    </div>
-  </div>
-
-
-             <!--news 8-->
-          <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="content/logo.png" alt="..."  HEIGHT="150" WIDTH="200">
-      <div class="caption">
-        <h3>News 8</h3>
-        <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik</p>
-             <br />
-          <p> ... </p>
-        <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="btn btn-primary">Weiterlesen</a> </p>
-      </div>
-    </div>
-  </div>
-</div>
                 </div>
             </div>
-         </form>
+        </div>
+    </form>
+    <!-- content ende -->
+   
 
     <!--Content Ende-->
 
@@ -219,6 +217,6 @@
         ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="lib/jquery.js"></script>
-      <script src="lib/bootstrap.js"></script>
+    <script src="lib/bootstrap.js"></script>
 </body>
 </html>
