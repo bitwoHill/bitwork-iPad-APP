@@ -42,7 +42,7 @@ h4 {
 .Content-Main {
     /*max-width: 1000px;*/
     padding: 19px 29px 29px;
-    margin: 0 20px 20px;
+    margin: 0 0px 10px;
     background-color: #fff;
     border: 1px solid #e5e5e5;
     -webkit-border-radius: 5px;
@@ -61,8 +61,9 @@ h4 {
     width: 90%;
 }
 
-.col-sm-6.col-md-3 {
+.col-xs-12.col-md-3.col-sm-4.bitworkPadding {
     padding-top: 30px;
+    padding-right: 5px;
 }
 
 /*button Farbe auf bitwork blau anpassen*/
@@ -81,19 +82,23 @@ h4 {
 
 .nav-stacked > li {
     float: none;
-    height: 105px;
+    height: 85px;
 }
 
     .nav-stacked > li + li {
         margin-top: 2px;
         margin-left: 0;
-        height: 105px;
+        height: 85px;
     }
 
+/*Anpassen der maximalen THumbnail gröse, damit unterschiedliche Bilder das Layout nicht zerreissen*/
+.thumbnail {
+    min-height: 400px;
+    max-height: 700px;
+  }
 /*anpassen der bild größe in den thumbnails*/
 .thumbnail img {
-    min-height: 150px;
-    max-height: 150px; /*min-width:50px; max-width:200px;*/
+       max-height: 150px; /*min-width:50px; max-width:200px;*/
 }
 /*// or whatever height you desire*/
 
@@ -102,6 +107,11 @@ h4 {
     top: 60px;
 }
 
+/*Anpassen der maximalen THumbnail gröse, damit unterschiedliche Bilder das Layout nicht zerreissen*/
+.thumbnail-login {
+    min-height: 100px;
+    max-height: 105px;
+}
 .thumbnail-login img {
      min-height: 0;
     max-height: none; /*min-width:50px; max-width:200px;*/
@@ -109,4 +119,18 @@ h4 {
 }
 #DivNavigateBackwards {
     visibility: hidden;
+}
+
+.merged .input-group-addon {
+    border-right: 0px;
+    background-color: #FFFFFF;
+}
+.merged input {
+    border-left: 0px;
+    background-color: #FFFFFF;
+     width: 50%;
+}
+
+.half {
+  width: 25%;
 }

@@ -28,33 +28,33 @@
 <body>
     <!--navigation-->
 
-      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <nav id="NavbarMain" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-NavbarMain-collapse">
                 <span class="sr-only">Navigation einblenden</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="Hauptmenue.html">
-                <img src="content/logo.png" height="35" alt="bitwork">
+                <img src="content/logo.png" height="30" alt="bitwork">
                 <div class="sprite-logos "></div>
             </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
 
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="collapse navbar-collapse navbar-NavbarMain-collapse">
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <form class="navbar-form navbar-right" role="search">
-                        <div class="form-group">
-                            <span class="add-on"><i class="glyphicon glyphicon-search"></i></span>
+                     <form class="navbar-form navbar-right" role="search" action="suchergebnisse.html">
+                        <div class="input-group" style="width: 200px;">
                             <input id="txtSuche" type="text" class="form-control" placeholder="Suchkriterium">
+                            <span class="input-group-addon"><a href="suchergebnisse.html"><i class="glyphicon glyphicon-search"></i></a></span>
                         </div>
-                        <button type="submit" class="btn btn-default">Suchen</button>
+
                     </form>
                 </li>
                 <li class="dropdown">
@@ -75,7 +75,7 @@
   
         <!--Überschrift-->
 <!--    <nav class="navbar navbar-default navbar-top" role="navigation">
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="collapse navbar-collapse navbar-NavbarMain-collapse">
                         <ul class="nav navbar-nav navbar-center">
                 <li>
                     <h2>Willkommen auf dem bitwork Businessportal</h2>
