@@ -47,11 +47,3 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
-
-(function($){
-    $(document).ready(function(){
-
-        console.log(News.all());
-
-    })
-})(jQuery)

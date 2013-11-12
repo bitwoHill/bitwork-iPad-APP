@@ -40,7 +40,7 @@ h4 {
 
 /*search textbox */
 #txtSuche {
-    width: 250px;
+    width: 190px;
 }
 
 
@@ -57,7 +57,7 @@ h4 {
     background: radial-gradient(ellipse at center, rgba(108,108,108,1) 0%,rgba(97,97,97,1) 44%,rgba(81,81,81,1) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6c6c6c', endColorstr='#515151',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
-/*Farbe und höhe der pills ändern*/
+/*Farbe und hï¿½he der pills ï¿½ndern*/
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
     background: rgb(108,108,108); /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover, rgba(108,108,108,1) 0%, rgba(97,97,97,1) 44%, rgba(81,81,81,1) 100%); /* FF3.6+ */
@@ -69,7 +69,7 @@ h4 {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6c6c6c', endColorstr='#515151',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     height: 100%;
 }
-/*höhe der nav pills ändern*/
+/*hï¿½he der nav pills ï¿½ndern*/
 .nav-stacked > li {
     float: none;
     height: 85px;
@@ -82,7 +82,7 @@ h4 {
     }
 
 
-/*Anpassen der maximalen THumbnail gröse, damit unterschiedliche Bilder das Layout nicht zerreissen*/
+/*Anpassen der maximalen THumbnail grï¿½se, damit unterschiedliche Bilder das Layout nicht zerreissen*/
 .thumbnail {
     min-height: 200px;
     max-height: 200px;
@@ -96,7 +96,7 @@ h4 {
      /*box-shadow: 10px -7px 15px darkgray, darkgray 0px 0px 3px inset;*/
      }
 
-    /*anpassen der bild größe in den thumbnails*/
+    /*anpassen der bild grï¿½ï¿½e in den thumbnails*/
     .thumbnail img {
         max-height: 150px; /*min-width:50px; max-width:200px;*/
         margin: 0px 10px 0px 5px;

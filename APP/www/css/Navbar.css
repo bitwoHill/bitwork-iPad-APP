@@ -20,7 +20,7 @@ body {
 #page-wrapper {
     width: 100%;
     padding: 5px 15px;
-    margin-top: 50px;
+    margin-top: 0;
     background-image: url(../content/menu-bg.png);
     -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.95);
     -moz-box-shadow: 0 15px 10px rgba(0,0,0,0.95);
@@ -110,19 +110,30 @@ table.tablesorter thead {
 
     .side-nav {
         margin-left: -225px;
-        left: 225px;
         width: 225px;
         position: fixed;
-        top: 61px;
+        left: 225px;
+        top: 0;
+        bottom: 0;
         height: 100%;
         border-radius: 0;
         border: none;
         background-color: #222222;
         overflow-y: auto;
         transition: all 0.4s ease 0s;
-      -webkit-box-shadow: 6px 0px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 6px 0px 5px 0px rgba(0,0,0,0.75);
-box-shadow: 6px 0px 5px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 6px 0px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 6px 0px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 6px 0px 5px 0px rgba(0,0,0,0.75);
+    }
+
+    .navbar-sync-form {
+        position: absolute !important;
+        left: 0;
+        bottom: 0;
+    }
+
+    .navbar-fixed-top {
+        margin-bottom: 0;
     }
 
         /* Bootstrap Default Overrides - Customized Dropdowns for the Side Nav */
