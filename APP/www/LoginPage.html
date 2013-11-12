@@ -1,62 +1,74 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="utf-8">
-    <title>Sign in &middot; bitwork iPAD APP</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Le styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap-responsive.min" rel="stylesheet">
-    <link href="css/LoginPage.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-        <script src="lib/html5shiv.js"></script>
-        <![endif]-->
-
-</head>
-
-<body>
-
-    <form id="FormSignin" class="form-signin" action="hauptmenue.html">
-        <!--action bezweckt, das bei erfolgreichem Submit eine neue Seite geöffnet werden kann-->
-        <!-- action sends user to mainmenu -->
-
-        <a href="#" class="thumbnail thumbnail-login pull-left">
-            <img src="content/logo.png" height="100" alt="...">
-        </a>
-
-
-        <h2 class="form-signin-heading pull-left">Am SharePoint anmelden</h2>
-
-        <!-- logindata for sharepoint -->
-        <input id="txtDomain" type="text" class="input-block-level" placeholder="Domäne" required>
-        <br />
-        <input id="txtUsername" type="text" class="input-block-level" placeholder="Benutzername" required>
-        <br />
-        <input id="txtPassword" type="password" class="input-block-level" placeholder="Passwort" required>
-        <br />
-
-        <!-- Remember Me function (optional) -->
-        <label id="chkRememberMe" class="checkbox">
-            <input type="checkbox" value="remember-me">
-            Automatisch anmelden
-        </label>
-        <!-- button to synch data -->
-        <button id="btnRefresh" type="submit" class="btn  pull-left">Aktualisieren</button>
-        <!-- button to logon to sharepoint -->
-        <button id="btnSubmit" class="btn btn-large btn-primary pull-right" type="submit">Anmelden</button><br />
-
-    </form>
-
-
-    <!-- Le javascript
-        ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="lib/jquery.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8">
+            <title>Sign in &middot; bitwork iPAD APP</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="">
+                    <meta name="author" content="">
+                        
+                        <!-- Le styles -->
+                        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+                            <link href="css/bootstrap-responsive.min" rel="stylesheet">
+                                <!--   <link href="css/bootstrap-theme.min" rel="stylesheet">-->
+                                <link href="css/LoginPage.css" rel="stylesheet">
+                                    <link href="css/bitworkBranding.css" rel="stylesheet">
+                                        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+                                        <!--[if lt IE 9]>
+                                         <script src="lib/html5shiv.js"></script>
+                                         <![endif]-->
+                                        
+                                        <script>    function validateForm() {
+                                            var x = document.forms["frm"]["txtDomain"].value;
+                                            if (x == null || x == "") {
+                                                alert("Domäne muss eingetragen werden");
+                                                return false;
+                                            }
+                                            var x = document.forms["frm"]["txtUsername"].value;
+                                            if (x == null || x == "") {
+                                                alert("Benutzername muss eingetragen werden");
+                                                return false;
+                                            }
+                                            var x = document.forms["frm"]["txtPassword"].value;
+                                            if (x == null || x == "") {
+                                                alert("Password muss eingetragen werden");
+                                                return false;
+                                            }
+                                        } </script>
+                                        
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-md-offset-4">
+                    <h1 class="text-center login-title">Am SharePoint anmelden</h1>
+                    <div class="account-wall">
+                        <img class="profile-img" src="content/logo_black.png"
+                            alt="">
+                            <form id="frm" class="form-signin" action="Hauptmenue.html" onsubmit="return validateForm()"  method="put">
+                                <input id="txtDomain" type="text" class="form-control" placeholder="Domäne" >
+                                    <input id="txtUsername" type="text" class="form-control" placeholder="Benutzername">
+                                        <input id="txtPassword"  type="password" class="form-control" placeholder="Passwort" >
+                                            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                                                Anmelden</button>
+                                            <label class="checkbox pull-left">
+                                                <input type="checkbox" value="remember-me">
+                                                    Automatisch anmelden
+                                                    </label>
+                                            
+                                            </form>
+                            </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Le javascript
+         ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="lib/jquery.js"></script>
+        <script src="lib/bootstrap.js"></script>
+        
+        
+    </body>
 </html>

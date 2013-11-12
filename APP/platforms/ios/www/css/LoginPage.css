@@ -1,108 +1,78 @@
-﻿html {
-    height: 100%;
+﻿
+
+
+    .form-signin
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
 }
-
-body {
-    padding-top: 120px;
-        height: 100%;
-    margin: 0;
-    background: rgb(76,76,76); /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover, rgba(76,76,76,1) 0%, rgba(19,19,19,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(76,76,76,1)), color-stop(100%,rgba(19,19,19,1))); /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(76,76,76,1) 0%,rgba(19,19,19,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover, rgba(76,76,76,1) 0%,rgba(19,19,19,1) 100%); /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover, rgba(76,76,76,1) 0%,rgba(19,19,19,1) 100%); /* IE10+ */
-    background: radial-gradient(ellipse at center, rgba(76,76,76,1) 0%,rgba(19,19,19,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 10px;
 }
-
-
-h1 {
-    color: white;
+.form-signin .checkbox
+{
+    font-weight: normal;
 }
-
-h2 {
-    color: white;
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
-
-h3 {
-    color: white;
+.form-signin .form-control:focus
+{
+    z-index: 2;
 }
-
-h4 {
-    color: white;
+.form-signin input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
-/*Loginpage Styles*/
-.form-signin {
-    max-width: 300px;
-    padding: 19px 29px 29px;
-    margin: 0 auto 20px;
-    background: rgb(108,108,108); /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover, rgba(108,108,108,1) 0%, rgba(97,97,97,1) 44%, rgba(81,81,81,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(108,108,108,1)), color-stop(44%,rgba(97,97,97,1)), color-stop(100%,rgba(81,81,81,1))); /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(108,108,108,1) 0%,rgba(97,97,97,1) 44%,rgba(81,81,81,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover, rgba(108,108,108,1) 0%,rgba(97,97,97,1) 44%,rgba(81,81,81,1) 100%); /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover, rgba(108,108,108,1) 0%,rgba(97,97,97,1) 44%,rgba(81,81,81,1) 100%); /* IE10+ */
-    background: radial-gradient(ellipse at center, rgba(108,108,108,1) 0%,rgba(97,97,97,1) 44%,rgba(81,81,81,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6c6c6c', endColorstr='#515151',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    border: 1px solid rgb(108,108,108);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+.form-signin input[type="password"]
+{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
-    /*.form-signin {
-    border-color: rgb(108,108,108);
-}*/
-
-    .form-signin .form-signin-heading,
-    .form-signin .checkbox {
-        margin-bottom: 10px;
-    }
-
-    .form-signin input[type="text"],
-    .form-signin input[type="password"] {
-        font-size: 16px;
-        height: auto;
-        margin-bottom: 15px;
-        padding: 7px 9px;
-    }
-
-    
-/*button Farbe auf bitwork grau anpassen*/
-.btn-primary {
-    color: #fff;
-    border-color: rgb(108,108,108);
-    background: rgb(108,108,108); /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover, rgba(108,108,108,1) 0%, rgba(97,97,97,1) 44%, rgba(81,81,81,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(108,108,108,1)), color-stop(44%,rgba(97,97,97,1)), color-stop(100%,rgba(81,81,81,1))); /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(108,108,108,1) 0%,rgba(97,97,97,1) 44%,rgba(81,81,81,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover, rgba(108,108,108,1) 0%,rgba(97,97,97,1) 44%,rgba(81,81,81,1) 100%); /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover, rgba(108,108,108,1) 0%,rgba(97,97,97,1) 44%,rgba(81,81,81,1) 100%); /* IE10+ */
-    background: radial-gradient(ellipse at center, rgba(108,108,108,1) 0%,rgba(97,97,97,1) 44%,rgba(81,81,81,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6c6c6c', endColorstr='#515151',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+.account-wall
+{
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
-
-
-/*Anpassen der maximalen THumbnail gröse, damit unterschiedliche Bilder das Layout nicht zerreissen*/
-.thumbnail-login {
-    min-height: 100px;
-    max-height: 105px;
-    border: none;
-    background-color: transparent;
-       border-color: white;
-         -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.95);
-    -moz-box-shadow: 0 1px 10px rgba(0,0,0,0.95);
-    box-shadow: 0 1px 10px rgba(0,0,0,0.95);
+.login-title
+{
+    color: #f7f7f7;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
 }
-
-    .thumbnail-login img {
-      
-        min-height: 0;
-        max-height: 99px; /*min-width:50px; max-width:200px;*/
-    
-    }
+.profile-img
+{
+    width: 210px;
+    /*height: 96px;*/
+    margin: 0 auto 10px;
+    display: block;
+    /*-moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;*/
+}
+.need-help
+{
+    margin-top: 10px;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+}
