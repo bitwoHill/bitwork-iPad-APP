@@ -2,118 +2,179 @@
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Hauptmenü</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hauptmenue">
-    <meta name="author" content="bitwork GmbH">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap-responsive.min" rel="stylesheet">
+    <title>News</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+   
+    <!-- Add custom CSS here -->
+    <link href="css/Navbar.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bitworkBranding.css" rel="stylesheet">
-    <link href="css/Glyphicons.css" rel="stylesheet">
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-        <script src="lib/html5shiv.js"></script>
-        <![endif]-->
-    <style>
-        .NavElements {
-            padding-top: 100px;
-        }
-    </style>
-
 </head>
 
 <body>
-    <!--navigation-->
 
-    <nav id="NavbarMain" class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-NavbarMain-collapse">
-                <span class="sr-only">Navigation einblenden</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="Hauptmenue.html">
-                <img src="content/logo.png" height="30" alt="bitwork">
-                <div class="sprite-logos "></div>
-            </a>
-        </div>
+    <div id="wrapper">
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-
-        <div class="collapse navbar-collapse navbar-NavbarMain-collapse">
-
-            <!--zurück button-->
-            
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <form class="navbar-form navbar-right" role="search" action="suchergebnisse.html">
-                        <div class="input-group" style="width: 200px;">
-                            <input id="txtSuche" type="text" class="form-control" placeholder="Suchkriterium">
-                            <span class="input-group-addon"><a href="suchergebnisse.html"><i class="glyphicon glyphicon-search"></i></a></span>
-                        </div>
-
-                    </form>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Angemeldet als xyz<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="LoginPage.html">Als anderer Benutzer anmelden</a></li>
-
-                    </ul>
-                </li>
-
-
-            </ul>
-        </div>
-
-        <!-- /.navbar-collapse -->
-    </nav>
-    <!--navigation ende-->
-
-
-
-
-
-    <form class="Content-Main">
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">
-                <h1>Willkommen auf dem bitwork Businessportal</h1>
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="hauptmenue.html">
+                    <img src="content/logo.png" height="30" alt="bitwork">
+                    <div class="sprite-logos "></div>
+                </a>
             </div>
-            <div class="panel-body">
 
-                <!--  <div style="width: 100%" class="container">-->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li><a href="News.html"><i class="fa fa-rss"></i>News</a></li>
+                    <li><a href="Kalender.html"><i class="fa fa-calendar"></i>Kalender</a></li>
+                    <li><a href="Telefonbuch.html"><i class="fa fa-phone"></i>Telefonbuch</a></li>
+                    <li><a href="WichtigeLinks.html"><i class="fa fa-link"></i>Wichtige Links</a></li>
+                    <li><a href="#"><i class="fa fa-list"></i>MPL</a></li>
+                    <li><a href="Infothek.html"><i class="fa fa-info-circle"></i>Infothek</a></li>
 
-                <!--anfang Button Navigation-->
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="News.html">News</a></li>
-                    <li class="active"><a href="Kalender.html">Kalender</a></li>
-                    <li class="active"><a href="Telefonbuch.html">Telefonbuch</a></li>
-                    <li class="active"><a href="WichtigeLinks.html">Wichtige Links</a></li>
-                    <li class="active"><a href="#">MPL</a></li>
-                    <li class="active"><a href="Infothek.html">Infothek</a></li>
+                    
+
+                    <li class="navbar-sync-form">
+                          
+                        <form>
+                            <div class="input-group grey" style="width: 220px;">
+                             
+                                <span class="input-group-addon"><a href="suchergebnisse.html"><i class="fa fa-refresh"></i></a></span>
+                                <!--   <input id="Text1" type="url" class="form-control" placeholder="">-->
+                               <div  class="form-control" >Letzte Synchronisierung am 12.02.2014</div>
+                            </div>
+                        </form>
+                       
+                    </li>
+              
                 </ul>
 
+                <ul class="nav navbar-nav navbar-right navbar-user">
+
+                    <li>
+                        <form class="navbar-form" role="search" action="suchergebnisse.html">
+                            <div class="input-group" style="width: 200px;">
+                                <input id="txtSuche" type="text" class="form-control" placeholder="Suchkriterium">
+                                <span class="input-group-addon"><a href="suchergebnisse.html"><i class="fa fa-search"></i></a></span>
+                            </div>
+
+                        </form>
+                    </li>
+                    <!-- Change user Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Angemeldet als xyz<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="LoginPage.html">Als anderer Benutzer anmelden</a></li>
+
+                        </ul>
+                    </li>
 
 
-
-                <!--ende Button Navigation-->
+                </ul>
             </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+
+        <!-- content -->
+        <div id="page-wrapper">
+            <div id="lblHeaderText" class="page-header"><h1 >News <small>Herzlich willkommen auf dem Atlas Copco Portal   </small></h1> </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="thumbnail">
+                        <div class="col-lg-12 bitworkPadding">
+                            <img style="float: left" src="content/kompressor.jpg" alt="..."  width="150">
+                            <div class="content-heading">
+                                <h3>Experience &nbsp </h3>
+                            </div>
+                            <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                            <p>
+                                <a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx">
+                                    <!--class="btn btn-primary pull-right"-->
+                                    Weiterlesen</a>
+                            </p>
+                            <div style="clear: both"></div>
+                        </div>
+                    </div>
+
+                    <div class="thumbnail">
+                        <div class="col-lg-12 bitworkPadding">
+                            <img style="float: left" src="content/logo.png" alt="..."  width="150">
+                            <div class="content-heading">
+                                <h3>Experience &nbsp </h3>
+                            </div>
+                            <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                            <p>
+                                <a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx">
+                                    <!--class="btn btn-primary pull-right"-->
+                                    Weiterlesen</a>
+                            </p>
+                            <div style="clear: both"></div>
+                        </div>
+                    </div>
+
+                    <div class="thumbnail">
+                        <div class="col-lg-12 bitworkPadding">
+                            <img style="float: left" src="content/logo.png" alt="..."  width="150">
+                            <div class="content-heading">
+                                <h3>Experience &nbsp </h3>
+                            </div>
+                            <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                            <p>
+                                <a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx">
+                                    <!--class="btn btn-primary pull-right"-->
+                                    Weiterlesen</a>
+                            </p>
+                            <div style="clear: both"></div>
+                        </div>
+                    </div>
+
+                    <div class="thumbnail">
+                        <div class="col-lg-12 bitworkPadding">
+                            <img style="float: left" src="content/logo.png" alt="..." width="150">
+                            <div class="content-heading">
+                                <h3>Experience &nbsp </h3>
+                            </div>
+                            <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                            <p>
+                                <a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx">
+                                    <!--class="btn btn-primary pull-right"-->
+                                    Weiterlesen</a>
+                            </p>
+                            <div style="clear: both"></div>
+                        </div>
+                    </div>
+
+                
+                </div>
+                <!-- Content End -->
+            </div>
+            <!-- /.row -->
+
         </div>
-        <!--        ende content-->
-    </form>
+        <!-- /#page-wrapper -->
 
+    </div>
+    <!-- /#wrapper -->
 
-
-
-    <!-- Le javascript
-        ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Bootstrap core JavaScript -->
     <script src="lib/jquery.js"></script>
-    <script src="lib/bootstrap.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
 </body>
 </html>
