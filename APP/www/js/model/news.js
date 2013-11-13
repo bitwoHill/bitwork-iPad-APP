@@ -45,7 +45,12 @@ var NewsUtils = {
                 $newItem.removeAttr('id');
                 $('.news-item-title', $newItem).html(data.title);
                 $('.news-item-body', $newItem).html(data.body);
-                $('.news-item-image', $newItem).attr('src', data.image);
+                if(data.image) {
+                    $('.news-item-content', $newItem).addClass('with-image');
+                    $('.news-item-image', $newItem).attr('src', data.image);
+                } else {
+                    $('.news-item-image', $newItem).addClass('hidden');
+                }
 
                 $container.append($newItem.removeClass('hidden'));
             });
