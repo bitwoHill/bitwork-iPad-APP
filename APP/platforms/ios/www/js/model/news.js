@@ -1,10 +1,10 @@
-var NEWS_SYNC_URL = "/content/news.json",
+var NEWS_SYNC_URL = "content/news.json",
     NEWS_CONTAINER = "#news-items-container",
     NEWS_ITEM_TEMPLATE = "#news-item-template";
 
 var NewsUtils = {
     sharePointSync : function(callback){
-
+        
         //TODO: replace with sharepoint connection
         $.getJSON(NEWS_SYNC_URL, function(data){
 
