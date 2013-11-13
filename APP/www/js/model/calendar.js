@@ -77,7 +77,7 @@ var CalendarUtils = {
                     }
 
                     if(data.startDate) {
-                        $('.calendar-item-date', $newItem).html(data.startDate);
+                        $('.calendar-item-date', $newItem).html(utils.dateFormat(new Date(data.startDate), "l, d F y, h:m"));
                     } else {
                         $('.calendar-item-date', $newItem).addClass('hidden');
                     }
