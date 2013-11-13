@@ -1,15 +1,15 @@
-var NEWS_SYNC_URL = "/content/news.json",
-    NEWS_CONTAINER = "#news-items-container",
-    NEWS_ITEM_TEMPLATE = "#news-item-template";
+var CALENDAR_SYNC_URL = "content/calendar.json",
+    CALENDAR_CONTAINER = "#calendar-items-container",
+    CALENDAR_ITEM_TEMPLATE = "#calendar-item-template";
 
-var NewsUtils = {
+var CalendarUtils = {
     sharePointSync : function(callback){
 
         //TODO: replace with sharepoint connection
-        $.getJSON(NEWS_SYNC_URL, function(data){
+        var request = $.getJSON(CALENDAR_SYNC_URL, function(data){
 
             $.each(data, function(index, value){
-                var newsItem,
+                var calendarItem,
                     tmp = (value.image)? value.image.split('.') : false,
                     imageExtension = (tmp && tmp.length > 1)? (tmp[tmp.length - 1]).toLowerCase() : false;
 
@@ -19,13 +19,13 @@ var NewsUtils = {
                     img.src = value.image;
                     img.onload = function(){
                         value.image = utils.getBase64FromImage(img, imageExtension);
-                        newsItem = new News(value);
-                        persistence.add(newsItem);
+                        calendarItem = new Calendar(value);
+                        persistence.add(calendarItem);
                     };
                 } else {
                     value.image = "";
-                    newsItem = new News(value);
-                    persistence.add(newsItem);
+                    calendarItem = new Calendar(value);
+                    persistence.add(calendarItem);
                 }
             });
 
@@ -35,14 +35,13 @@ var NewsUtils = {
                     if(typeof callback === "function"){
                         callback();
                     }
-
-                    $('body').trigger('news-sync-ready');
+                    $('body').trigger('calendar-sync-ready');
                 }
             );
         }).fail(
             function(){
                 //TODO: error handling if necessary
-                alert("Calendar: Mock data read error.");
+                console.log( "News: Mock data read error." );
 
                 if(typeof callback === "function") {
                     callback();
@@ -51,24 +50,36 @@ var NewsUtils = {
         );
     },
 
-    displayNews : function(){
-        var $container = $(NEWS_CONTAINER),
-            $template = $(NEWS_ITEM_TEMPLATE);
+    displayCalendar : function(){
+        var $container = $(CALENDAR_CONTAINER),
+            $template = $(CALENDAR_ITEM_TEMPLATE);
 
         if($container.length && $template.length){
-            News.all().list(null, function(results){
+            Calendar.all().list(null, function(results){
                 $.each(results, function(index, value){
                     var data = value._data;
                     var $newItem = $template.clone();
 
                     $newItem.removeAttr('id');
-                    $('.news-item-title', $newItem).html(data.title);
-                    $('.news-item-body', $newItem).html(data.body);
                     if(data.image) {
                         $('.box-content', $newItem).addClass('with-image');
-                        $('.news-item-image', $newItem).attr('src', data.image);
+                        $('.calendar-item-image', $newItem).attr('src', data.image);
                     } else {
-                        $('.news-item-image', $newItem).addClass('hidden');
+                        $('.calendar-item-image', $newItem).addClass('hidden');
+                    }
+                    $('.calendar-item-title', $newItem).html(data.title);
+                    $('.calendar-item-body', $newItem).html(data.body);
+
+                    if(data.location) {
+                        $('.calendar-item-location', $newItem).html(data.location);
+                    } else {
+                        $('.calendar-item-location-container', $newItem).addClass('hidden');
+                    }
+
+                    if(data.startDate) {
+                        $('.calendar-item-date', $newItem).html(data.startDate);
+                    } else {
+                        $('.calendar-item-date', $newItem).addClass('hidden');
                     }
 
                     $container.append($newItem.removeClass('hidden'));
@@ -78,5 +89,5 @@ var NewsUtils = {
     }
 };
 
-//bind to sync ready event in order to display the news
-$('body').on('news-sync-ready', NewsUtils.displayNews);
+//bind to sync ready event in order to display the calendar
+$('body').on('calendar-sync-ready', CalendarUtils.displayCalendar);

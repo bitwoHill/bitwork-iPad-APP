@@ -98,57 +98,22 @@
                 <h1>Kalender <small>Herzlich willkommen auf dem Atlas Copco Portal   </small></h1>
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="calendar-items-container">
 
-                    <!--news 1-->
-                    <div class="thumbnail">
-                        <div class="col-lg-12 bitworkPadding">
-                            <img style="float: left" src="content/kompressor.jpg" alt="..." width="150">
-                            <div class="content-heading">
-                                <h3>Akademie &nbsp </h3>
+                    <div class="thumbnail hidden box" id="calendar-item-template">
+                        <div class="col-lg-12 bitworkPadding box-container clearfix">
+                            <img class="calendar-item-image" src="" alt="">
+
+                            <div class="box-content">
+                                <div class="content-heading">
+                                    <h3 class="calendar-item-title"></h3>
+                                </div>
+
+                                <p class="calendar-item-date"></p>
+                                <p class="calendar-item-location-container">Ort: <span class="calendar-item-location"></span></p>
+
+                                <div class="calendar-item-body"></div>
                             </div>
-
-                            <p>05.11.2013 09:00 - 17:00 Uhr</p>
-                            <p>Ort: Nürnberg</p>
-                            <br />
-                            <p>
-                                Akadmie Exklusiv für Sie als Vertragshändler von bitwork 
-Verkaufsschulung in 3 Modulen am 12.+13 September / 08.+09. Oktober und 05.+06. November 2013
-Raum Nürnberg 
-Anmeldeschluss 12. August 2013
-Mindestteilnehmerzahl: 10 Personen 
-Maximalteilnehmerzahl: 16 Personen     <a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx">
-    <!--        class="btn btn-primary pull-right"-->
-    Weiterlesen</a>
-                            </p>
-                            <div style="clear: both"></div>
-
-                        </div>
-                    </div>
-
-                     <!--news 1-->
-                    <div class="thumbnail">
-                        <div class="col-lg-12 bitworkPadding">
-                            <img style="float: left" src="content/kompressor.jpg" alt="..." width="150">
-                            <div class="content-heading">
-                                <h3>Akademie &nbsp </h3>
-                            </div>
-
-                            <p>05.11.2013 09:00 - 17:00 Uhr</p>
-                            <p>Ort: Nürnberg</p>
-                            <br />
-                            <p>
-                                Akadmie Exklusiv für Sie als Vertragshändler von bitwork 
-Verkaufsschulung in 3 Modulen am 12.+13 September / 08.+09. Oktober und 05.+06. November 2013
-Raum Nürnberg 
-Anmeldeschluss 12. August 2013
-Mindestteilnehmerzahl: 10 Personen 
-Maximalteilnehmerzahl: 16 Personen     <a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx">
-    <!--        class="btn btn-primary pull-right"-->
-    Weiterlesen</a>
-                            </p>
-                            <div style="clear: both"></div>
-
                         </div>
                     </div>
 
@@ -164,8 +129,20 @@ Maximalteilnehmerzahl: 16 Personen     <a href="http://www.bitwork-cms.com/Lists
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->
-    <script src="lib/jquery.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/jquery.js" type="text/javascript"></script>
+    <script src="lib/bootstrap.js" type="text/javascript"></script>
+    <script src="lib/persistence.js" type="text/javascript"></script>
+    <script src="lib/persistence.store.sql.js" type="text/javascript"></script>
+    <script src="lib/persistence.store.websql.js" type="text/javascript"></script>
+    <script src="lib/persistence.jquery.js" type="text/javascript"></script>
+
+    <script src="js/utils.js" type="text/javascript"></script>
+
+    <script src="js/model/db-schema.js" type="text/javascript"></script>
+    <script src="js/model/news.js" type="text/javascript"></script>
+    <script src="js/model/calendar.js" type="text/javascript"></script>
+
+    <script src="js/dbsetup.js" type="text/javascript"></script>
+    <script src="js/index.js" type="text/javascript"></script>
 </body>
 </html>
-

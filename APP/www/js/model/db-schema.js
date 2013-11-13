@@ -8,11 +8,12 @@ var News = persistence.define('News', {
 
 News.index('nodeId',{unique:true});
 
-var Calendar = persistence.define('News', {
+var Calendar = persistence.define('Calendar', {
     nodeId: "INT",
     title: "TEXT",
     body: "TEXT",
     image: "TEXT",
+    location: "TEXT",
     startDate: "DATE",
     expirationDate: "DATE"
 });
