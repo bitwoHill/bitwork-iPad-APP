@@ -2,91 +2,146 @@
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>TODO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Templatesite">
-    <meta name="author" content="bitwork GmbH">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap-responsive.min" rel="stylesheet">
-  
+    <title>MPL Produktfamilien</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+   
+    <!-- Add custom CSS here -->
+    <link href="css/Navbar.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bitworkBranding.css" rel="stylesheet">
      
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-        <script src="lib/html5shiv.js"></script>
-        <![endif]-->
-
-
-  
 </head>
 
 <body>
-    <!--navigation-->
+        
+    <div id="wrapper">
 
-         <nav id="NavbarMain" class="navbar  navbar-fixed-top navbar-inverse" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-NavbarMain-collapse">
-                <span class="sr-only">Navigation einblenden</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="Hauptmenue.html">
-                <img src="content/logo.png" height="30" alt="bitwork">
-                <div class="sprite-logos "></div>
-            </a>
-        </div>
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="hauptmenue.html">
+                    <img src="content/logo.png" height="30" alt="bitwork">
+                    <div class="sprite-logos "></div>
+                </a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li><a href="News.html"><i class="fa fa-rss"></i>News</a></li>
+                    <li><a href="Kalender.html"><i class="fa fa-calendar"></i>Kalender</a></li>
+                    <li><a href="Telefonbuch.html"><i class="fa fa-phone"></i>Telefonbuch</a></li>
+                    <li><a href="WichtigeLinks.html"><i class="fa fa-link"></i>Wichtige Links</a></li>
+                    <li><a href="#"><i class="fa fa-list"></i>MPL</a></li>
+                    <li><a href="Infothek.html"><i class="fa fa-info-circle"></i>Infothek</a></li>
 
-        <div class="collapse navbar-collapse navbar-NavbarMain-collapse">
+                    
 
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                     <form class="navbar-form navbar-right" role="search" action="suchergebnisse.html">
-                        <div class="input-group" style="width: 200px;">
-                            <input id="txtSuche" type="text" class="form-control" placeholder="Suchkriterium">
-                            <span class="input-group-addon"><a href="suchergebnisse.html"><i class="glyphicon glyphicon-search"></i></a></span>
-                        </div>
+                    <li class="navbar-sync-form">
+                          
+                        <form>
+                            <div class="input-group grey" style="width: 220px;">
+                             
+                                <span class="input-group-addon"><a href="suchergebnisse.html"><i class="fa fa-refresh"></i></a></span>
+                                <!--   <input id="Text1" type="url" class="form-control" placeholder="">-->
+                               <div  class="form-control" >Letzte Synchronisierung am 12.02.2014</div>
+                            </div>
+                        </form>
+                       
+                    </li>
+              
+                </ul>
 
-                    </form>
-                </li>
-                <!-- Change user Dropdown -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Angemeldet als xyz<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="LoginPage.html">Als anderer Benutzer anmelden</a></li>
+                <ul class="nav navbar-nav navbar-right navbar-user">
 
-                    </ul>
-                </li>
+                    <li>
+                        <form class="navbar-form" role="search" action="suchergebnisse.html">
+                            <div class="input-group" style="width: 200px;">
+                                <input id="txtSuche" type="text" class="form-control" placeholder="Suchkriterium">
+                                <span class="input-group-addon"><a href="suchergebnisse.html"><i class="fa fa-search"></i></a></span>
+                            </div>
+
+                        </form>
+                    </li>
+                    <!-- Change user Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Angemeldet als xyz<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="LoginPage.html">Als anderer Benutzer anmelden</a></li>
+
+                        </ul>
+                    </li>
 
 
-            </ul>
-        </div>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
 
-        <!-- /.navbar-collapse -->
-    </nav>
-        <!--navigation ende-->
-  
+
      
+        <!-- content -->
+        <div id="page-wrapper">
+
+            <div id="lblHeaderText" class="page-header">
+                <h1>MPL Produktfamilien <small>Herzlich willkommen auf dem Atlas Copco Portal    </small></h1>
+            </div>
 
 
-        <!--Content -->
-       <form class="Content-Main">
-            <div id="divPanelMain" class="panel panel-dark">
-                <!-- Default panel contents -->
-                <div class="panel-heading"><h1>    Hallo Welt</h1></div>
-                <div class="panel-body">
-                    </div>
+
+            <div class="row">
+                <div class="col-lg-2">
                 </div>
-           </form>
+                <div class="col-lg-8">
+                    <!--Content Ende-->
+                    <table class="table table-bordered  navbar-inverse" style="background-color: red;">
 
-    <!--Content Ende-->
+                        <tbody>
+                            <tr>
+                                <th>Produktfamilien
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><a href="MPLProduktplattformen.html?Produktfamilie=1">Produktfamilie 1</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="MPLProduktplattformen.html?Produktfamilie=2">Produktfamilie 2</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="MPLProduktplattformen.html?Produktfamilie=3">Produktfamilie 3</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="MPLProduktplattformen.html?Produktfamilie=4">Produktfamilie 4</a></td>
+                            </tr>
 
-    
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- end content -->
+
+
+
+
 
     <!-- Le javascript
         ================================================== -->

@@ -6,6 +6,6 @@
         persistence.schemaSync();
 
         //Sync with sharepoint
-        NewsUtils.sharePointSync();
+        NewsUtils.sharePointSync(NewsUtils.displayNews);
     })
 })(jQuery)

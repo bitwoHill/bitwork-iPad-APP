@@ -134,6 +134,7 @@ table.tablesorter thead {
 
     .navbar-fixed-top {
         margin-bottom: 0;
+        position: static;
     }
 
         /* Bootstrap Default Overrides - Customized Dropdowns for the Side Nav */
