@@ -30,7 +30,9 @@ var NewsUtils = {
             });
 
             persistence.flush((typeof callback === "function")? callback : "");
-        });
+        }).fail(function(){
+                alert("Mock data read error.");
+            });
     },
 
     displayNews : function(){
