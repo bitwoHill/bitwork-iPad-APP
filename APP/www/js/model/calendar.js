@@ -82,7 +82,7 @@ var CalendarUtils = {
                         $('.calendar-item-date', $newItem).addClass('hidden');
                     }
 
-                    $container.append($newItem.removeClass('hidden'));
+                    $container.append($newItem.i18n().removeClass('hidden'));
                 });
             });
         }
@@ -91,3 +91,4 @@ var CalendarUtils = {
 
 //bind to sync ready event in order to display the calendar
 $('body').on('calendar-sync-ready', CalendarUtils.displayCalendar);
+
