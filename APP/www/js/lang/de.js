@@ -29,6 +29,29 @@ var i18n = {
         "weiterlesen" : "Weiterlesen",
 
         //Links
-        "wichtige-links" : "Wichtige Links"
+        "wichtige-links": "Wichtige Links",
+
+        //MPL
+        "stammdaten": "Stammdaten",
+        "produktdetailinformationen": "Produktdetailinformationen",
+        "produktbezeichnung": "Produktbezeichnung",
+        "teilenummer": "Teilenummer",
+        "listenpreis": "Listenpreis",
+        "kuehlung": "Kuehlung",
+        "austattungsvariante": "Austattungsvariante",
+        "volumenstrom": "Volumenstrom",
+        "druck": "Druck",
+        "antriebsleistung": "Antriebsleistung",
+
+        //MPL Documents
+        "dokumente": "Dokumente",
+
+        //MPL Optionen
+        "option": "Option",
+        "name": "Name",
+        "optionsbezeichnung": "Optionsbezeichnung",
+        
+
+
     }
 }

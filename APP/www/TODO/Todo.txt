@@ -1,3 +1,0 @@
-﻿PRoblem mit wiederholenden Hintergrund in News und Kalender html
-Positionierung von unterschiedlich großen News Blöcken
-Farbe von normalen navpills hovereffect ändern

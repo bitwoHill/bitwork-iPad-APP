@@ -6,7 +6,7 @@ var News = persistence.define('News', {
     expirationDate: "DATE"
 });
 
-News.index('nodeId',{unique:true});
+News.index('nodeId', { unique: true });
 
 var Calendar = persistence.define('Calendar', {
     nodeId: "INT",
@@ -18,7 +18,7 @@ var Calendar = persistence.define('Calendar', {
     expirationDate: "DATE"
 });
 
-Calendar.index('nodeId',{unique:true});
+Calendar.index('nodeId', { unique: true });
 
 
 var Link = persistence.define('Link', {
@@ -28,4 +28,20 @@ var Link = persistence.define('Link', {
     description: "TEXT"
 });
 
-Link.index('linkId',{unique:true});
+Link.index('linkId', { unique: true });
+
+
+var MPLStammdaten = persistence.define('MPLStammdaten', {
+    nodeId: "INT",
+    productDescription: "TEXT",
+    pieceNumber: "TEXT",
+    price: "TEXT",
+    cooling: "TEXT",
+    variant: "TEXT",
+    volume: "TEXT",
+    pressure: "TEXT",
+    performance: "TEXT"
+});
+
+MPLStammdaten.index('nodeId', { unique: true });
+MPLStammdaten.index('piecenumber', { unique: true });

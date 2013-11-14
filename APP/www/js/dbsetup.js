@@ -8,7 +8,7 @@
         //Sync with sharepoint
         NewsUtils.sharePointSync();
         CalendarUtils.sharePointSync();
+        MPLStammdatenUtils.sharePointSync();
         LinkUtils.sharePointSync();
-
     });
 })(jQuery)
