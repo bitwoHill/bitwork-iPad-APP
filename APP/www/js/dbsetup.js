@@ -8,6 +8,7 @@
         //Sync with sharepoint
         NewsUtils.sharePointSync();
         CalendarUtils.sharePointSync();
+        LinkUtils.sharePointSync();
 
     });
 })(jQuery)

@@ -1,0 +1,13 @@
+[
+    {
+        "linkId": 1,
+        "label": "Cras justo odio",
+        "linkUrl": "http://www.google.de",
+        "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+        "linkId": 2,
+        "label": "Cras justo odio",
+        "linkUrl": "http://www.google.de"
+    }
+]

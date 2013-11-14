@@ -19,3 +19,13 @@ var Calendar = persistence.define('Calendar', {
 });
 
 Calendar.index('nodeId',{unique:true});
+
+
+var Link = persistence.define('Link', {
+    linkId: "INT",
+    label: "TEXT",
+    linkUrl: "TEXT",
+    description: "TEXT"
+});
+
+Link.index('linkId',{unique:true});

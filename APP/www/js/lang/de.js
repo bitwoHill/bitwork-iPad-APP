@@ -26,6 +26,9 @@ var i18n = {
 
         //News
         "news" : "News",
-        "weiterlesen" : "Weiterlesen"
+        "weiterlesen" : "Weiterlesen",
+
+        //Links
+        "wichtige-links" : "Wichtige Links"
     }
 }
