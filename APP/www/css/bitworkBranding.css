@@ -179,3 +179,8 @@ h4 {
 .side-nav .fa {
     margin-right: 10px;
 }
+
+.well hr {
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #FFF;
+}

@@ -77,6 +77,6 @@ $(document).ready(function(){
     $(".tree-nav-link").not(".folder").click(function(e){
         e.preventDefault();
 
-        $('.cotact-details-container').show(300);
+        $('.contact-details-container').show(300);
     });
 })
