@@ -1,5 +1,6 @@
+//this class does not display any contents of the product database. it only fetches data and filters the productequipment and otherproducts pages
 var products_SYNC_URL = "content/products.json",
-    products_CONTAINER = "#products-items-container",
+    products_CONTAINER = "#products-item-container",
     products_ITEM_TEMPLATE = "#products-item-template";
 
 var ProductsUtils= {
@@ -69,8 +70,8 @@ var ProductsUtils= {
 
                                    $newItem.removeAttr('id');
                                    $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?EquipmentProdukt=" + data.EquipmentId);
-
-
+                                   $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
+                                   $('.products-item-price', $newItem).html(data.price);
                                    $container.append($newItem.removeClass('hidden'));
                                                                     
 
@@ -87,7 +88,8 @@ var ProductsUtils= {
 
                                    $newItem.removeAttr('id');
                                    $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?SonstigesProdukt=" + data.OtherProductId);
-
+                                   $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
+                                   $('.products-item-price', $newItem).html(data.price);
 
                                    $container.append($newItem.removeClass('hidden'));
                                                                     
