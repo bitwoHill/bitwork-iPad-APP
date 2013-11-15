@@ -42,7 +42,7 @@ var NewsUtils = {
         }).fail(
             function(){
                 //TODO: error handling if necessary
-                alert("Calendar: Mock data read error.");
+                alert("News: Mock data read error.");
 
                 if(typeof callback === "function") {
                     callback();

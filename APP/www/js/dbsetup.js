@@ -10,5 +10,10 @@
         CalendarUtils.sharePointSync();
         MPLStammdatenUtils.sharePointSync();
         LinkUtils.sharePointSync();
+
+        ProductGroupsUtils.sharePointSync();
+        ProductFamiliesUtils.sharePointSync();
+        ProductPlatformsUtils.sharePointSync();
+        ProductsUtils.sharePointSync();
     });
 })(jQuery)

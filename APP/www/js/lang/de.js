@@ -2,31 +2,31 @@ var i18n = {
 
     langCode: "de",
     strings: {
-        "months" : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
-        "days" : ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+        "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        "days": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
 
         //Menu
-        "menu-news" : "News",
-        "menu-calendar" : "Kalender",
-        "menu-contacts" : "Telefonbuch",
-        "menu-links" : "Wichtige Links",
-        "menu-mpl" : "MPL",
-        "menu-info" : "Infothek",
+        "menu-news": "News",
+        "menu-calendar": "Kalender",
+        "menu-contacts": "Telefonbuch",
+        "menu-links": "Wichtige Links",
+        "menu-mpl": "MPL",
+        "menu-info": "Infothek",
 
-        "last-sync" : "Letzte Synchronisierung am",
-        "toggle-nav" : "Toggle navigation",
-        "user-message" : "Angemeldet als",
-        "login-different-user" : "Als anderer Benutzer anmelden",
+        "last-sync": "Letzte Synchronisierung am",
+        "toggle-nav": "Toggle navigation",
+        "user-message": "Angemeldet als",
+        "login-different-user": "Als anderer Benutzer anmelden",
 
-        "subtitle" : "Herzlich willkommen auf dem Atlas Copco Portal",
+        "subtitle": "Herzlich willkommen auf dem Atlas Copco Portal",
 
         //Calendar
-        "kalender" : "Kalender",
-        "ort" : "Ort",
+        "kalender": "Kalender",
+        "ort": "Ort",
 
         //News
-        "news" : "News",
-        "weiterlesen" : "Weiterlesen",
+        "news": "News",
+        "weiterlesen": "Weiterlesen",
 
         //Links
         "wichtige-links": "Wichtige Links",
@@ -50,8 +50,15 @@ var i18n = {
         "option": "Option",
         "name": "Name",
         "optionsbezeichnung": "Optionsbezeichnung",
-        
 
+        //MPL Produtgruppen
+        "produktgruppen": "Produktgruppen",
+        //MPL Produktfamilien
+        "produktfamilien": "Produktfamilien",
+        //MPL Produktplattformen
+        "produktplattformen": "Produktplattformen",
+        //MPL Produkt
+        "produkt": "Produkt",
 
     }
 }

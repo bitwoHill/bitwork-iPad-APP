@@ -11,16 +11,15 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-   
+
     <!-- Add custom CSS here -->
     <link href="css/Navbar.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bitworkBranding.css" rel="stylesheet">
-     
 </head>
 
 <body>
-        
+
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -42,7 +41,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                   <li><a href="News.html"><i class="fa fa-rss"></i><span class="i18n" data-i18n-key="menu-news"></span></a></li>
+                    <li><a href="News.html"><i class="fa fa-rss"></i><span class="i18n" data-i18n-key="menu-news"></span></a></li>
                     <li><a href="Kalender.html"><i class="fa fa-calendar"></i><span class="i18n" data-i18n-key="menu-calendar"></span></a></li>
                     <li><a href="Telefonbuch.html"><i class="fa fa-phone"></i><span class="i18n" data-i18n-key="menu-contacts"></span></a></li>
                     <li><a href="WichtigeLinks.html"><i class="fa fa-link"></i><span class="i18n" data-i18n-key="menu-links"></span></a></li>
@@ -51,21 +50,21 @@
 
 
 
-                    
+
 
                     <li class="navbar-sync-form">
-                          
+
                         <form>
                             <div class="input-group grey" style="width: 220px;">
-                             
+
                                 <span class="input-group-addon"><a href="suchergebnisse.html"><i class="fa fa-refresh"></i></a></span>
                                 <!--   <input id="Text1" type="url" class="form-control" placeholder="">-->
-                               <div  class="form-control" >Letzte Synchronisierung am 12.02.2014</div>
+                                <div class="form-control">Letzte Synchronisierung am 12.02.2014</div>
                             </div>
                         </form>
-                       
+
                     </li>
-              
+
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right navbar-user">
@@ -86,6 +85,7 @@
                             <li><a href="LoginPage.html">Als anderer Benutzer anmelden</a></li>
 
                         </ul>
+                        sry,
                     </li>
 
 
@@ -95,77 +95,73 @@
         </nav>
 
 
-     
+
         <!-- content -->
         <div id="page-wrapper">
 
             <div id="lblHeaderText" class="page-header">
-                <h1>MPL Produktfamilien <small>Herzlich willkommen auf dem Atlas Copco Portal    </small></h1>
+                <h1><span class="i18n" data-i18n-key="produktfamilien"></span>
+                    <br />
+                    <small class="i18n" data-i18n-key="subtitle"></small>
+                </h1>
             </div>
 
 
 
             <div class="row">
-                <div class="col-lg-2">
-                </div>
-                <div class="col-lg-8">
-                    <!--Content Ende-->
-                    <table class="table table-bordered  navbar-inverse" style="background-color: red;">
 
-                        <tbody>
-                            <tr>
-                                <th>Produktfamilien
-                                </th>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLProduktplattformen.html?Produktfamilie=1">Produktfamilie 1</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLProduktplattformen.html?Produktfamilie=2">Produktfamilie 2</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLProduktplattformen.html?Produktfamilie=3">Produktfamilie 3</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLProduktplattformen.html?Produktfamilie=4">Produktfamilie 4</a></td>
-                            </tr>
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><span class="i18n" data-i18n-key="produktfamilien"></span></h3>
+                        </div>
+                        <div class="panel-body">
 
+                            <div class="list-group" id="productfamilies-items-container">
+                                <!-- load product groups from sharepoint -->
+                                <div class="hidden" id="productfamilies-item-template">
+                                    <a href="#" class="list-group-item productfamilies-item-title"></a>
+                                </div>
+                            </div>
 
-                        </tbody>
-                    </table>
-
+                        </div>
+                    </div>
+                    <div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- end content -->
+            <!-- end content -->
 
 
 
 
 
-    <!-- Le javascript
+            <!-- Le javascript
         ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-   <script src="lib/jquery.js" type="text/javascript"></script>
-    <script src="lib/bootstrap.js" type="text/javascript"></script>
-    <script src="lib/persistence.js" type="text/javascript"></script>
-    <script src="lib/persistence.store.sql.js" type="text/javascript"></script>
-    <script src="lib/persistence.store.websql.js" type="text/javascript"></script>
-    <script src="lib/persistence.jquery.js" type="text/javascript"></script>
-    <script src="js/lang/de.js" type="text/javascript"></script>
-    <script src="js/i18n.js" type="text/javascript"></script>
-    <script src="js/utils.js" type="text/javascript"></script>
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="lib/jquery.js" type="text/javascript"></script>
+            <script src="lib/bootstrap.js" type="text/javascript"></script>
+            <script src="lib/persistence.js" type="text/javascript"></script>
+            <script src="lib/persistence.store.sql.js" type="text/javascript"></script>
+            <script src="lib/persistence.store.websql.js" type="text/javascript"></script>
+            <script src="lib/persistence.jquery.js" type="text/javascript"></script>
+            <script src="js/lang/de.js" type="text/javascript"></script>
+            <script src="js/i18n.js" type="text/javascript"></script>
+            <script src="js/utils.js" type="text/javascript"></script>
 
-    <script src="js/model/db-schema.js" type="text/javascript"></script>
-    <script src="js/model/news.js" type="text/javascript"></script>
-    <script src="js/model/calendar.js" type="text/javascript"></script>
-    <script src="js/model/link.js" type="text/javascript"></script>
-    <script src="js/model/mplstammdaten.js" type="text/javascript"></script>
+            <script src="js/model/db-schema.js" type="text/javascript"></script>
+            <script src="js/model/news.js" type="text/javascript"></script>
+            <script src="js/model/calendar.js" type="text/javascript"></script>
+            <script src="js/model/link.js" type="text/javascript"></script>
+            <script src="js/model/mplstammdaten.js" type="text/javascript"></script>
 
+            <script src="js/model/productgroups.js" type="text/javascript"></script>
+            <script src="js/model/productfamilies.js" type="text/javascript"></script>
+            <script src="js/model/productplatforms.js" type="text/javascript"></script>
+            <script src="js/model/products.js" type="text/javascript"></script>
 
-    <script src="js/dbsetup.js" type="text/javascript"></script>
-    <script src="js/index.js" type="text/javascript"></script>
+            <script src="js/dbsetup.js" type="text/javascript"></script>
+            <script src="js/index.js" type="text/javascript"></script>
 </body>
 </html>

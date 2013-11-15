@@ -1,0 +1,22 @@
+[
+    {
+        "productid": 1,
+        "product": "Product 1",
+		"productplatformFK": 1
+        },
+	    {
+        "productid": 2,
+        "product": "Product 2",
+		"productplatformFK": 2
+        },
+		{
+        "productid": 3,
+        "product": "Product 3",
+	"productplatformFK": 3
+        },
+		{
+        "productid": 4,
+        "product": "Product 4",
+		"productplatformFK": 4
+        }
+ ]

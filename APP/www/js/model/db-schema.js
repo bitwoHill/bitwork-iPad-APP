@@ -30,6 +30,41 @@ var Link = persistence.define('Link', {
 
 Link.index('linkId', { unique: true });
 
+//mpl
+var Productgroups = persistence.define('Productgroups', {
+    productgroupid: "INT",
+    productgroup: "TEXT"
+});
+
+Productgroups.index('productgroupid', { unique: true });
+
+
+var Productfamilies = persistence.define('Productfamilies', {
+    productfamilyid: "INT",
+    productfamily: "TEXT",
+    productgroupFK: "INT"
+});
+
+Productfamilies.index('productfamilyid', { unique: true });
+
+
+var Productplatforms = persistence.define('Productplatforms', {
+    productplatformid: "INT",
+    productplatform: "TEXT",
+    productfamilyFK: "INT"
+});
+
+Productplatforms.index('productplatformid', { unique: true });
+
+
+var Products = persistence.define('Products', {
+    productid: "INT",
+    product: "TEXT",
+    productplatformFK: "INT"
+});
+
+Products.index('productid', { unique: true });
+
 
 var MPLStammdaten = persistence.define('MPLStammdaten', {
     nodeId: "INT",
@@ -44,6 +79,7 @@ var MPLStammdaten = persistence.define('MPLStammdaten', {
 });
 
 MPLStammdaten.index(['nodeId', 'piecenumber'], { unique: true });
+
 
 var Contacts = persistence.define('Contacts', {
     contactId: "INT",

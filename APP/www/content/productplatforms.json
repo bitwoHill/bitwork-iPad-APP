@@ -1,0 +1,22 @@
+[
+    {
+        "productplatformid": 1,
+        "productplatform": "platform 1",
+		"productfamilyFK": 1
+        },
+	    {
+        "productplatformid": 2,
+        "productplatform": "platform 2",
+		"productfamilyFK": 2
+        },
+		{
+        "productplatformid": 3,
+        "productplatform": "platform 3",
+	"productfamilyFK": 3
+        },
+		{
+        "productplatformid": 4,
+        "productplatform": "platform 4",
+		"productfamilyFK": 4
+        }
+]

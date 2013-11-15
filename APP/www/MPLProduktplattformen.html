@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>MPL Produktplattformen</title>
+    <title>MPL Produktplatformen</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -98,43 +98,38 @@
          <!-- content -->
         <div id="page-wrapper">
 
-            <div id="lblHeaderText" class="page-header">
-                <h1>MPL Produktplattformen <small>Herzlich willkommen auf dem Atlas Copco Portal    </small></h1>
+               <div id="lblHeaderText" class="page-header">
+               <h1><span class="i18n" data-i18n-key="produktplatformen"></span>
+                    <br />
+                    <small class="i18n" data-i18n-key="subtitle"></small>
+                </h1>
             </div>
 
 
 
             <div class="row">
-                <div class="col-lg-2">
-                </div>
-                <div class="col-lg-8">
-                    <!--Content Ende-->
-                    <table class="table table-bordered  navbar-inverse" style="background-color: red;">
+            
+                           <div class="col-md-12">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><span class="i18n" data-i18n-key="produktplatformen"></span></h3>
+                        </div>
+                        <div class="panel-body">
 
-                        <tbody>
-                            <tr>
-                                <th>Produktplattformen
-                                </th>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLProdukt.html?ProduktPlattform=1">Plattform 1</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLProdukt.html?ProduktPlattform=2">Plattform 2</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLProdukt.html?ProduktPlattform=3">Plattform 3</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLProdukt.html?ProduktPlattform=4">Plattform 4</a></td>
-                            </tr>
+                            <div class="list-group">
+                                <a href="MPLProdukt.html?Produktplatform=1" class="list-group-item">platform 1</a>
+                                <a href="MPLProdukt.html?Produktplatform=2" class="list-group-item">platform 2</a>
+                                <a href="MPLProdukt.html?Produktplatform=3" class="list-group-item">platform 3</a>
+                                <a href="MPLProdukt.html?Produktplatform=4" class="list-group-item">platform 4</a>
 
+                            </div>
 
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
+</div>
+                
 
                 </div>
-            </div>
         </div>
     </div>
 
@@ -162,6 +157,10 @@
     <script src="js/model/link.js" type="text/javascript"></script>
     <script src="js/model/mplstammdaten.js" type="text/javascript"></script>
 
+        <script src="js/model/productgroups.js" type="text/javascript"></script>
+  <script src="js/model/productfamilies.js" type="text/javascript"></script>
+    <script src="js/model/productplatforms.js" type="text/javascript"></script>
+    <script src="js/model/products.js" type="text/javascript"></script>
 
     <script src="js/dbsetup.js" type="text/javascript"></script>
     <script src="js/index.js" type="text/javascript"></script>
