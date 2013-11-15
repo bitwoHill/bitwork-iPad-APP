@@ -14,5 +14,9 @@
 	{
         "productgroupid": 4,
         "productgroup": "Group  4"
+        },
+		{
+        "productgroupid": 5,
+        "productgroup": "Group  5"
         }
 ]

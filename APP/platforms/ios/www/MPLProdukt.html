@@ -54,6 +54,16 @@
 
             <div class="slide-menu-container">
                 <ul class="side-menu-nav">
+                    <li>
+                        <form class="form-horizontal slide-menu-form">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search ..." class="form-control">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-toolbar" type="button"><span class="fa fa-search"></span></button>
+                                </span>
+                            </div>
+                        </form>
+                    </li>
                     <li><a href="News.html"><i class="fa fa-rss"></i><span class="i18n" data-i18n-key="menu-news"></span></a></li>
                     <li><a href="Kalender.html"><i class="fa fa-calendar"></i><span class="i18n" data-i18n-key="menu-calendar"></span></a></li>
                     <li><a href="Telefonbuch.html"><i class="fa fa-phone"></i><span class="i18n" data-i18n-key="menu-contacts"></span></a></li>
@@ -76,7 +86,7 @@
 
 
         <!-- content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" class="col-xs-12">
 
             <div id="lblHeaderText" class="page-header">
                 <h1><span class="i18n" data-i18n-key="produkt"></span>
@@ -85,57 +95,48 @@
                 </h1>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row col-xs-12">
+                <div class="col-xs-12">
                     <div class="panel panel-default">
-                        <div class="panel-body">
+                         <div class="panel-body">
 
-                              <div class="list-group" id="products-items-container">
-                                <!-- load product groups from sharepoint -->
-                                <div class="hidden" id="products-item-template">
+                            <!--  <div class="list-group" id="products-items-container">
+                              <!-- load product equipments and other products based on product from sharepoint -->
+                               <!--   <div class="hidden" id="products-item-template">
                                     <a href="#" class="list-group-item products-item-title"></a>
                                 </div>
-                            </div>
+                            </div>-->
 
                           
 
                             <!-- obsolete, product just needs a name. no need for card view anymore -->
-                         <!--   <section id="no-more-tables">
-                                <table class="table-bordered table-condensed cf col-md-12  table-hover" style="background-color: white;">
+                          <section id="no-more-tables">
+                                <table id="tableProducts" class="table-bordered table-condensed cf col-xs-12  table-hover" style="background-color: white;">
                                     <thead class="cf">
                                         <tr>
                                             <th><span class="i18n" data-i18n-key="produktbezeichnung"></span>
                                             </th>
                                             <th><span class="i18n" data-i18n-key="teilenummer"></span>
                                             </th>
+                                            <!--this column needs to be hidden if there is no other product available-->
+                                            <th id="products-title-volume"><span class="i18n" data-i18n-key="volumenstrom"></span> 
+                                            </th>
                                             <th><span class="i18n" data-i18n-key="listenpreis"></span>
                                             </th>
 
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td data-title="Produkt"><a href="MPLStammdaten.html?Produkt=1">Produkt 1</a></td>
-                                            <td data-title="Teilenummer"><a href="MPLStammdaten.html?Produkt=1">2810406305</a></td>
-                                            <td data-title="Listenpreis"><a href="MPLStammdaten.html?Produkt=1">233, 70</a></td>
-
-                                        </tr>
-                                        <tr>
-                                            <td data-title="Produkt"><a href="MPLStammdaten.html?Produkt=1">Produkt 1</a></td>
-                                            <td data-title="Teilenummer"><a href="MPLStammdaten.html?Produkt=1">2810406305</a></td>
-                                            <td data-title="Listenpreis"><a href="MPLStammdaten.html?Produkt=1">233, 70</a></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td data-title="Produkt"><a href="MPLStammdaten.html?Produkt=1">Produkt 1</a></td>
-                                            <td data-title="Teilenummer"><a href="MPLStammdaten.html?Produkt=1">2810406305</a></td>
-                                            <td data-title="Listenpreis"><a href="MPLStammdaten.html?Produkt=1">233, 70</a></td>
-                                        </tr>
-
-
-                                    </tbody>
+                                    <tbody id="products-item-container">
+                                        <tr id="products-item-template" class="hidden">
+                                            <td data-title="Produkt"><a href="MPLStammdaten.html?Produkt=1" class="products-item-title"></a></td>
+                                            <td data-title="Teilenummer"><a href="MPLStammdaten.html?Produkt=1" class="products-item-piecenumber"></a></td>
+                                            <!--this column value needs to be hidden if there is nother product available-->
+                                            <td class="products-item-volume" data-title="Volumenstrom"><a href="MPLStammdaten.html?Produkt=1" ></a></td>
+                                            <td data-title="Listenpreis"><a href="MPLStammdaten.html?Produkt=1" class="products-item-price"></a></td>
+                                             </tr>
+                                      </tbody>
                                 </table>
-                            </section>-->
+                            </section>
 
 
 

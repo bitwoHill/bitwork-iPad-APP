@@ -84,11 +84,9 @@ var equipmentproductsUtils = {
 
             //TODO order by name
 
-
-
             //check wheter its found in the equipment table. if not search other products
             if (EquipmentProductPar) {
-                EquipmentProducts.all().filter("productFK", "=", EquipmentProductPar).list(null, function (results) {
+                EquipmentProducts.all().filter("EquipmentId", "=", EquipmentProductPar).list(null, function (results) {
                     $.each(results, function (index, value) {
 
 
@@ -109,12 +107,11 @@ var equipmentproductsUtils = {
 
                 });
             }
-
+        
             if (OtherProductPar) {
-                OtherProducts.all().filter("productFK", "=", OtherProductPar).list(null, function (results) {
+                OtherProducts.all().filter("OtherProductId", "=", OtherProductPar).list(null, function (results) {
                     $.each(results, function (index, value) {
-
-
+                      
                         var data = value._data;
                         document.getElementById("valueProductDescription").innerHTML = data.productDescription;
                         document.getElementById("valuePiecenumber").innerHTML = data.pieceNumber;
@@ -124,7 +121,6 @@ var equipmentproductsUtils = {
                         $("#rowVolume").hide();
                         $("#rowPressure").hide();
                         $("#rowPerformance").hide();
-                                             
                     });
 
                     //if not found in equipment table look for other products

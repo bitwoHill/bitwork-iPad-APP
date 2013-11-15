@@ -49,7 +49,7 @@ var i18n = {
         //MPL Optionen
         "option": "Option",
         "name": "Name",
-        "optionsbezeichnung": "Optionsbezeichnung",
+        "optionsbezeichnung": "Optionen",
 
         //MPL Produtgruppen
         "produktgruppen": "Produktgruppen",

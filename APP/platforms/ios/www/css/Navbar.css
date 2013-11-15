@@ -343,6 +343,31 @@ a.side-menu-sync-link:hover {
     opacity: 1;
 }
 
+.slide-menu-form input {
+
+}
+
+.slide-menu-form {
+    padding: 5px;
+}
+
+.slide-menu-form .form-control {
+    color: #bbbbbb;
+    background: #080808 url("../content/menu-bg-transparent.png") repeat 0 0;
+    border: none;
+}
+
+.slide-menu-form .form-control:focus {
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.075);
+}
+
+.slide-menu-form .btn {
+    background: #000 url("../content/menu-bg-transparent.png") repeat 0 0;
+    color: #bbbbbb;
+}
+
 /* Edit Below to Customize Widths > 768px */
 @media (min-width:768px) {
 

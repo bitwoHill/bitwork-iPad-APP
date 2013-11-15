@@ -61,12 +61,12 @@ var CalendarUtils = {
                     var $newItem = $template.clone();
 
                     $newItem.removeAttr('id');
-                    if(data.image) {
-                        $('.box-content', $newItem).addClass('with-image');
-                        $('.calendar-item-image', $newItem).attr('src', data.image);
-                    } else {
-                        $('.calendar-item-image', $newItem).addClass('hidden');
-                    }
+                    //if(data.image) {
+                    //    $('.box-content', $newItem).addClass('with-image');
+                    //    $('.calendar-item-image', $newItem).attr('src', data.image);
+                    //} else {
+                    //    $('.calendar-item-image', $newItem).addClass('hidden');
+                    //}
                     $('.calendar-item-title', $newItem).html(data.title);
                     $('.calendar-item-body', $newItem).html(data.body);
 
