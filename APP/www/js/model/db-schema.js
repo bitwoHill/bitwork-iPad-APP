@@ -43,5 +43,21 @@ var MPLStammdaten = persistence.define('MPLStammdaten', {
     performance: "TEXT"
 });
 
-MPLStammdaten.index('nodeId', { unique: true });
-MPLStammdaten.index('piecenumber', { unique: true });
+MPLStammdaten.index(['nodeId', 'piecenumber'], { unique: true });
+
+var Contacts = persistence.define('Contacts', {
+    contactId: "INT",
+    name: "TEXT",
+    forename: "TEXT",
+    phone: "TEXT",
+    mobilePhone: "TEXT",
+    fax: "TEXT",
+    email: "TEXT",
+    department: "TEXT",
+    jobFunction: "TEXT",
+    profilePicture: "TEXT",
+    isFolder: "BOOL",
+    parentFolder: "INT"
+});
+
+Contacts.index('contactId', { unique: true });
