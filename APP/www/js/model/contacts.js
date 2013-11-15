@@ -70,7 +70,7 @@ $(document).ready(function(){
 
     $(".tree-nav-link.folder").click(function(e){
         e.preventDefault();
-        $(this).siblings("ul.tree-nav").toggleClass("hidden");
+        var menuSection = $(this).siblings("ul.tree-nav").toggle(300);
         $(this).toggleClass("collapsed");
     });
 

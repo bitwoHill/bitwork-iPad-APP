@@ -47,3 +47,14 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+(function($){
+    $(document).ready(function(){
+        $('.toggle-side-menu').click(function(e){
+            e.preventDefault();
+            e.stopPropagation();
+
+            $('body').toggleClass('side-menu-active');
+        })
+    })
+})(jQuery);
