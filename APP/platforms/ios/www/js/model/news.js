@@ -4,7 +4,7 @@ var NEWS_SYNC_URL = "content/news.json",
 
 var NewsUtils = {
     sharePointSync : function(callback){
-        
+
         //TODO: replace with sharepoint connection
         $.getJSON(NEWS_SYNC_URL, function(data){
 
@@ -29,33 +29,54 @@ var NewsUtils = {
                 }
             });
 
-            persistence.flush((typeof callback === "function")? callback : "");
-        }).fail(function(){
-                alert("Mock data read error.");
-            });
+            persistence.flush(
+                function(){
+                    //DB is updated - trigger custom event
+                    if(typeof callback === "function"){
+                        callback();
+                    }
+
+                    $('body').trigger('news-sync-ready');
+                }
+            );
+        }).fail(
+            function(){
+                //TODO: error handling if necessary
+                alert("News: Mock data read error.");
+
+                if(typeof callback === "function") {
+                    callback();
+                }
+            }
+        );
     },
 
     displayNews : function(){
         var $container = $(NEWS_CONTAINER),
             $template = $(NEWS_ITEM_TEMPLATE);
 
-        News.all().list(null, function(results){
-            $.each(results, function(index, value){
-                var data = value._data;
-                var $newItem = $template.clone();
+        if($container.length && $template.length){
+            News.all().list(null, function(results){
+                $.each(results, function(index, value){
+                    var data = value._data;
+                    var $newItem = $template.clone();
 
-                $newItem.removeAttr('id');
-                $('.news-item-title', $newItem).html(data.title);
-                $('.news-item-body', $newItem).html(data.body);
-                if(data.image) {
-                    $('.news-item-content', $newItem).addClass('with-image');
-                    $('.news-item-image', $newItem).attr('src', data.image);
-                } else {
-                    $('.news-item-image', $newItem).addClass('hidden');
-                }
+                    $newItem.removeAttr('id');
+                    $('.news-item-title', $newItem).html(data.title);
+                    $('.news-item-body', $newItem).html(data.body);
+                    if(data.image) {
+                        $('.box-content', $newItem).addClass('with-image');
+                        $('.news-item-image', $newItem).attr('src', data.image);
+                    } else {
+                        $('.news-item-image', $newItem).addClass('hidden');
+                    }
 
-                $container.append($newItem.removeClass('hidden'));
+                    $container.append($newItem.removeClass('hidden'));
+                });
             });
-        });
+        }
     }
 };
+
+//bind to sync ready event in order to display the news
+$('body').on('news-sync-ready', NewsUtils.displayNews);

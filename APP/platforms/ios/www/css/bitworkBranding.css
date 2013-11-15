@@ -92,13 +92,17 @@ h4 {
     min-height: 200px;
     max-height: 200px;
     z-index: 1000;
-    background-image: url(../content/menu-bg-extra-bright.png);
     /*border-color:  rgba(0,0,0,0.95);*/
     border: none;
     -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.95);
     -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.95);
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.95);
     /*box-shadow: 10px -7px 15px darkgray, darkgray 0px 0px 3px inset;*/
+}
+
+.thumbnail.box {
+    max-height: none;
+    min-height: 50px;
 }
 
 /*anpassen der bild gr��e in den thumbnails*/
@@ -116,7 +120,11 @@ h4 {
     margin: 20px 15px 0 0;
 }
 
-.news-item-content.with-image {
+.box-content {
+    margin-bottom: 20px;
+}
+
+.box-content.with-image {
     margin-left: 165px;
 }
 
@@ -170,4 +178,9 @@ h4 {
 
 .side-nav .fa {
     margin-right: 10px;
+}
+
+.well hr {
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #FFF;
 }

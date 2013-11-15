@@ -11,139 +11,136 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-   
+
     <!-- Add custom CSS here -->
     <link href="css/Navbar.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bitworkBranding.css" rel="stylesheet">
-     
+    <link href="css/MPLStammdaten.css" rel="stylesheet">
 </head>
 
 <body>
-        
+
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="hauptmenue.html">
-                    <img src="content/logo.png" height="30" alt="bitwork">
-                    <div class="sprite-logos "></div>
+        <header id="header" class="header">
+            <div class="row">
+                <div class="col-xs-4 branding ">
+                    <img src="content/logo.png" alt="bitwork" class="toggle-side-menu">
+                </div>
+                <div class="col-xs-8 user-area" role="nav">
+                    <ul class="nav navbar-nav navbar-inverse navbar-right">
+                        <li class="dropdown">
+                            <a href="#" id="user-menu-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown"><span class="i18n hidden-phone" data-i18n-key="user-message"></span> John Doe <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="user-menu-dropdown">
+                                <li><a href="LoginPage.html" class="i18n" data-i18n-key="login-different-user"></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <button type="button" class="menu-toggle toggle-side-menu" id="menu-toggle">
+                <span class="sr-only i18n" data-i18n-key="toggle-nav"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </header>
+
+        <div class="slide-menu-mask toggle-side-menu"></div>
+
+        <div class="slide-menu" id="slide-menu">
+
+            <div class="slide-menu-container">
+                <ul class="side-menu-nav">
+                    <li><a href="News.html"><i class="fa fa-rss"></i><span class="i18n" data-i18n-key="menu-news"></span></a></li>
+                    <li><a href="Kalender.html"><i class="fa fa-calendar"></i><span class="i18n" data-i18n-key="menu-calendar"></span></a></li>
+                    <li><a href="Telefonbuch.html"><i class="fa fa-phone"></i><span class="i18n" data-i18n-key="menu-contacts"></span></a></li>
+                    <li><a href="WichtigeLinks.html"><i class="fa fa-link"></i><span class="i18n" data-i18n-key="menu-links"></span></a></li>
+                    <li><a href="MPLProduktgruppen.html"><i class="fa fa-list"></i><span class="i18n" data-i18n-key="menu-mpl"></span></a></li>
+                    <li><a href="Infothek.html"><i class="fa fa-info-circle"></i><span class="i18n" data-i18n-key="menu-info"></span></a></li>
+                </ul>
+            </div>
+
+            <div class="side-menu-sync">
+                <a href="#" class="side-menu-sync-link">
+                    <i class="fa fa-refresh pull-left"></i>
+                    <span>
+                        <em class="i18n" data-i18n-key="last-sync"></em><br>12.02.2014
+                    </span>
                 </a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li><a href="News.html"><i class="fa fa-rss"></i>News</a></li>
-                    <li><a href="Kalender.html"><i class="fa fa-calendar"></i>Kalender</a></li>
-                    <li><a href="Telefonbuch.html"><i class="fa fa-phone"></i>Telefonbuch</a></li>
-                    <li><a href="WichtigeLinks.html"><i class="fa fa-link"></i>Wichtige Links</a></li>
-                    <li><a href="#"><i class="fa fa-list"></i>MPL</a></li>
-                    <li><a href="Infothek.html"><i class="fa fa-info-circle"></i>Infothek</a></li>
-
-                    
-
-                    <li class="navbar-sync-form">
-                          
-                        <form>
-                            <div class="input-group grey" style="width: 220px;">
-                             
-                                <span class="input-group-addon"><a href="suchergebnisse.html"><i class="fa fa-refresh"></i></a></span>
-                                <!--   <input id="Text1" type="url" class="form-control" placeholder="">-->
-                               <div  class="form-control" >Letzte Synchronisierung am 12.02.2014</div>
-                            </div>
-                        </form>
-                       
-                    </li>
-              
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right navbar-user">
-
-                    <li>
-                        <form class="navbar-form" role="search" action="suchergebnisse.html">
-                            <div class="input-group" style="width: 200px;">
-                                <input id="txtSuche" type="text" class="form-control" placeholder="Suchkriterium">
-                                <span class="input-group-addon"><a href="suchergebnisse.html"><i class="fa fa-search"></i></a></span>
-                            </div>
-
-                        </form>
-                    </li>
-                    <!-- Change user Dropdown -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Angemeldet als xyz<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="LoginPage.html">Als anderer Benutzer anmelden</a></li>
-
-                        </ul>
-                    </li>
+        </div>
 
 
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-
-
-      
-         <!-- content -->
+        <!-- content -->
         <div id="page-wrapper">
 
             <div id="lblHeaderText" class="page-header">
-                <h1>MPL Produkte <small>Herzlich willkommen auf dem Atlas Copco Portal    </small></h1>
+                <h1><span class="i18n" data-i18n-key="produkt"></span>
+                    <br />
+                    <small class="i18n" data-i18n-key="subtitle"></small>
+                </h1>
             </div>
 
-
-
             <div class="row">
-                <div class="col-lg-2">
-                </div>
-                <div class="col-lg-8">
-                    <!--Content Ende-->
-                    <table class="table table-bordered  navbar-inverse" style="background-color: red;">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
 
-                        <tbody>
-                            <tr>
-                                <th>Produktbezeichnung
-                                </th>
-                                 <th>Teilenummer
-                                </th>
-                                 <th>Listenpreis
-                                </th>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLStammdaten.html?Produkt=1">Produkt 1</a></td>
-                                   <td><a href="MPLStammdaten.html?Produkt=1">2810406305</a></td>
-                                   <td><a href="MPLStammdaten.html?Produkt=1">233, 70</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLStammdaten.html?Produkt=2">Produkt 2</a></td>
-                                   <td><a href="MPLStammdaten.html?Produkt=2">2813377856</a></td>
-                                   <td><a href="MPLStammdaten.html?Produkt=2">4355, 70</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="MPLStammdaten.html?Produkt=3">Produkt 3</a></td>
-                                   <td><a href="MPLStammdaten.html?Produkt=3">2457754211</a></td>
-                                   <td><a href="MPLStammdaten.html?Produkt=3">2333, 70</a></td>
-                            </tr>
-                            <tr>
-                               <td><a href="MPLStammdaten.html?Produkt=4">Produkt 4</a></td>
-                                   <td><a href="MPLStammdaten.html?Produkt=4">32680</a></td>
-                                   <td><a href="MPLStammdaten.html?Produkt=4">4421, 70</a></td>
-                            </tr>
+                              <div class="list-group" id="products-items-container">
+                                <!-- load product groups from sharepoint -->
+                                <div class="hidden" id="products-item-template">
+                                    <a href="#" class="list-group-item products-item-title"></a>
+                                </div>
+                            </div>
+
+                          
+
+                            <!-- obsolete, product just needs a name. no need for card view anymore -->
+                         <!--   <section id="no-more-tables">
+                                <table class="table-bordered table-condensed cf col-md-12  table-hover" style="background-color: white;">
+                                    <thead class="cf">
+                                        <tr>
+                                            <th><span class="i18n" data-i18n-key="produktbezeichnung"></span>
+                                            </th>
+                                            <th><span class="i18n" data-i18n-key="teilenummer"></span>
+                                            </th>
+                                            <th><span class="i18n" data-i18n-key="listenpreis"></span>
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-title="Produkt"><a href="MPLStammdaten.html?Produkt=1">Produkt 1</a></td>
+                                            <td data-title="Teilenummer"><a href="MPLStammdaten.html?Produkt=1">2810406305</a></td>
+                                            <td data-title="Listenpreis"><a href="MPLStammdaten.html?Produkt=1">233, 70</a></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td data-title="Produkt"><a href="MPLStammdaten.html?Produkt=1">Produkt 1</a></td>
+                                            <td data-title="Teilenummer"><a href="MPLStammdaten.html?Produkt=1">2810406305</a></td>
+                                            <td data-title="Listenpreis"><a href="MPLStammdaten.html?Produkt=1">233, 70</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td data-title="Produkt"><a href="MPLStammdaten.html?Produkt=1">Produkt 1</a></td>
+                                            <td data-title="Teilenummer"><a href="MPLStammdaten.html?Produkt=1">2810406305</a></td>
+                                            <td data-title="Listenpreis"><a href="MPLStammdaten.html?Produkt=1">233, 70</a></td>
+                                        </tr>
 
 
-                        </tbody>
-                    </table>
+                                    </tbody>
+                                </table>
+                            </section>-->
 
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,8 +153,29 @@
 
     <!-- Le javascript
         ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="lib/jquery.js"></script>
-      <script src="lib/bootstrap.min.js"></script>
+       <!-- Placed at the end of the document so the pages load faster -->
+            <script src="lib/jquery.js" type="text/javascript"></script>
+            <script src="lib/bootstrap.js" type="text/javascript"></script>
+            <script src="lib/persistence.js" type="text/javascript"></script>
+            <script src="lib/persistence.store.sql.js" type="text/javascript"></script>
+            <script src="lib/persistence.store.websql.js" type="text/javascript"></script>
+            <script src="lib/persistence.jquery.js" type="text/javascript"></script>
+            <script src="js/lang/de.js" type="text/javascript"></script>
+            <script src="js/i18n.js" type="text/javascript"></script>
+            <script src="js/utils.js" type="text/javascript"></script>
+
+            <script src="js/model/db-schema.js" type="text/javascript"></script>
+            <script src="js/model/news.js" type="text/javascript"></script>
+            <script src="js/model/calendar.js" type="text/javascript"></script>
+            <script src="js/model/link.js" type="text/javascript"></script>
+            <script src="js/model/mplstammdaten.js" type="text/javascript"></script>
+
+            <script src="js/model/productgroups.js" type="text/javascript"></script>
+            <script src="js/model/productfamilies.js" type="text/javascript"></script>
+            <script src="js/model/productplatforms.js" type="text/javascript"></script>
+            <script src="js/model/products.js" type="text/javascript"></script>
+
+            <script src="js/dbsetup.js" type="text/javascript"></script>
+            <script src="js/index.js" type="text/javascript"></script>
 </body>
 </html>
