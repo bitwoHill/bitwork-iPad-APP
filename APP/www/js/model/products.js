@@ -43,22 +43,60 @@ var ProductsUtils= {
 
         if ($container.length && $template.length) {
             //load by current url parameter / andhand von aktueller ID laden
+
+            //the products page behaves a little weird. even though we have groups -> families - > platforms ->products -> details the webpart (and hence the app) IGNORES the Product. 
+            //it shows groups - > families ->plattforms -> all Details of all Products in the platform.
+
+
             var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
-                                          
-            Products.all().filter("productplatformFK", "=", ProduktplatformPar).list(null, function (results) {
-                       $.each(results, function (index, value) {
+                   
+            //get all Products on the platform and then load all equips or others of the product ... 
+            Products.all().filter("productplatformFK", "=", ProduktplatformPar).list(null, function (results) 
+            {
+                       $.each(results, function (index, value) 
+                       {
 
-                    var data = value._data;
-                    var $newItem = $template.clone();
-
-                    $newItem.removeAttr('id');
-                    $('.products-item-title', $newItem).html(data.product).attr("href", "MPLStammdaten.html?Produkt=" + data.productid);
+                           var data = value._data;
 
 
-                    $container.append($newItem.removeClass('hidden'));
+                           //get all equipments
+                           EquipmentProducts.all().filter("productFK", "=", data.productid).list(null, function (results)
+                           {
+                               $.each(results, function (index, value) 
+                               {
+                                   var data = value._data;
+                                   var $newItem = $template.clone();
 
-                });
+                                   $newItem.removeAttr('id');
+                                   $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?EquipmentProdukt=" + data.EquipmentId);
+
+
+                                   $container.append($newItem.removeClass('hidden'));
+                                                                    
+
+                               });
+                           });
+                           // get all Other Products
+                           //get all equipments
+                           OtherProducts.all().filter("productFK", "=", data.productid).list(null, function (results) 
+                           {
+                               $.each(results, function (index, value) 
+                               {
+                                   var data = value._data;
+                                   var $newItem = $template.clone();
+
+                                   $newItem.removeAttr('id');
+                                   $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?SonstigesProdukt=" + data.OtherProductId);
+
+
+                                   $container.append($newItem.removeClass('hidden'));
+                                                                    
+
+                               });
+                           });
+                       });
             });
+
         }
     }
 };

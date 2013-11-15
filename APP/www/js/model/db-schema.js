@@ -66,8 +66,8 @@ var Products = persistence.define('Products', {
 Products.index('productid', { unique: true });
 
 
-var MPLStammdaten = persistence.define('MPLStammdaten', {
-    nodeId: "INT",
+var EquipmentProducts = persistence.define('EquipmentProducts', {
+    EquipmentId: "INT",
     productDescription: "TEXT",
     pieceNumber: "TEXT",
     price: "TEXT",
@@ -75,10 +75,22 @@ var MPLStammdaten = persistence.define('MPLStammdaten', {
     variant: "TEXT",
     volume: "TEXT",
     pressure: "TEXT",
-    performance: "TEXT"
+    performance: "TEXT",
+    productFK: "INT"
 });
 
-MPLStammdaten.index(['nodeId', 'piecenumber'], { unique: true });
+EquipmentProducts.index(['EquipmentId', 'piecenumber'], { unique: true });
+
+
+var OtherProducts = persistence.define('OtherProducts', {
+    OtherProductId: "INT",
+    productDescription: "TEXT",
+    pieceNumber: "TEXT",
+    price: "TEXT",
+    productFK: "INT"
+});
+
+OtherProducts.index(['OtherProductId', 'piecenumber'], { unique: true });
 
 
 var Contacts = persistence.define('Contacts', {
