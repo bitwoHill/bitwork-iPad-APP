@@ -90,8 +90,8 @@ a.tree-nav-link.collapsed > .fa.tree-nav-link-folder-state {
     max-height: 500px;
 }
 
-.contact-details {
-
+.contact-details-container .img-thumbnail {
+    margin-bottom: 15px;
 }
 
 .contact-details > h3 {
