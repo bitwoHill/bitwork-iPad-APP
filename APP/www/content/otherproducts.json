@@ -25,7 +25,7 @@
         "productDescription": "Sonstiges Produkt 4",
         "pieceNumber": "8101900572",
         "price": "1269,90",
-		"productFK": "4"
+		"productFK": "7"
     },
 	   {
 	  "OtherProductId": 5,
@@ -39,6 +39,6 @@
         "productDescription": "Sonstiges Produkt 6",
         "pieceNumber": "8101900575",
         "price": "1269,90",
-		"productFK": "6"
+		"productFK": "7"
     }
 ]

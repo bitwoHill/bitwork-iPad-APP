@@ -23,5 +23,10 @@
         "productplatformid": 5,
         "productplatform": "platform 5",
 		"productfamilyFK": 4
+        },
+		 {
+        "productplatformid": 6,
+        "productplatform": "platform 6 SONSTIGES",
+		"productfamilyFK": 5
         }
 ]

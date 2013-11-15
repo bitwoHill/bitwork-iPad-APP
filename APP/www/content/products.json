@@ -28,5 +28,10 @@
         "productid": 6,
         "product": "Product 6",
 		"productplatformFK": 4
+        },
+			{
+        "productid": 7,
+        "product": "Product 7 SONSTIGES",
+		"productplatformFK": 6
         }
  ]

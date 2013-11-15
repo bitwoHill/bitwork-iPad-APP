@@ -3,7 +3,7 @@ var products_SYNC_URL = "content/products.json",
     products_CONTAINER = "#products-item-container",
     products_ITEM_TEMPLATE = "#products-item-template";
 
-var ProductsUtils= {
+var ProductsUtils = {
     sharePointSync: function (callback) {
 
         //TODO: replace with sharepoint connection
@@ -50,53 +50,58 @@ var ProductsUtils= {
 
 
             var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
-                   
+            var Equipmentcounter;
             //get all Products on the platform and then load all equips or others of the product ... 
-            Products.all().filter("productplatformFK", "=", ProduktplatformPar).list(null, function (results) 
-            {
-                       $.each(results, function (index, value) 
-                       {
+            Products.all().filter("productplatformFK", "=", ProduktplatformPar).list(null, function (results) {
+                $.each(results, function (index, value) {
 
-                           var data = value._data;
+                    var data = value._data;
 
 
-                           //get all equipments
-                           EquipmentProducts.all().filter("productFK", "=", data.productid).list(null, function (results)
-                           {
-                               $.each(results, function (index, value) 
-                               {
-                                   var data = value._data;
-                                   var $newItem = $template.clone();
+                    //get all equipments
+                    EquipmentProducts.all().filter("productFK", "=", data.productid).list(null, function (results) {
+                        $.each(results, function (index, value) {
+                            var data = value._data;
+                            var $newItem = $template.clone();
 
-                                   $newItem.removeAttr('id');
-                                   $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?EquipmentProdukt=" + data.EquipmentId);
-                                   $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
-                                   $('.products-item-price', $newItem).html(data.price);
-                                   $container.append($newItem.removeClass('hidden'));
-                                                                    
+                            $newItem.removeAttr('id');
+                            $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?EquipmentProdukt=" + data.EquipmentId);
+                            $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
+                            $('.products-item-volume', $newItem).html(data.volume);
+                            $('.products-item-price', $newItem).html(data.price);
+                            $container.append($newItem.removeClass('hidden'));
+                            Equipmentcounter = 1;
 
-                               });
-                           });
-                           // get all Other Products
-                           //get all equipments
-                           OtherProducts.all().filter("productFK", "=", data.productid).list(null, function (results) 
-                           {
-                               $.each(results, function (index, value) 
-                               {
-                                   var data = value._data;
-                                   var $newItem = $template.clone();
+                        });
+                    });
+                    // get all Other Products
+                    //get all equipments
+                    OtherProducts.all().filter("productFK", "=", data.productid).list(null, function (results) {
+                        $.each(results, function (index, value) {
+                            var data = value._data;
+                            var $newItem = $template.clone();
 
-                                   $newItem.removeAttr('id');
-                                   $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?SonstigesProdukt=" + data.OtherProductId);
-                                   $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
-                                   $('.products-item-price', $newItem).html(data.price);
 
-                                   $container.append($newItem.removeClass('hidden'));
-                                                                    
 
-                               });
-                           });
-                       });
+                            $newItem.removeAttr('id');
+                            $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?SonstigesProdukt=" + data.OtherProductId);
+                            $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
+                            $('.products-item-price', $newItem).html(data.price);
+
+                            //hide volume column
+                            if (!Equipmentcounter) {
+                                $("#products-title-volume").hide();
+                                $("#tableProducts tbody tr").each(function () {
+                                    $(this).find("td:eq(2)").remove();
+                                });
+                            }
+
+                            $container.append($newItem.removeClass('hidden'));
+
+
+                        });
+                    });
+                });
             });
 
         }

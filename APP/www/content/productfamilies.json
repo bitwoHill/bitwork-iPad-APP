@@ -19,5 +19,10 @@
         "productfamilyid": 4,
         "productfamily": "Family 4",
 		"productgroupFK": 4
+   },
+     {
+        "productfamilyid": 5,
+        "productfamily": "Family 5 Sonstiges",
+		"productgroupFK": 5
    }
 ]
