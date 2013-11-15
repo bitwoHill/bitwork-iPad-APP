@@ -37,12 +37,30 @@ var ProductFamiliesUtils = {
         );
     },
 
+    ////nur mit id laden
+    //getItemByItemID: function (itemID) {
+    //    console.log("getItemByItemID, ID:" + itemID);
+    //    this.Productfamilies.load(itemID, function (myitem) {
+    //        if (typeof myitem === "undefined") {
+    //            console.warn("Item not found in DB")
+    //        }
+    //        else {
+    //            logItem(myitem);
+    //        }
+    //    });
+    //},
+
     displayproductfamilies: function () {
         var $container = $(productfamilies_CONTAINER),
             $template = $(productfamilies_ITEM_TEMPLATE);
 
         if ($container.length && $template.length) {
-            Productfamilies.all().list(null, function (results) {
+            //load by current url parameter / andhand von aktueller ID laden
+            var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
+
+                    
+          
+            Productfamilies.all().filter("productgroupFK", "=", ProduktgruppePar).list(null, function (results) {
                 $.each(results, function (index, value) {
 
                     var data = value._data;

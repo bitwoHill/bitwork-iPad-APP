@@ -1,5 +1,5 @@
 [
-    {
+		{
         "productplatformid": 1,
         "productplatform": "platform 1",
 		"productfamilyFK": 1
@@ -17,6 +17,11 @@
 		{
         "productplatformid": 4,
         "productplatform": "platform 4",
+		"productfamilyFK": 4
+        },
+		 {
+        "productplatformid": 5,
+        "productplatform": "platform 5",
 		"productfamilyFK": 4
         }
 ]

@@ -37,6 +37,17 @@ var utils = {
         }
 
         return format;
-    }
+    },
+
+    //looks for the url parameter and returns a vale if wont. else emtpy string. For exmaple: 
+    //http://www.foo.com/index.html?bob=123&frank=321&tom=213#top
+    //to get te value frank use: var frank_param = utils.getUrlParameter( 'frank' );
+    getUrlParameter: function ( name ){
+name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
+var regexS = "[\\?&]"+name+"=([^&#]*)";  
+var regex = new RegExp( regexS );  
+var results = regex.exec( window.location.href ); 
+if( results == null )    return "";  
+else    return results[1];}
 
 }

@@ -42,8 +42,11 @@ var ProductsUtils= {
             $template = $(products_ITEM_TEMPLATE);
 
         if ($container.length && $template.length) {
-            Products.all().list(null, function (results) {
-                $.each(results, function (index, value) {
+            //load by current url parameter / andhand von aktueller ID laden
+            var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
+                                          
+            Products.all().filter("productplatformFK", "=", ProduktplatformPar).list(null, function (results) {
+                       $.each(results, function (index, value) {
 
                     var data = value._data;
                     var $newItem = $template.clone();

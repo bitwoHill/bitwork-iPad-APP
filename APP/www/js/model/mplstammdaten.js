@@ -1,5 +1,5 @@
 var MPL_STAMMDATEN_SYNC_URL = "content/mplstammdaten.json",
-       MPL_STAMMDATEN_CONTAINER = "#products-items-container";
+       MPL_STAMMDATEN_CONTAINER = "#productdetails-items-container";
 
 var MPLStammdatenUtils = {
     sharePointSync: function (callback) {
@@ -38,10 +38,12 @@ var MPLStammdatenUtils = {
 
     displayStammdaten: function () {
         var $container = $(MPL_STAMMDATEN_CONTAINER);
+        if ($container.length) {
+        
         MPLStammdaten.all().list(null, function (results) {
             $.each(results, function (index, value) {
 
-                if ($container.length) {
+              
                 
                 var data = value._data;
                 document.getElementById("valueProductDescription").innerHTML = data.productDescription;
@@ -52,9 +54,10 @@ var MPLStammdatenUtils = {
                 document.getElementById("valueVolume").innerHTML = data.volume;
                 document.getElementById("valuePressure").innerHTML = data.pressure;
                 document.getElementById("valuePerformance").innerHTML = data.performance;
-                }
+                
             });
         });
+        }
     }
 }
 ;
