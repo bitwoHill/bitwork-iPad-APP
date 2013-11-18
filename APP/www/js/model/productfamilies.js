@@ -55,7 +55,7 @@ var ProductFamiliesUtils = {
                     var $newItem = $template.clone();
 
                     $newItem.removeAttr('id');
-                    $('.productfamilies-item-title', $newItem).html(data.productfamily).attr("href", "MPLProduktplattformen.html?Produktfamilie=" + data.productfamilyid);
+                    $('.productfamilies-item-title', $newItem).html(data.productfamily).attr("href", "MPLProduktplattformen.html?Produktgruppe="+ ProduktgruppePar + "&Produktfamilie=" + data.productfamilyid);
 
 
                     $container.append($newItem.removeClass('hidden'));

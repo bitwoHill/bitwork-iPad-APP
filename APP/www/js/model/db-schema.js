@@ -93,6 +93,20 @@ var OtherProducts = persistence.define('OtherProducts', {
 OtherProducts.index(['OtherProductId', 'piecenumber'], { unique: true });
 
 
+var ProductOptions = persistence.define('ProductOptions', {
+    ProductOptionId: "INT",
+    productDescription: "TEXT",
+    pieceNumber: "TEXT",
+    price: "TEXT",
+    productgroupFK: "INT",
+    productfamilyFK: "INT",
+    productplatformFK: "INT",
+    productFK: "INT",
+    EquipmentFK: "INT"
+});
+
+ProductOptions.index(['ProductOptionId', 'piecenumber'], { unique: true });
+
 var Contacts = persistence.define('Contacts', {
     contactId: "INT",
     name: "TEXT",

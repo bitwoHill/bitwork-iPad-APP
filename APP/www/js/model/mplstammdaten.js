@@ -79,6 +79,9 @@ var equipmentproductsUtils = {
         if ($container.length) {
 
             //load by current url parameter / andhand von aktueller ID laden
+            var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
+            var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
+            var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
             var EquipmentProductPar = utils.getUrlParameter('EquipmentProdukt');
             var OtherProductPar = utils.getUrlParameter('SonstigesProdukt');
 

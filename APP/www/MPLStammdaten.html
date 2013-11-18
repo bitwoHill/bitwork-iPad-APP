@@ -156,6 +156,7 @@
 
                     
                     <!-- Optionen -->
+                    <!-- Options are not only directly  mapped to an equipment (other Product) but can be mapped to products, groups, platforms, families to which the actual equipment (other product) is mapped-->
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -164,37 +165,22 @@
                         <div class="panel-body">
 
                             <section id="no-more-tables">
-                                <table class="table-bordered table-condensed cf col-md-12" style="background-color: white;">
+                                <table class="table-bordered  table-striped table-condensed cf col-md-12" style="background-color: white;">
                                     <thead class="cf">
                                         <tr>
-                                            <th><span class="i18n" data-i18n-key="name"></span></th>
                                             <th><span class="i18n" data-i18n-key="optionsbezeichnung"></span></th>
                                             <th><span class="i18n" data-i18n-key="teilenummer"></span></th>
                                             <th class="numeric"><span class="i18n" data-i18n-key="listenpreis"></span></th>
-
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td data-title="Name">AAC</td>
-                                            <td data-title="Option">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-                                            <td data-title="T.nummer">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-                                            <td data-title="L. Preis" class="numeric">$1.38</td>
+                                    <tbody id="productoptions-items-container">
+                                       
+                                        <tr id="productoptions-item-template" class="hidden">
+                                            <td data-title="Option" class="productoption-item-optionsbezeichnung"></td>
+                                            <td data-title="T.nummer" class="productoption-item-teilenummer"></td>
+                                            <td data-title="L. Preis" class="numeric productoption-item-listenpreis"></td>
                                         </tr>
-                                        <tr>
-                                            <td data-title="Name">AAC</td>
-                                            <td data-title="Option">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-                                            <td data-title="T.nummer">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-                                            <td data-title="L. Preis" class="numeric">$1.38</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td data-title="Name">AAC</td>
-                                            <td data-title="Option">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-                                            <td data-title="T.nummer">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-                                            <td data-title="L. Preis" class="numeric">$1.38</td>
-                                        </tr>
-                                        
+                                                                              
                                     </tbody>
                                 </table>
                             </section>
@@ -280,6 +266,7 @@
             <script src="js/model/calendar.js" type="text/javascript"></script>
             <script src="js/model/link.js" type="text/javascript"></script>
             <script src="js/model/mplstammdaten.js" type="text/javascript"></script>
+            <script src="js/model/productoptions.js" type="text/javascript"></script>
 
             <script src="js/model/productgroups.js" type="text/javascript"></script>
             <script src="js/model/productfamilies.js" type="text/javascript"></script>

@@ -16,5 +16,7 @@
         ProductFamiliesUtils.sharePointSync();
         ProductPlatformsUtils.sharePointSync();
         ProductsUtils.sharePointSync();
+
+        productoptionsUtils.sharePointSync();
     });
 })(jQuery)
