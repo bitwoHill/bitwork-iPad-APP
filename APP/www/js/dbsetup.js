@@ -10,6 +10,7 @@
         CalendarUtils.sharePointSync();
         equipmentproductsUtils.sharePointSync();
         LinkUtils.sharePointSync();
+        ContactsUtils.sharePointSync();
 
         ProductGroupsUtils.sharePointSync();
         ProductFamiliesUtils.sharePointSync();

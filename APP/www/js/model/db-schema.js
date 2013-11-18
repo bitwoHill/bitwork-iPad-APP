@@ -104,6 +104,8 @@ var Contacts = persistence.define('Contacts', {
     department: "TEXT",
     jobFunction: "TEXT",
     profilePicture: "TEXT",
+    description: "TEXT",
+    representative: "TEXT",
     isFolder: "BOOL",
     parentFolder: "INT"
 });

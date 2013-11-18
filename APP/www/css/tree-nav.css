@@ -52,8 +52,16 @@ a.tree-nav-link:active {
     color: #4c4c4c;
 }
 
-a.tree-nav-link:active:active {
+a.tree-nav-link:active {
     background-color: #eaeaea;
+}
+
+a.tree-nav-link.active-contact {
+    font-weight: bold;
+}
+
+a.tree-nav-link.active-contact > .fa {
+    color: #4c4c4c;
 }
 
 a.tree-nav-link > .fa {

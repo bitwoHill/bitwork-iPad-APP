@@ -1,16 +1,33 @@
 var CONTACTS_SYNC_URL = "content/contacts.json",
     CONTACTS_CONTAINER = "#contact-items-container",
-    CONTACTS_ITEM_TEMPLATE = "#contact-item-template";
+    CONTACTS_PERSON_TEMPLATE = "#contacts-person-item-template",
+    CONTACTS_FOLDER_TEMPLATE = "#contacts-folder-item-template",
+    CONTACTS_DETAILS_TEMPLATE = "#contacts-details-template";
 
 var ContactsUtils = {
     sharePointSync : function(callback){
 
         //TODO: replace with sharepoint connection
         $.getJSON(CONTACTS_SYNC_URL, function(data){
-
             $.each(data, function(index, value){
-                var contactItem = new Contacts(value);
-                persistence.add(contactItem);
+                var contactItem,
+                    tmp = (value.profilePicture)? value.profilePicture.split('.') : false,
+                    imageExtension = (tmp && tmp.length > 1)? (tmp[tmp.length - 1]).toLowerCase() : false;
+
+                //save image date if exists
+                if(imageExtension && (imageExtension === 'png' || imageExtension === 'jpg')){
+                    var img = new Image();
+                    img.src = value.profilePicture;
+                    img.onload = function(){
+                        value.profilePicture = utils.getBase64FromImage(img, imageExtension);
+                        contactItem = new Contacts(value);
+                        persistence.add(contactItem);
+                    };
+                } else {
+                    value.profilePicture = "";
+                    contactItem = new Contacts(value);
+                    persistence.add(contactItem);
+                }
             });
 
             persistence.flush(
@@ -20,7 +37,7 @@ var ContactsUtils = {
                         callback();
                     }
 
-                    $('body').trigger('link-sync-ready');
+                    $('body').trigger('contacts-sync-ready');
                 }
             );
         }).fail(
@@ -35,48 +52,167 @@ var ContactsUtils = {
         );
     },
 
-    displayLinks : function(){
+    displayContactTree : function(){
         var $container = $(CONTACTS_CONTAINER),
-            $template = $(CONTACTS_ITEM_TEMPLATE);
+            $templatePerson = $(CONTACTS_PERSON_TEMPLATE),
+            $templateFolder = $(CONTACTS_FOLDER_TEMPLATE);
 
-        if($container.length && $template.length){
+        if($container.length && $templateFolder.length && $templatePerson.length){
 
-            Contacts.all().list(null, function(results){
+            Contacts.all().filter("parentFolder", "=", 0).order('isFolder', false).order('name', true).list(null, function(results){
+
                 $.each(results, function(index, value){
-                    var data = value._data;
-                    var $newItem = $template.clone();
+                    var data = value._data,
+                        newItem;
 
-                    $newItem.removeAttr('id');
-                    $('.link-item-anchor-label', $newItem).html(data.label);
-                    $('.link-item-anchor', $newItem).attr('href', data.linkUrl);
-
-                    if(data.description){
-                        $('.link-item-description', $newItem).html(data.description);
+                    if(data.isFolder){
+                        newItem = $templateFolder.clone();
                     } else {
-                        $('.link-item-description', $newItem).addClass('hidden');
+                        newItem = $templatePerson.clone();
                     }
 
-                    $container.append($newItem.removeClass('hidden'));
+                    newItem.removeAttr('id');
+
+                    $('.tree-nav-item-name', newItem).html(data.name + " " + data.forename);
+                    $('.tree-nav-link', newItem).attr("data-item-id", data.contactId);
+
+
+                    $container.append(newItem.removeClass('hidden'));
                 });
+            });
+        }
+    },
+
+    updateContactTree : function(container, nodeId){
+        var $templatePerson = $(CONTACTS_PERSON_TEMPLATE),
+            $templateFolder = $(CONTACTS_FOLDER_TEMPLATE);
+        console.log(arguments);
+        if(container.length && $templateFolder.length && $templatePerson.length){
+            Contacts.all().filter("parentFolder", "=", parseInt(nodeId, 10)).order('isFolder', false).order('name', true).list(null, function(results){
+                console.log(results);
+                $.each(results, function(index, value){
+                    var data = value._data,
+                        newItem;
+
+                    if(data.isFolder){
+                        newItem = $templateFolder.clone();
+                    } else {
+                        newItem = $templatePerson.clone();
+                    }
+
+                    newItem.removeAttr('id');
+
+                    $('.tree-nav-item-name', newItem).html(data.name + " " + data.forename);
+                    $('.tree-nav-link', newItem).attr("data-item-id", data.contactId);
+
+
+                    container.append(newItem.removeClass('hidden'));
+                });
+            });
+        }
+    },
+
+    displayContactInfo : function(contactId){
+        var $templateContactInfo = $(CONTACTS_DETAILS_TEMPLATE);
+
+        if($templateContactInfo.length && contactId){
+            Contacts.all().filter("contactId", "=", parseInt(contactId, 10)).list(null, function(results){
+                var data = results[0]._data;
+
+                $(".contact-details-name", $templateContactInfo).html(data.name + " " + data.forename);
+                $(".contact-details-function", $templateContactInfo).html(data.jobFunction);
+                $(".contact-details-department", $templateContactInfo).html(data.department);
+
+                if(data.profilePicture) {
+                    $(".contact-details-picture", $templateContactInfo).html(data.profilePicture);
+                }
+
+                if(data.phone) {
+                    $(".contact-details-phone", $templateContactInfo).html(data.phone);
+                    $(".contact-details-phone-container", $templateContactInfo).removeClass("hidden");
+                } else {
+                    $(".contact-details-phone-container", $templateContactInfo).addClass("hidden");
+                }
+
+                if(data.mobilePhone) {
+                    $(".contact-details-mobile", $templateContactInfo).html(data.mobilePhone);
+                    $(".contact-details-mobile-container", $templateContactInfo).removeClass("hidden");
+                } else {
+                    $(".contact-details-mobile-container", $templateContactInfo).addClass("hidden");
+                }
+
+                if(data.fax) {
+                    $(".contact-details-fax", $templateContactInfo).html(data.fax);
+                    $(".contact-details-fax-container", $templateContactInfo).removeClass("hidden");
+                } else {
+                    $(".contact-details-fax-container", $templateContactInfo).addClass("hidden");
+                }
+
+                if(data.email) {
+                    $(".contact-details-email", $templateContactInfo).html(data.email).attr('href', 'mailto:' + data.email);
+                    $(".contact-details-email-container", $templateContactInfo).removeClass("hidden");
+                } else {
+                    $(".contact-details-email-container", $templateContactInfo).addClass("hidden");
+                }
+
+                if(data.representative) {
+                    $(".contact-details-representative", $templateContactInfo).html(data.representative);
+                    $(".contact-details-representative-container", $templateContactInfo).removeClass("hidden");
+                } else {
+                    $(".contact-details-representative-container", $templateContactInfo).addClass("hidden");
+                }
+
+                if(data.description) {
+                    $(".contact-details-description", $templateContactInfo).html(data.description).removeClass("hidden");
+                    $("hr", $templateContactInfo).removeClass("hidden");
+                } else {
+                    $("hr", $templateContactInfo).addClass("hidden");
+                    $(".contact-details-description", $templateContactInfo).html(" ").addClass("hidden");
+                }
+
+                $templateContactInfo.show(300);
             });
         }
     }
 };
 
 //bind to sync ready event in order to display the news
-$('body').on('news-sync-ready', LinkUtils.displayLinks);
+$('body').on('contacts-sync-ready', ContactsUtils.displayContactTree);
 
 $(document).ready(function(){
 
-    $(".tree-nav-link.folder").click(function(e){
+    $('body').on('click', '.tree-nav-link.folder', function(e){
         e.preventDefault();
-        var menuSection = $(this).siblings("ul.tree-nav").toggle(300);
-        $(this).toggleClass("collapsed");
+        var $this = $(this),
+            nodeId = $this.attr("data-item-id"),
+            container = $this.siblings("ul.tree-nav"),
+            $icon = $('.fa', $this);
+
+        if(container.length && $('li', container).length === 0){
+            ContactsUtils.updateContactTree(container, nodeId);
+        }
+
+        $this.siblings("ul.tree-nav").toggle(300);
+        $this.toggleClass("collapsed");
+
+        if($icon.hasClass('fa-folder')){
+            $icon.removeClass('fa-folder').addClass('fa-folder-open');
+        } else {
+            $icon.removeClass('fa-folder-open').addClass('fa-folder');
+        }
     });
 
-    $(".tree-nav-link").not(".folder").click(function(e){
+    $('body').on('click', '.tree-nav-link.person', function(e){
         e.preventDefault();
 
-        $('.contact-details-container').show(300);
+        var $this = $(this),
+            contactId = $this.attr("data-item-id");
+
+        if(!$this.hasClass('active-contact')){
+            ContactsUtils.displayContactInfo(contactId);
+            $('.tree-nav-link.person.active-contact').removeClass('active-contact')
+            $this.addClass('active-contact');
+        }
     });
-})
+
+});
