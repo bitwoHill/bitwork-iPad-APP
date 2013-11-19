@@ -11,17 +11,6 @@ var Products = persistence.define('Products', {
 Products.index('productid', { unique: true });
 
 
-var OtherProducts = persistence.define('OtherProducts', {
-    OtherProductId: "INT",
-    productDescription: "TEXT",
-    pieceNumber: "TEXT",
-    price: "TEXT",
-    productFK: "INT"
-});
-
-OtherProducts.index(['OtherProductId', 'piecenumber'], { unique: true });
-
-
 var ProductsModel = {
     sharePointSync: function (callback) {
 

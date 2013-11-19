@@ -1,32 +1,32 @@
-var productoptions_SYNC_URL = "content/productoptions.json";
+var     otherproducts_SYNC_URL = "content/otherproducts.json";
 
-//DB model
-var ProductOptions = persistence.define('ProductOptions', {
-    productOptionId: "INT",
+
+//OTher Products
+var OtherProducts = persistence.define('OtherProducts', {
+    otherProductId: "INT",
     productDescription: "TEXT",
     pieceNumber: "TEXT",
     price: "TEXT",
-    productgroupFK: "INT",
-    productfamilyFK: "INT",
-    productplatformFK: "INT",
-    productFK: "INT",
-    equipmentFK: "INT"
+    productFK: "INT"
 });
 
-ProductOptions.index(['productOptionId', 'piecenumber'], { unique: true });
+OtherProducts.index(['otherProductId', 'piecenumber'], { unique: true });
 
 //create mock data for equipment products
-var productoptionsModel = {
+var otherproductsModel = {
     sharePointSync: function (callback) {
 
         //TODO: replace with sharepoint connection
-        $.getJSON(productoptions_SYNC_URL,function (data) {
+       
+        //get other OptionProducts
+        //TODO: replace with sharepoint connection
+        $.getJSON(otherproducts_SYNC_URL, function (data) {
 
             $.each(data, function (index, value) {
-                var productoptionsItem;
+                var otherproductsItem;
 
-                productoptionsItem = new ProductOptions(value);
-                persistence.add(productoptionsItem);
+                otherproductsItem = new OtherProducts(value);
+                persistence.add(otherproductsItem);
             });
 
             persistence.flush(
@@ -36,20 +36,18 @@ var productoptionsModel = {
                         callback();
                     }
 
-                    $('body').trigger('productoptions-sync-ready');
+                    $('body').trigger('otherproducts-sync-ready');
                 }
             );
         }).fail(
             function () {
                 //TODO: error handling if necessary
-                alert("MPL Stammdaten: Mock data read error.");
+                alert("MPL Stammdaten otherproducts: Mock data read error.");
 
                 if (typeof callback === "function") {
                     callback();
                 }
             }
         );
-
-
     }
 };
