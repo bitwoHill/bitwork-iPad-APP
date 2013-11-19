@@ -8,7 +8,7 @@
 		"productfamilyFK": "1",
 		"productplatformFK": "1",
 		"productFK": "1",
-		"EquipmentFK": "1"
+		"equipmentFK": "1"
     },
 	   {
 	  "productOptionId": 2,
@@ -19,7 +19,7 @@
 		"productfamilyFK": "1",
 		"productplatformFK": "1",
 		"productFK": "1",
-		"EquipmentFK": "1"
+		"equipmentFK": "1"
     },
 	   {
 	  "productOptionId": 3,
@@ -30,7 +30,7 @@
 		"productfamilyFK": "1",
 		"productplatformFK": "1",
 		"productFK": "1",
-		"EquipmentFK": "1"
+		"equipmentFK": "1"
     },
 	   {
 	  "productOptionId": 4,
@@ -41,7 +41,7 @@
 		"productfamilyFK": "3",
 		"productplatformFK": "4",
 		"productFK": "5",
-		"EquipmentFK": "6"
+		"equipmentFK": "6"
     },
 	   {
 	  "productOptionId": 5,
@@ -52,7 +52,7 @@
 		"productfamilyFK": "",
 		"productplatformFK": "1",
 		"productFK": "",
-		"EquipmentFK": ""
+		"equipmentFK": ""
     },
 	   {
 	  "productOptionId": 6,
@@ -63,6 +63,6 @@
 		"productfamilyFK": "2",
 		"productplatformFK": "3",
 		"productFK": "4",
-		"EquipmentFK": "5"
+		"equipmentFK": "5"
     }
 ]

@@ -1,9 +1,35 @@
 var documents_SYNC_URL = "content/documents.json",
-    documenttypes_SYNC_URL = "content/documenttypes.json",
-           documents_CONTAINER = "#document-items-container",
-      documents_ITEM_TEMPLATE = "#document-item-template";
+    documenttypes_SYNC_URL = "content/documenttypes.json";
+
+//these documents and documenttypes are used in MPlstammdaten.js
+
+
+//in this case the foreignkeys are Text, because there can be a relation to several items
+var Documents = persistence.define('Documents', {
+    documentId: "INT",
+    documentname: "TEXT",
+    documenttypeFK: "INT",
+    path: "TEXT",
+    productgroupFK: "TEXT",
+    productfamilyFK: "TEXT",
+    productplatformFK: "TEXT",
+    productFK: "TEXT",
+    equipmentFK: "TEXT"
+});
+
+Documents.index(['documentId'], { unique: true });
+
+
+//Documenttypes
+var Documenttypes = persistence.define('Documenttypes', {
+    documenttypeId: "INT",
+    name: "TEXT",
+});
+
+
+
 //create mock data for Documents and Documenttypes
-var documentsUtils = {
+var documentsModel = {
     sharePointSync: function (callback) {
         //set documenttypes
         //TODO: replace with sharepoint connection
@@ -72,64 +98,6 @@ var documentsUtils = {
 
 
 
-    },
-
-
-
-
-    //create mockdata for options 
-
-    displayStammdaten: function () {
-        var $container = $(documents_CONTAINER),
-        $template = $(documents_ITEM_TEMPLATE);
-
-
-
-        if ($container.length && $template.length) {
-            //load options by current url parameter / andhand von aktueller ID laden
-            var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
-            var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
-            var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
-            var ProduktPar = utils.getUrlParameter('Produkt');
-            var EquipmentProductPar = utils.getUrlParameter('EquipmentProdukt');
-            var OtherProductPar = utils.getUrlParameter('SonstigesProdukt');
-
-            //if its an equipment page the otherproduct is empty (or the other way around) -  this would cause problems in the SQL query - hence its set to -1)
-            //TODO order by name
-
-            if (!EquipmentProductPar) {
-                EquipmentProductPar = "-1";
-            }
-            if (!OtherProductPar) {
-                OtherProductPar = "-1";
-            }
-            //check wheter there is an document to either the current equipment / other product or one of its lower level items (group, family, platform, product)
-            documents.all()
-             .filter("EquipmentFK", "=", EquipmentProductPar)
-             .or(new persistence.PropertyFilter("productgroupFK", "=", ProduktgruppePar))
-             .or(new persistence.PropertyFilter("productfamilyFK", "=", ProduktfamiliePar))
-             .or(new persistence.PropertyFilter("productplatformFK", "=", ProduktplatformPar))
-             .or(new persistence.PropertyFilter("productFK", "=", ProduktPar))
-                               .list(null, function (results) {
-                                                $.each(results, function (index, value) {
-
-                                                    var data = value._data;
-                                                    var $newItem = $template.clone();
-
-                                                    $newItem.removeAttr('id');
-                                                    $('.document-item-optionsbezeichnung', $newItem).html(data.productDescription);
-                                                    $('.document-item-teilenummer', $newItem).html(data.pieceNumber);
-                                                    $('.document-item-listenpreis', $newItem).html(data.price);
-
-                                                    $container.append($newItem.removeClass('hidden'));
-                                                });
-                                            });
-        }
     }
-}
-;
 
-//bind to sync ready event in order to display the news
-$('body').on('documents-sync-ready', documentsUtils.displayStammdaten);
-
-
+};

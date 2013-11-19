@@ -4,23 +4,29 @@
             "js/model/calendar.js",
             "js/model/contacts.js",
             "js/model/link.js",
-            "js/model/mplstammdaten.js",
+            "js/model/equipmentproducts.js",
+            "js/model/otherproducts.js",
             "js/model/news.js",
             "js/model/productfamilies.js",
             "js/model/productgroups.js",
             "js/model/productoptions.js",
             "js/model/productplatforms.js",
             "js/model/products.js",
-            "js/model/infothek.js",
-        ],
+            "js/model/documents.js",
+            "js/model/infothek.js"
+            ],
         dbReady = false,
         loadCounter = 0,
         jsLoadHelper = function(){
             loadCounter++;
+         
             if(loadCounter === modelDependencies.length){
                 dbReady = true;
+            
                 $('body').trigger('js-model-ready');
             }
+         
+                 
         };
 
     for(var i=0; i<modelDependencies.length; i++) {
@@ -37,6 +43,7 @@
         NewsModel.sharePointSync();
         CalendarModel.sharePointSync();
         equipmentproductsModel.sharePointSync();
+        otherproductsModel.sharePointSync();
         LinkModel.sharePointSync();
         ContactsModel.sharePointSync();
 
@@ -46,8 +53,8 @@
         ProductsModel.sharePointSync();
 
         productoptionsModel.sharePointSync();
+        documentsModel.sharePointSync();
         InfothekModel.sharePointSync();
-        //documentsUtils.sharePointSync();
     };
 
     //DB setup when model is ready to load

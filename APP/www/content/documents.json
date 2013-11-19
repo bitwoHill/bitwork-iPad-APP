@@ -8,7 +8,7 @@
 		"productfamilyFK": "1",
 		"productplatformFK": "1",
 		"productFK": "1",
-		"EquipmentFK": "1"
+		"equipmentFK": "1"
     },
 	   {
 	  "documentId": 2,
@@ -19,7 +19,7 @@
 		"productfamilyFK": "",
 		"productplatformFK": "",
 		"productFK": "",
-		"EquipmentFK": ""
+		"equipmentFK": ""
     },
 	   {
 	  "documentId": 3,
@@ -30,7 +30,7 @@
 		"productfamilyFK": "1",
 		"productplatformFK": "",
 		"productFK": "1",
-		"EquipmentFK": ""
+		"equipmentFK": ""
     },
 	   {
 	  "documentId": 4,
@@ -41,7 +41,7 @@
 		"productfamilyFK": "1;2",
 		"productplatformFK": "1;2",
 		"productFK": "",
-		"EquipmentFK": ""
+		"equipmentFK": ""
     },
 	   {
 	  "documentId": 5,
@@ -52,7 +52,7 @@
 		"productfamilyFK": "1",
 		"productplatformFK": "1",
 		"productFK": "1",
-		"EquipmentFK": "1"
+		"equipmentFK": "1"
     },
 	   {
 	 "documentId": 6,
@@ -63,6 +63,6 @@
 		"productfamilyFK": "3",
 		"productplatformFK": "4",
 		"productFK": "5",
-		"EquipmentFK": "6"
+		"equipmentFK": "6"
     }
 ]

@@ -1,5 +1,4 @@
-var equipmentproducts_SYNC_URL = "content/equipmentproducts.json",
-    otherproducts_SYNC_URL = "content/otherproducts.json";
+﻿var equipmentproducts_SYNC_URL = "content/equipmentproducts.json";
 
 //DB model
 var EquipmentProducts = persistence.define('EquipmentProducts', {
@@ -16,6 +15,8 @@ var EquipmentProducts = persistence.define('EquipmentProducts', {
 });
 
 EquipmentProducts.index(['equipmentId', 'piecenumber'], { unique: true });
+
+
 
 //create mock data for equipment products
 var equipmentproductsModel = {
@@ -44,39 +45,7 @@ var equipmentproductsModel = {
         }).fail(
             function () {
                 //TODO: error handling if necessary
-                alert("MPL Stammdaten: Mock data read error.");
-
-                if (typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
-
-        //get other OptionProducts
-        //TODO: replace with sharepoint connection
-        $.getJSON(otherproducts_SYNC_URL, function (data) {
-
-            $.each(data, function (index, value) {
-                var otherproductsItem;
-
-                otherproductsItem = new OtherProducts(value);
-                persistence.add(otherproductsItem);
-            });
-
-            persistence.flush(
-                function () {
-                    //DB is updated - trigger custom event
-                    if (typeof callback === "function") {
-                        callback();
-                    }
-
-                    $('body').trigger('otherproducts-sync-ready');
-                }
-            );
-        }).fail(
-            function () {
-                //TODO: error handling if necessary
-                alert("MPL Stammdaten otherproducts: Mock data read error.");
+                alert("MPL Equipmentproducts: Mock data read error.");
 
                 if (typeof callback === "function") {
                     callback();
@@ -84,4 +53,4 @@ var equipmentproductsModel = {
             }
         );
     }
-};
+}
