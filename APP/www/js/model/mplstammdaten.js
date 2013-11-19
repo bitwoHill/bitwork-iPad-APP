@@ -89,7 +89,7 @@ var equipmentproductsUtils = {
 
             //check wheter its found in the equipment table. if not search other products
             if (EquipmentProductPar) {
-                EquipmentProducts.all().filter("EquipmentId", "=", EquipmentProductPar).list(null, function (results) {
+                EquipmentProducts.all().filter("equipmentId", "=", EquipmentProductPar).list(null, function (results) {
                     $.each(results, function (index, value) {
 
 
@@ -112,7 +112,7 @@ var equipmentproductsUtils = {
             }
         
             if (OtherProductPar) {
-                OtherProducts.all().filter("OtherProductId", "=", OtherProductPar).list(null, function (results) {
+                OtherProducts.all().filter("otherProductId", "=", OtherProductPar).list(null, function (results) {
                     $.each(results, function (index, value) {
                       
                         var data = value._data;

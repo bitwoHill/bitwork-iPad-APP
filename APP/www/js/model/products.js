@@ -69,7 +69,7 @@ var ProductsUtils = {
                             var $newItem = $template.clone();
 
                             $newItem.removeAttr('id');
-                            $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&EquipmentProdukt=" + data.EquipmentId);
+                            $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&EquipmentProdukt=" + data.equipmentId);
                             $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
                             $('.products-item-volume', $newItem).html(data.volume);
                             $('.products-item-price', $newItem).html(data.price);
@@ -88,7 +88,7 @@ var ProductsUtils = {
 
 
                             $newItem.removeAttr('id');
-                            $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&SonstigesProdukt=" + data.OtherProductId);
+                            $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&SonstigesProdukt=" + data.otherProductId);
                             $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
                             $('.products-item-price', $newItem).html(data.price);
 

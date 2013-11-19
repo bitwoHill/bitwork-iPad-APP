@@ -69,7 +69,6 @@ var productoptionsUtils = {
                 OtherProductPar = "-1";
             }
             //check wheter there is an option to either the current equipment / other product or one of its lower level items (group, family, platform, product)
-            persistence.debug = true;
             ProductOptions.all()
                 .filter("EquipmentFK", "=", EquipmentProductPar)
                         .or(new persistence.PropertyFilter("productgroupFK", "=", ProduktgruppePar))

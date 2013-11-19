@@ -67,7 +67,7 @@ Products.index('productid', { unique: true });
 
 
 var EquipmentProducts = persistence.define('EquipmentProducts', {
-    EquipmentId: "INT",
+    equipmentId: "INT",
     productDescription: "TEXT",
     pieceNumber: "TEXT",
     price: "TEXT",
@@ -79,22 +79,21 @@ var EquipmentProducts = persistence.define('EquipmentProducts', {
     productFK: "INT"
 });
 
-EquipmentProducts.index(['EquipmentId', 'piecenumber'], { unique: true });
+EquipmentProducts.index(['equipmentId', 'piecenumber'], { unique: true });
 
 
 var OtherProducts = persistence.define('OtherProducts', {
-    OtherProductId: "INT",
+    otherProductId: "INT",
     productDescription: "TEXT",
     pieceNumber: "TEXT",
     price: "TEXT",
     productFK: "INT"
 });
 
-OtherProducts.index(['OtherProductId', 'piecenumber'], { unique: true });
-
+OtherProducts.index(['otherProductId', 'piecenumber'], { unique: true });
 
 var ProductOptions = persistence.define('ProductOptions', {
-    ProductOptionId: "INT",
+    productOptionId: "INT",
     productDescription: "TEXT",
     pieceNumber: "TEXT",
     price: "TEXT",
@@ -105,7 +104,32 @@ var ProductOptions = persistence.define('ProductOptions', {
     EquipmentFK: "INT"
 });
 
-ProductOptions.index(['ProductOptionId', 'piecenumber'], { unique: true });
+ProductOptions.index(['productOptionId', 'piecenumber'], { unique: true });
+
+
+//in this case the foreignkeys are Text, because there can be a relation to several items
+var Documents = persistence.define('Documents', {
+    documentId: "INT",
+    documentname: "TEXT",
+    documenttypeFK: "INT",
+    path: "TEXT",
+    productgroupFK: "TEXT",
+    productfamilyFK: "TEXT",
+    productplatformFK: "TEXT",
+    productFK: "TEXT",
+    EquipmentFK: "TEXT"
+});
+
+Documents.index(['documentId'], { unique: true });
+
+
+//Documenttypes
+var Documenttypes = persistence.define('Documenttypes', {
+    documenttypeId: "INT",
+    name: "TEXT",
+});
+
+Documenttypes.index(['documenttypeId'], { unique: true });
 
 var Contacts = persistence.define('Contacts', {
     contactId: "INT",

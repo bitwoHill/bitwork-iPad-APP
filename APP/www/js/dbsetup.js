@@ -18,5 +18,6 @@
         ProductsUtils.sharePointSync();
 
         productoptionsUtils.sharePointSync();
+        documentsUtils.sharePointSync();
     });
 })(jQuery)
