@@ -10,7 +10,8 @@
             "js/model/productgroups.js",
             "js/model/productoptions.js",
             "js/model/productplatforms.js",
-            "js/model/products.js"
+            "js/model/products.js",
+            "js/model/infothek.js",
         ],
         dbReady = false,
         loadCounter = 0,
@@ -45,6 +46,7 @@
         ProductsModel.sharePointSync();
 
         productoptionsModel.sharePointSync();
+        InfothekModel.sharePointSync();
         //documentsUtils.sharePointSync();
     };
 

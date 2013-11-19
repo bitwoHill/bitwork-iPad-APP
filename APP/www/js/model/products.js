@@ -12,14 +12,14 @@ Products.index('productid', { unique: true });
 
 
 var OtherProducts = persistence.define('OtherProducts', {
-    OtherProductId: "INT",
+    otherProductId: "INT",
     productDescription: "TEXT",
     pieceNumber: "TEXT",
     price: "TEXT",
     productFK: "INT"
 });
 
-OtherProducts.index(['OtherProductId', 'piecenumber'], { unique: true });
+OtherProducts.index(['otherProductId', 'piecenumber'], { unique: true });
 
 
 var ProductsModel = {

@@ -60,5 +60,7 @@ var i18n = {
         //MPL Produkt
         "produkt": "Produkt",
 
+        //InfoThek
+        "infothek": "Infothek"
     }
 }

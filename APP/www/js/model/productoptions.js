@@ -2,7 +2,7 @@ var productoptions_SYNC_URL = "content/productoptions.json";
 
 //DB model
 var ProductOptions = persistence.define('ProductOptions', {
-    ProductOptionId: "INT",
+    productOptionId: "INT",
     productDescription: "TEXT",
     pieceNumber: "TEXT",
     price: "TEXT",
@@ -13,7 +13,7 @@ var ProductOptions = persistence.define('ProductOptions', {
     EquipmentFK: "INT"
 });
 
-ProductOptions.index(['ProductOptionId', 'piecenumber'], { unique: true });
+ProductOptions.index(['productOptionId', 'piecenumber'], { unique: true });
 
 //create mock data for equipment products
 var productoptionsModel = {
