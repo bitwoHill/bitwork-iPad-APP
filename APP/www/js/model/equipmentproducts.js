@@ -1,6 +1,7 @@
 ﻿var equipmentproducts_SYNC_URL = "content/equipmentproducts.json";
 
 //DB model
+//EquipmentProducts
 var EquipmentProducts = persistence.define('EquipmentProducts', {
     equipmentId: "INT",
     productDescription: "TEXT",

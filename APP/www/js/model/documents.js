@@ -25,7 +25,7 @@ var Documenttypes = persistence.define('Documenttypes', {
     documenttypeId: "INT",
     name: "TEXT",
 });
-
+Documenttypes.index(['documenttypeId'], { unique: true });
 
 
 //create mock data for Documents and Documenttypes
