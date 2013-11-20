@@ -1,8 +1,15 @@
-var productplatforms_SYNC_URL = "content/productplatforms.json",
-    productplatforms_CONTAINER = "#productplatforms-items-container",
-    productplatforms_ITEM_TEMPLATE = "#productplatforms-item-template";
+var productplatforms_SYNC_URL = "content/productplatforms.json";
 
-var ProductPlatformsUtils = {
+//DB model
+var Productplatforms = persistence.define('Productplatforms', {
+    productplatformid: "INT",
+    productplatform: "TEXT",
+    productfamilyFK: "INT"
+});
+
+Productplatforms.index('productplatformid', { unique: true });
+
+var ProductPlatformsModel = {
     sharePointSync: function (callback) {
 
         //TODO: replace with sharepoint connection
@@ -35,34 +42,5 @@ var ProductPlatformsUtils = {
                 }
             }
         );
-    },
-
-    displayproductplatforms: function () {
-        var $container = $(productplatforms_CONTAINER),
-            $template = $(productplatforms_ITEM_TEMPLATE);
-
-        if ($container.length && $template.length) {
-
-            //load by current url parameter / andhand von aktueller ID laden
-            var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
-                                          
-            Productplatforms.all().filter("productfamilyFK", "=", ProduktfamiliePar).list(null, function (results) {
-                                          $.each(results, function (index, value) {
-
-                    var data = value._data;
-                    var $newItem = $template.clone();
-
-                    $newItem.removeAttr('id');
-                    $('.productplatforms-item-title', $newItem).html(data.productplatform).attr("href", "MPLProdukt.html?Produktplattform=" + data.productplatformid);
-
-
-                    $container.append($newItem.removeClass('hidden'));
-
-                });
-            });
-        }
     }
 };
-
-//bind to sync ready event in order to display the productplatforms
-$('body').on('productplatforms-sync-ready', ProductPlatformsUtils.displayproductplatforms);

@@ -52,8 +52,16 @@ a.tree-nav-link:active {
     color: #4c4c4c;
 }
 
-a.tree-nav-link:active:active {
+a.tree-nav-link:active {
     background-color: #eaeaea;
+}
+
+a.tree-nav-link.active-contact {
+    font-weight: bold;
+}
+
+a.tree-nav-link.active-contact > .fa {
+    color: #4c4c4c;
 }
 
 a.tree-nav-link > .fa {
@@ -88,6 +96,14 @@ a.tree-nav-link.collapsed > .fa.tree-nav-link-folder-state {
 
     height: 500px;
     max-height: 500px;
+}
+
+.tree-nav-container-MPL {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+
+   
 }
 
 .contact-details-container .img-thumbnail {

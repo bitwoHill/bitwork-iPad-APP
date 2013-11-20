@@ -1,6 +1,6 @@
 [
     {
-	  "EquipmentId": 1,
+	  "equipmentId": 1,
         "productDescription": "Produkt 1",
         "pieceNumber": "8101900571",
         "price": "1269,90",
@@ -12,7 +12,7 @@
 		"productFK": "1"
     },
 	   {
-	  "EquipmentId": 2,
+	  "equipmentId": 2,
         "productDescription": "Produkt 2",
         "pieceNumber": "8101900574",
         "price": "1269,90",
@@ -24,7 +24,7 @@
 		"productFK": "2"
     },
 	   {
-	  "EquipmentId": 3,
+	  "equipmentId": 3,
         "productDescription": "Produkt 3",
         "pieceNumber": "8101900573",
         "price": "1269,90",
@@ -36,7 +36,7 @@
 		"productFK": "3"
     },
 	   {
-	  "EquipmentId": 4,
+	  "equipmentId": 4,
         "productDescription": "Produkt 4",
         "pieceNumber": "8101900572",
         "price": "1269,90",
@@ -48,7 +48,7 @@
 		"productFK": "4"
     },
 	   {
-	  "EquipmentId": 5,
+	  "equipmentId": 5,
         "productDescription": "Produkt 5",
         "pieceNumber": "8101900576",
         "price": "1269,90",
@@ -60,7 +60,7 @@
 		"productFK": "5"
     },
 	   {
-	  "EquipmentId": 6,
+	  "equipmentId": 6,
         "productDescription": "Produkt 6",
         "pieceNumber": "8101900575",
         "price": "1269,90",
