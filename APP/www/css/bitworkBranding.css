@@ -184,3 +184,12 @@ h4 {
     border-top: 1px solid #dedede;
     border-bottom: 1px solid #FFF;
 }
+
+/*Back Button*/
+#btnNavigateBackwards {
+       position: absolute;
+    right: 22px;
+    top: 90px;
+    width: 60px;
+    height: 40px;
+}

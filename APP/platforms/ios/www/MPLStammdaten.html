@@ -100,6 +100,8 @@
                 </h1>
             </div>
 
+            <!-- backwards button -->
+            <button id="btnNavigateBackwards" type="button" class="fa fa-chevron-left" onclick="history.back();">                          </button>
 
 
             <div class="row">
@@ -201,31 +203,31 @@
 
                             <!-- display one "folder" in tree view collapsed for each documenttype -->
 
-                                <div class="tree-nav-container-MPL">
-                                    <ul class="tree-nav" id="document-items-container">
-                                        <!-- contact person tree-nav item template -->
-                                        <li class="hidden" id="document-document-item-template">
-                                            <a class="tree-nav-link person" data-item-id="" href="#">
-                                                <i class="fa fa-file"></i>
-                                                <span class="tree-nav-item-name"></span>
-                                                <span class="tree-nav-item-loading pull-right"></span>
-                                            </a>
-                                        </li>
+                            <div class="tree-nav-container-MPL">
+                                <ul class="tree-nav" id="document-items-container">
+                                    <!-- contact person tree-nav item template -->
+                                    <li class="hidden" id="document-document-item-template">
+                                        <a class="tree-nav-link person" data-item-id="" href="#">
+                                            <i class="fa fa-file"></i>
+                                            <span class="tree-nav-item-name"></span>
+                                            <span class="tree-nav-item-loading pull-right"></span>
+                                        </a>
+                                    </li>
 
-                                        <!-- folder tree-nav item template -->
-                                        <li class="hidden" id="document-folder-item-template">
-                                            <a class="tree-nav-link folder" data-item-id="" href="#">
-                                                <i class="fa fa-folder"></i>
-                                                <span class="tree-nav-item-name"></span>
-                                                <span class="tree-nav-item-loading pull-right"></span>
-                                            </a>
-                                            <ul class="tree-nav" style="display: none" id=""></ul>
-                                        </li>
+                                    <!-- folder tree-nav item template -->
+                                    <li class="hidden" id="document-folder-item-template">
+                                        <a class="tree-nav-link folder" data-item-id="" href="#">
+                                            <i class="fa fa-folder"></i>
+                                            <span class="tree-nav-item-name"></span>
+                                            <span class="tree-nav-item-loading pull-right"></span>
+                                        </a>
+                                        <ul class="tree-nav" style="display: none" id=""></ul>
+                                    </li>
 
-                                    </ul>
+                                </ul>
 
-                                </div>
                             </div>
+                        </div>
 
 
                     </div>
