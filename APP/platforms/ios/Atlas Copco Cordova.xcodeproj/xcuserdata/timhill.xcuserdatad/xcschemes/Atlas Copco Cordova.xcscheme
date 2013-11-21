@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-               BuildableName = "bitwork iPad App.app"
-               BlueprintName = "bitwork iPad App"
-               ReferencedContainer = "container:bitwork iPad App.xcodeproj">
+               BuildableName = "Atlas Copco Cordova.app"
+               BlueprintName = "Atlas Copco Cordova"
+               ReferencedContainer = "container:Atlas Copco Cordova.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "bitwork iPad App.app"
-            BlueprintName = "bitwork iPad App"
-            ReferencedContainer = "container:bitwork iPad App.xcodeproj">
+            BuildableName = "Atlas Copco Cordova.app"
+            BlueprintName = "Atlas Copco Cordova"
+            ReferencedContainer = "container:Atlas Copco Cordova.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "bitwork iPad App.app"
-            BlueprintName = "bitwork iPad App"
-            ReferencedContainer = "container:bitwork iPad App.xcodeproj">
+            BuildableName = "Atlas Copco Cordova.app"
+            BlueprintName = "Atlas Copco Cordova"
+            ReferencedContainer = "container:Atlas Copco Cordova.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "bitwork iPad App.app"
-            BlueprintName = "bitwork iPad App"
-            ReferencedContainer = "container:bitwork iPad App.xcodeproj">
+            BuildableName = "Atlas Copco Cordova.app"
+            BlueprintName = "Atlas Copco Cordova"
+            ReferencedContainer = "container:Atlas Copco Cordova.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
