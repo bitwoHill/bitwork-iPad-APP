@@ -4,6 +4,7 @@ var i18n = {
     strings: {
         "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         "days": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        "na" : "N/A",
 
         //Menu
         "menu-news": "News",
@@ -26,6 +27,7 @@ var i18n = {
 
         //News
         "news": "News",
+        "last-sync-news": "Last news sync",
         "weiterlesen": "Weiterlesen",
 
         //Links

@@ -50,11 +50,27 @@ var app = {
 
 (function($){
     $(document).ready(function(){
+        //Side-menu toggle
         $('.toggle-side-menu').click(function(e){
             e.preventDefault();
             e.stopPropagation();
 
-            $('body').toggleClass('side-menu-active');
-        })
+            //if sync in progress prevent menu display
+            if( !($('body').hasClass('sync-in-progress')) ){
+                $('body').toggleClass('side-menu-active');
+            }
+        });
+
+        //Display mask while sync
+        $('body').on('sync-start', function(){
+            console.log("start");
+            $('body').addClass('sync-in-progress');
+        });
+
+        //Hide mask when sync ended
+        $('body').on('sync-end', function(){
+            console.log("end");
+            $('body').removeClass('sync-in-progress');
+        });
     })
 })(jQuery);
