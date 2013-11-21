@@ -43,6 +43,15 @@ h4 {
     margin-top: 0;
 }
 
+.page-header {
+    border-bottom: 1px solid #2e2e2e;
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+}
+
+.page-header-title {
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+
 /*search textbox */
 #txtSuche {
     width: 190px;
@@ -50,16 +59,22 @@ h4 {
 
 /*button Farbe auf bitwork grau anpassen*/
 .btn-primary {
-    color: #fff;
-    border-color: rgb(108, 108, 108);
-    background: rgb(108, 108, 108); /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(108, 108, 108, 1)), color-stop(44%, rgba(97, 97, 97, 1)), color-stop(100%, rgba(81, 81, 81, 1))); /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* IE10+ */
-    background: radial-gradient(ellipse at center, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c6c6c', endColorstr='#515151', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+     color: #fff;
+     border-color: rgb(108, 108, 108);
+     background: rgb(108, 108, 108); /* Old browsers */
+     background: -moz-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* FF3.6+ */
+     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(108, 108, 108, 1)), color-stop(44%, rgba(97, 97, 97, 1)), color-stop(100%, rgba(81, 81, 81, 1))); /* Chrome,Safari4+ */
+     background: -webkit-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Chrome10+,Safari5.1+ */
+     background: -o-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Opera 12+ */
+     background: -ms-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* IE10+ */
+     background: radial-gradient(ellipse at center, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* W3C */
+     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c6c6c', endColorstr='#515151', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+    background: rgba(108, 108, 108, 0.8 );
+    border-color: #2e2e2e;
 }
 
 /*Farbe und h�he der pills �ndern*/
@@ -120,12 +135,49 @@ h4 {
     margin: 20px 15px 0 0;
 }
 
+.box {
+    position: relative;
+    z-index: 1;
+}
+
 .box-content {
     margin-bottom: 20px;
 }
 
+.box-actions {
+    margin-top: 15px;
+}
+
 .box-content.with-image {
     margin-left: 165px;
+}
+
+.box-label {
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 0;
+    background-color: #2f2f2f;
+    color: #bbbbbb;
+    text-shadow: 1px 1px 0 #000;
+    padding: 5px 10px;
+
+    -webkit-border-radius: 0px 3px 0px 3px;
+    border-radius: 0px 3px 0px 3px;
+
+    -webkit-box-shadow: inset 2px -2px 5px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 2px -2px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+
+/* News */
+.news-item-body img {
+
+}
+
+.news-item-body p:empty,
+.news-item-body div:empty {
+    display: none;
 }
 
 /*button for backwards navigation*/

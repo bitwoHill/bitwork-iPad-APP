@@ -19,8 +19,8 @@ var utils = {
             o = {
                 "m" : zeroPad(date.getMonth()+1), //month
                 "d" : zeroPad(date.getDate()),    //day
-                "h" : zeroPad(date.getHours()),   //hour
-                "m" : zeroPad(date.getMinutes()), //minute
+                "H" : zeroPad(date.getHours()),   //hour
+                "M" : zeroPad(date.getMinutes()), //minute
                 "s" : zeroPad(date.getSeconds()),  //second
                 "y" : date.getFullYear(),
                 "l" : i18n.strings["days"][date.getDay()], // textual representation of a day of week
@@ -43,11 +43,21 @@ var utils = {
     //http://www.foo.com/index.html?bob=123&frank=321&tom=213#top
     //to get te value frank use: var frank_param = utils.getUrlParameter( 'frank' );
     getUrlParameter: function ( name ){
-name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
-var regexS = "[\\?&]"+name+"=([^&#]*)";  
-var regex = new RegExp( regexS );  
-var results = regex.exec( window.location.href ); 
-if( results == null )    return "";  
-else    return results[1];}
+        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+        var regexS = "[\\?&]"+name+"=([^&#]*)";
+        var regex = new RegExp( regexS );
+        var results = regex.exec( window.location.href );
+
+        if( results == null )
+            return "";
+        else
+            return results[1];
+    },
+
+    //Parse date from data format SharePoint date type
+    //e.g.: "/Date(1365081254000)/"
+    parseSharePointDate: function(spDate){
+        return new Date(parseInt(spDate.match(/\/Date\(([0-9]+)(?:.*)\)\//)[1]));
+    }
 
 }

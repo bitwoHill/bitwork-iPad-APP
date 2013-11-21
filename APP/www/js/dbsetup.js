@@ -1,6 +1,8 @@
 (function($){
 
     var modelDependencies = [
+            "js/config.js",
+            "js/model/sharepoint.js",
             "js/model/calendar.js",
             "js/model/contacts.js",
             "js/model/link.js",
@@ -14,7 +16,7 @@
             "js/model/products.js",
             "js/model/documents.js",
             "js/model/infothek.js"
-            ],
+        ],
         dbReady = false,
         loadCounter = 0,
         jsLoadHelper = function(){

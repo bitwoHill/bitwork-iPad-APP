@@ -47,7 +47,28 @@
             </button>
         </header>
 
-        <div class="slide-menu-mask toggle-side-menu"></div>
+        <div class="slide-menu-mask toggle-side-menu">
+            <span class="slide-menu-mask-loading">
+                <div id="floatingBarsG">
+                    <div class="blockG" id="rotateG_01">
+                    </div>
+                    <div class="blockG" id="rotateG_02">
+                    </div>
+                    <div class="blockG" id="rotateG_03">
+                    </div>
+                    <div class="blockG" id="rotateG_04">
+                    </div>
+                    <div class="blockG" id="rotateG_05">
+                    </div>
+                    <div class="blockG" id="rotateG_06">
+                    </div>
+                    <div class="blockG" id="rotateG_07">
+                    </div>
+                    <div class="blockG" id="rotateG_08">
+                    </div>
+                </div>
+            </span>
+        </div>
 
         <div class="slide-menu" id="slide-menu">
 
@@ -87,26 +108,37 @@
         <!-- content -->
         <div id="page-wrapper">
 
-            <div id="lblHeaderText" class="page-header">
-                <h1><span class="i18n" data-i18n-key="news"></span><br >
-                    <small class="i18n" data-i18n-key="subtitle"></small>
-                </h1>
+            <div id="lblHeaderText" class="page-header clearfix">
+                <div class="page-header-info pull-right">
+                    <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="NEWS">
+                        <span class="fa fa-refresh"></span>
+                        <span class="i18n" data-i18n-key="last-sync-news"></span>
+                        <span class="page-sync-btn-date"></span>
+                    </a>
+                </div>
+
+                <h1 class="page-header-title"><span class="i18n" data-i18n-key="news"></span></h1>
             </div>
 
             <div id="news-items-container">
                 <div class="thumbnail hidden box" id="news-item-template">
+                    <span class="box-label news-item-date hidden-phone"></span>
                     <div class="col-lg-12 bitworkPadding clearfix box-container">
-                       <img class="calendar-item-image"  src="content/logo_black.png" alt="">
                         <div class="box-content">
                             <div class="content-heading">
                                 <h3 class="news-item-title"></h3>
                             </div>
 
-                            <div class="news-item-body">
+                            <div class="news-item-body clearfix">
 
                             </div>
-                            <!-- TODO News and calendar database model need to be able to generate a hyperlink to the real news item. Something like: sharepointurl/News/itemID -->
-                            <p><a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" class="i18n" data-i18n-key="weiterlesen" onclick="window.open('http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx', '_system');"></a></p>
+
+                            <div class="box-actions">
+                                <a href="http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx" onclick="window.open('http://www.bitwork-cms.com/Lists/Ankuendigungen/AllItems.aspx');" class="btn btn-primary" target="_blank">
+                                    <i class="fa fa-external-link"></i>&nbsp;&nbsp;
+                                    <span class="i18n" data-i18n-key="weiterlesen"></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
