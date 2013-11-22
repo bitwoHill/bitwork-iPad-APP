@@ -20,6 +20,8 @@ var NewsModel = {
             type: 'GET',
             url: NEWS_SYNC_URL,
             crossDomain: true,
+            username: "bitwork",
+            password: "Test1234!",
             dataType: 'json',
             success: function(responseData, textStatus, jqXHR)
             {
