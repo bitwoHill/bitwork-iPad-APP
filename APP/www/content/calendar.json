@@ -3,7 +3,7 @@
         "nodeId": 1,
         "title": "Calendar item 1",
         "body": "Akadmie Exklusiv für Sie als Vertragshändler von bitwork<br /> Verkaufsschulung in 3 Modulen am 12.+13 September / 08.+09. Oktober und 05.+06. November 2013<br />Raum Nürnberg<br />Anmeldeschluss 12. August 2013<br />Mindestteilnehmerzahl: 10 Personen<br />Maximalteilnehmerzahl: 16 Personen",
-        "image": "/content/kompressor.jpg",
+        "image": "content/kompressor.jpg",
         "location": "Nürnberg",
         "startDate": "2013-05-23T08:30:00",
         "expirationDate": "2013-05-23T17:00:00"
