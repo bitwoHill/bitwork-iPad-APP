@@ -16,6 +16,8 @@ var NewsUI = {
                     $('.news-item-title', $newItem).html(data.title);
                     $('.news-item-body', $newItem).html(data.body);
                     $('.news-item-date', $newItem).html(utils.dateFormat(new Date(data.createdDate), "m.d.y, H:M"));
+                    $('.news-item-link', $newItem).attr('href', 'http://www.atlas-cms.com/Lists/Ankuendigungen/DispForm.aspx?ID=' + data.nodeId);
+
                     //if(data.image) {
                     //    $('.box-content', $newItem).addClass('with-image');
                     //    $('.news-item-image', $newItem).attr('src', data.image);
@@ -41,7 +43,9 @@ var NewsUI = {
     $('body').on('news-sync-ready', NewsUI.displayNews);
 
     $(document).ready(function(){
-        $('body').on('click', 'a.page-sync-btn', NewsModel.sharePointSync);
+        $('body').on('click', 'a.page-sync-btn', function(){
+            NewsModel.sharePointSync();
+        });
     })
 
 })(jQuery);

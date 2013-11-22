@@ -45,7 +45,13 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
+    },
+    onContactSaveSuccess: function(contract) {
+     console.log("Save success");
+    },
+    onContactSaveError: function(contact) {
+    console.log("Save Failed");
+    },
 };
 
 (function($){
@@ -71,6 +77,18 @@ var app = {
         $('body').on('sync-end', function(){
             console.log("end");
             $('body').removeClass('sync-in-progress');
+        });
+
+        //Handle external links
+        $('body').on('click', 'a', function(e){
+            var $link = $(this);
+
+            if($link.attr('target') === '_blank'){
+                e.preventDefault();
+                alert(1);
+
+                window.open($link.attr('href'));
+            }
         });
     })
 })(jQuery);

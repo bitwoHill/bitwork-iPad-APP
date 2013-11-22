@@ -45,7 +45,13 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
+    },
+    onContactSaveSuccess: function(contract) {
+     console.log("Save success");
+    },
+    onContactSaveError: function(contact) {
+    console.log("Save Failed");
+    },
 };
 
 (function($){
