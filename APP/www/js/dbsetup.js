@@ -39,24 +39,24 @@
         //setup DB connection
         persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 5 * 1024 * 1024);
         //create DB schema
-        persistence.schemaSync();
+        persistence.schemaSync(function(){
+            //Sync with sharepoint
+            NewsModel.sharePointSync();
+            CalendarModel.sharePointSync();
+            equipmentproductsModel.sharePointSync();
+            otherproductsModel.sharePointSync();
+            LinkModel.sharePointSync();
+            ContactsModel.sharePointSync();
 
-        //Sync with sharepoint
-        NewsModel.sharePointSync();
-        CalendarModel.sharePointSync();
-        equipmentproductsModel.sharePointSync();
-        otherproductsModel.sharePointSync();
-        LinkModel.sharePointSync();
-        ContactsModel.sharePointSync();
+            ProductGroupsModel.sharePointSync();
+            ProductFamiliesModel.sharePointSync();
+            ProductPlatformsModel.sharePointSync();
+            ProductsModel.sharePointSync();
 
-        ProductGroupsModel.sharePointSync();
-        ProductFamiliesModel.sharePointSync();
-        ProductPlatformsModel.sharePointSync();
-        ProductsModel.sharePointSync();
-
-        productoptionsModel.sharePointSync();
-        documentsModel.sharePointSync();
-        InfothekModel.sharePointSync();
+            productoptionsModel.sharePointSync();
+            documentsModel.sharePointSync();
+            InfothekModel.sharePointSync();
+        });
     };
 
     //DB setup when model is ready to load
