@@ -83,11 +83,11 @@ var app = {
         $('body').on('click', 'a', function(e){
             var $link = $(this);
 
-            if($link.attr('target') === '_blank'){
+            if($link.attr('target') === '_system'){
                 e.preventDefault();
-                alert(1);
+              
 
-                window.open($link.attr('href'));
+                window.open($link.attr('href'),'_system');
             }
         });
     })

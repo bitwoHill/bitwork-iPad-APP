@@ -31,13 +31,14 @@
     function onDeviceReady() {
    //Create Mock contact. Available Contact Properties: id, displayName, name, nickname,phoneNumbers(array), emails, addresses, ims, organizations, birthday, note, photos, categories,urs
    //for reference: docs.phonegap.com/en/edge/cordova_contacts_contacts.md.html#Contacts
-        var myContact = navigator.contacts.create({"displayName": "Test User"});
-        myContact.name.familyName = "User";
-              myContact.name.givenName = "Test";
-        myContact.nickname ="Userboy";
-        myContact.note = "This contact has a note.";
+     
+     //   var myContact = navigator.contacts.create({"displayName": "Test User"});
+     //   myContact.name.familyName = "User";
+      //        myContact.name.givenName = "Test";
+       // myContact.nickname ="Userboy";
+        //myContact.note = "This contact has a note.";
       //  console.log("The contact, " + myContact.displayName + ", note: " + myContact.note);
-       myContact.save(app.onContactSaveSuccess, app.onContactSaveError);
+       //myContact.save(app.onContactSaveSuccess, app.onContactSaveError);
        
        //Create Mock file to filesystem
        

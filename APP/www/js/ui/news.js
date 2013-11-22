@@ -17,7 +17,13 @@ var NewsUI = {
                     $('.news-item-body', $newItem).html(data.body);
                     $('.news-item-date', $newItem).html(utils.dateFormat(new Date(data.createdDate), "m.d.y, H:M"));
                     $('.news-item-link', $newItem).attr('href', 'http://www.atlas-cms.com/Lists/Ankuendigungen/DispForm.aspx?ID=' + data.nodeId);
-
+  
+  //$('.news-item-link', $newItem).attr('target', '_system');
+  
+  
+  //set external url calls to be opened in a new window
+  $("a[href^='http']").attr('target','_system');
+  
                     //if(data.image) {
                     //    $('.box-content', $newItem).addClass('with-image');
                     //    $('.news-item-image', $newItem).attr('src', data.image);
