@@ -72,5 +72,17 @@ var app = {
             console.log("end");
             $('body').removeClass('sync-in-progress');
         });
+
+        //Handle external links
+        $('body').on('click', 'a', function(e){
+            var $link = $(this);
+
+            if($link.attr('target') === '_blank'){
+                e.preventDefault();
+                alert(1);
+
+                window.open($link.attr('href'));
+            }
+        });
     })
 })(jQuery);
