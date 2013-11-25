@@ -8,7 +8,7 @@
             var i18nKey = $(this).attr('data-i18n-key');
 
             if(i18nKey && i18n.strings[i18nKey]){
-                $(this).text(i18n.strings[i18nKey]);
+                $(this).html(i18n.strings[i18nKey]);
             }
         });
 

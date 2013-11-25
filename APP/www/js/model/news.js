@@ -1,5 +1,4 @@
-var NEWS_SYNC_URL = Settings.spDomain + "/News",
-    NEWS_SYNC_TYPE = "NEWS";
+var NEWS_LIST = "News";
 
 //DB model
 var News = persistence.define('News', {
@@ -14,31 +13,15 @@ var News = persistence.define('News', {
 News.index('nodeId', { unique: true });
 
 var NewsModel = {
-    sharePointSync : function(callback){
+    syncNews : function(){
         $('body').trigger('sync-start');
-        var jqXHR = $.ajax({
-            type: 'GET',
-            url: NEWS_SYNC_URL,
-            crossDomain: true,
-            username: "bitwork",
-            password: "Test1234!",
-            dataType: 'json',
-            success: function(responseData, textStatus, jqXHR)
-            {
-                NewsModel.mapSharePointData(responseData.d);
-            },
-            error: function (responseData, textStatus, errorThrown)
-            {
-                console.warn(responseData, textStatus, errorThrown);
-                $('body').trigger('sync-end', 'sync-error');
-            }
-        });
 
+        SharePoint.sharePointRequest(NEWS_LIST, NewsModel.mapSharePointData);
     },
 
     //maps SharePoint data to current model
-    mapSharePointData: function(spData){
-        console.log(spData.results);
+    mapSharePointData: function(data){
+        var spData = data.d;
         if(spData && spData.results.length){
             $.each(spData.results, function(index, value){
                 var newsItem = {
@@ -60,7 +43,7 @@ var NewsModel = {
 
             persistence.flush(
                 function(){
-                    SyncModel.addSync(NEWS_SYNC_TYPE);
+                    SyncModel.addSync(NEWS_LIST);
                     $('body').trigger('sync-end');
                     $('body').trigger('news-sync-ready');
                 }

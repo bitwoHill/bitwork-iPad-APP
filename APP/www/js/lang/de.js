@@ -29,6 +29,7 @@ var i18n = {
         "news": "News",
         "last-sync-news": "Last news sync",
         "weiterlesen": "Weiterlesen",
+        "empty-news": "There are no news to be displayed. Use above <i class='fa fa-refresh'></i> button to syncronise he news.",
 
         //Links
         "wichtige-links": "Wichtige Links",

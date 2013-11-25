@@ -1,3 +1,27 @@
+var SharePoint = {
+
+    sharePointRequest: function(listName, callback){
+
+        var jqXHR = $.ajax({
+            type: 'GET',
+            url: Settings.spDomain + "/" + listName,
+            crossDomain: true,
+            username: "bitwork",
+            password: "Test1234!",
+            dataType: 'json',
+            success: function(responseData, textStatus, jqXHR)
+            {
+                callback(responseData);
+            },
+            error: function (responseData, textStatus, errorThrown)
+            {
+                console.warn(responseData, textStatus, errorThrown);
+                $('body').trigger('sync-error');
+            }
+        });
+    }
+}
+
 var Sync = persistence.define('Sync', {
     syncType: "TEXT",
     syncDate: "DATE",
@@ -6,7 +30,7 @@ var Sync = persistence.define('Sync', {
 
 Sync.index('syncType', { unique: true });
 
-SyncModel = {
+var SyncModel = {
     addSync : function(type){
         var syncItem = {
             syncType: (type)? type : "ALL",
