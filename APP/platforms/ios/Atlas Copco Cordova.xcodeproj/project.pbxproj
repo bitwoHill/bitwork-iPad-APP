@@ -213,6 +213,8 @@
 		F5F3E021183E90EE00D09058 /* WichtigeLinks.html in Resources */ = {isa = PBXBuildFile; fileRef = F5F3DF71183E90EE00D09058 /* WichtigeLinks.html */; };
 		F7FAEBBC2AB6487D98E9CAB6 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A3A169DD1E411494673855 /* CDVInAppBrowser.m */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
+		D4FFFA7F9EE04C8197EF77D9 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F4025E029B4764B3B5B87C /* CDVFile.m */; };
+		6BA84E2EE63E440CA0C95515 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F3734564E8894CC7A42FB0F3 /* CDVFileTransfer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -450,6 +452,10 @@
 		F5F3DF71183E90EE00D09058 /* WichtigeLinks.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WichtigeLinks.html; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Atlas Copco Cordova/config.xml"; sourceTree = "<group>"; };
 		FDC03DB5A5F54DF69D3F4E50 /* CDVContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVContact.m; path = org.apache.cordova.contacts/CDVContact.m; sourceTree = "<group>"; };
+		50F4025E029B4764B3B5B87C /* CDVFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFile.m"; path = "org.apache.cordova.file/CDVFile.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		8B64AA1304324031B081EB86 /* CDVFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFile.h"; path = "org.apache.cordova.file/CDVFile.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		F3734564E8894CC7A42FB0F3 /* CDVFileTransfer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFileTransfer.m"; path = "org.apache.cordova.file-transfer/CDVFileTransfer.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		915F896E0B254A9F817200AF /* CDVFileTransfer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFileTransfer.h"; path = "org.apache.cordova.file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,6 +587,10 @@
 				FDC03DB5A5F54DF69D3F4E50 /* CDVContact.m */,
 				C9F58BB53F3A4603A6695FE1 /* CDVContacts.h */,
 				0FB54923756D482F97819E9E /* CDVContact.h */,
+				50F4025E029B4764B3B5B87C /* CDVFile.m */,
+				8B64AA1304324031B081EB86 /* CDVFile.h */,
+				F3734564E8894CC7A42FB0F3 /* CDVFileTransfer.m */,
+				915F896E0B254A9F817200AF /* CDVFileTransfer.h */,
 			);
 			name = Plugins;
 			path = "Atlas Copco Cordova/Plugins";
@@ -1452,6 +1462,8 @@
 				F5F3DFB0183E90EE00D09058 /* files.js in Sources */,
 				F5F3DFD1183E90EE00D09058 /* persistence.store.sqlite.js in Sources */,
 				F5F3DF8E183E90EE00D09058 /* cordova.js in Sources */,
+				D4FFFA7F9EE04C8197EF77D9 /* CDVFile.m in Sources */,
+				6BA84E2EE63E440CA0C95515 /* CDVFileTransfer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
