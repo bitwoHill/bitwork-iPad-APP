@@ -42,7 +42,9 @@
         persistence.schemaSync(function(){
             //Sync with sharepoint
             NewsModel.syncNews();
-            CalendarModel.sharePointSync();
+            CalendarModel.syncCalendar();
+
+            //Sync with mock
             equipmentproductsModel.sharePointSync();
             otherproductsModel.sharePointSync();
             LinkModel.sharePointSync();

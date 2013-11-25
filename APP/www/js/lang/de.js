@@ -23,7 +23,12 @@ var i18n = {
 
         //Calendar
         "kalender": "Kalender",
+        "last-sync-calendar": "Last calendar sync",
         "ort": "Ort",
+        "anfangszeit": "Anfangszeit",
+        "endzeit": "Endzeit",
+        "calendar-add-phone": "Add to phone calendar",
+        "empty-calendar": "There are no calendar items to be displayed. Use above <i class='fa fa-refresh'></i> button to syncronise he calendar.",
 
         //News
         "news": "News",

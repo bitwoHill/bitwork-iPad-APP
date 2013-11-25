@@ -47,7 +47,11 @@
             </button>
         </header>
 
-        <div class="slide-menu-mask toggle-side-menu"></div>
+        <div class="slide-menu-mask toggle-side-menu">
+            <span class="slide-menu-mask-loading">
+                <img src="img/spinner.png" alt="Loding">
+            </span>
+        </div>
 
         <div class="slide-menu" id="slide-menu">
 
@@ -86,36 +90,49 @@
        <!-- content -->
         <div id="page-wrapper">
             <div id="lblHeaderText" class="page-header">
-                <h1><span class="i18n" data-i18n-key="kalender"></span><br/>
-                    <small class="i18n" data-i18n-key="subtitle"></small>
+                <div class="page-header-info pull-right">
+                    <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="NEWS">
+                        <span class="fa fa-refresh"></span>
+                        <span class="i18n" data-i18n-key="last-sync-calendar"></span>
+                        <span class="page-sync-btn-date"></span>
+                    </a>
+                </div>
+                <h1>
+                    <span class="i18n" data-i18n-key="kalender"></span>
                 </h1>
-                 <button id="btnNavigateBackwards" type="button" class="fa fa-chevron-left" onclick="window.open('http://apache.org', '_blank', 'location=yes');">     klick mich                     </button>
-  
             </div>
-            <div class="row">
-                <div class="col-lg-12" id="calendar-items-container">
 
-                    <div class="thumbnail hidden box" id="calendar-item-template">
-                        <div class="col-lg-12 bitworkPadding box-container clearfix">
-                        <img class="calendar-item-image"  src="content/logo_black.png" alt="">
+            <div id="calendar-items-container">
 
-                            <div class="box-content">
-                                <div class="content-heading">
-                                    <h3 class="calendar-item-title"></h3>
-                                </div>
+                <div class="thumbnail hidden box" id="calendar-item-template">
+                    <div class="col-lg-12 bitworkPadding box-container clearfix">
+                        <div class="box-content">
+                            <div class="content-heading">
+                                <h3 class="calendar-item-title"></h3>
+                            </div>
 
-                                <p class="calendar-item-date"></p>
-                                <p class="calendar-item-location-container"><span class="i18n" data-i18n-key="ort"></span>: <span class="calendar-item-location"></span></p>
+                            <p class="calendar-item-startdate-container"><span class="i18n label label-custom" data-i18n-key="anfangszeit"></span>: <span class="calendar-item-startdate"></span></p>
+                            <p class="calendar-item-enddate-container"><span class="i18n label label-custom" data-i18n-key="endzeit"></span>: <span class="calendar-item-enddate"></span></p>
+                            <p class="calendar-item-location-container"><span class="i18n label label-custom" data-i18n-key="ort"></span>: <span class="calendar-item-location"></span></p>
 
-                                <div class="calendar-item-body"></div>
+                            <hr>
+
+                            <div class="calendar-item-body"></div>
+
+                            <hr>
+
+                            <div class="form-actions clearfix">
+                                <a href="#" class="btn btn-primary pull-right calendar-item-to-phone" role="button"><i class="fa fa-calendar-o"></i>&nbsp;&nbsp;<span class="i18n" data-i18n-key="calendar-add-phone"></span></a>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- Content End -->
+
+                <div class="empty-page hidden" id="calendar-empty-container">
+                    <p class="text-center i18n" data-i18n-key="empty-calendar"></p>
+                </div>
+
             </div>
-            <!-- /.row -->
 
         </div>
         <!-- /#page-wrapper -->

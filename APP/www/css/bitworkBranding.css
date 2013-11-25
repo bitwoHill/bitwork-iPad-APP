@@ -139,6 +139,16 @@ h4 {
     margin: 20px 15px 0 0;
 }
 
+.label.label-custom {
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 85%;
+    color: #222;
+    text-align: left;
+    border-radius: 0;
+    min-width: 100px;
+}
+
 .box {
     position: relative;
     z-index: 1;
