@@ -27,7 +27,7 @@ var NewsModel = {
                 var newsItem = {
                     nodeId : value.ID,
                     title : value.Titel,
-                    body : $(value.Textkörper).text()
+                    body : NewsModel.formatBodyText(value.Textkörper)
                 };
 
                 if(value.LäuftAb) {
@@ -37,6 +37,7 @@ var NewsModel = {
                 if(value.Erstellt) {
                     newsItem.createdDate = utils.parseSharePointDate(value.Erstellt);
                 }
+
 
                 persistence.add(new News(newsItem));
             });
@@ -49,5 +50,21 @@ var NewsModel = {
                 }
             );
         }
+    },
+
+    formatBodyText : function(body){
+
+        var $body = $(body);
+
+        //remove links
+        $body.find('a').remove();
+
+        //remove images
+        $body.find('img').remove();
+
+        //remove empty paragrafs
+        $body.html($body.html().replace(/&nbsp;/g, ""));
+
+        return $body.html();
     }
 };
