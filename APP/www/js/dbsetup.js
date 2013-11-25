@@ -43,11 +43,11 @@
             //Sync with sharepoint
             NewsModel.syncNews();
             CalendarModel.syncCalendar();
+            LinkModel.syncLinks();
 
             //Sync with mock
             equipmentproductsModel.sharePointSync();
             otherproductsModel.sharePointSync();
-            LinkModel.sharePointSync();
             ContactsModel.sharePointSync();
 
             ProductGroupsModel.sharePointSync();

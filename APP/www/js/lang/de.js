@@ -38,6 +38,8 @@ var i18n = {
 
         //Links
         "wichtige-links": "Wichtige Links",
+        "last-sync-links": "Last links sync",
+        "empty-links": "There are no links to be displayed. Use above <i class='fa fa-refresh'></i> button to syncronise he links.",
 
         //MPL
         "stammdaten": "Stammdaten",
