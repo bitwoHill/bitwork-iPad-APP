@@ -1,4 +1,4 @@
-var productgroups_SYNC_URL = "content/productgroups.json";
+var PRODUCTGROUPS_LIST = "Produktgruppen";
 
 //DB model
 var Productgroups = persistence.define('Productgroups', {
@@ -9,37 +9,31 @@ var Productgroups = persistence.define('Productgroups', {
 Productgroups.index('productgroupid', { unique: true });
 
 var ProductGroupsModel = {
-    sharePointSync: function (callback) {
-
-        //TODO: replace with sharepoint connection
-        $.getJSON(productgroups_SYNC_URL, function (data) {
-
-            $.each(data, function (index, value) {
-                var productgroupsItem;
-
-                productgroupsItem = new Productgroups(value);
-                persistence.add(productgroupsItem);
+    syncProductGroups: function () {
+        $('body').trigger('sync-start');
+        SharePoint.sharePointRequest(PRODUCTGROUPS_LIST, ProductGroupsModel.mapSharePointData);
+    },
+    //maps SharePoint data to current model
+    mapSharePointData: function (data) {
+        var spData = data.d;
+        if (spData && spData.results.length) {
+            $.each(spData.results, function (index, value) {
+                var ProductGroupItem =
+                    {
+                        productgroupid: value.ID,
+                        productgroup: (value.Produktgruppe) ? value.Produktgruppe : ""
+                    };
+                
+                persistence.add(new Productgroups(ProductGroupItem));
             });
 
-            persistence.flush(
+               persistence.flush(
                 function () {
-                    //DB is updated - trigger custom event
-                    if (typeof callback === "function") {
-                        callback();
-                    }
-
+                    SyncModel.addSync(PRODUCTGROUPS_LIST);
+                    $('body').trigger('sync-end');
                     $('body').trigger('productgroups-sync-ready');
                 }
             );
-        }).fail(
-            function () {
-                //TODO: error handling if necessary
-                alert("Productgroups: Mock data read error.");
-
-                if (typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
+        }
     }
 };

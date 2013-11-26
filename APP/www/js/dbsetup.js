@@ -44,13 +44,13 @@
             NewsModel.syncNews();
             CalendarModel.syncCalendar();
             LinkModel.syncLinks();
-
+            ProductGroupsModel.syncProductGroups();
             //Sync with mock
             equipmentproductsModel.sharePointSync();
             otherproductsModel.sharePointSync();
             ContactsModel.sharePointSync();
 
-            ProductGroupsModel.sharePointSync();
+          
             ProductFamiliesModel.sharePointSync();
             ProductPlatformsModel.sharePointSync();
             ProductsModel.sharePointSync();

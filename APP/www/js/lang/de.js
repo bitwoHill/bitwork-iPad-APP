@@ -63,6 +63,8 @@ var i18n = {
 
         //MPL Produtgruppen
         "produktgruppen": "Produktgruppen",
+        "empty-produktgroups": "Es wurden noch keine Produktgruppen geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Produktgruppen zu laden.",
+        "last-sync-productgroups": "Zuletzt synchronisiert",
         //MPL Produktfamilien
         "produktfamilien": "Produktfamilien",
         //MPL Produktplattformen
