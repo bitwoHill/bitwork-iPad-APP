@@ -50,7 +50,12 @@
             </button>
         </header>
 
-        <div class="slide-menu-mask toggle-side-menu"></div>
+        <div class="slide-menu-mask toggle-side-menu">
+            <span class="slide-menu-mask-loading">
+                <img src="img/spinner.png" alt="Loding">
+            </span>
+        </div>
+
 
         <div class="slide-menu" id="slide-menu">
 
@@ -93,15 +98,21 @@
         <!-- content -->
         <div id="page-wrapper">
 
-            <div id="lblHeaderText" class="page-header">
-                <h1><span class="i18n" data-i18n-key="stammdaten"></span>
-                    <br />
-                    <small class="i18n" data-i18n-key="subtitle"></small>
-                </h1>
+            <!--synch button-->
+            <div class="page-header-info pull-right">
+                <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="equipmentproducts">
+                    <span class="fa fa-refresh"></span>
+                    <span class="i18n" data-i18n-key="last-sync-mpl"></span>
+                    <span class="page-sync-btn-date"></span>
+                </a>
             </div>
 
+            <!--headline-->
+            <h1><span class="i18n" data-i18n-key="stammdaten"></span></h1>
+
+
             <!-- backwards button -->
-            <button id="btnNavigateBackwards" type="button" class="fa fa-chevron-left" onclick="history.back();">                          </button>
+            <button id="btnNavigateBackwards" type="button" class="fa fa-chevron-left" onclick="history.back();"></button>
 
 
             <div class="row">
@@ -232,8 +243,16 @@
 
                     </div>
 
+
                 </div>
             </div>
+
+            <!--hidden "empty Container"-->
+            <div class="empty-page hidden" id="mpl-empty-container">
+                <p class="text-center i18n" data-i18n-key="mpl-produktfamilies"></p>
+            </div>
+
+
         </div>
     </div>
     <!--Content Ende-->
@@ -258,49 +277,3 @@
     <script src="js/index.js" type="text/javascript"></script>
 </body>
 </html>
-
-
-<!-- display one table with accordion collapsed for each documenttype -->
-<!-- TODO while loading the IDs and dataparent IDs need to be set. This could be done by using the SharePoint GUIDs -->
-<!-- Accordion Version -->
-<!--<div class="row-fluid" style="border: dashed">-->
-
-<!-- acordion 1 -->
-<!--                               <div class="accordion" id="accordion1">
-                                    <div class="accordion-group">
-                                        <div class="accordion-heading">
-                                            <a class="accordion-toggle" href="#collapse1" data-toggle="collapse"
-                                                data-parent="#accordion1"><i class="fa fa-arrow-circle-o-down"><strong>Dokumenttyp A</strong></i></a>
-                                        </div>
-                                        <div class="accordion-body collapse in" id="collapse1">
-                                            <div class="accordion-inner">
-                                                <div class="list-group">
-                                                    <a href="#" class="list-group-item  fa fa-file-text">Dokument 1</a>
-                                                    <a href="#" class="list-group-item fa fa-file-text">Dokument 2</a>
-                                                    <a href="#" class="list-group-item fa fa-file-text">Dokument 3</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>-->
-<!-- acordion 2 -->
-<!--   <div class="accordion" id="accordion2">
-                                    <div class="accordion-group">
-                                        <div class="accordion-heading">
-                                            <a class="accordion-toggle" href="#collapse2" data-toggle="collapse"
-                                                data-parent="#accordion2"><i class="fa  fa-arrow-circle-o-down"><strong>Dokumenttyp B</strong></i></a>
-                                        </div>
-                                        <div class="accordion-body collapse" id="collapse2">
-                                            <div class="accordion-inner">
-                                                <div class="list-group">
-                                                    <a href="#" class="list-group-item fa fa-file-text">Dokument 4</a>
-                                                    <a href="#" class="list-group-item fa fa-file-text">Dokument 5</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>-->

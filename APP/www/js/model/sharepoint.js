@@ -8,7 +8,7 @@ var SharePoint = {
             crossDomain: true,
             username: "bitwork",
             password: "Test1234!",
-            dataType: 'json',
+                     dataType: 'json',
             success: function(responseData, textStatus, jqXHR)
             {
                 callback(responseData);

@@ -37,7 +37,7 @@
 
     var dbSetup = function(){
         //setup DB connection
-        persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 5 * 1024 * 1024);
+        persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 10 * 1024 * 1024);
         //create DB schema
         persistence.schemaSync(function(){
             //Sync with sharepoint
@@ -47,14 +47,13 @@
             ProductGroupsModel.syncProductGroups();
             ProductFamiliesModel.sharePointFamilies();
             ProductPlatformsModel.sharePointPlatforms();
+            ProductsModel.sharePointProducts();
+            otherproductsModel.sharePointOtherproducts();
+            equipmentproductsModel.sharePointEquipmentproducts();
 
             //Sync with mock
-            equipmentproductsModel.sharePointSync();
-            otherproductsModel.sharePointSync();
-            ContactsModel.sharePointSync();
-            ProductsModel.sharePointSync();
-
-            productoptionsModel.sharePointSync();
+             ContactsModel.sharePointSync();
+             productoptionsModel.sharePointSync();
             documentsModel.sharePointSync();
             InfothekModel.sharePointSync();
         });

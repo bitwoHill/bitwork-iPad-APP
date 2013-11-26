@@ -52,6 +52,8 @@ var i18n = {
         "volumenstrom": "Volumenstrom",
         "druck": "Druck",
         "antriebsleistung": "Antriebsleistung",
+        "empty-mpl": "Es wurden noch keine Equipments / Sonstigen Produkte geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um  Equipments / Sonstigen Produkte zu laden.",
+        "last-sync-mpl": "Zuletzt synchronisiert",
 
         //MPL Documents
         "dokumente": "Dokumente",
@@ -71,10 +73,12 @@ var i18n = {
         "last-sync-productfamilies": "Zuletzt synchronisiert",
         //MPL Produktplattformen
         "produktplattformen": "Produktplattformen",
-        "empty-produktplatforms": "Es wurden noch keine Produktplattformen geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Produktplattformen zu laden.",
+        "empty-productplatforms": "Es wurden noch keine Produktplattformen geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Produktplattformen zu laden.",
         "last-sync-productplatforms": "Zuletzt synchronisiert",
         //MPL Produkt
         "produkt": "Produkt",
+        "empty-products": "Es wurden noch keine Produkte geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Produkte zu laden.",
+        "last-sync-products": "Zuletzt synchronisiert",
 
         //InfoThek
         "infothek": "Infothek"

@@ -1,5 +1,5 @@
 //this class does not display any contents of the product database. it only fetches data and filters the productequipment and otherproducts pages
-var products_SYNC_URL = "content/products.json";
+var PRODUCTS_LIST = "Produkt";
 
 //DB model
 var Products = persistence.define('Products', {
@@ -12,37 +12,36 @@ Products.index('productid', { unique: true });
 
 
 var ProductsModel = {
-    sharePointSync: function (callback) {
+    sharePointProducts: function () {
 
-        //TODO: replace with sharepoint connection
-        $.getJSON(products_SYNC_URL, function (data) {
+        $('body').trigger('sync-start');
+        SharePoint.sharePointRequest(PRODUCTS_LIST, ProductsModel.mapSharePointData);
+    },
+    //maps SharePoint data to current model
+    mapSharePointData: function (data) {
+        var spData = data.d;
+        if (spData && spData.results.length) {
+            $.each(spData.results, function (index, value) {
+                //mapping
+           
+                var productsItem = {
+                    productid: value.ID,
+                    product: (value.Produkt) ? value.Produkt : "",
+                    productplatformFK: (value.PlattformId) ? value.PlattformId : ""
+                };
 
-            $.each(data, function (index, value) {
-                var productsItem;
 
-                productsItem = new Products(value);
-                persistence.add(productsItem);
+                //add to persistence
+                persistence.add(new Products(productsItem));
             });
 
             persistence.flush(
-                function () {
-                    //DB is updated - trigger custom event
-                    if (typeof callback === "function") {
-                        callback();
-                    }
-
-                    $('body').trigger('products-sync-ready');
-                }
-            );
-        }).fail(
-            function () {
-                //TODO: error handling if necessary
-                alert("products: Mock data read error.");
-
-                if (typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
+               function () {
+                   SyncModel.addSync(PRODUCTS_LIST);
+                  $('body').trigger('sync-end');
+                   $('body').trigger('products-sync-ready');
+               }
+           );
+        }
     }
 };
