@@ -219,6 +219,13 @@ module.exports = [
         "clobbers": [
             "window.FileTransfer"
         ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.calendar/www/Calendar.js",
+        "id": "nl.x-services.plugins.calendar.Calendar",
+        "clobbers": [
+            "Calendar"
+        ]
     }
 ]
 });

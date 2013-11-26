@@ -1,4 +1,4 @@
-var CALENDAR_SYNC_URL = "content/calendar.json";
+var CALENDAR_LIST = "Kalender";
 
 //DB model
 var Calendar = persistence.define('Calendar', {
@@ -14,50 +14,90 @@ var Calendar = persistence.define('Calendar', {
 Calendar.index('nodeId', { unique: true });
 
 var CalendarModel = {
-    sharePointSync : function(callback){
 
-        //TODO: replace with sharepoint connection
-        var request = $.getJSON(CALENDAR_SYNC_URL, function(data){
+    syncCalendar : function(){
+        $('body').trigger('sync-start');
 
-            $.each(data, function(index, value){
-                var calendarItem,
-                    tmp = (value.image)? value.image.split('.') : false,
-                    imageExtension = (tmp && tmp.length > 1)? (tmp[tmp.length - 1]).toLowerCase() : false;
+        SharePoint.sharePointRequest(CALENDAR_LIST, CalendarModel.mapSharePointData);
+    },
 
-                //save image date if exists
-                if(imageExtension && (imageExtension === 'png' || imageExtension === 'jpg')){
-                    var img = new Image();
-                    img.src = value.image;
-                    img.onload = function(){
-                        value.image = utils.getBase64FromImage(img, imageExtension);
-                        calendarItem = new Calendar(value);
-                        persistence.add(calendarItem);
-                    };
-                } else {
-                    value.image = "";
-                    calendarItem = new Calendar(value);
-                    persistence.add(calendarItem);
+    mapSharePointData : function(data){
+        var spData = data.d;
+        console.log(spData);
+        if(spData && spData.results.length){
+            $.each(spData.results, function(index, value){
+                var calendarItem = {
+                    nodeId : value.ID,
+                    title : value.Titel,
+                    body : CalendarModel.formatBodyText(value.Beschreibung)
+                };
+
+                if(value.Anfangszeit) {
+                    calendarItem.startDate = utils.parseSharePointDate(value.Anfangszeit);
                 }
+
+                if(value.Endzeit) {
+                    calendarItem.expirationDate = utils.parseSharePointDate(value.Endzeit);
+                }
+
+                if(value.Ort) {
+                    calendarItem.location = value.Ort;
+                }
+
+                persistence.add(new Calendar(calendarItem));
             });
 
             persistence.flush(
                 function(){
-                    //DB is updated - trigger custom event
-                    if(typeof callback === "function"){
-                        callback();
-                    }
+                    SyncModel.addSync(CALENDAR_LIST);
+                    $('body').trigger('sync-end');
                     $('body').trigger('calendar-sync-ready');
                 }
             );
-        }).fail(
-            function(){
-                //TODO: error handling if necessary
-                console.log( "News: Mock data read error." );
+        }
+    },
 
-                if(typeof callback === "function") {
-                    callback();
-                }
+    addCalendarToPhone: function(id, callback){
+        CalendarModel.getCalendarItem(id, function(calendarItem){
+        //TODO Buggy; always getting the last item in list
+        
+           console.log(calendarItem);
+//alert(id);
+  var startDate = calendarItem.startDate;
+  var endDate =calendarItem.expirationDate;
+  var title = calendarItem.title;
+  var location = calendarItem.location;
+  var notes = "";//calendarItem.body; //todo parse url
+  var success = function(message) { console.log("Success: " + JSON.stringify(message)); };
+  var error = function(message) { alert("Error: " + message); };
+  
+  //create the event
+  window.plugins.calendar.createEvent(title,location,notes,startDate,endDate,success,error);
+          
+            callback();
+        });
+    },
+
+    getCalendarItem: function(id, callback){
+        Calendar.all().filter("nodeId", "=", parseInt(id, 10)).limit(1).list(function(res){
+            if(res.length && res[0]._data) {
+                callback(res[0]._data);
+            } else {
+                callback(false);
             }
-        );
+        })
+    },
+
+    formatBodyText : function(body){
+
+        var $body = $(body);
+
+        //remove links
+        $body.find('a').remove();
+
+        //remove images
+        $body.find('img').remove();
+
+        return $body.html();
     }
 };

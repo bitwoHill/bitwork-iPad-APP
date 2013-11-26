@@ -59,9 +59,21 @@ var CalendarModel = {
 
     addCalendarToPhone: function(id, callback){
         CalendarModel.getCalendarItem(id, function(calendarItem){
-            console.log(calendarItem);
-
-            //TODO: use pgone gap function to sync calendar data
+        //TODO Buggy; always getting the last item in list
+        
+           console.log(calendarItem);
+//alert(id);
+  var startDate = calendarItem.startDate;
+  var endDate =calendarItem.expirationDate;
+  var title = calendarItem.title;
+  var location = calendarItem.location;
+  var notes = "";//calendarItem.body; //todo parse url
+  var success = function(message) { console.log("Success: " + JSON.stringify(message)); };
+  var error = function(message) { alert("Error: " + message); };
+  
+  //create the event
+  window.plugins.calendar.createEvent(title,location,notes,startDate,endDate,success,error);
+          
             callback();
         });
     },

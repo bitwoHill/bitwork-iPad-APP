@@ -47,7 +47,11 @@
             </button>
         </header>
 
-        <div class="slide-menu-mask toggle-side-menu"></div>
+        <div class="slide-menu-mask toggle-side-menu">
+            <span class="slide-menu-mask-loading">
+                <img src="img/spinner.png" alt="Loding">
+            </span>
+        </div>
 
         <div class="slide-menu" id="slide-menu">
 
@@ -87,23 +91,35 @@
         <!-- content -->
         <div id="page-wrapper">
             <div id="lblHeaderText" class="page-header">
-                <h1><span class="i18n" data-i18n-key="wichtige-links"></span><br/>
-                    <small class="i18n" data-i18n-key="subtitle"></small>
+                <div class="page-header-info pull-right">
+                    <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="WichtigeLinks">
+                        <span class="fa fa-refresh"></span>
+                        <span class="i18n" data-i18n-key="last-sync-links"></span>
+                        <span class="page-sync-btn-date"></span>
+                    </a>
+                </div>
+
+                <h1>
+                    <span class="i18n" data-i18n-key="wichtige-links"></span>
                 </h1>
             </div>
             <div>
                 <ul id="link-items-container" class="list-group">
                     <!-- at this point folders and contacts.js need to be loaded hierarchically and be displayed -->
                     <li id="link-item-template" class="list-group-item hidden">
-                        <a class="link-item-anchor" href="http://www.google.de"><i class="fa fa-link"></i> <span class="link-item-anchor-label"></span></a><br />
-                        <span class="link-item-description"></span>
+                        <strong class="link-item-description"></strong><br />
+                        <a class="link-item-anchor" href="" target="_system"><i class="fa fa-link"></i> <span class="link-item-anchor-label"></span></a><br />
                     </li>
                 </ul>
+
+                <div class="empty-page hidden" id="link-empty-container">
+                    <p class="text-center i18n" data-i18n-key="empty-links"></p>
+                </div>
             </div>
         </div>
 
         <!--Content End-->
-
+    </div>
 
 
     <!-- Le javascript

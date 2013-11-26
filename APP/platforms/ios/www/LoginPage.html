@@ -118,16 +118,19 @@
             //Create Mock contact. Available Contact Properties: id, displayName, name, nickname,phoneNumbers(array), emails, addresses, ims, organizations, birthday, note, photos, categories,urs
             //for reference: docs.phonegap.com/en/edge/cordova_contacts_contacts.md.html#Contacts
 
-            //   var myContact = navigator.contacts.create({"displayName": "Test User"});
-            //   myContact.name.familyName = "User";
-            //        myContact.name.givenName = "Test";
-            // myContact.nickname ="Userboy";
-            //myContact.note = "This contact has a note.";
-            //  console.log("The contact, " + myContact.displayName + ", note: " + myContact.note);
-            //myContact.save(app.onContactSaveSuccess, app.onContactSaveError);
+/*
+               var myContact = navigator.contacts.create({"displayName": "Test User"});
+               myContact.name.familyName = "User";
+                    myContact.name.givenName = "Test";
+             myContact.nickname ="Userboy";
+            myContact.note = "This contact has a note.";
+              console.log("The contact, " + myContact.displayName + ", note: " + myContact.note);
+            myContact.save(app.onContactSaveSuccess, app.onContactSaveError);
+            
+            */
 
             //Create Mock file to filesystem
-
+/*
             // window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
             window.requestFileSystem(window.PERSISTENT, 7 * 1024 * 1024, initFS, errorHandler);
 
@@ -184,31 +187,12 @@
             {
                 console.log('An error occured');
             }
+            */
         }
     
        
     
-            /*  function initFS(fs) {
-                       alert("Welcome to Filesystem! It's showtime :)"); // Just to check if everything is OK :)
-                       // place the functions you will learn bellow here
-       
-                       var ft = new FileTransfer(),
-                           localPath = fs.root.toURL() + '/bblogo.png';
-       
-                       alert(2);
-                       ft.download('http://developer.blackberry.com/webroot/img/common/bblogo-black.png', localPath, function (entry) {
-                           console.log('download success!');
-                           alert("Download success!");
-                           console.log(entry);
-                           alert(entry);
-       
-                           entry.file(function (file) { console.log(file.size); });
-                           alert(localPath);
-                       }
-       
-                       function errorHandler() {
-                           console.log('An error occured');
-                       });*/
+           
 
     </script>
 

@@ -23,15 +23,23 @@ var i18n = {
 
         //Calendar
         "kalender": "Kalender",
+        "last-sync-calendar": "Last calendar sync",
         "ort": "Ort",
+        "anfangszeit": "Anfangszeit",
+        "endzeit": "Endzeit",
+        "calendar-add-phone": "Add to phone calendar",
+        "empty-calendar": "There are no calendar items to be displayed. Use above <i class='fa fa-refresh'></i> button to syncronise he calendar.",
 
         //News
         "news": "News",
         "last-sync-news": "Last news sync",
         "weiterlesen": "Weiterlesen",
+        "empty-news": "There are no news to be displayed. Use above <i class='fa fa-refresh'></i> button to syncronise he news.",
 
         //Links
         "wichtige-links": "Wichtige Links",
+        "last-sync-links": "Last links sync",
+        "empty-links": "There are no links to be displayed. Use above <i class='fa fa-refresh'></i> button to syncronise he links.",
 
         //MPL
         "stammdaten": "Stammdaten",

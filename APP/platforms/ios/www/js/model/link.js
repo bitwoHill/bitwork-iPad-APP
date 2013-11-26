@@ -1,4 +1,4 @@
-var LINK_SYNC_URL = "content/links.json";
+var LINK_LIST = "WichtigeLinks";
 
 //DB model
 var Link = persistence.define('Link', {
@@ -11,35 +11,45 @@ var Link = persistence.define('Link', {
 Link.index('linkId', { unique: true });
 
 var LinkModel = {
-    sharePointSync : function(callback){
 
-        //TODO: replace with sharepoint connection
-        $.getJSON(LINK_SYNC_URL, function(data){
+    syncLinks : function(){
+        $('body').trigger('sync-start');
 
-            $.each(data, function(index, value){
-                var linkItem = new Link(value);
-                persistence.add(linkItem);
+        SharePoint.sharePointRequest(LINK_LIST, LinkModel.mapSharePointData);
+    },
+
+    //maps SharePoint data to current model
+    mapSharePointData: function(data){
+        var spData = data.d;
+        if(spData && spData.results.length){
+            $.each(spData.results, function(index, value){
+                var linkItem = {
+                        linkId : value.ID,
+                        description : (value.Link)? value.Link : ""
+                    },
+                    tmpUrl;
+
+                if(value.URL) {
+                    tmpUrl = value.URL.split(",");
+                    if(tmpUrl.length > 1){
+                        linkItem.label = $.trim(tmpUrl[1]);
+                        linkItem.linkUrl = $.trim(tmpUrl[0]);
+                    } else {
+                        linkItem.label = value.URL;
+                        linkItem.linkUrl = value.URL;
+                    }
+                }
+
+                persistence.add(new Link(linkItem));
             });
 
             persistence.flush(
                 function(){
-                    //DB is updated - trigger custom event
-                    if(typeof callback === "function"){
-                        callback();
-                    }
-
+                    SyncModel.addSync(LINK_LIST);
+                    $('body').trigger('sync-end');
                     $('body').trigger('link-sync-ready');
                 }
             );
-        }).fail(
-            function(){
-                //TODO: error handling if necessary
-                alert("Links: Mock data read error.");
-
-                if(typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
+        }
     }
 };

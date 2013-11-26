@@ -34,6 +34,10 @@ h3 {
     color: inherit;
 }
 
+.thumbnail h3 {
+    margin-top: 30px;
+}
+
 h4 {
     color: white;
 }
@@ -135,6 +139,16 @@ h4 {
     margin: 20px 15px 0 0;
 }
 
+.label.label-custom {
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 85%;
+    color: #222;
+    text-align: left;
+    border-radius: 0;
+    min-width: 100px;
+}
+
 .box {
     position: relative;
     z-index: 1;
@@ -167,6 +181,12 @@ h4 {
 
     -webkit-box-shadow: inset 2px -2px 5px 1px rgba(0, 0, 0, 0.4);
     box-shadow: inset 2px -2px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.empty-page {
+    color: #bbbbbb;
+    text-shadow: 1px 1px 0 #000;
+    padding: 50px 0;
 }
 
 

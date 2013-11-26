@@ -21,7 +21,6 @@ var CalendarUI = {
                         $('.calendar-item-title', $newItem).html(data.title);
                         $('.calendar-item-body', $newItem).html(data.body);
                         $('a.calendar-item-to-phone').attr('data-calendar-id', data.nodeId);
-
                         if(data.location) {
                             $('.calendar-item-location', $newItem).html(data.location);
                         } else {
@@ -74,6 +73,7 @@ var CalendarUI = {
                 calendarId;
 
             calendarId = $this.attr('data-calendar-id');
+           
             CalendarModel.addCalendarToPhone(calendarId, function(){
                 $this.addClass("disabled");
             });

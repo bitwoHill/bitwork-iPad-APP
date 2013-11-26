@@ -215,6 +215,9 @@
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
 		D4FFFA7F9EE04C8197EF77D9 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F4025E029B4764B3B5B87C /* CDVFile.m */; };
 		6BA84E2EE63E440CA0C95515 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F3734564E8894CC7A42FB0F3 /* CDVFileTransfer.m */; };
+		6C447B0CED4440FA9D7FB22A /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 80941D4CD06E47CB83ACDFDC /* Calendar.m */; };
+		DFE32FF711C3427884FF2391 /* EventKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = E7EC9EEDDA694906ABC91793 /* EventKit.framework */; };
+		0FD7E24044DA4951AC5D5E35 /* EventKitUI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 49A1A69404754A3CA9C9C621 /* EventKitUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -456,6 +459,10 @@
 		8B64AA1304324031B081EB86 /* CDVFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFile.h"; path = "org.apache.cordova.file/CDVFile.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		F3734564E8894CC7A42FB0F3 /* CDVFileTransfer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFileTransfer.m"; path = "org.apache.cordova.file-transfer/CDVFileTransfer.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		915F896E0B254A9F817200AF /* CDVFileTransfer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFileTransfer.h"; path = "org.apache.cordova.file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		80941D4CD06E47CB83ACDFDC /* Calendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Calendar.m"; path = "nl.x-services.plugins.calendar/Calendar.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		41F39BF6A6454645AC3C3C22 /* Calendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Calendar.h"; path = "nl.x-services.plugins.calendar/Calendar.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		E7EC9EEDDA694906ABC91793 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKit.framework"; path = "System/Library/Frameworks/EventKit.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		49A1A69404754A3CA9C9C621 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKitUI.framework"; path = "System/Library/Frameworks/EventKitUI.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,6 +477,8 @@
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
 				D5879826B6214AFD892D6E66 /* AddressBook.framework in Frameworks */,
 				484D57690CE04BCEAE5F691A /* AddressBookUI.framework in Frameworks */,
+				DFE32FF711C3427884FF2391 /* EventKit.framework in Resources */,
+				0FD7E24044DA4951AC5D5E35 /* EventKitUI.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +575,8 @@
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
 				97D8C03DE3414FE9AD38EFCF /* AddressBook.framework */,
 				2488E003374849CAA6F95857 /* AddressBookUI.framework */,
+				E7EC9EEDDA694906ABC91793 /* EventKit.framework */,
+				49A1A69404754A3CA9C9C621 /* EventKitUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -591,6 +602,8 @@
 				8B64AA1304324031B081EB86 /* CDVFile.h */,
 				F3734564E8894CC7A42FB0F3 /* CDVFileTransfer.m */,
 				915F896E0B254A9F817200AF /* CDVFileTransfer.h */,
+				80941D4CD06E47CB83ACDFDC /* Calendar.m */,
+				41F39BF6A6454645AC3C3C22 /* Calendar.h */,
 			);
 			name = Plugins;
 			path = "Atlas Copco Cordova/Plugins";
@@ -1464,6 +1477,7 @@
 				F5F3DF8E183E90EE00D09058 /* cordova.js in Sources */,
 				D4FFFA7F9EE04C8197EF77D9 /* CDVFile.m in Sources */,
 				6BA84E2EE63E440CA0C95515 /* CDVFileTransfer.m in Sources */,
+				6C447B0CED4440FA9D7FB22A /* Calendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
