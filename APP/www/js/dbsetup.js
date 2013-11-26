@@ -45,13 +45,14 @@
             CalendarModel.syncCalendar();
             LinkModel.syncLinks();
             ProductGroupsModel.syncProductGroups();
+            ProductFamiliesModel.sharePointFamilies();
             //Sync with mock
             equipmentproductsModel.sharePointSync();
             otherproductsModel.sharePointSync();
             ContactsModel.sharePointSync();
 
           
-            ProductFamiliesModel.sharePointSync();
+          
             ProductPlatformsModel.sharePointSync();
             ProductsModel.sharePointSync();
 

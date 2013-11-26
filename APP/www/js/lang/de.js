@@ -67,6 +67,8 @@ var i18n = {
         "last-sync-productgroups": "Zuletzt synchronisiert",
         //MPL Produktfamilien
         "produktfamilien": "Produktfamilien",
+        "empty-produktfamilies": "Es wurden noch keine Produktfamilien geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Produktfamilien zu laden.",
+        "last-sync-productfamilies": "Zuletzt synchronisiert",
         //MPL Produktplattformen
         "produktplattformen": "Produktplattformen",
         //MPL Produkt

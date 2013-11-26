@@ -8,7 +8,7 @@ var ProductGroupsUI = {
             $template = $(productgroups_ITEM_TEMPLATE);
 
         if ($container.length && $template.length) {
-            Productgroups.all().order('productgroup').list(null, function (results) {
+            Productgroups.all().order('productgroup', true, false).list(null, function (results) {
                 if (results.length) {
                     $(productgroups_EMPTY_CONTAINER).addClass('hidden');
                     $.each(results, function (index, value) {

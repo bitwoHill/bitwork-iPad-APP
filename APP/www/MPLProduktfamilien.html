@@ -47,7 +47,12 @@
             </button>
         </header>
 
-        <div class="slide-menu-mask toggle-side-menu"></div>
+                  <div class="slide-menu-mask toggle-side-menu">
+           <span class="slide-menu-mask-loading">
+                <img src="img/spinner.png" alt="Loding">
+            </span>
+        </div>
+
 
         <div class="slide-menu" id="slide-menu">
 
@@ -88,12 +93,19 @@
         <!-- content -->
         <div id="page-wrapper">
 
-            <div id="lblHeaderText" class="page-header">
-                <h1><span class="i18n" data-i18n-key="produktfamilien"></span>
-                    <br />
-                    <small class="i18n" data-i18n-key="subtitle"></small>
-                </h1>
+            <!--synch button-->
+            <div class="page-header-info pull-right">
+                <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="ProduktFamilies">
+                    <span class="fa fa-refresh"></span>
+                    <span class="i18n" data-i18n-key="last-sync-productfamilies"></span>
+                    <span class="page-sync-btn-date"></span>
+                </a>
             </div>
+
+            <!--headline-->
+                <h1><span class="i18n" data-i18n-key="produktfamilien"></span></h1>
+
+
             <!-- backwards button -->
             <button id="btnNavigateBackwards" type="button" class="fa fa-chevron-left" onclick="history.back();">                          </button>
 
@@ -117,6 +129,13 @@
                     <div>
                     </div>
                 </div>
+
+                <!--hidden "empty Container"-->
+                <div class="empty-page hidden" id="productfamilies-empty-container">
+                    <p class="text-center i18n" data-i18n-key="empty-produktfamilies"></p>
+                </div>
+                
+
             </div>
             </div>
             <!-- end content -->
