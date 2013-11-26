@@ -20,7 +20,12 @@ var CalendarUI = {
 
                         $('.calendar-item-title', $newItem).html(data.title);
                         $('.calendar-item-body', $newItem).html(data.body);
-                        $('a.calendar-item-to-phone').attr('data-calendar-id', data.nodeId);
+
+                        $('a.calendar-item-to-phone', $newItem).attr('data-calendar-id', data.nodeId);
+
+                        $('a.calendar-item-to-phone', $newItem).attr('data-calendar-id', data.nodeId);
+
+
                         if(data.location) {
                             $('.calendar-item-location', $newItem).html(data.location);
                         } else {
