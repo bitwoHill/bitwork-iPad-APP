@@ -46,14 +46,12 @@
             LinkModel.syncLinks();
             ProductGroupsModel.syncProductGroups();
             ProductFamiliesModel.sharePointFamilies();
+            ProductPlatformsModel.sharePointPlatforms();
+
             //Sync with mock
             equipmentproductsModel.sharePointSync();
             otherproductsModel.sharePointSync();
             ContactsModel.sharePointSync();
-
-          
-          
-            ProductPlatformsModel.sharePointSync();
             ProductsModel.sharePointSync();
 
             productoptionsModel.sharePointSync();
