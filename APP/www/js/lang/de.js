@@ -81,6 +81,11 @@ var i18n = {
         "last-sync-products": "Zuletzt synchronisiert",
 
         //InfoThek
-        "infothek": "Infothek"
+        "infothek": "Infothek",
+
+        //Contacts
+        "contacts": "Telefonbuch",
+        "empty-contacts": "There are no contacts to be displayed. Use above <i class='fa fa-refresh'></i> button to syncronise the contact page.",
+        "last-sync-contacts": "Last contacts sync",
     }
 }

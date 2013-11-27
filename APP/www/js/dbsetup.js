@@ -44,6 +44,7 @@
             NewsModel.syncNews();
             CalendarModel.syncCalendar();
             LinkModel.syncLinks();
+            ContactsModel.syncContacts();
             ProductGroupsModel.syncProductGroups();
             ProductFamiliesModel.sharePointFamilies();
             ProductPlatformsModel.sharePointPlatforms();
@@ -52,8 +53,7 @@
             equipmentproductsModel.sharePointEquipmentproducts();
 
             //Sync with mock
-             ContactsModel.sharePointSync();
-             productoptionsModel.sharePointSync();
+            productoptionsModel.sharePointSync();
             documentsModel.sharePointSync();
             InfothekModel.sharePointSync();
         });

@@ -1,5 +1,6 @@
 var Settings = {
-        spDomain : "http://www.atlas-cms.com/_vti_bin/ListData.svc"
+        spDomain : "http://www.atlas-cms.com/_vti_bin/ListData.svc",
+        spContent: "http://www.atlas-cms.com"
     },
 
     //To use this Proxy setting on your local machine you must define proxypass on your local http server.
@@ -11,9 +12,11 @@ var Settings = {
     // ProxyPassReverse /SPbitwork/ http://www.atlas-cms.com/_vti_bin/ListData.svc
     proxySettings = {
         spDomain: "/SPbitwork"
+        //spContent: "/SPbitworkContent"
     },
     mockSettings = {
-        spDomain: "content/mockdata"
+        spDomain: "content/mockdata",
+        spContent: "content"
     };
 
 (function($){

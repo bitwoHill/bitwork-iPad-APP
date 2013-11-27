@@ -49,6 +49,3 @@ var LinkUI = {
     })
 
 })(jQuery);
-
-//bind to sync ready event in order to display the news
-$('body').on('news-sync-ready', LinkUI.displayLinks);
