@@ -24,10 +24,12 @@ var equipmentproductsModel = {
     sharePointEquipmentproducts: function () {
 
         $('body').trigger('sync-start');
-        SharePoint.sharePointRequest(EQUIPMENTPRODUCTS_LIST, equipmentproductsModel.mapSharePointData);
-    },
+
+                  SharePoint.sharePointRequest(EQUIPMENTPRODUCTS_LIST, equipmentproductsModel.mapSharePointData);
+         },
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
+        //data.d comes from sharepoint
         var spData = data.d;
         if (spData && spData.results.length) {
             $.each(spData.results, function (index, value) {
