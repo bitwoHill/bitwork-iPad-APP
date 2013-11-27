@@ -4,11 +4,17 @@ var NEWS_CONTAINER = "#news-items-container",
     URL_SINGLE_NEWS = "http://www.atlas-cms.com/Lists/Ankuendigungen/DispForm.aspx?ID=";
 
 var NewsUI = {
+    resetNews : function(){
+        $(NEWS_CONTAINER + ' > div').not(NEWS_ITEM_TEMPLATE).not(NEWS_EMPTY_CONTAINER).remove();
+    },
+
     displayNews : function(){
         var $container = $(NEWS_CONTAINER),
             $template = $(NEWS_ITEM_TEMPLATE);
 
         if($container.length && $template.length){
+            NewsUI.resetNews();
+
             News.all().order('createdDate', false).list(null, function(results){
                 if(results.length){
                     $(NEWS_EMPTY_CONTAINER).addClass('hidden');

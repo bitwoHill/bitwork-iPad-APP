@@ -4,11 +4,18 @@ var LINK_CONTAINER = "#link-items-container",
 
 var LinkUI = {
 
+    resetLinks : function(){
+        var $container = $(LINK_CONTAINER);
+
+        $('li', $container).not(LINK_ITEM_TEMPLATE).remove();
+    },
+
     displayLinks : function(){
         var $container = $(LINK_CONTAINER),
             $template = $(LINK_ITEM_TEMPLATE);
 
         if($container.length && $template.length){
+            LinkUI.resetLinks();
             Link.all().order('description').list(null, function(results){
                 if(results.length){
                     $(LINK_EMPTY_CONTAINER).addClass('hidden');

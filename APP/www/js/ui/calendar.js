@@ -3,6 +3,10 @@ var CALENDAR_CONTAINER = "#calendar-items-container",
     CALENDAR_EMPTY_CONTAINER = "#calendar-empty-container";
 
 var CalendarUI = {
+    resetCalendar : function(){
+        $(CALENDAR_CONTAINER + " > div").not(CALENDAR_EMPTY_CONTAINER).not(CALENDAR_ITEM_TEMPLATE).remove();
+    },
+
     displayCalendar : function(){
         var $container = $(CALENDAR_CONTAINER),
             $template = $(CALENDAR_ITEM_TEMPLATE);
