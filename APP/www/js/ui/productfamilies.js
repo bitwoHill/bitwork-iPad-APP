@@ -3,6 +3,10 @@ var productfamilies_CONTAINER = "#productfamilies-items-container",
     productfamilies_ITEM_TEMPLATE = "#productfamilies-item-template";
 
 var ProductFamiliesUI = {
+    resetProductFamilies : function(){
+        $(productfamilies_CONTAINER + ' > div').not(productfamilies_ITEM_TEMPLATE).remove();
+    },
+
     displayproductfamilies: function () 
     {
         var $container = $(productfamilies_CONTAINER),
@@ -13,6 +17,7 @@ var ProductFamiliesUI = {
             var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
 
             Productfamilies.all().filter("productgroupFK", "=", ProduktgruppePar).order('productfamily', true, false).list(null, function (results) {
+                ProductFamiliesUI.resetProductFamilies();
                 //if there are results add them to UI
                 if (results.length) {
                     $(productfamilies_EMPTY_CONTAINER).addClass('hidden');
@@ -54,7 +59,3 @@ var ProductFamiliesUI = {
     })
 
 })(jQuery);
-
-
-//bind to sync ready event in order to display the productfamilies
-$('body').on('productfamilies-sync-ready', ProductFamiliesUI.displayproductfamilies);

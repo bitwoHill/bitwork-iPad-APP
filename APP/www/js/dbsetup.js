@@ -41,16 +41,16 @@
         //create DB schema
         persistence.schemaSync(function(){
             //Sync with sharepoint
-            NewsModel.syncNews();
-            CalendarModel.syncCalendar();
-            LinkModel.syncLinks();
-            ContactsModel.syncContacts();
+            //NewsModel.syncNews();
+            //CalendarModel.syncCalendar();
+            //LinkModel.syncLinks();
+            //ContactsModel.syncContacts();
             ProductGroupsModel.syncProductGroups();
             ProductFamiliesModel.sharePointFamilies();
             ProductPlatformsModel.sharePointPlatforms();
             ProductsModel.sharePointProducts();
-            otherproductsModel.sharePointOtherproducts();
-            equipmentproductsModel.sharePointEquipmentproducts();
+            //otherproductsModel.sharePointOtherproducts();
+            //equipmentproductsModel.sharePointEquipmentproducts();
 
             //Sync with mock
             productoptionsModel.sharePointSync();

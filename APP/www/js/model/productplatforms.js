@@ -22,9 +22,8 @@ var ProductPlatformsModel = {
                 var productplatformsItem = {
                     productplatformid: value.ID,
                     productplatform: (value.Produktplattformen) ? value.Produktplattformen : "",
-                    productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : "",
+                    productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : ""
                 };
-           
 
                 //add to persistence
                 persistence.add(new Productplatforms(productplatformsItem));

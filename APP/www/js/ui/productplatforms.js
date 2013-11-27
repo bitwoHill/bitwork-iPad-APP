@@ -1,17 +1,23 @@
 var productplatforms_CONTAINER = "#productplatforms-items-container",
-        productplatforms_EMPTY_CONTAINER = "#productplatforms-empty-container",
+    productplatforms_EMPTY_CONTAINER = "#productplatforms-empty-container",
     productplatforms_ITEM_TEMPLATE = "#productplatforms-item-template";
 
 
 var ProductPlatformsUI = {
+    resetProductPlatforms : function(){
+        $(productplatforms_CONTAINER + ' > div').not(productplatforms_ITEM_TEMPLATE).remove();
+    },
+
     displayproductplatforms: function () {
         var $container = $(productplatforms_CONTAINER),
             $template = $(productplatforms_ITEM_TEMPLATE);
 
         if ($container.length && $template.length) {
+            ProductPlatformsUI.resetProductPlatforms();
+
             //load by current url parameter / andhand von aktueller ID laden
-            var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
-            var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
+            var ProduktgruppePar = utils.getUrlParameter('Produktgruppe'),
+                ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
 
             Productplatforms.all().filter("productfamilyFK", "=", ProduktfamiliePar).order('productplatform', true, false).list(null, function (results) {
                 //if there are results add them to UI
@@ -50,31 +56,11 @@ var ProductPlatformsUI = {
 
     $(document).ready(function () {
         $('body').on('click', 'a.page-sync-btn', function () {
-            ProductPlatformsModel.syncProductPlatforms();
+            ProductPlatformsModel.sharePointPlatforms();
         });
     })
 
 })(jQuery);
-
-
-//bind to sync ready event in order to display the productplatforms
-$('body').on('productplatforms-sync-ready', ProductPlatformsUI.displayproductplatforms);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

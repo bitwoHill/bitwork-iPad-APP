@@ -1,4 +1,5 @@
 var PRODUCTFAMILIES_LIST = "Produktfamilien";
+
 //DB Model
 var Productfamilies = persistence.define('Productfamilies', {
     productfamilyid: "INT",
@@ -14,6 +15,7 @@ var ProductFamiliesModel = {
         $('body').trigger('sync-start');
         SharePoint.sharePointRequest(PRODUCTFAMILIES_LIST, ProductFamiliesModel.mapSharePointData);
     },
+
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
@@ -23,7 +25,7 @@ var ProductFamiliesModel = {
                 var productfamiliesItem = {
                     productfamilyid: value.ID,
                     productfamily: (value.Produktfamilien) ? value.Produktfamilien : "",
-                    productgroupFK: (value.ProduktgruppeId) ? value.ProduktgruppeId : "",
+                    productgroupFK: (value.ProduktgruppeId) ? value.ProduktgruppeId : ""
                 };
 
                 //add to persistence

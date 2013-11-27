@@ -3,11 +3,17 @@ var productgroups_CONTAINER = "#productgroups-items-container",
     productgroups_ITEM_TEMPLATE = "#productgroups-item-template";
 
 var ProductGroupsUI = {
+    resetProductGroups : function(){
+        $(productgroups_CONTAINER + ' > div').not(productgroups_ITEM_TEMPLATE).remove();
+    },
+
     displayproductgroups: function () {
         var $container = $(productgroups_CONTAINER),
             $template = $(productgroups_ITEM_TEMPLATE);
 
         if ($container.length && $template.length) {
+            ProductGroupsUI.resetProductGroups();
+
             Productgroups.all().order('productgroup', true, false).list(null, function (results) {
                 if (results.length) {
                     $(productgroups_EMPTY_CONTAINER).addClass('hidden');
@@ -21,7 +27,6 @@ var ProductGroupsUI = {
 
 
                         $container.append($newItem.removeClass('hidden'));
-
                     });
                 } else {
                     $(productgroups_EMPTY_CONTAINER).removeClass('hidden');
@@ -52,8 +57,3 @@ var ProductGroupsUI = {
     })
 
 })(jQuery);
-
-
-
-//bind to sync ready event in order to display the productgroups
-$('body').on('productgroups-sync-ready', ProductGroupsUI.displayproductgroups);

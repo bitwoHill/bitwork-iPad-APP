@@ -1,8 +1,11 @@
 var products_CONTAINER = "#products-item-container",
-        products_EMPTY_CONTAINER = "#products-empty-container",
-        products_ITEM_TEMPLATE = "#products-item-template";
+    products_EMPTY_CONTAINER = "#products-empty-container",
+    products_ITEM_TEMPLATE = "#products-item-template";
 
 var ProductsUI = {
+    resetProducts : function(){
+        $(products_CONTAINER + ' > tr').not(products_ITEM_TEMPLATE).remove();
+    },
 
     displayproducts: function () {
         var $container = $(products_CONTAINER),
@@ -10,6 +13,9 @@ var ProductsUI = {
 
 
         if ($container.length && $template.length) {
+
+            ProductsUI.resetProducts();
+
             //load by current url parameter / andhand von aktueller ID laden
 
             //the products page behaves a little weird. even though we have groups -> families - > platforms ->products -> details the webpart (and hence the app) IGNORES the Product.
@@ -107,12 +113,10 @@ var ProductsUI = {
 (function ($) {
     //Display productgroups when sync is ready
     $('body').on('products-sync-ready', ProductsUI.displayproducts);
+
     $(document).ready(function () {
         $('body').on('click', 'a.page-sync-btn', function () {
-            ProductsModel.syncProducts();
+            ProductsModel.sharePointProducts();
         });
-    })
-
-
-
+    });
 })(jQuery);

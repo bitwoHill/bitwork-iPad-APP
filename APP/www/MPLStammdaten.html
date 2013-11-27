@@ -98,21 +98,20 @@
         <!-- content -->
         <div id="page-wrapper">
 
-            <!--synch button-->
-            <div class="page-header-info pull-right">
-                <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="equipmentproducts">
-                    <span class="fa fa-refresh"></span>
-                    <span class="i18n" data-i18n-key="last-sync-mpl"></span>
-                    <span class="page-sync-btn-date"></span>
-                </a>
+            <div id="lblHeaderText" class="page-header clearfix">
+                <!--synch button-->
+                <div class="page-header-info pull-right btn-group">
+                    <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="equipmentproducts">
+                        <span class="fa fa-refresh"></span>
+                        <span class="i18n" data-i18n-key="last-sync-mpl"></span>
+                        <span class="page-sync-btn-date"></span>
+                    </a>
+                    <a id="btnNavigateBackwards" class="btn btn-default active" onclick="history.back();"><span class="fa fa-chevron-left"></span></a>
+                </div>
+
+                <!--headline-->
+                <h1><span class="i18n" data-i18n-key="stammdaten"></span></h1>
             </div>
-
-            <!--headline-->
-            <h1><span class="i18n" data-i18n-key="stammdaten"></span></h1>
-
-
-            <!-- backwards button -->
-            <button id="btnNavigateBackwards" type="button" class="fa fa-chevron-left" onclick="history.back();"></button>
 
 
             <div class="row">
