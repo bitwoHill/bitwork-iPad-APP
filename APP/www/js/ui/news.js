@@ -55,7 +55,7 @@ var NewsUI = {
 
 (function($){
     //Display news when sync is ready
-    $('body').on('news-sync-ready', NewsUI.displayNews);
+    $('body').on('news-sync-ready db-schema-ready', NewsUI.displayNews);
 
     $(document).ready(function(){
         $('body').on('click', 'a.page-sync-btn', function(){

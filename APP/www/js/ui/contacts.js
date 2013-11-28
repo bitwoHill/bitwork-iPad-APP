@@ -158,10 +158,9 @@ var ContactsUI = {
 
 (function($){
     //bind to sync ready event in order to display the news
-    $('body').on('contacts-sync-ready', ContactsUI.displayContactTree);
+    $('body').on('contacts-sync-ready db-schema-ready', ContactsUI.displayContactTree);
 
     $(document).ready(function(){
-
         $('body').on('click', 'a.page-sync-btn', function(){
             ContactsModel.syncContacts();
         });

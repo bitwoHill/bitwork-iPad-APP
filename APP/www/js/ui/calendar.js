@@ -66,7 +66,7 @@ var CalendarUI = {
 
 (function($){
     //Display calendar items when sync is ready
-    $('body').on('calendar-sync-ready', CalendarUI.displayCalendar);
+    $('body').on('calendar-sync-ready db-schema-ready', CalendarUI.displayCalendar);
 
     $(document).ready(function(){
         //Bind action to sync calendar button

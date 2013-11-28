@@ -47,9 +47,10 @@ var LinkUI = {
 
 (function($){
     //Display news when sync is ready
-    $('body').on('link-sync-ready', LinkUI.displayLinks);
+    $('body').on('link-sync-ready db-schema-ready', LinkUI.displayLinks);
 
     $(document).ready(function(){
+
         $('body').on('click', 'a.page-sync-btn', function(){
             LinkModel.syncLinks();
         });
