@@ -19,11 +19,12 @@ var ProductPlatformsModel = {
         if (spData && spData.results.length) {
             $.each(spData.results, function (index, value) {
                 //mapping
-                var productplatformsItem = {
-                    productplatformid: value.ID,
-                    productplatform: (value.Produktplattformen) ? value.Produktplattformen : "",
-                    productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : ""
-                };
+                var productplatformsItem =
+                    {
+                        productplatformid: value.ID,
+                        productplatform: (value.Produktplattformen) ? value.Produktplattformen : "",
+                        productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : ""
+                    };
 
                 //add to persistence
                 persistence.add(new Productplatforms(productplatformsItem));

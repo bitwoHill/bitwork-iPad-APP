@@ -54,7 +54,7 @@ var equipmentproductsModel = {
             persistence.flush(
                 function () {
                     SyncModel.addSync(EQUIPMENTPRODUCTS_LIST);
-                      $('body').trigger('sync-end');
+                //      $('body').trigger('sync-end');
                     $('body').trigger('equipmentproducts-sync-ready');
                 }
             );

@@ -65,7 +65,7 @@ var SharePoint = {
                     })
                 }
 
-            };
+            }
 
             callback(responseData);
         }).fail(function (responseData, textStatus, errorThrown) {

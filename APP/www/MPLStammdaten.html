@@ -173,14 +173,14 @@
                     <!-- Optionen -->
                     <!-- Options are not only directly  mapped to an equipment (other Product) but can be mapped to products, groups, platforms, families to which the actual equipment (other product) is mapped-->
 
-                    <div class="panel panel-default">
+                    <div class="panel panel-default"  id="productoptions-items-container">
                         <div class="panel-heading">
                             <h3 class="panel-title"><span class="i18n" data-i18n-key="optionsbezeichnung"></span></h3>
                         </div>
                         <div class="panel-body">
 
                             <section id="no-more-tables">
-                                <table class="table-bordered  table-striped table-condensed cf col-md-12" style="background-color: white;">
+                                <table class="table-bordered  table-striped table-condensed cf col-md-12 col-sm-12 col-xs-12" style="background-color: white;">
                                     <thead class="cf">
                                         <tr>
                                             <th><span class="i18n" data-i18n-key="optionsbezeichnung"></span></th>
@@ -188,7 +188,7 @@
                                             <th class="numeric"><span class="i18n" data-i18n-key="listenpreis"></span></th>
                                         </tr>
                                     </thead>
-                                    <tbody id="productoptions-items-container">
+                                    <tbody>
 
                                         <tr id="productoptions-item-template" class="hidden">
                                             <td data-title="Option" class="productoption-item-optionsbezeichnung"></td>
@@ -205,7 +205,7 @@
 
 
                     <!-- Documents -->
-                    <div class="panel panel-default">
+                    <div class="panel panel-default hidden" id="document-items-container">
                         <div class="panel-heading">
                             <h3 class="panel-title"><span class="i18n" data-i18n-key="dokumente"></span></h3>
                         </div>
@@ -214,7 +214,7 @@
                             <!-- display one "folder" in tree view collapsed for each documenttype -->
 
                             <div class="tree-nav-container-MPL">
-                                <ul class="tree-nav" id="document-items-container">
+                                <ul class="tree-nav" >
                                     <!-- contact person tree-nav item template -->
                                     <li class="hidden" id="document-document-item-template">
                                         <a class="tree-nav-link person" data-item-id="" href="#">

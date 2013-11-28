@@ -1,6 +1,5 @@
-var documents_SYNC_URL = "content/documents.json",
-    documenttypes_SYNC_URL = "content/documenttypes.json";
-
+var DOCUMENTS_LIST = "Dokumente",
+ DOCUMENTTYPES_LIST = "Dokumenttypen";
 //these documents and documenttypes are used in MPlstammdaten.js
 
 
@@ -10,11 +9,11 @@ var Documents = persistence.define('Documents', {
     documentname: "TEXT",
     documenttypeFK: "INT",
     path: "TEXT",
-    productgroupFK: "TEXT",
-    productfamilyFK: "TEXT",
-    productplatformFK: "TEXT",
-    productFK: "TEXT",
-    equipmentFK: "TEXT"
+    productgroupFK: "INT",
+    productfamilyFK: "INT",
+    productplatformFK: "INT",
+    productFK: "INT",
+    equipmentFK: "INT"
 });
 
 Documents.index(['documentId'], { unique: true });
@@ -30,74 +29,69 @@ Documenttypes.index(['documenttypeId'], { unique: true });
 
 //create mock data for Documents and Documenttypes
 var documentsModel = {
-    sharePointSync: function (callback) {
-        //set documenttypes
-        //TODO: replace with sharepoint connection
-        $.getJSON(documenttypes_SYNC_URL, function (data) {
+    sharePointDocuments: function () {
+        //get documenttypes
+      //  $('body').trigger('sync-start');
+        SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes);
+    },
+    //maps SharePoint data to current model
+    mapSharePointDataDocumentTypes: function (data) {
+        var spData = data.d;
+        if (spData && spData.results.length) {
+            $.each(spData.results, function (index, value) {
+                var documenttypeItem =
+                        {
+                            documenttypeId: value.ID,
+                            name: (value.Dokumenttyp) ? value.Dokumenttyp : ""
+                        };
 
-            $.each(data, function (index, value) {
-                var documenttypeItem;
+                persistence.add(new Documenttypes(documenttypeItem));
 
-                documenttypeItem = new Documenttypes(value);
-                persistence.add(documenttypeItem);
+
             });
 
             persistence.flush(
                 function () {
-                    //DB is updated - trigger custom event
-                    if (typeof callback === "function") {
-                        callback();
-                    }
-
-
-                    //$('body').trigger('documents-sync-ready');
+                    SyncModel.addSync(DOCUMENTTYPES_LIST);
                 }
             );
-        }).fail(
-            function () {
-                //TODO: error handling if necessary
-                alert("MPL Stammdaten Documenttypes: Mock data read error.");
 
-                if (typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
+        }
 
-        //set documents
-        //TODO: replace with sharepoint connection
-        $.getJSON(documents_SYNC_URL, function (data) {
+        //get documents
+        SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData);
 
-            $.each(data, function (index, value) {
-                var documentsItem;
+    },
+    //maps SharePoint data to current model
+    mapSharePointData: function (data) {
+        var spData = data.d;
+        if (spData && spData.results.length) {
+            $.each(spData.results, function (index, value) {
+                var documentsItem =
+                        {
 
-                documentsItem = new Documents(value);
-                persistence.add(documentsItem);
+                            documentId: value.ID,
+                            documentname: (value.Name) ? value.Name : "",
+                            documenttypeFK: (value.DokumenttypId) ? value.DokumenttypId : "",
+                            path: (value.Pfad + "/" + value.Name) ? value.Pfad + "/" + value.Name : "",
+                            productgroupFK: (value.ProduktgruppeId) ? value.ProduktgruppeId : "",
+                            productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : "",
+                            productplatformFK: (value.ProduktplatformId) ? value.ProduktplatformId : "",
+                            productFK: (value.ProduktId) ? value.ProduktId : "",
+                            equipmentFK: (value.EquipmentId) ? value.EquipmentId : ""
+                        };
+
+                persistence.add(new Documents(documentsItem));
             });
 
             persistence.flush(
                 function () {
-                    //DB is updated - trigger custom event
-                    if (typeof callback === "function") {
-                        callback();
-                    }
-
+                    SyncModel.addSync(DOCUMENTS_LIST);
+                    $('body').trigger('sync-end');
                     $('body').trigger('documents-sync-ready');
                 }
             );
-        }).fail(
-            function () {
-                //TODO: error handling if necessary
-                alert("MPL Stammdaten Documents: Mock data read error.");
-
-                if (typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
-
-
-
+        }
     }
 
 };

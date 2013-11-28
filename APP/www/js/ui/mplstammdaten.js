@@ -9,10 +9,16 @@ var equipmentproductsUI = {
         var $container = $(equipmentproducts_CONTAINER);
         if ($container.length) {
 
+            //hide optional fields
+            $(documents_CONTAINER).addClass('hidden');
+            $(productoptions_CONTAINER).addClass('hidden');
+
+
+
             //load by current url parameter / andhand von aktueller ID laden
-            var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
-            var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
-            var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
+            //var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
+            //var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
+            //var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
             var EquipmentProductPar = utils.getUrlParameter('EquipmentProdukt');
             var OtherProductPar = utils.getUrlParameter('SonstigesProdukt');
 
@@ -65,7 +71,7 @@ var equipmentproductsUI = {
 };
 
 //bind to sync ready event in order to display the news
-$('body').on('equipmentproducts-sync-ready otherproducts-sync-ready', equipmentproductsUI.displayStammdaten);
+$('body').on('equipmentproducts-sync-ready otherproducts-sync-ready db-schema-ready', equipmentproductsUI.displayStammdaten);
 
 
 //this part is about the options
@@ -88,7 +94,6 @@ var productoptionsUI = {
             var OtherProductPar = utils.getUrlParameter('SonstigesProdukt');
 
             //if its an equipment page the otherproduct is empty (or the other way around) -  this would cause problems in the SQL query - hence its set to -1)
-            //TODO order by name
 
             if (!EquipmentProductPar) {
                 EquipmentProductPar = "-1";
@@ -97,14 +102,19 @@ var productoptionsUI = {
                 OtherProductPar = "-1";
             }
             //check wheter there is an option to either the current equipment / other product or one of its lower level items (group, family, platform, product)
-            persistence.debug = true;
             ProductOptions.all()
                 .filter("equipmentFK", "=", EquipmentProductPar)
                 .or(new persistence.PropertyFilter("productgroupFK", "=", ProduktgruppePar))
                 .or(new persistence.PropertyFilter("productfamilyFK", "=", ProduktfamiliePar))
                 .or(new persistence.PropertyFilter("productplatformFK", "=", ProduktplatformPar))
                 .or(new persistence.PropertyFilter("productFK", "=", ProduktPar))
+                .order('productDescription', true, false)
                 .list(null, function (results) {
+                    if (results.length != 0) {
+                        $productoptions_CONTAINER.removeClass('hidden');
+                        alert("nicht null");
+                    }
+                    alert("null");
                     $.each(results, function (index, value) {
 
                         var data = value._data;
@@ -114,7 +124,6 @@ var productoptionsUI = {
                         $('.productoption-item-optionsbezeichnung', $newItem).html(data.productDescription);
                         $('.productoption-item-teilenummer', $newItem).html(data.pieceNumber);
                         $('.productoption-item-listenpreis', $newItem).html(data.price);
-
                         $container.append($newItem.removeClass('hidden'));
                     });
                 });
@@ -123,7 +132,7 @@ var productoptionsUI = {
 };
 
 //bind to sync ready event in order to display the news
-$('body').on('productoptions-sync-ready', productoptionsUI.displayOptions);
+$('body').on('productoptions-sync-ready db-schema-ready', productoptionsUI.displayOptions);
 
 
 
@@ -142,8 +151,7 @@ var DocumentsUI = {
 
     displayDocuments: function () {
         var $containerRoot = $(documents_CONTAINER),
-            $containerSibling,
-                    $templateDocument = $(documents_DOCUMENT_TEMPLATE),
+      $templateDocument = $(documents_DOCUMENT_TEMPLATE),
        $templateFolder = $(documents_FOLDER_TEMPLATE);
 
         if ($containerRoot.length && $templateDocument.length && $templateFolder.length) {
@@ -167,7 +175,6 @@ var DocumentsUI = {
 
 
 
-
             //load all documents and then figure out which documenttypes are needed
 
             var counter = 0;
@@ -182,8 +189,8 @@ var DocumentsUI = {
                                    var documenttypeslist = []; //store all unique documenttypes
 
                                    $.each(results, function (index, value) {
-                                       var data = value._data,
-                                       newItem;
+                                       var data = value._data;
+
 
                                        //first get all documenttypes to either the current equipment / other
                                        //product or one of its lower level items (group, family, platform, product)
@@ -198,7 +205,7 @@ var DocumentsUI = {
                                             .filter("documenttypeId", "=", data.documenttypeFK)
                                               .list(null, function (results) {
                                                   $.each(results, function (index, value) {
-
+                                                 
                                                       var data2 = value._data,
                                                       newItem2;
 
@@ -208,24 +215,13 @@ var DocumentsUI = {
                                                       $('.tree-nav-link', newItem2).attr("data-item-id", data2.documenttypeId);
 
                                                       $containerRoot.append(newItem2.removeClass('hidden'));
+                                                      $containerRoot.removeClass('hidden');
+                                                      //$templateDocument.removeClass('hidden');
+
+
                                                   });
                                               });
 
-
-                                           //var $this = document;
-                                           //containerSibling = $this.siblings("ul.tree-nav");
-                                           //alert($this.siblings("ul.tree-nav"));
-                                           ////create Document Item
-                                           //newItem = $templateDocument.clone();
-                                           //newItem.removeAttr('id');
-                                       
-                                           //$('.tree-nav-item-name', newItem).html(data.documentname);
-                                           //$('.tree-nav-link', newItem).attr("data-item-id", data.documentId + 1);
-
-                                           //if (data.path) {
-                                           //    $('.tree-nav-link', newItem).attr("href", data.path);
-                                           //}
-                                           //containerSibling.append(newItem.removeClass('hidden'));
                                        }
                                    });
                                });
@@ -243,30 +239,10 @@ var DocumentsUI = {
         var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
         var ProduktPar = utils.getUrlParameter('Produkt');
         var EquipmentProductPar = utils.getUrlParameter('EquipmentProdukt');
-        var OtherProductPar = utils.getUrlParameter('SonstigesProdukt');
 
         if (container.length && $templateFolder.length && $templateItem.length) {
 
             //now get all documents based on the selected documenttypeID
-
-            //     Documents.all()
-            //.filter("equipmentFK", "=", EquipmentProductPar)
-            //           .and(new persistence.PropertyFilter("documenttypeFK", "=", nodeId))
-            //.or(new persistence.PropertyFilter("productgroupFK", "=", ProduktgruppePar))
-            //.or(new persistence.PropertyFilter("productfamilyFK", "=", ProduktfamiliePar))
-            //.or(new persistence.PropertyFilter("productplatformFK", "=", ProduktplatformPar))
-            //.or(new persistence.PropertyFilter("productFK", "=", ProduktPar))
-
-           // Documents.all()
-           //    .filter()
-           // .or(new persistence.AndFilter(new persistence.PropertyFilter("equipmentFK", "=", EquipmentProductPar),new persistence.PropertyFilter("documenttypeFK", "=", nodeId)))
-           //    .or(new persistence.AndFilter(new persistence.PropertyFilter("productgroupFK", "=", ProduktgruppePar),new persistence.PropertyFilter("documenttypeFK", "=", nodeId)))
-           //    .or(new persistence.AndFilter(new persistence.PropertyFilter("productfamilyFK", "=", ProduktfamiliePar),new persistence.PropertyFilter("documenttypeFK", "=", nodeId)))
-           //    .or(new persistence.AndFilter(new persistence.PropertyFilter("productplatformFK", "=", ProduktplatformPar),new persistence.PropertyFilter("documenttypeFK", "=", nodeId)))
-           //.or(new persistence.AndFilter(new persistence.PropertyFilter("productFK", "=", ProduktPar),new persistence.PropertyFilter("documenttypeFK", "=", nodeId)))
-           //.list(null, function (results) {
-
-
 
             Documents.all()
                .filter("equipmentFK", "=", EquipmentProductPar)
@@ -299,13 +275,13 @@ var DocumentsUI = {
                    container.append(newItem.removeClass('hidden'));
                });
            });
-            }
+        }
     }
 };
 
 
 //bind to sync ready event in order to display the news
-$('body').on('documents-sync-ready', DocumentsUI.displayDocuments);
+$('body').on('documents-sync-ready db-schema-ready', DocumentsUI.displayDocuments);
 
 
 $(document).ready(function () {

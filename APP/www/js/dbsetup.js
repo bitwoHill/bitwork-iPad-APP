@@ -52,10 +52,10 @@
             ///ProductsModel.sharePointProducts();
             //otherproductsModel.sharePointOtherproducts();
             //equipmentproductsModel.sharePointEquipmentproducts();
-
+            //productoptionsModel.sharePointProductOptions();
+            //documentsModel.sharePointDocuments();
             //Sync with mock
-            //productoptionsModel.sharePointSync();
-            //documentsModel.sharePointSync();
+            
             //InfothekModel.sharePointSync();
         });
     };
@@ -108,6 +108,107 @@
             ContactsModel.syncContacts();
         });
 
+
+        //Add contacts sync to queue
+        syncQueue.queue("sync-queue", function (next) {
+            //bind event
+            $('body').on('productgroups-sync-ready', function () {
+                //unbind event
+                $('body').off('productgroups-sync-ready', next);
+                next();
+            });
+            ProductGroupsModel.syncProductGroups();
+        });
+
+
+        //Add productgroups sync to queue
+        syncQueue.queue("sync-queue", function (next) {
+            //bind event
+            $('body').on('productfamilies-sync-ready', function () {
+                //unbind event
+                $('body').off('productfamilies-sync-ready', next);
+                next();
+            });
+            ProductFamiliesModel.sharePointFamilies();
+        });
+
+       
+
+
+        //Add contacts sync to queue
+        syncQueue.queue("sync-queue", function (next) {
+            //bind event
+            $('body').on('productplatforms-sync-ready', function () {
+                //unbind event
+                $('body').off('productplatforms-sync-ready', next);
+                next();
+            });
+ProductPlatformsModel.sharePointPlatforms();
+        });
+
+
+
+        //Add contacts sync to queue
+        syncQueue.queue("sync-queue", function (next) {
+            //bind event
+            $('body').on('products-sync-ready', function () {
+                //unbind event
+                $('body').off('products-sync-ready', next);
+                next();
+            });
+ProductsModel.sharePointProducts();
+        });
+
+
+
+        //Add contacts sync to queue
+        syncQueue.queue("sync-queue", function (next) {
+            //bind event
+            $('body').on('otherproducts-sync-ready', function () {
+                //unbind event
+                $('body').off('otherproducts-sync-ready', next);
+                next();
+            });
+otherproductsModel.sharePointOtherproducts();
+        });
+
+
+
+        //Add contacts sync to queue
+        syncQueue.queue("sync-queue", function (next) {
+            //bind event
+            $('body').on('equipmentproducts-sync-ready', function () {
+                //unbind event
+                $('body').off('equipmentproducts-sync-ready', next);
+                next();
+            });
+equipmentproductsModel.sharePointEquipmentproducts();
+        });
+
+
+        //Add contacts sync to queue
+        syncQueue.queue("sync-queue", function (next) {
+            //bind event
+            $('body').on('productoptions-sync-ready', function () {
+                //unbind event
+                $('body').off('productoptions-sync-ready', next);
+                next();
+            });
+            productoptionsModel.sharePointProductOptions();
+        });
+
+
+        //Add contacts sync to queue
+        syncQueue.queue("sync-queue", function (next) {
+            //bind event
+            $('body').on('documents-sync-ready', function () {
+                //unbind event
+                $('body').off('documents-sync-ready', next);
+                next();
+            });
+            documentsModel.sharePointDocuments();
+        });
+           
         syncQueue.dequeue("sync-queue");
     }
 

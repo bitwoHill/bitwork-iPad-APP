@@ -19,7 +19,7 @@ OtherProducts.index('otherProductId', { unique: true });
 var otherproductsModel = {
     sharePointOtherproducts: function () {
 
-        $('body').trigger('sync-start');
+//        $('body').trigger('sync-start');
         SharePoint.sharePointRequest(OTHERPRODUCTS_LIST, otherproductsModel.mapSharePointData);
     },
     //maps SharePoint data to current model
@@ -43,7 +43,7 @@ var otherproductsModel = {
             persistence.flush(
                 function () {
                     SyncModel.addSync(OTHERPRODUCTS_LIST);
-                    $('body').trigger('sync-end');
+                 //   $('body').trigger('sync-end');
                     $('body').trigger('otherproducts-sync-ready');
                 }
             );

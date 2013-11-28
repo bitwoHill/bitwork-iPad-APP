@@ -42,7 +42,6 @@ var ProductsUI = {
                                 //if there are results add them to UI
 
                                 $.each(results2, function (index2, value2) {
-                                    alert("hier bin cih");
                                     var data = value2._data;
                                     var $newItem = $template.clone();
                                     $newItem.removeAttr('id');
@@ -112,7 +111,7 @@ var ProductsUI = {
 
 (function ($) {
     //Display productgroups when sync is ready
-    $('body').on('products-sync-ready', ProductsUI.displayproducts);
+    $('body').on('products-sync-ready db-schema-ready', ProductsUI.displayproducts);
 
     $(document).ready(function () {
         $('body').on('click', 'a.page-sync-btn', function () {

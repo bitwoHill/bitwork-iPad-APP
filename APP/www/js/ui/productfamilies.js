@@ -50,7 +50,7 @@ var ProductFamiliesUI = {
        
 (function ($) {
     //Display productgroups when sync is ready
-    $('body').on('productfamilies-sync-ready', ProductFamiliesUI.displayproductfamilies);
+    $('body').on('productfamilies-sync-ready db-schema-ready', ProductFamiliesUI.displayproductfamilies);
 
     $(document).ready(function () {
         $('body').on('click', 'a.page-sync-btn', function () {

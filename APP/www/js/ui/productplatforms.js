@@ -52,7 +52,7 @@ var ProductPlatformsUI = {
 
 (function ($) {
     //Display productgroups when sync is ready
-    $('body').on('productplatforms-sync-ready', ProductPlatformsUI.displayproductplatforms);
+    $('body').on('productplatforms-sync-ready db-schema-ready', ProductPlatformsUI.displayproductplatforms);
 
     $(document).ready(function () {
         $('body').on('click', 'a.page-sync-btn', function () {

@@ -48,7 +48,7 @@ var ProductGroupsUI = {
 
 (function ($) {
     //Display productgroups when sync is ready
-    $('body').on('productgroups-sync-ready', ProductGroupsUI.displayproductgroups);
+    $('body').on('productgroups-sync-ready db-schema-ready', ProductGroupsUI.displayproductgroups);
 
     $(document).ready(function () {
         $('body').on('click', 'a.page-sync-btn', function () {
