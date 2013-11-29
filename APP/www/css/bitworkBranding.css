@@ -195,6 +195,11 @@ h4 {
     padding: 50px 0;
 }
 
+#infothek-page .empty-page {
+    color: #333;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
 
 /* News */
 .news-item-body img {

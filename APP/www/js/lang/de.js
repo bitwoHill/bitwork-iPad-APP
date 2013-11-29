@@ -82,10 +82,12 @@ var i18n = {
 
         //InfoThek
         "infothek": "Infothek",
+        "empty-infothek": "There are no infothek to be displayed. Use above <i class='fa fa-refresh'></i> button to syncronise the infothek page.",
+        "last-sync-infothek": "Last infothek sync",
 
         //Contacts
         "contacts": "Telefonbuch",
         "empty-contacts": "There are no contacts to be displayed. Use above <i class='fa fa-refresh'></i> button to syncronise the contact page.",
-        "last-sync-contacts": "Last contacts sync",
+        "last-sync-contacts": "Last contacts sync"
     }
 }

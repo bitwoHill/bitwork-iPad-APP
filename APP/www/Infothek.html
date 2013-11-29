@@ -48,7 +48,11 @@
             </button>
         </header>
 
-        <div class="slide-menu-mask toggle-side-menu"></div>
+        <div class="slide-menu-mask toggle-side-menu">
+             <span class="slide-menu-mask-loading">
+                <img src="img/spinner.png" alt="Loding">
+            </span>
+        </div>
 
         <div class="slide-menu" id="slide-menu">
 
@@ -89,18 +93,30 @@
         <div id="page-wrapper">
 
             <div id="lblHeaderText" class="page-header">
-                <h1><span class="i18n" data-i18n-key="infothek"></span><br>
-                    <small class="i18n" data-i18n-key="subtitle"></small>
+                <div class="page-header-info pull-right">
+                    <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="Infothek">
+                        <span class="fa fa-refresh"></span>
+                        <span class="i18n" data-i18n-key="last-sync-calendar"></span>
+                        <span class="page-sync-btn-date"></span>
+                    </a>
+                </div>
+
+                <h1>
+                    <span class="i18n" data-i18n-key="infothek"></span>
                 </h1>
             </div>
 
 
-            <div class="well">
+            <div class="well" id="infothek-page">
                 <div class="tree-nav-container">
+                    <div class="empty-page hidden" id="infothek-empty-container">
+                        <p class="text-center i18n" data-i18n-key="empty-infothek"></p>
+                    </div>
+
                     <ul class="tree-nav" id="infothek-items-container">
                         <!-- contact person tree-nav item template -->
                         <li class="hidden" id="infothek-person-item-template">
-                            <a class="tree-nav-link item" data-item-id="" href="#">
+                            <a class="tree-nav-link item" data-item-id="" href="#" target="_system">
                                 <i class="fa fa-file-o"></i>
                                 <span class="tree-nav-item-name"></span>
                                 <span class="tree-nav-item-loading pull-right"></span>
