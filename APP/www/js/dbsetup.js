@@ -39,6 +39,7 @@
         //setup DB connection
         persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 10 * 1024 * 1024);
         //create DB schema
+        persistence.debug = false;
         persistence.schemaSync(function(){
             $('body').trigger('db-schema-ready');
             //Sync with sharepoint

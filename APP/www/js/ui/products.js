@@ -24,7 +24,9 @@ var ProductsUI = {
             var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
             var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
             var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
-            var ProduktPar;
+            var counter = 0;
+            var ProduktPars = [];
+            var ProduktPar = "";
             var Equipmentcounter;
 
             //get all Products on the platform and then load all equips or others of the product ...
@@ -32,20 +34,33 @@ var ProductsUI = {
                 //if there are results use them as filter
                 if (results1.length) {
                     $(products_EMPTY_CONTAINER).addClass('hidden');
-                //for each product iterate fitting equipments and other products
-                    $.each(results1, function (index1, value1) {
+                    //for each product iterate fitting equipments and other products
+                    $.each(results1, function (index1, value1)
+                    {
                         var data = value1._data;
-                        ProduktPar = data.productid;
+
+                        ProduktPars[counter] = data.productid;
+                      //  console.debug(ProduktPars[counter]);
+                        counter++;
+
+                    });
+
+
+                    //now we have all productFKs, use them to get equipments and options now
+                    for (index = 0; index < ProduktPars.length; ++index) {
+                        ProduktPar = ProduktPars[index];
+                  
                         //get all equipments
                         EquipmentProducts.all().filter("productFK", "=", ProduktPar).order('productDescription', true, false).list(null, function (results2) {
-                          if (results2.length) {
+                            if (results2.length) {
                                 //if there are results add them to UI
 
                                 $.each(results2, function (index2, value2) {
+                                    //console.debug(ProduktPar);
                                     var data = value2._data;
                                     var $newItem = $template.clone();
                                     $newItem.removeAttr('id');
-                                    $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&EquipmentProdukt=" + data.equipmentId);
+                                    $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK + "&EquipmentProdukt=" + data.equipmentId);
                                     $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
                                     $('.products-item-volume', $newItem).html(data.volume);
                                     $('.products-item-price', $newItem).html(data.price);
@@ -60,9 +75,10 @@ var ProductsUI = {
                         // get all Other Products
                         //get all equipments
 
-                      
+
+
                         OtherProducts.all().filter("productFK", "=", ProduktPar).order('productDescription', true, false).list(null, function (results) {
-                         
+
                             if (results.length) {
                                 $container.append($newItem.removeClass('hidden'));
 
@@ -92,21 +108,31 @@ var ProductsUI = {
 
                             }
                         });
-                    });
 
-                } else {
-                    $(products_EMPTY_CONTAINER).removeClass('hidden');
+
+                    }
+
                 }
-
-                SyncModel.getSyncDate(PRODUCTS_LIST, function (date) {
-                    //update last sync date
-                    $('.page-sync-btn-date').html(date);
-                    $('.page-sync-btn').removeClass('hidden');
-                });
             });
 
+
+
+                       
+
+        } else
+        {
+            $(products_EMPTY_CONTAINER).removeClass('hidden');
         }
-    }
+
+        SyncModel.getSyncDate(PRODUCTS_LIST, function (date) {
+            //update last sync date
+            $('.page-sync-btn-date').html(date);
+            $('.page-sync-btn').removeClass('hidden');
+        });
+   
+
+
+}
 };
 
 (function ($) {

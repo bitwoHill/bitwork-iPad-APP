@@ -13,11 +13,13 @@
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
-    <link href="css/tree-nav.css" rel="stylesheet">
     <link href="css/Navbar.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bitworkBranding.css" rel="stylesheet">
+    <link href="css/tree-nav.css" rel="stylesheet">
     <link href="css/MPLStammdaten.css" rel="stylesheet">
+
+   
 </head>
 
 
@@ -131,22 +133,15 @@
                                         <th id="nameProduktDescription"><span class="i18n" data-i18n-key="produktbezeichnung"></span></th>
                                         <td id="valueProductDescription"></td>
                                     </tr>
-                                    <tr id="rowPiecenumber">
+                                      <tr id="rowPiecenumber">
                                         <th id="namePiecenumber"><span class="i18n" data-i18n-key="teilenummer"></span></th>
                                         <td id="valuePiecenumber"></td>
                                     </tr>
-                                    <tr id="rowPrice">
-                                        <th id="namePrice"><span class="i18n" data-i18n-key="listenpreis"></span></th>
-                                        <td id="valuePrice"></td>
-                                    </tr>
-
-                                    <!-- Thes following Rows are only available for an Equipment Product -->
-
-                                    <tr id="rowCooling">
+                                     <tr id="rowCooling">
                                         <th id="nameCooling"><span class="i18n" data-i18n-key="kuehlung"></span></th>
                                         <td id="valueCooling"></td>
                                     </tr>
-                                    <tr id="rowVariant">
+                                             <tr id="rowVariant">
                                         <th id="nameVariant"><span class="i18n" data-i18n-key="austattungsvariante"></span></th>
                                         <td id="valueVariant"></td>
                                     </tr>
@@ -162,6 +157,20 @@
                                         <th id="namePerformance"><span class="i18n" data-i18n-key="antriebsleistung"></span></th>
                                         <td id="valuePerformance"></td>
                                     </tr>
+                                    <tr id="rowPrice">
+                                        <th id="namePrice"><span class="i18n" data-i18n-key="listenpreis"></span></th>
+                                        <td id="valuePrice"></td>
+                                    </tr>
+                                    <!-- some Rows are only available for an Equipment Product -->
+                                    <!--if there is a "other " Product the following columns will hide 
+                                         $("#rowCooling").hide();
+                        $("#rowVariant").hide();
+                        $("#rowVolume").hide();
+                        $("#rowPressure").hide();
+                        $("#rowPerformance").hide();-->
+
+                                   
+                           
 
 
                                 </tbody>
@@ -173,7 +182,7 @@
                     <!-- Optionen -->
                     <!-- Options are not only directly  mapped to an equipment (other Product) but can be mapped to products, groups, platforms, families to which the actual equipment (other product) is mapped-->
 
-                    <div class="panel panel-default"  id="productoptions-items-container">
+                    <div class="panel panel-default hidden"  id="productoptions-items-container">
                         <div class="panel-heading">
                             <h3 class="panel-title"><span class="i18n" data-i18n-key="optionsbezeichnung"></span></h3>
                         </div>
@@ -188,13 +197,14 @@
                                             <th class="numeric"><span class="i18n" data-i18n-key="listenpreis"></span></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="productoptions-item-child-container">
 
                                         <tr id="productoptions-item-template" class="hidden">
-                                            <td data-title="Option" class="productoption-item-optionsbezeichnung"></td>
-                                            <td data-title="T.nummer" class="productoption-item-teilenummer"></td>
-                                            <td data-title="L. Preis" class="numeric productoption-item-listenpreis"></td>
+                                            <td data-title="Option" class="productoption-item-optionsbezeichnung"> test</td>
+                                            <td data-title="T.nummer" class="productoption-item-teilenummer"> test</td>
+                                            <td data-title="L. Preis" class="numeric productoption-item-listenpreis"> test</td>
                                         </tr>
+                                                                                                                  
 
                                     </tbody>
                                 </table>
@@ -205,6 +215,7 @@
 
 
                     <!-- Documents -->
+
                     <div class="panel panel-default hidden" id="document-items-container">
                         <div class="panel-heading">
                             <h3 class="panel-title"><span class="i18n" data-i18n-key="dokumente"></span></h3>
@@ -231,18 +242,15 @@
                                             <span class="tree-nav-item-name"></span>
                                             <span class="tree-nav-item-loading pull-right"></span>
                                         </a>
-                                        <ul class="tree-nav" style="display: none" id=""></ul>
+                            <ul class="tree-nav" style="display: none" id=""></ul>
+
                                     </li>
 
                                 </ul>
 
                             </div>
                         </div>
-
-
-                    </div>
-
-
+                </div>
                 </div>
             </div>
 

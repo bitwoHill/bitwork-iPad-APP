@@ -76,7 +76,7 @@ var documentsModel = {
                             path: (value.Pfad + "/" + value.Name) ? value.Pfad + "/" + value.Name : "",
                             productgroupFK: (value.ProduktgruppeId) ? value.ProduktgruppeId : "",
                             productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : "",
-                            productplatformFK: (value.ProduktplatformId) ? value.ProduktplatformId : "",
+                            productplatformFK: (value.ProduktplattformId) ? value.ProduktplattformId : "",
                             productFK: (value.ProduktId) ? value.ProduktId : "",
                             equipmentFK: (value.EquipmentId) ? value.EquipmentId : ""
                         };
