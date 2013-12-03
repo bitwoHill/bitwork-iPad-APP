@@ -18,6 +18,7 @@ var User = function(){
                 type: 'GET',
                 url: Settings.spDomain + "/" + SPTestList,
                 crossDomain: true,
+                timeout: 5000,
                 username: user,
                 password: pass,
                 dataType: 'json'
@@ -27,8 +28,9 @@ var User = function(){
                 }
             ).fail(
                 function (responseData, textStatus, errorThrown) {
-                    if(responseData && responseData.status){
-                        if(responseData.status === 401){ //if Unauthorized status -> login failed
+                    console.log(arguments);
+                    if(responseData){
+                        if(responseData.status && responseData.status === 401){ //if Unauthorized status -> login failed
                             loginFailed();
                         } else { //other fail status -> check if user in DB
                             checkDBUser(user, pass);

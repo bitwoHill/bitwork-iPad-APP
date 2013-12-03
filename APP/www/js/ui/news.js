@@ -28,7 +28,7 @@ var NewsUI = {
                         $newItem.removeAttr('id');
                         $('.news-item-title', $newItem).html(data.title);
                         $('.news-item-body', $newItem).html(data.body);
-                        $('.news-item-date', $newItem).html(utils.dateFormat(new Date(data.createdDate), "m.d.y, H:M"));
+                        $('.news-item-date', $newItem).html(utils.dateFormat(new Date(data.createdDate), "d.m.y, H:M"));
                         $('.news-item-link', $newItem).attr('href', URL_SINGLE_NEWS + data.nodeId);
 
                         //if(data.image) {
