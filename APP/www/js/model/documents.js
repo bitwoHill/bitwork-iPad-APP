@@ -22,7 +22,7 @@ Documents.index(['documentId'], { unique: true });
 //Documenttypes
 var Documenttypes = persistence.define('Documenttypes', {
     documenttypeId: "INT",
-    name: "TEXT",
+    name: "TEXT"
 });
 Documenttypes.index(['documenttypeId'], { unique: true });
 
@@ -123,7 +123,7 @@ var path = data.path;
 
                                   // download url
                                 
-                                  var uri = encodeURI(Settings.spContent + );
+                                  var uri = encodeURI(Settings.spContent);
                                   console.debug(uri);
 
                                   //               create folder if not existant else access it

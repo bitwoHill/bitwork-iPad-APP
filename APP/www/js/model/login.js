@@ -28,7 +28,6 @@ var User = function(){
                 }
             ).fail(
                 function (responseData, textStatus, errorThrown) {
-                    console.log(arguments);
                     if(responseData){
                         if(responseData.status && responseData.status === 401){ //if Unauthorized status -> login failed
                             loginFailed();
@@ -44,6 +43,8 @@ var User = function(){
         doLogout = function(){
             utils.deleteCookie('bitwork_ipadapp_auth');
             setLoginCounter(0);
+            this.username = "";
+            this.password = "";
 
             var currentPageURL = window.location.pathname;
             currentPageURL = currentPageURL.replace("/", "");
@@ -122,7 +123,7 @@ var User = function(){
 
         },
 
-        setCurrentUser = function(){
+        setCurrentUser = function(callback){
             var authCookie = utils.getCookie("bitwork_ipadapp_auth"),
                 currentPageURL = window.location.pathname;
 
@@ -140,6 +141,10 @@ var User = function(){
                     //redirect to login page
                     window.open(loginPageUrl + "?returnURL=" + encodeURIComponent(currentPageURL), "_self");
                 }
+            }
+
+            if(typeof callback === "function") {
+                callback();
             }
         };
 
