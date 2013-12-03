@@ -129,7 +129,8 @@ var documentsModel = {
                                   // download url
                                
                                   var uri = encodeURI("http://www.atlas-cms.com"+data.path);
-                                 
+                                  
+                  
                                   //               create folder if not existant else access it
                                   fs.root.getDirectory(folderName, { create: true, exclusive: false },
                                       function (dirEntry) {
@@ -142,19 +143,31 @@ var documentsModel = {
                                                   var fullpath = fileDir.fullPath.replace(fileName, "");
                                                   // now delete the file (for what ever reason)
                                                   fileDir.remove();
+//alert("Filename" + fileName);
+//alert("Filepath" + fullpath);
 
+//store new name of file
+             
+// value.path =  fileName;
+                                                       //   persistence.flush(function(){alert("Done flushing");});
+                                                 
+                                                 
+                                                 
                                                   //      download file
                                                    console.debug(uri);
-
-
 
                                                   ft.download
                                                       (uri, 
                                                       fullpath + fileName,
                                                        function (entry) {
+                                                       
                                                           console.debug("Download success!" + entry.fullPath);
-                                                          data.path = entry.fullPath;
-                                                          persistence.flush();
+                                                         
+                                                          alert("Succes" +  entry.fullPath);
+                                                          value.path = entry.name;
+                                                          alert("New Value " + value.path);
+                                                       persistence.flush(function(){alert("Done flushing");});
+                                                 
                                                       },
                                                   function (error) {
                                                       console.debug("download error source " + error.source);
