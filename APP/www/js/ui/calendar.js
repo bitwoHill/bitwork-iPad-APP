@@ -9,10 +9,13 @@ var CalendarUI = {
 
     displayCalendar : function(){
         var $container = $(CALENDAR_CONTAINER),
-            $template = $(CALENDAR_ITEM_TEMPLATE);
+            $template = $(CALENDAR_ITEM_TEMPLATE),
+            requestParam = utils.getUrlParameter('calendarID');
 
         if($container.length && $template.length){
-            Calendar.all().order('startDate', false).list(null, function(results){
+            var calendarList = (requestParam !== "")? Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10)) : Calendar.all();
+
+            calendarList.order('startDate', false).list(null, function(results){
                 if(results.length){
 
                     $(CALENDAR_EMPTY_CONTAINER).addClass('hidden');

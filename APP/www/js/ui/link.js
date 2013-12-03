@@ -12,11 +12,15 @@ var LinkUI = {
 
     displayLinks : function(){
         var $container = $(LINK_CONTAINER),
-            $template = $(LINK_ITEM_TEMPLATE);
+            $template = $(LINK_ITEM_TEMPLATE),
+            requestParam = utils.getUrlParameter('linkID');
 
         if($container.length && $template.length){
             LinkUI.resetLinks();
-            Link.all().order('description').list(null, function(results){
+
+            var linksList = (requestParam !== "")? Link.all().filter('linkId', '=', parseInt(requestParam, 10)) : Link.all();
+
+            linksList.order('description').list(null, function(results){
                 if(results.length){
                     $(LINK_EMPTY_CONTAINER).addClass('hidden');
                     $.each(results, function(index, value){

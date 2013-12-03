@@ -10,12 +10,15 @@ var NewsUI = {
 
     displayNews : function(){
         var $container = $(NEWS_CONTAINER),
-            $template = $(NEWS_ITEM_TEMPLATE);
+            $template = $(NEWS_ITEM_TEMPLATE),
+            requestParam = utils.getUrlParameter('newsID');
 
         if($container.length && $template.length){
             NewsUI.resetNews();
 
-            News.all().order('createdDate', false).list(null, function(results){
+            var newsList = (requestParam !== "")? News.all().filter("nodeId", "=", parseInt(requestParam, 10)) : News.all();
+
+            newsList.order('createdDate', false).list(null, function(results){
                 if(results.length){
                     $(NEWS_EMPTY_CONTAINER).addClass('hidden');
                     $.each(results, function(index, value){
