@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" xmlns="http://www.w3.org/1999/html">
+<html lang="de">
 <head>
     <meta charset="utf-8">
     <title>Sign in &middot; bitwork iPAD APP</title>
@@ -74,9 +74,98 @@
     <script src="js/ui/login.js" type="text/javascript"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+
     <script type="text/javascript">
-        //app.initialize();
+        app.initialize();
     </script>
 
+
+
+
+    <script type="text/javascript" charset="utf-8">
+
+        // Wait for device API libraries to load
+        //
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            //Create Mock contact. Available Contact Properties: id, displayName, name, nickname,phoneNumbers(array), emails, addresses, ims, organizations, birthday, note, photos, categories,urs
+            //for reference: docs.phonegap.com/en/edge/cordova_contacts_contacts.md.html#Contacts
+
+            /*
+                           var myContact = navigator.contacts.create({"displayName": "Test User"});
+                           myContact.name.familyName = "User";
+                                myContact.name.givenName = "Test";
+                         myContact.nickname ="Userboy";
+                        myContact.note = "This contact has a note.";
+                          console.log("The contact, " + myContact.displayName + ", note: " + myContact.note);
+                        myContact.save(app.onContactSaveSuccess, app.onContactSaveError);
+                        
+                        */
+
+            //Create Mock file to filesystem
+
+            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+            window.requestFileSystem(window.PERSISTENT, 7 * 1024 * 1024, initFS, errorHandler);
+
+
+
+            function initFS(fs) {
+                //alert("Welcome to Filesystem! It's showtime"); // Just to check if everything is OK :)
+                //create filetransfer object
+                //                var ft = new FileTransfer();
+
+                //                var folderName = "DownloadFiles";
+                //                var fileName = "dummy.html";
+                //                var folderDir;
+                //                var fileDir;
+
+                ////download url
+                //                var uri = encodeURI("http://developer.blackberry.com/webroot/img/common/bblogo-black.png");
+                //                //create folder if not existant else access it
+                //                fs.root.getDirectory(folderName, { create: true, exclusive: false },
+                //                    function (dirEntry) {
+                //                        folderDir = dirEntry;
+                //                        //Create File. somehow this needs to be done first before the download started
+                //                        folderDir.getFile
+                //                            (fileName, { create: true, exclusive: false }, function (fileEntry) {
+                //                                fileDir = fileEntry;
+                //                                //created the files hull needed for download. Save the path. 
+                //                                var fullpath = fileDir.fullPath.replace(fileName,"");
+                //                                //now delete the file (for what ever reason)
+                //                                fileDir.remove();
+
+                //                                //download file
+
+
+                //                                ft.download
+                //                                    (uri, fullpath+fileName, function (entry) {
+                //                                        alert("Download success!" + entry.fullPath);
+                //                                    },
+                //                                function (error) {
+                //                                    alert("download error source " + error.source);
+                //                                    alert("download error target " + error.target);
+                //                                    alert("upload error code" + error.code);
+
+                //                                },
+                //                                      true
+                //                                  );
+
+                //                            });
+
+
+                //                    });
+            }
+
+            function errorHandler() {
+                console.log('An error occured');
+            }
+
+        }
+
+
+    </script>
 </body>
 </html>

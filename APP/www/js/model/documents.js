@@ -96,23 +96,21 @@ var documentsModel = {
 
     downloadSharePointFiles: function () {
         Documents.all()
+            .filter("documentId", "=", "29")
                   .list(null, function (results2) {
                       if (results2.length) {
 
+
+                          //Create  file to filesystem
+                          window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+                          window.requestFileSystem(window.PERSISTENT, 7 * 1024 * 1024, initFS, errorHandler);
+
+
                           //get documents and download them
                           function initFS(fs) {
-                              alert("Welcome to Filesystem! It's showtime"); // Just to check if everything is OK :)
-
-                              //Create Mock file to filesystem
-
-                              window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-                              window.requestFileSystem(window.PERSISTENT, 7 * 1024 * 1024, initFS, errorHandler);
-
 
                               $.each(results2, function (index, value) {
                                   var data = value._data;
-
-                              
 
 
                                   // create filetransfer object
@@ -124,10 +122,9 @@ var documentsModel = {
                                   var fileDir;
 
                                   // download url
-                                  alert(1);
+                                
                                   var uri = encodeURI(settings.content + "");
-                                  console.debug(uri)
-                                  alert(2);
+                                  console.debug(uri);
 
                                   //               create folder if not existant else access it
                                   fs.root.getDirectory(folderName, { create: true, exclusive: false },
@@ -147,12 +144,12 @@ var documentsModel = {
 
                                                   ft.download
                                                       (uri, fullpath + fileName, function (entry) {
-                                                          alert("Download success!" + entry.fullPath);
+                                                          console.debug("Download success!" + entry.fullPath);
                                                       },
                                                   function (error) {
-                                                      alert("download error source " + error.source);
-                                                      alert("download error target " + error.target);
-                                                      alert("upload error code" + error.code);
+                                                      console.debug("download error source " + error.source);
+                                                      console.debug("download error target " + error.target);
+                                                      console.debug("upload error code" + error.code);
 
                                                   },
                                                         true
@@ -163,13 +160,11 @@ var documentsModel = {
 
                                       });
 
-
-
-
-
-
-
                               });
+                          }
+
+                          function errorHandler() {
+                              console.debug('An error occured');
                           }
                       }
                   });
