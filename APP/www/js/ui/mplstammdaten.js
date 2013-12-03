@@ -144,8 +144,9 @@ $('body').on('productoptions-sync-ready db-schema-ready', productoptionsUI.displ
 //this part is about the documents
 
 var documents_CONTAINER = "#document-items-container",
-documents_DOCUMENT_TEMPLATE = "#document-document-item-template",
-documents_FOLDER_TEMPLATE = "#document-folder-item-template";
+    tree_nav_CONTAINER = "#document-tree-nav-container",
+    documents_DOCUMENT_TEMPLATE = "#document-document-item-template",
+    documents_FOLDER_TEMPLATE = "#document-folder-item-template";
 
 
 //displaydata for options in MPL
@@ -362,11 +363,11 @@ var DocumentsUI = {
                                                 $.each(results, function (index, value) {
                                                     var data = value._data;
  
-                                                    //TODO grundlegende Änderung, da so keine Sortierung nach Gruppen vorgenommen werden kann.
+                                                    //TODO grundlegende ï¿½nderung, da so keine Sortierung nach Gruppen vorgenommen werden kann.
                                                     //eventuell einfacher alle dokument arten zu laden und mit den gefundenen Dokumentarten zu vergleichen.
                                                     //dann in jeder dokument art beim Klick auf die Art die Dokumente laden
  
-                                                    //hole alle Dokumentarten, alphabetisch sortiert.  Wenn Dokumentart in documenttypeslist dann füge hinzu, sonst überspringen
+                                                    //hole alle Dokumentarten, alphabetisch sortiert.  Wenn Dokumentart in documenttypeslist dann fï¿½ge hinzu, sonst ï¿½berspringen
  
                                                     //first get all documenttypes to either the current equipment / other
                                                     //product or one of its lower level items (group, family, platform, product)
@@ -410,7 +411,8 @@ var DocumentsUI = {
 
     displayDocumentTypes: function () {
         var $containerRoot = $(documents_CONTAINER),
-       $templateFolder = $(documents_FOLDER_TEMPLATE);
+            $treeNavContainer = $(tree_nav_CONTAINER),
+            $templateFolder = $(documents_FOLDER_TEMPLATE);
 
         if ($containerRoot.length && $templateFolder.length) {
             //load documents by current url parameter / andhand von aktueller ID laden
@@ -527,7 +529,7 @@ var DocumentsUI = {
                                     $('.tree-nav-item-name', newItem).html(data.name);
                                     $('.tree-nav-link', newItem).attr("data-item-id", data.documenttypeId);
 
-                                     $containerRoot.append(newItem.removeClass('hidden'));
+                                    $treeNavContainer.append(newItem.removeClass('hidden'));
                                     $containerRoot.removeClass('hidden');
 
                                 });

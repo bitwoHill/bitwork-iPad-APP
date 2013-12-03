@@ -59,10 +59,10 @@ var appUser;
         //Add news sync to queue
         syncQueue.queue("sync-queue", function(next){
             //bind event
-            $('body').on('news-sync-ready', function(){
+            $('body').on('news-sync-ready sync-error', function(){
                 next();
                 //unbind event
-                $('body').off('news-sync-ready', next);
+                $('body').off('news-sync-ready sync-error', next);
             });
             NewsModel.syncNews();
         });
@@ -70,9 +70,9 @@ var appUser;
         //Add calendar sync to queue
         syncQueue.queue("sync-queue", function(next){
             //bind event
-            $('body').on('calendar-sync-ready', function(){
+            $('body').on('calendar-sync-ready sync-error', function(){
                 //unbind event
-                $('body').off('calendar-sync-ready', next);
+                $('body').off('calendar-sync-ready sync-error', next);
                 next();
             });
             CalendarModel.syncCalendar();
@@ -81,9 +81,9 @@ var appUser;
         //Add Link sync to queue
         syncQueue.queue("sync-queue", function(next){
             //bind event
-            $('body').on('link-sync-ready', function(){
+            $('body').on('link-sync-ready sync-error', function(){
                 //unbind event
-                $('body').off('link-sync-ready', next);
+                $('body').off('link-sync-ready sync-error', next);
                 next();
             });
             LinkModel.syncLinks();
@@ -92,9 +92,9 @@ var appUser;
         //Add contacts sync to queue
         syncQueue.queue("sync-queue", function(next){
             //bind event
-            $('body').on('contacts-sync-ready', function(){
+            $('body').on('contacts-sync-ready sync-error', function(){
                 //unbind event
-                $('body').off('contacts-sync-ready', next);
+                $('body').off('contacts-sync-ready sync-error', next);
                 next();
             });
             ContactsModel.syncContacts();
@@ -102,9 +102,9 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('productgroups-sync-ready', function () {
+            $('body').on('productgroups-sync-ready sync-error', function () {
                 //unbind event
-                $('body').off('productgroups-sync-ready', next);
+                $('body').off('productgroups-sync-ready sync-error', next);
                 next();
             });
             ProductGroupsModel.syncProductGroups();
@@ -112,9 +112,9 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('productfamilies-sync-ready', function () {
+            $('body').on('productfamilies-sync-ready sync-error', function () {
                 //unbind event
-                $('body').off('productfamilies-sync-ready', next);
+                $('body').off('productfamilies-sync-ready sync-error', next);
                 next();
             });
             ProductFamiliesModel.sharePointFamilies();
@@ -122,9 +122,9 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('productplatforms-sync-ready', function () {
+            $('body').on('productplatforms-sync-ready sync-error', function () {
                 //unbind event
-                $('body').off('productplatforms-sync-ready', next);
+                $('body').off('productplatforms-sync-ready sync-error', next);
                 next();
             });
             ProductPlatformsModel.sharePointPlatforms();
@@ -132,9 +132,9 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('products-sync-ready', function () {
+            $('body').on('products-sync-ready sync-error', function () {
                 //unbind event
-                $('body').off('products-sync-ready', next);
+                $('body').off('products-sync-ready sync-error', next);
                 next();
             });
             ProductsModel.sharePointProducts();
@@ -142,9 +142,9 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('otherproducts-sync-ready', function () {
+            $('body').on('otherproducts-sync-ready sync-error', function () {
                 //unbind event
-                $('body').off('otherproducts-sync-ready', next);
+                $('body').off('otherproducts-sync-ready sync-error', next);
                 next();
             });
             otherproductsModel.sharePointOtherproducts();
@@ -152,9 +152,9 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('equipmentproducts-sync-ready', function () {
+            $('body').on('equipmentproducts-sync-ready sync-error', function () {
                 //unbind event
-                $('body').off('equipmentproducts-sync-ready', next);
+                $('body').off('equipmentproducts-sync-ready sync-error', next);
                 next();
             });
             equipmentproductsModel.sharePointEquipmentproducts();
@@ -162,9 +162,9 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('productoptions-sync-ready', function () {
+            $('body').on('productoptions-sync-ready sync-error', function () {
                 //unbind event
-                $('body').off('productoptions-sync-ready', next);
+                $('body').off('productoptions-sync-ready sync-error', next);
                 next();
             });
             productoptionsModel.sharePointProductOptions();
@@ -173,9 +173,9 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('documents-sync-ready', function () {
+            $('body').on('documents-sync-ready sync-error', function () {
                 //unbind event
-                $('body').off('documents-sync-ready', next);
+                $('body').off('documents-sync-ready sync-error', next);
                 next();
             });
             documentsModel.sharePointDocuments();
