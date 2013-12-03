@@ -517,7 +517,6 @@ var DocumentsUI = {
 
                                     //check wheter the current documenttyp is in documenttype list. if not skip the creation of an divblock
                                     if ($.inArray(data.documenttypeId, documenttypeslist) === -1) {
-                                        console.debug("skipped: " + data.documenttypeId);
                                         return true; //skip in jquery way ;) 
                                     }
 
