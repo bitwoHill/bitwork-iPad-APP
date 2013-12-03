@@ -4,7 +4,6 @@
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <access origin="*" />
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="BackupWebStorage" value="cloud" />
@@ -32,10 +31,9 @@
     <content src="LoginPage.html" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
-    <access browserOnly="true" origin="http://www.atlas-cms.com/*" />
-        <access browserOnly="true" origin=" http://developer.blackberry.com/*" />
-   
-    <feature name="InAppBrowser">
+     <access origin=".*" />
+    <access origin="http://www.atlas-cms.com/*" />
+           <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
     <feature name="Contacts">

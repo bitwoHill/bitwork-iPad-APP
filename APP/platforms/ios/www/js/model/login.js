@@ -18,6 +18,7 @@ var User = function(){
                 type: 'GET',
                 url: Settings.spDomain + "/" + SPTestList,
                 crossDomain: true,
+                timeout: 5000,
                 username: user,
                 password: pass,
                 dataType: 'json'
@@ -27,8 +28,8 @@ var User = function(){
                 }
             ).fail(
                 function (responseData, textStatus, errorThrown) {
-                    if(responseData && responseData.status){
-                        if(responseData.status === 401){ //if Unauthorized status -> login failed
+                    if(responseData){
+                        if(responseData.status && responseData.status === 401){ //if Unauthorized status -> login failed
                             loginFailed();
                         } else { //other fail status -> check if user in DB
                             checkDBUser(user, pass);
@@ -42,6 +43,8 @@ var User = function(){
         doLogout = function(){
             utils.deleteCookie('bitwork_ipadapp_auth');
             setLoginCounter(0);
+            this.username = "";
+            this.password = "";
 
             var currentPageURL = window.location.pathname;
             currentPageURL = currentPageURL.replace("/", "");
@@ -120,7 +123,7 @@ var User = function(){
 
         },
 
-        setCurrentUser = function(){
+        setCurrentUser = function(callback){
             var authCookie = utils.getCookie("bitwork_ipadapp_auth"),
                 currentPageURL = window.location.pathname;
 
@@ -138,6 +141,10 @@ var User = function(){
                     //redirect to login page
                     window.open(loginPageUrl + "?returnURL=" + encodeURIComponent(currentPageURL), "_self");
                 }
+            }
+
+            if(typeof callback === "function") {
+                callback();
             }
         };
 

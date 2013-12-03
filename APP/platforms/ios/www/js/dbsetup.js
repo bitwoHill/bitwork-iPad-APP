@@ -48,9 +48,9 @@ var appUser;
         //create DB schema
         persistence.debug = false;
         persistence.schemaSync(function(){
-            appUser.initUser();
-               console.debug("Created new User");
-            $('body').trigger('db-schema-ready');
+            appUser.initUser(function(){
+                $('body').trigger('db-schema-ready');
+            });
         });
     };
 

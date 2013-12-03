@@ -5,7 +5,6 @@ var CONTACTS_CONTAINER = "#contact-items-container",
     CONTACTS_EMPTY_CONTAINER = "#contacts-empty-container",
     CONTACTS_ROOT_FOLDER = "Telefonbuch";
 
-
 var ContactsUI = {
 
     resetContactTree : function(){
@@ -90,62 +89,64 @@ var ContactsUI = {
 
         if($templateContactInfo.length && contactId){
             Contacts.all().filter("contactId", "=", parseInt(contactId, 10)).list(null, function(results){
-                var data = results[0]._data;
+                if(results.length) {
+                    var data = results[0]._data;
 
-                $(".contact-details-name", $templateContactInfo).html(data.name + " " + data.forename);
-                $(".contact-details-function", $templateContactInfo).html(data.jobFunction);
-                $(".contact-details-department", $templateContactInfo).html(data.department);
+                    $(".contact-details-name", $templateContactInfo).html(data.name + " " + data.forename);
+                    $(".contact-details-function", $templateContactInfo).html(data.jobFunction);
+                    $(".contact-details-department", $templateContactInfo).html(data.department);
 
-                if(data.profilePicture) {
-                    $(".contact-details-picture", $templateContactInfo).attr('src', data.profilePicture);
-                } else {
-                    $(".contact-details-picture", $templateContactInfo).attr('src', $(".contact-details-picture", $templateContactInfo).attr('data-default-image'));
+                    if(data.profilePicture) {
+                        $(".contact-details-picture", $templateContactInfo).attr('src', data.profilePicture);
+                    } else {
+                        $(".contact-details-picture", $templateContactInfo).attr('src', $(".contact-details-picture", $templateContactInfo).attr('data-default-image'));
+                    }
+
+                    if(data.phone) {
+                        $(".contact-details-phone", $templateContactInfo).html(data.phone);
+                        $(".contact-details-phone-container", $templateContactInfo).removeClass("hidden");
+                    } else {
+                        $(".contact-details-phone-container", $templateContactInfo).addClass("hidden");
+                    }
+
+                    if(data.mobilePhone) {
+                        $(".contact-details-mobile", $templateContactInfo).html(data.mobilePhone);
+                        $(".contact-details-mobile-container", $templateContactInfo).removeClass("hidden");
+                    } else {
+                        $(".contact-details-mobile-container", $templateContactInfo).addClass("hidden");
+                    }
+
+                    if(data.fax) {
+                        $(".contact-details-fax", $templateContactInfo).html(data.fax);
+                        $(".contact-details-fax-container", $templateContactInfo).removeClass("hidden");
+                    } else {
+                        $(".contact-details-fax-container", $templateContactInfo).addClass("hidden");
+                    }
+
+                    if(data.email) {
+                        $(".contact-details-email", $templateContactInfo).html(data.email).attr('href', 'mailto:' + data.email);
+                        $(".contact-details-email-container", $templateContactInfo).removeClass("hidden");
+                    } else {
+                        $(".contact-details-email-container", $templateContactInfo).addClass("hidden");
+                    }
+
+                    if(data.representative) {
+                        $(".contact-details-representative", $templateContactInfo).html(data.representative);
+                        $(".contact-details-representative-container", $templateContactInfo).removeClass("hidden");
+                    } else {
+                        $(".contact-details-representative-container", $templateContactInfo).addClass("hidden");
+                    }
+
+                    if(data.description) {
+                        $(".contact-details-description", $templateContactInfo).html(data.description).removeClass("hidden");
+                        $("hr", $templateContactInfo).removeClass("hidden");
+                    } else {
+                        $("hr", $templateContactInfo).addClass("hidden");
+                        $(".contact-details-description", $templateContactInfo).html(" ").addClass("hidden");
+                    }
+
+                    $templateContactInfo.show(300);
                 }
-
-                if(data.phone) {
-                    $(".contact-details-phone", $templateContactInfo).html(data.phone);
-                    $(".contact-details-phone-container", $templateContactInfo).removeClass("hidden");
-                } else {
-                    $(".contact-details-phone-container", $templateContactInfo).addClass("hidden");
-                }
-
-                if(data.mobilePhone) {
-                    $(".contact-details-mobile", $templateContactInfo).html(data.mobilePhone);
-                    $(".contact-details-mobile-container", $templateContactInfo).removeClass("hidden");
-                } else {
-                    $(".contact-details-mobile-container", $templateContactInfo).addClass("hidden");
-                }
-
-                if(data.fax) {
-                    $(".contact-details-fax", $templateContactInfo).html(data.fax);
-                    $(".contact-details-fax-container", $templateContactInfo).removeClass("hidden");
-                } else {
-                    $(".contact-details-fax-container", $templateContactInfo).addClass("hidden");
-                }
-
-                if(data.email) {
-                    $(".contact-details-email", $templateContactInfo).html(data.email).attr('href', 'mailto:' + data.email);
-                    $(".contact-details-email-container", $templateContactInfo).removeClass("hidden");
-                } else {
-                    $(".contact-details-email-container", $templateContactInfo).addClass("hidden");
-                }
-
-                if(data.representative) {
-                    $(".contact-details-representative", $templateContactInfo).html(data.representative);
-                    $(".contact-details-representative-container", $templateContactInfo).removeClass("hidden");
-                } else {
-                    $(".contact-details-representative-container", $templateContactInfo).addClass("hidden");
-                }
-
-                if(data.description) {
-                    $(".contact-details-description", $templateContactInfo).html(data.description).removeClass("hidden");
-                    $("hr", $templateContactInfo).removeClass("hidden");
-                } else {
-                    $("hr", $templateContactInfo).addClass("hidden");
-                    $(".contact-details-description", $templateContactInfo).html(" ").addClass("hidden");
-                }
-
-                $templateContactInfo.show(300);
             });
         }
 
@@ -158,7 +159,14 @@ var ContactsUI = {
 
 (function($){
     //bind to sync ready event in order to display the news
-    $('body').on('contacts-sync-ready db-schema-ready', ContactsUI.displayContactTree);
+    $('body').on('contacts-sync-ready db-schema-ready', function(){
+        ContactsUI.displayContactTree();
+
+        var requestParam = utils.getUrlParameter('contactID');
+        if(requestParam !== ""){
+            ContactsUI.displayContactInfo(parseInt(requestParam, 10));
+        }
+    });
 
     $(document).ready(function(){
         $('body').on('click', 'a.page-sync-btn', function(){

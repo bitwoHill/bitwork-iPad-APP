@@ -94,9 +94,13 @@ var documentsModel = {
         }
     },
 
+ /*.filter("documentId", "=", "964")
+            .or(new persistence.PropertyFilter("documentId", "=", "966"))*/
+            
     downloadSharePointFiles: function () {
         Documents.all()
-            .filter("documentId", "=", "29")
+        .filter("documentId", "=", "964")
+            .or(new persistence.PropertyFilter("documentId", "=", "966"))
                   .list(null, function (results2) {
                       if (results2.length) {
 
@@ -111,21 +115,21 @@ var documentsModel = {
 
                               $.each(results2, function (index, value) {
                                   var data = value._data;
-var path = data.path;
+                                  console.debug(data);
+//var path = data.path;
 
                                   // create filetransfer object
                                   var ft = new FileTransfer();
 
                                   var folderName = "Dokumente";
-                                  var fileName = "dummy.html";
+                                  var fileName = data.documentname;
                                   var folderDir;
                                   var fileDir;
 
                                   // download url
-                                
-                                  var uri = encodeURI(Settings.spContent);
-                                  console.debug(uri);
-
+                               
+                                  var uri = encodeURI("http://www.atlas-cms.com"+data.path);
+                                 
                                   //               create folder if not existant else access it
                                   fs.root.getDirectory(folderName, { create: true, exclusive: false },
                                       function (dirEntry) {
@@ -140,11 +144,17 @@ var path = data.path;
                                                   fileDir.remove();
 
                                                   //      download file
+                                                   console.debug(uri);
+
 
 
                                                   ft.download
-                                                      (uri, fullpath + fileName, function (entry) {
+                                                      (uri, 
+                                                      fullpath + fileName,
+                                                       function (entry) {
                                                           console.debug("Download success!" + entry.fullPath);
+                                                          data.path = entry.fullPath;
+                                                          persistence.flush();
                                                       },
                                                   function (error) {
                                                       console.debug("download error source " + error.source);
@@ -152,7 +162,13 @@ var path = data.path;
                                                       console.debug("upload error code" + error.code);
 
                                                   },
-                                                        true
+                                                        true,
+                                                        {
+                                                        headers: 
+                                                        {
+                                                        "Authorization": "Basic " + Base64.encode(appUser.username+ ":" + appUser.password)
+                                                        }
+                                                        }
                                                     );
 
                                               });

@@ -70,7 +70,7 @@ var ContactsModel = {
                     callback();
                 };
                 img.onerror = function(){
-                    newItem.profilePicture = "";
+                    newItem.profilePicture = Settings.spContent + value.Pfad + "/" + value.Name;
                     persistence.add(new Contacts(newItem));
                     callback();
                 };

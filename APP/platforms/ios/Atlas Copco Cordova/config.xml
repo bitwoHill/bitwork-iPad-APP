@@ -41,12 +41,12 @@
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <access origin=".*" />
+    <access origin="http://www.atlas-cms.com/*" />
     <author email="dev@callback.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
     <content src="LoginPage.html" />
-    <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="true" />
-    <access browserOnly="true" origin="http://www.atlas-cms.com/*" />
-    <access browserOnly="true" origin=" http://developer.blackberry.com/*" />
 </widget>

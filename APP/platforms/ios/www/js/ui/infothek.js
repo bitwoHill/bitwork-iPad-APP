@@ -23,24 +23,7 @@ var InfothekUI = {
                     $emptyContainer.addClass("hidden");
 
                     $.each(results, function(index, value){
-                        var data = value._data,
-                            newItem;
-
-                        if(data.isFolder){
-                            newItem = $templateFolder.clone();
-                        } else {
-                            newItem = $templateItem.clone();
-                        }
-
-                        newItem.removeAttr('id');
-
-                        $('.tree-nav-item-name', newItem).html(data.title);
-                        $('.tree-nav-link', newItem).attr("data-item-id", data.nodeId);
-                        $('.tree-nav-link', newItem).attr("data-item-name", data.title);
-
-                        if(data.path) {
-                            $('.tree-nav-link', newItem).attr("href", data.path);
-                        }
+                        var newItem = InfothekUI.createTreeNavItem($templateItem, $templateFolder, value._data);
 
                         $container.append(newItem.removeClass('hidden'));
                     });
@@ -65,27 +48,55 @@ var InfothekUI = {
             Infothek.all().filter("parentFolder", "=", nodeId).order('isFolder', false).order('title', true).list(null, function(results){
 
                 $.each(results, function(index, value){
-                    var data = value._data,
-                        newItem;
-
-                    if(data.isFolder){
-                        newItem = $templateFolder.clone();
-                    } else {
-                        newItem = $templateItem.clone();
-                    }
-
-                    newItem.removeAttr('id');
-
-                    $('.tree-nav-item-name', newItem).html(data.title);
-                    $('.tree-nav-link', newItem).attr("data-item-id", data.nodeId);
-                    $('.tree-nav-link', newItem).attr("data-item-name", data.title);
-
-                    if(data.path) {
-                        $('.tree-nav-link', newItem).attr("href", data.path);
-                    }
+                    var newItem = InfothekUI.createTreeNavItem($templateItem, $templateFolder, value._data);
 
                     container.append(newItem.removeClass('hidden'));
                 });
+            });
+        }
+    },
+
+    createTreeNavItem: function($templateItem, $templateFolder, data){
+        var newItem;
+
+        if(data.isFolder){
+            newItem = $templateFolder.clone();
+        } else {
+            newItem = $templateItem.clone();
+        }
+
+        newItem.removeAttr('id');
+
+        $('.tree-nav-item-name', newItem).html(data.title);
+        $('.tree-nav-link', newItem).attr("data-item-id", data.nodeId);
+        $('.tree-nav-link', newItem).attr("data-item-name", data.title);
+
+        if(data.path) {
+            $('.tree-nav-link', newItem).attr("href", data.path);
+        }
+
+        return newItem;
+    },
+
+    displayInfothekNode : function(nodeID){
+        var $container = $(INFOTHEK_CONTAINER),
+            $templateItem = $(INFOTHEK_ITEM_TEMPLATE),
+            $templateFolder = $(INFOTHEK_FOLDER_TEMPLATE),
+            $emptyContainer = $(INFOTHEK_EMPTY_CONTAINER);
+
+        if($container.length && $templateFolder.length && $templateItem.length){
+            InfothekUI.resetInfothek();
+
+            Infothek.all().filter("nodeId", "=", nodeID).list(null, function(results){
+
+                if(results.length){
+                    $emptyContainer.addClass("hidden");
+
+                    InfothekUI.updateContactTree($container, results[0]._data.parentFolder);
+
+                } else {
+                    $emptyContainer.removeClass("hidden");
+                }
             });
         }
     }
@@ -93,7 +104,15 @@ var InfothekUI = {
 
 $(document).ready(function(){
 
-    $('body').on('infothek-sync-ready db-schema-ready', InfothekUI.displayInfothekNavTree);
+    $('body').on('infothek-sync-ready db-schema-ready', function(){
+        var requestParam = utils.getUrlParameter('infothekID');
+
+        if(requestParam !== "") {
+            InfothekUI.displayInfothekNode(parseInt(requestParam));
+        } else {
+            InfothekUI.displayInfothekNavTree();
+        }
+    });
 
     $('body').on('click', 'a.page-sync-btn', function(e){
         e.preventDefault();
