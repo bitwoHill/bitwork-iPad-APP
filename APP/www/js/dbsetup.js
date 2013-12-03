@@ -1,7 +1,10 @@
+var appUser;
+
 (function($){
 
     var modelDependencies = [
             "js/config.js",
+            "js/model/login.js",
             "js/model/sharepoint.js",
             "js/model/calendar.js",
             "js/model/contacts.js",
@@ -35,29 +38,17 @@
         $.getScript(modelDependencies[i],jsLoadHelper);
     }
 
+
     var dbSetup = function(){
+        //init User
+        appUser = new User();
         //setup DB connection
         persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 10 * 1024 * 1024);
         //create DB schema
         persistence.debug = false;
         persistence.schemaSync(function(){
+            appUser.initUser();
             $('body').trigger('db-schema-ready');
-            //Sync with sharepoint
-            //NewsModel.syncNews();
-            //CalendarModel.syncCalendar();
-            //LinkModel.syncLinks();
-            //ContactsModel.syncContacts();
-            //ProductGroupsModel.syncProductGroups();
-            //ProductFamiliesModel.sharePointFamilies();
-            //ProductPlatformsModel.sharePointPlatforms();
-            ///ProductsModel.sharePointProducts();
-            //otherproductsModel.sharePointOtherproducts();
-            //equipmentproductsModel.sharePointEquipmentproducts();
-            //productoptionsModel.sharePointProductOptions();
-            //documentsModel.sharePointDocuments();
-            //Sync with mock
-            
-            //InfothekModel.sharePointSync();
         });
     };
 
@@ -109,8 +100,6 @@
             ContactsModel.syncContacts();
         });
 
-
-        //Add contacts sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
             $('body').on('productgroups-sync-ready', function () {
@@ -121,8 +110,6 @@
             ProductGroupsModel.syncProductGroups();
         });
 
-
-        //Add productgroups sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
             $('body').on('productfamilies-sync-ready', function () {
@@ -133,10 +120,6 @@
             ProductFamiliesModel.sharePointFamilies();
         });
 
-       
-
-
-        //Add contacts sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
             $('body').on('productplatforms-sync-ready', function () {
@@ -144,12 +127,9 @@
                 $('body').off('productplatforms-sync-ready', next);
                 next();
             });
-ProductPlatformsModel.sharePointPlatforms();
+            ProductPlatformsModel.sharePointPlatforms();
         });
 
-
-
-        //Add contacts sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
             $('body').on('products-sync-ready', function () {
@@ -157,12 +137,9 @@ ProductPlatformsModel.sharePointPlatforms();
                 $('body').off('products-sync-ready', next);
                 next();
             });
-ProductsModel.sharePointProducts();
+            ProductsModel.sharePointProducts();
         });
 
-
-
-        //Add contacts sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
             $('body').on('otherproducts-sync-ready', function () {
@@ -170,12 +147,9 @@ ProductsModel.sharePointProducts();
                 $('body').off('otherproducts-sync-ready', next);
                 next();
             });
-otherproductsModel.sharePointOtherproducts();
+            otherproductsModel.sharePointOtherproducts();
         });
 
-
-
-        //Add contacts sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
             $('body').on('equipmentproducts-sync-ready', function () {
@@ -183,11 +157,9 @@ otherproductsModel.sharePointOtherproducts();
                 $('body').off('equipmentproducts-sync-ready', next);
                 next();
             });
-equipmentproductsModel.sharePointEquipmentproducts();
+            equipmentproductsModel.sharePointEquipmentproducts();
         });
 
-
-        //Add contacts sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
             $('body').on('productoptions-sync-ready', function () {
@@ -199,7 +171,6 @@ equipmentproductsModel.sharePointEquipmentproducts();
         });
 
 
-        //Add contacts sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
             $('body').on('documents-sync-ready', function () {

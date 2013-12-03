@@ -6,6 +6,15 @@ var i18n = {
         "days": ["Son", "Mon", "Die", "Mit", "Don", "Fre", "Sam"],
         "na" : "N/A",
 
+        //Login
+        "login-label": "Anmelden",
+        "login-auto": "Automatisch anmelden",
+        "login-page-title": "Am SharePoint anmelden",
+        "login-error-username": "Benutzername muss eingetragen werden",
+        "login-error-password": "Password muss eingetragen werden",
+        "login-failed-msg": "User name or password are incorrect.",
+        "db-reset": "Due to too many login attempts all data hhase been wiped.",
+
         //Menu
         "menu-news": "News",
         "menu-calendar": "Kalender",
