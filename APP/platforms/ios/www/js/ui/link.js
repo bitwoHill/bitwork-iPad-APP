@@ -4,12 +4,23 @@ var LINK_CONTAINER = "#link-items-container",
 
 var LinkUI = {
 
+    resetLinks : function(){
+        var $container = $(LINK_CONTAINER);
+
+        $('li', $container).not(LINK_ITEM_TEMPLATE).remove();
+    },
+
     displayLinks : function(){
         var $container = $(LINK_CONTAINER),
-            $template = $(LINK_ITEM_TEMPLATE);
+            $template = $(LINK_ITEM_TEMPLATE),
+            requestParam = utils.getUrlParameter('linkID');
 
         if($container.length && $template.length){
-            Link.all().order('description').list(null, function(results){
+            LinkUI.resetLinks();
+
+            var linksList = (requestParam !== "")? Link.all().filter('linkId', '=', parseInt(requestParam, 10)) : Link.all();
+
+            linksList.order('description').list(null, function(results){
                 if(results.length){
                     $(LINK_EMPTY_CONTAINER).addClass('hidden');
                     $.each(results, function(index, value){
@@ -40,15 +51,13 @@ var LinkUI = {
 
 (function($){
     //Display news when sync is ready
-    $('body').on('link-sync-ready', LinkUI.displayLinks);
+    $('body').on('link-sync-ready db-schema-ready', LinkUI.displayLinks);
 
     $(document).ready(function(){
+
         $('body').on('click', 'a.page-sync-btn', function(){
             LinkModel.syncLinks();
         });
     })
 
 })(jQuery);
-
-//bind to sync ready event in order to display the news
-$('body').on('news-sync-ready', LinkUI.displayLinks);

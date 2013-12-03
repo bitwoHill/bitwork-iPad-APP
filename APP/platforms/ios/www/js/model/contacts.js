@@ -1,4 +1,4 @@
-var CONTACTS_SYNC_URL = "content/contacts.json";
+var CONTACTS_LIST = "Telefonbuch";
 
 //DB model
 var Contacts = persistence.define('Contacts', {
@@ -15,56 +15,106 @@ var Contacts = persistence.define('Contacts', {
     description: "TEXT",
     representative: "TEXT",
     isFolder: "BOOL",
-    parentFolder: "INT"
+    parentFolder: "TEXT"
 });
 
 Contacts.index('contactId', { unique: true });
 
 var ContactsModel = {
-    sharePointSync : function(callback){
+    syncContacts : function(){
+        $('body').trigger('sync-start');
 
-        //TODO: replace with sharepoint connection
-        $.getJSON(CONTACTS_SYNC_URL, function(data){
-            $.each(data, function(index, value){
-                var contactItem,
-                    tmp = (value.profilePicture)? value.profilePicture.split('.') : false,
-                    imageExtension = (tmp && tmp.length > 1)? (tmp[tmp.length - 1]).toLowerCase() : false;
+        SharePoint.sharePointRequest(CONTACTS_LIST, ContactsModel.mapSharePointData);
+    },
 
-                //save image date if exists
-                if(imageExtension && (imageExtension === 'png' || imageExtension === 'jpg')){
-                    var img = new Image();
-                    img.src = value.profilePicture;
-                    img.onload = function(){
-                        value.profilePicture = utils.getBase64FromImage(img, imageExtension);
-                        contactItem = new Contacts(value);
-                        persistence.add(contactItem);
-                    };
-                } else {
-                    value.profilePicture = "";
-                    contactItem = new Contacts(value);
-                    persistence.add(contactItem);
-                }
-            });
+    addNewsItemToDB: function(value, callback){
+        var newItem = {
+            contactId : value.ID
+        };
 
-            persistence.flush(
-                function(){
-                    //DB is updated - trigger custom event
-                    if(typeof callback === "function"){
-                        callback();
-                    }
+        newItem.name = (value.Name)? value.Name : "";
+        if(value.Nachname) {
+            newItem.name = value.Nachname;
+        }
+        newItem.forename = (value.Vorname)? value.Vorname : "";
 
-                    $('body').trigger('contacts-sync-ready');
-                }
-            );
-        }).fail(
-            function(){
-                //TODO: error handling if necessary
-                alert("Contacts: Mock data read error.");
+        newItem.phone = (value.TelefonGeschäftlich)? value.TelefonGeschäftlich : "";
+        newItem.mobilePhone = (value.Mobiltelefonnummer)? value.Mobiltelefonnummer : "";
+        newItem.fax = (value.Faxnummer)? value.Faxnummer : "";
+        newItem.email = (value.EMail)? value.EMail: "";
 
-                if(typeof callback === "function") {
-                    callback();
-                }
+        newItem.jobFunction = (value.Funktion)? value.Funktion : "";
+        newItem.department = (value.Abteilung)? value.Abteilung : "";
+
+        newItem.description = (value.Beschreibung)? value.Beschreibung : "";
+
+        newItem.isFolder = (value.Inhaltstyp == "Bild")? false : true;
+
+        if(value.Pfad){
+            var tmpPath = (value.Pfad).split("/").slice(1);
+            if(tmpPath.length){
+                newItem.parentFolder = tmpPath[tmpPath.length-1];
             }
-        );
+        }
+
+        if(!newItem.isFolder){
+            var tmp = (value.Name)? value.Name.split('.') : false,
+                imageExtension = (tmp && tmp.length > 1)? (tmp[tmp.length - 1]).toLowerCase() : false;
+
+            if(imageExtension && (imageExtension === 'png' || imageExtension === 'jpg')){
+                var img = new Image();
+                img.src = Settings.spContent + value.Pfad + "/" + value.Name;
+                img.onload = function(){
+                    newItem.profilePicture = utils.getBase64FromImage(img, imageExtension);
+                    persistence.add(new Contacts(newItem));
+                    callback();
+                };
+                img.onerror = function(){
+                    newItem.profilePicture = "";
+                    persistence.add(new Contacts(newItem));
+                    callback();
+                };
+            } else {
+                persistence.add(new Contacts(newItem));
+                callback();
+            }
+        } else {
+            persistence.add(new Contacts(newItem));
+            callback();
+        }
+    },
+
+    //maps SharePoint data to current model
+    mapSharePointData: function(data){
+        var spData = data.d;
+
+        if(spData && spData.results.length){
+            var dataLength = spData.results.length,
+                index = 0,
+                addContactCallback = function(){
+
+                    if(index === dataLength){
+                        index = 0;
+                        persistence.flush(
+                            function(){
+                                SyncModel.addSync(CONTACTS_LIST);
+                                $('body').trigger('sync-end');
+                                $('body').trigger('contacts-sync-ready');
+                            }
+                        );
+
+                        return;
+                    } else {
+                        index++;
+                        addNews(spData.results[index-1]);
+                    }
+                },
+                addNews = function(contactItem){
+                    ContactsModel.addNewsItemToDB(contactItem, addContactCallback)
+                };
+
+            addContactCallback();
+        }
     }
 };
+

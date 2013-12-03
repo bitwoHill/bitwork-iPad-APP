@@ -1,4 +1,4 @@
-var INFOTHEK_SYNC_URL = "content/infothek.json";
+var INFOTHEK_LIST = "Infothek";
 
 //DB model
 var Infothek = persistence.define('Infothek', {
@@ -6,42 +6,75 @@ var Infothek = persistence.define('Infothek', {
     title: "TEXT",
     path: "TEXT",
     isFolder: "BOOL",
-    parentFolder: "INT"
+    parentFolder: "TEXT"
 });
 
 Infothek.index('nodeId', { unique: true });
 
 var InfothekModel = {
-    sharePointSync : function(callback){
 
-        //TODO: replace with sharepoint connection
-        $.getJSON(INFOTHEK_SYNC_URL, function(data){
+    syncInfothek : function(){
+        $('body').trigger('sync-start');
 
-            $.each(data, function(index, value){
-                var newItem = new Infothek(value);
+        SharePoint.sharePointRequest(INFOTHEK_LIST, InfothekModel.mapSharePointData);
+    },
 
-                persistence.add(newItem);
+    mapSharePointData: function(data){
+        console.log(data);
+        var spData = data.d || false;
+
+        if(spData && spData.results.length){
+            $.each(spData.results, function(index, value){
+                var newItem = {
+                    nodeId : value.ID,
+                    title : value.Name
+                };
+
+                newItem.isFolder = (value.Inhaltstyp === "Ordner")? true : false;
+
+                if(value.Pfad){
+                    var tmpPath = (value.Pfad).split("/").slice(1);
+                    if(tmpPath.length){
+                        newItem.parentFolder = tmpPath[tmpPath.length-1];
+                    }
+                }
+
+                if(!newItem.isFolder){
+                    newItem.path = Settings.spContent + value.Pfad + "/" + value.Name;
+
+                    //TODO: replace with file upload
+                    /*InfothekModel.downloadInfothekFile(newItem, index, spData.results.length, function(infothekItem, pos, length){
+                        persistence.add(new Infothek(infothekItem));
+
+                        persistence.flush(
+                            function(){
+                                if( pos+1 === length ){
+                                    SyncModel.addSync(INFOTHEK_LIST);
+                                    $('body').trigger('sync-end');
+                                    $('body').trigger('infothek-sync-ready');
+                                }
+                            }
+                        );
+                    });*/
+                }
+
+                persistence.add(new Infothek(newItem));
             });
 
-            persistence.flush(
-                function(){
-                    //DB is updated - trigger custom event
-                    if(typeof callback === "function"){
-                        callback();
-                    }
+            persistence.flush(function(){
+                SyncModel.addSync(INFOTHEK_LIST);
+                $('body').trigger('sync-end');
+                $('body').trigger('infothek-sync-ready');
+            });
 
-                    $('body').trigger('infothek-sync-ready');
-                }
-            );
-        }).fail(
-            function(){
-                //TODO: error handling if necessary
-                alert("Infothek: Mock data read error.");
+        }
+    },
 
-                if(typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
+    downloadInfothekFile : function(infothekItem, index, length, callback){
+        //TODO: use download mechanism to save file in device storage
+        //Download mechanism should update infothekItem.path after upload.
+
+        //after download done use callback
+        callback(infothekItem, index, length);
     }
 };

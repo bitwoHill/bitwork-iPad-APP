@@ -1,5 +1,4 @@
-var productoptions_SYNC_URL = "content/productoptions.json";
-
+var PRODUCTOPTIONS_LIST = "ProduktbezeichnungOptionen";
 //DB model
 var ProductOptions = persistence.define('ProductOptions', {
     productOptionId: "INT",
@@ -17,38 +16,40 @@ ProductOptions.index(['productOptionId', 'piecenumber'], { unique: true });
 
 //create mock data for equipment products
 var productoptionsModel = {
-    sharePointSync: function (callback) {
+    sharePointProductOptions: function () {
 
-        //TODO: replace with sharepoint connection
-        $.getJSON(productoptions_SYNC_URL,function (data) {
+                $('body').trigger('sync-start');
+                SharePoint.sharePointRequest(PRODUCTOPTIONS_LIST, productoptionsModel.mapSharePointData);
+            },
+    //maps SharePoint data to current model
+    mapSharePointData: function (data) {
+        var spData = data.d;
+        if (spData && spData.results.length) {
+            $.each(spData.results, function (index, value) {
+                var productoptionsItem =
+                    {
+                        productOptionId: value.ID,
+                        productDescription: (value.ProduktbezeichnungOptionen) ? value.ProduktbezeichnungOptionen : "",
+                        pieceNumber: (value.Teilenummer) ? value.Teilenummer : "",
+                        price: (value.Listenpreis) ? value.Listenpreis : "",
+                        productgroupFK: (value.ProduktgruppeId) ? value.ProduktgruppeId : "",
+                        productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : "",
+                        productplatformFK: (value.ProduktplattformId) ? value.ProduktplattformId : "",
+                        productFK: (value.ProduktId) ? value.ProduktId : "",
+                        equipmentFK: (value.ProduktbezeichnungEquipmentId) ? value.ProduktbezeichnungEquipmentId : ""
+                    };
 
-            $.each(data, function (index, value) {
-                var productoptionsItem;
+                persistence.add(new ProductOptions(productoptionsItem));
 
-                productoptionsItem = new ProductOptions(value);
-                persistence.add(productoptionsItem);
             });
 
             persistence.flush(
                 function () {
-                    //DB is updated - trigger custom event
-                    if (typeof callback === "function") {
-                        callback();
-                    }
-
+                    SyncModel.addSync(PRODUCTOPTIONS_LIST);
                     $('body').trigger('productoptions-sync-ready');
                 }
             );
-        }).fail(
-            function () {
-                //TODO: error handling if necessary
-                alert("MPL Stammdaten: Mock data read error.");
-
-                if (typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
+        }
 
 
     }

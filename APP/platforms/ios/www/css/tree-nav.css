@@ -7,6 +7,7 @@
 
 .tree-nav li {
     background-color: #eaeaea;
+    background-color: rgba(0,0,0,0.04);
 }
 
 .tree-nav > li {
@@ -14,15 +15,7 @@
 }
 
 .tree-nav > li > ul > li {
-     margin: -1px 0 0 10px;
- }
-
-.tree-nav > li > ul > li > ul > li {
-    margin: -1px 0 0 20px;
-}
-
-.tree-nav > li > ul > li > ul > li > ul > li {
-    margin: -1px 0 0 30px;
+     margin: -1px 0 0 8px;
 }
 
 a.tree-nav-link {

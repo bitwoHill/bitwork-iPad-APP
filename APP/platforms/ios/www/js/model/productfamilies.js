@@ -1,4 +1,4 @@
-var productfamilies_SYNC_URL = "content/productfamilies.json";
+var PRODUCTFAMILIES_LIST = "Produktfamilien";
 
 //DB Model
 var Productfamilies = persistence.define('Productfamilies', {
@@ -11,37 +11,34 @@ Productfamilies.index('productfamilyid', { unique: true });
 
 
 var ProductFamiliesModel = {
-    sharePointSync: function (callback) {
+    sharePointFamilies: function () {
+        $('body').trigger('sync-start');
+        SharePoint.sharePointRequest(PRODUCTFAMILIES_LIST, ProductFamiliesModel.mapSharePointData);
+    },
 
-        //TODO: replace with sharepoint connection
-        $.getJSON(productfamilies_SYNC_URL, function (data) {
+    //maps SharePoint data to current model
+    mapSharePointData: function (data) {
+        var spData = data.d;
+        if (spData && spData.results.length) {
+            $.each(spData.results, function (index, value) {
+                                //mapping
+                var productfamiliesItem = {
+                    productfamilyid: value.ID,
+                    productfamily: (value.Produktfamilien) ? value.Produktfamilien : "",
+                    productgroupFK: (value.ProduktgruppeId) ? value.ProduktgruppeId : ""
+                };
 
-            $.each(data, function (index, value) {
-                var productfamiliesItem;
-
-                productfamiliesItem = new Productfamilies(value);
-                persistence.add(productfamiliesItem);
+                //add to persistence
+                persistence.add(new Productfamilies(productfamiliesItem));
             });
 
             persistence.flush(
                 function () {
-                    //DB is updated - trigger custom event
-                    if (typeof callback === "function") {
-                        callback();
-                    }
-
+                    SyncModel.addSync(PRODUCTFAMILIES_LIST);
+                    $('body').trigger('sync-end');
                     $('body').trigger('productfamilies-sync-ready');
                 }
             );
-        }).fail(
-            function () {
-                //TODO: error handling if necessary
-                alert("productfamilies: Mock data read error.");
-
-                if (typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
+        }
     }
 };

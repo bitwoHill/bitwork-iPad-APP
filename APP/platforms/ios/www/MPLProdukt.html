@@ -31,9 +31,9 @@
                 <div class="col-xs-8 user-area" role="nav">
                     <ul class="nav navbar-nav navbar-inverse navbar-right">
                         <li class="dropdown">
-                            <a href="#" id="user-menu-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown"><span class="i18n hidden-phone" data-i18n-key="user-message"></span> <span id="username-container"></span> <b class="caret"></b></a>
+                            <a href="#" id="user-menu-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown"><span class="i18n hidden-phone" data-i18n-key="user-message"></span><span id="username-container"></span> <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="user-menu-dropdown">
-                                <li><a href="LoginPage.html" class="i18n" data-i18n-key="login-different-user"></a></li>
+                                <li><a href="LoginPage.html" class="i18n" id="user-logout-button" data-i18n-key="login-different-user"></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -48,7 +48,11 @@
             </button>
         </header>
 
-        <div class="slide-menu-mask toggle-side-menu"></div>
+        <div class="slide-menu-mask toggle-side-menu">
+            <span class="slide-menu-mask-loading">
+                <img src="img/spinner.png" alt="Loding">
+            </span>
+        </div>
 
         <div class="slide-menu" id="slide-menu">
 
@@ -59,7 +63,7 @@
                             <div class="input-group">
                                 <input type="text" placeholder="Search ..." class="form-control">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-toolbar" type="button"><span class="fa fa-search"></span></button>
+                                    <button class="btn btn-toolbar" type="button"><span class="fa fa-search"></span></button>
                                 </span>
                             </div>
                         </form>
@@ -77,7 +81,9 @@
                 <a href="#" class="side-menu-sync-link">
                     <i class="fa fa-refresh pull-left"></i>
                     <span>
-                        <em class="i18n" data-i18n-key="last-sync"></em><br>12.02.2014
+                        <em class="i18n" data-i18n-key="last-sync"></em>
+                        <br>
+                        12.02.2014
                     </span>
                 </a>
             </div>
@@ -88,32 +94,28 @@
         <!-- content -->
         <div id="page-wrapper">
 
-            <div id="lblHeaderText" class="page-header">
-                <h1><span class="i18n" data-i18n-key="produkt"></span>
-                    <br />
-                    <small class="i18n" data-i18n-key="subtitle"></small>
-                </h1>
-            </div>
-            <!-- backwards button -->
-            <button id="btnNavigateBackwards" type="button" class="fa fa-chevron-left" onclick="history.back();">                          </button>
+            <div id="lblHeaderText" class="page-header clearfix">
+                <!--synch button-->
+                <div class="page-header-info pull-right btn-group">
+                    <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="Products">
+                        <span class="fa fa-refresh"></span>
+                        <span class="i18n" data-i18n-key="last-sync-products"></span>
+                        <span class="page-sync-btn-date"></span>
+                    </a>
+                    <a id="btnNavigateBackwards" class="btn btn-default active" onclick="history.back();"><span class="fa fa-chevron-left"></span></a>
+                </div>
 
+                <!--headline-->
+                <h1><span class="i18n" data-i18n-key="produkt"></span></h1>
+            </div>
 
             <div class="row ">
                 <div class="col-xs-12">
                     <div class="panel panel-default">
-                         <div class="panel-body">
+                        <div class="panel-body">
 
-                            <!--  <div class="list-group" id="products-items-container">
-                              <!-- load product equipments and other products based on product from sharepoint -->
-                               <!--   <div class="hidden" id="products-item-template">
-                                    <a href="#" class="list-group-item products-item-title"></a>
-                                </div>
-                            </div>-->
-
-                          
-
-                            <!-- obsolete, product just needs a name. no need for card view anymore -->
-                          <section id="no-more-tables">
+                        <!-- obsolete, product just needs a name. no need for card view anymore -->
+                            <section id="no-more-tables">
                                 <table id="tableProducts" class="table-bordered table-condensed cf col-xs-12  table-hover" style="background-color: white;">
                                     <thead class="cf">
                                         <tr>
@@ -122,7 +124,7 @@
                                             <th><span class="i18n" data-i18n-key="teilenummer"></span>
                                             </th>
                                             <!--this column needs to be hidden if there is no other product available-->
-                                            <th id="products-title-volume"><span class="i18n" data-i18n-key="volumenstrom"></span> 
+                                            <th id="products-title-volume"><span class="i18n" data-i18n-key="volumenstrom"></span>
                                             </th>
                                             <th><span class="i18n" data-i18n-key="listenpreis"></span>
                                             </th>
@@ -134,10 +136,10 @@
                                             <td data-title="Produkt"><a href="MPLStammdaten.html?Produkt=1" class="products-item-title"></a></td>
                                             <td data-title="Teilenummer"><a href="MPLStammdaten.html?Produkt=1" class="products-item-piecenumber"></a></td>
                                             <!--this column value needs to be hidden if there is nother product available-->
-                                            <td class="products-item-volume" data-title="Volumenstrom"><a href="MPLStammdaten.html?Produkt=1" ></a></td>
+                                            <td class="products-item-volume" data-title="Volumenstrom"><a href="MPLStammdaten.html?Produkt=1"></a></td>
                                             <td data-title="Listenpreis"><a href="MPLStammdaten.html?Produkt=1" class="products-item-price"></a></td>
-                                             </tr>
-                                      </tbody>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </section>
 
@@ -145,7 +147,15 @@
 
                         </div>
                     </div>
+
                 </div>
+
+                <!--hidden "empty Container"-->
+                <div class="empty-page hidden" id="products-empty-container">
+                    <p class="text-center i18n" data-i18n-key="empty-products"></p>
+                </div>
+
+
             </div>
         </div>
     </div>

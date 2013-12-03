@@ -41,6 +41,7 @@ var appUser;
 
     var dbSetup = function(){
         //init User
+        console.debug("Creating new User");
         appUser = new User();
         //setup DB connection
         persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 10 * 1024 * 1024);
@@ -48,6 +49,7 @@ var appUser;
         persistence.debug = false;
         persistence.schemaSync(function(){
             appUser.initUser();
+               console.debug("Created new User");
             $('body').trigger('db-schema-ready');
         });
     };

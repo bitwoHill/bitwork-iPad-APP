@@ -4,12 +4,21 @@ var NEWS_CONTAINER = "#news-items-container",
     URL_SINGLE_NEWS = "http://www.atlas-cms.com/Lists/Ankuendigungen/DispForm.aspx?ID=";
 
 var NewsUI = {
+    resetNews : function(){
+        $(NEWS_CONTAINER + ' > div').not(NEWS_ITEM_TEMPLATE).not(NEWS_EMPTY_CONTAINER).remove();
+    },
+
     displayNews : function(){
         var $container = $(NEWS_CONTAINER),
-            $template = $(NEWS_ITEM_TEMPLATE);
+            $template = $(NEWS_ITEM_TEMPLATE),
+            requestParam = utils.getUrlParameter('newsID');
 
         if($container.length && $template.length){
-            News.all().order('createdDate', false).list(null, function(results){
+            NewsUI.resetNews();
+
+            var newsList = (requestParam !== "")? News.all().filter("nodeId", "=", parseInt(requestParam, 10)) : News.all();
+
+            newsList.order('createdDate', false).list(null, function(results){
                 if(results.length){
                     $(NEWS_EMPTY_CONTAINER).addClass('hidden');
                     $.each(results, function(index, value){
@@ -49,7 +58,7 @@ var NewsUI = {
 
 (function($){
     //Display news when sync is ready
-    $('body').on('news-sync-ready', NewsUI.displayNews);
+    $('body').on('news-sync-ready db-schema-ready', NewsUI.displayNews);
 
     $(document).ready(function(){
         $('body').on('click', 'a.page-sync-btn', function(){

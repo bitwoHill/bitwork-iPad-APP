@@ -5,6 +5,7 @@ html {
 body {
     height: 100%;
     margin: 0;
+    padding: 0;
     background: rgb(76, 76, 76); /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* FF3.6+ */
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(76, 76, 76, 1)), color-stop(100%, rgba(19, 19, 19, 1))); /* Chrome,Safari4+ */
@@ -40,6 +41,11 @@ h3 {
 
 h4 {
     color: white;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
 }
 
 .page-header,
@@ -189,6 +195,11 @@ h4 {
     padding: 50px 0;
 }
 
+#infothek-page .empty-page {
+    color: #333;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
 
 /* News */
 .news-item-body img {
@@ -255,13 +266,4 @@ h4 {
 .well hr {
     border-top: 1px solid #dedede;
     border-bottom: 1px solid #FFF;
-}
-
-/*Back Button*/
-#btnNavigateBackwards {
-       position: absolute;
-    right: 22px;
-    top: 90px;
-    width: 60px;
-    height: 40px;
 }

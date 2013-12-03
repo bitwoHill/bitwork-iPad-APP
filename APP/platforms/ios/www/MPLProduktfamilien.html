@@ -32,7 +32,7 @@
                         <li class="dropdown">
                             <a href="#" id="user-menu-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown"><span class="i18n hidden-phone" data-i18n-key="user-message"></span> <span id="username-container"></span> <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="user-menu-dropdown">
-                                <li><a href="LoginPage.html" class="i18n" data-i18n-key="login-different-user"></a></li>
+                                <li><a href="LoginPage.html" class="i18n" id="user-logout-button" data-i18n-key="login-different-user"></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -47,7 +47,12 @@
             </button>
         </header>
 
-        <div class="slide-menu-mask toggle-side-menu"></div>
+                  <div class="slide-menu-mask toggle-side-menu">
+           <span class="slide-menu-mask-loading">
+                <img src="img/spinner.png" alt="Loding">
+            </span>
+        </div>
+
 
         <div class="slide-menu" id="slide-menu">
 
@@ -88,15 +93,20 @@
         <!-- content -->
         <div id="page-wrapper">
 
-            <div id="lblHeaderText" class="page-header">
-                <h1><span class="i18n" data-i18n-key="produktfamilien"></span>
-                    <br />
-                    <small class="i18n" data-i18n-key="subtitle"></small>
-                </h1>
-            </div>
-            <!-- backwards button -->
-            <button id="btnNavigateBackwards" type="button" class="fa fa-chevron-left" onclick="history.back();">                          </button>
+            <div id="lblHeaderText" class="page-header clearfix">
+                <!--synch button-->
+                <div class="page-header-info pull-right btn-group">
+                    <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="ProduktFamilies">
+                        <span class="fa fa-refresh"></span>
+                        <span class="i18n" data-i18n-key="last-sync-productfamilies"></span>
+                        <span class="page-sync-btn-date"></span>
+                    </a>
+                    <a id="btnNavigateBackwards" class="btn btn-default active" onclick="history.back();"><span class="fa fa-chevron-left"></span></a>
+                </div>
 
+                <!--headline-->
+                <h1><span class="i18n" data-i18n-key="produktfamilien"></span></h1>
+            </div>
 
             <div class="row">
 
@@ -117,6 +127,13 @@
                     <div>
                     </div>
                 </div>
+
+                <!--hidden "empty Container"-->
+                <div class="empty-page hidden" id="productfamilies-empty-container">
+                    <p class="text-center i18n" data-i18n-key="empty-produktfamilies"></p>
+                </div>
+                
+
             </div>
             </div>
             <!-- end content -->

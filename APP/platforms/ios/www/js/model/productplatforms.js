@@ -1,5 +1,4 @@
-var productplatforms_SYNC_URL = "content/productplatforms.json";
-
+var PRODUCTPLATFORMS_LIST = "Produktplattformen";
 //DB model
 var Productplatforms = persistence.define('Productplatforms', {
     productplatformid: "INT",
@@ -10,37 +9,34 @@ var Productplatforms = persistence.define('Productplatforms', {
 Productplatforms.index('productplatformid', { unique: true });
 
 var ProductPlatformsModel = {
-    sharePointSync: function (callback) {
+    sharePointPlatforms: function () {
+        $('body').trigger('sync-start');
+        SharePoint.sharePointRequest(PRODUCTPLATFORMS_LIST, ProductPlatformsModel.mapSharePointData);
+    },
+    //maps SharePoint data to current model
+    mapSharePointData: function (data) {
+        var spData = data.d;
+        if (spData && spData.results.length) {
+            $.each(spData.results, function (index, value) {
+                //mapping
+                var productplatformsItem =
+                    {
+                        productplatformid: value.ID,
+                        productplatform: (value.Produktplattformen) ? value.Produktplattformen : "",
+                        productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : ""
+                    };
 
-        //TODO: replace with sharepoint connection
-        $.getJSON(productplatforms_SYNC_URL, function (data) {
-
-            $.each(data, function (index, value) {
-                var productplatformsItem;
-
-                productplatformsItem = new Productplatforms(value);
-                persistence.add(productplatformsItem);
+                //add to persistence
+                persistence.add(new Productplatforms(productplatformsItem));
             });
 
             persistence.flush(
                 function () {
-                    //DB is updated - trigger custom event
-                    if (typeof callback === "function") {
-                        callback();
-                    }
-
+                    SyncModel.addSync(PRODUCTPLATFORMS_LIST);
+                    $('body').trigger('sync-end');
                     $('body').trigger('productplatforms-sync-ready');
                 }
             );
-        }).fail(
-            function () {
-                //TODO: error handling if necessary
-                alert("productplatforms: Mock data read error.");
-
-                if (typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
+        }
     }
 };

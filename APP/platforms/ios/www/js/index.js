@@ -38,24 +38,38 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        if(parentElement) {
+            var listeningElement = parentElement.querySelector('.listening');
+            var receivedElement = parentElement.querySelector('.received');
+
+            listeningElement.setAttribute('style', 'display:none;');
+            receivedElement.setAttribute('style', 'display:block;');
+        }
 
         console.log('Received Event: ' + id);
     },
     onContactSaveSuccess: function(contract) {
-     console.log("Save success");
+        console.log("Save success");
     },
     onContactSaveError: function(contact) {
-    console.log("Save Failed");
-    },
+        console.log("Save Failed");
+    }
 };
 
 (function($){
     $(document).ready(function(){
+        //Display user info
+        $('body').on('db-schema-ready', function(){
+            $("#username-container").text(appUser.username);
+        });
+
+        //Bind logout action
+        $('#user-logout-button').click(function(e){
+            e.preventDefault();
+            appUser.doLogout();
+        });
+
         //Side-menu toggle
         $('.toggle-side-menu').click(function(e){
             e.preventDefault();

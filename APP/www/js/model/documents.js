@@ -111,7 +111,7 @@ var documentsModel = {
 
                               $.each(results2, function (index, value) {
                                   var data = value._data;
-
+var path = data.path;
 
                                   // create filetransfer object
                                   var ft = new FileTransfer();
@@ -123,7 +123,7 @@ var documentsModel = {
 
                                   // download url
                                 
-                                  var uri = encodeURI(settings.content + "");
+                                  var uri = encodeURI(Settings.spContent + );
                                   console.debug(uri);
 
                                   //               create folder if not existant else access it

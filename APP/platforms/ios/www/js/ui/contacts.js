@@ -1,9 +1,17 @@
 var CONTACTS_CONTAINER = "#contact-items-container",
     CONTACTS_PERSON_TEMPLATE = "#contacts-person-item-template",
     CONTACTS_FOLDER_TEMPLATE = "#contacts-folder-item-template",
-    CONTACTS_DETAILS_TEMPLATE = "#contacts-details-template";
+    CONTACTS_DETAILS_TEMPLATE = "#contacts-details-template",
+    CONTACTS_EMPTY_CONTAINER = "#contacts-empty-container",
+    CONTACTS_ROOT_FOLDER = "Telefonbuch";
+
 
 var ContactsUI = {
+
+    resetContactTree : function(){
+        var $container = $(CONTACTS_CONTAINER);
+        $('li', $container).not(CONTACTS_FOLDER_TEMPLATE).not(CONTACTS_PERSON_TEMPLATE).remove();
+    },
 
     displayContactTree : function(){
         var $container = $(CONTACTS_CONTAINER),
@@ -11,38 +19,49 @@ var ContactsUI = {
             $templateFolder = $(CONTACTS_FOLDER_TEMPLATE);
 
         if($container.length && $templateFolder.length && $templatePerson.length){
+            ContactsUI.resetContactTree();
+            Contacts.all().filter("parentFolder", "=", CONTACTS_ROOT_FOLDER).order('isFolder', false).order('name', true).list(null, function(results){
+                if(results.length){
+                    $(CONTACTS_EMPTY_CONTAINER).addClass('hidden');
+                    $.each(results, function(index, value){
+                        var data = value._data,
+                            newItem;
 
-            Contacts.all().filter("parentFolder", "=", 0).order('isFolder', false).order('name', true).list(null, function(results){
+                        if(data.isFolder){
+                            newItem = $templateFolder.clone();
+                        } else {
+                            newItem = $templatePerson.clone();
+                        }
 
-                $.each(results, function(index, value){
-                    var data = value._data,
-                        newItem;
+                        newItem.removeAttr('id');
 
-                    if(data.isFolder){
-                        newItem = $templateFolder.clone();
-                    } else {
-                        newItem = $templatePerson.clone();
-                    }
-
-                    newItem.removeAttr('id');
-
-                    $('.tree-nav-item-name', newItem).html(data.name + " " + data.forename);
-                    $('.tree-nav-link', newItem).attr("data-item-id", data.contactId);
+                        $('.tree-nav-item-name', newItem).html(data.name + " " + data.forename);
+                        $('.tree-nav-link', newItem).attr("data-item-id", data.contactId);
+                        $('.tree-nav-link', newItem).attr("data-item-name", data.name);
 
 
-                    $container.append(newItem.removeClass('hidden'));
-                });
+                        $container.append(newItem.removeClass('hidden'));
+                    });
+                } else {
+                    $(CONTACTS_EMPTY_CONTAINER).removeClass('hidden');
+                }
             });
         }
+
+        SyncModel.getSyncDate(CONTACTS_LIST, function(date){
+            //update last sync date
+            $('.page-sync-btn-date').html(date);
+            $('.page-sync-btn').removeClass('hidden');
+        });
     },
 
     updateContactTree : function(container, nodeId){
         var $templatePerson = $(CONTACTS_PERSON_TEMPLATE),
             $templateFolder = $(CONTACTS_FOLDER_TEMPLATE);
-        console.log(arguments);
+
         if(container.length && $templateFolder.length && $templatePerson.length){
-            Contacts.all().filter("parentFolder", "=", parseInt(nodeId, 10)).order('isFolder', false).order('name', true).list(null, function(results){
-                console.log(results);
+            Contacts.all().filter("parentFolder", "=", nodeId).order('isFolder', false).order('name', true).list(null, function(results){
+
                 $.each(results, function(index, value){
                     var data = value._data,
                         newItem;
@@ -57,6 +76,7 @@ var ContactsUI = {
 
                     $('.tree-nav-item-name', newItem).html(data.name + " " + data.forename);
                     $('.tree-nav-link', newItem).attr("data-item-id", data.contactId);
+                    $('.tree-nav-link', newItem).attr("data-item-name", data.name);
 
 
                     container.append(newItem.removeClass('hidden'));
@@ -77,7 +97,9 @@ var ContactsUI = {
                 $(".contact-details-department", $templateContactInfo).html(data.department);
 
                 if(data.profilePicture) {
-                    $(".contact-details-picture", $templateContactInfo).html(data.profilePicture);
+                    $(".contact-details-picture", $templateContactInfo).attr('src', data.profilePicture);
+                } else {
+                    $(".contact-details-picture", $templateContactInfo).attr('src', $(".contact-details-picture", $templateContactInfo).attr('data-default-image'));
                 }
 
                 if(data.phone) {
@@ -126,46 +148,57 @@ var ContactsUI = {
                 $templateContactInfo.show(300);
             });
         }
+
+
     }
 };
 
-//bind to sync ready event in order to display the news
-$('body').on('contacts-sync-ready', ContactsUI.displayContactTree);
 
-$(document).ready(function(){
 
-    $('body').on('click', '.tree-nav-link.folder', function(e){
-        e.preventDefault();
-        var $this = $(this),
-            nodeId = $this.attr("data-item-id"),
-            container = $this.siblings("ul.tree-nav"),
-            $icon = $('.fa', $this);
 
-        if(container.length && $('li', container).length === 0){
-            ContactsUI.updateContactTree(container, nodeId);
-        }
+(function($){
+    //bind to sync ready event in order to display the news
+    $('body').on('contacts-sync-ready db-schema-ready', ContactsUI.displayContactTree);
 
-        $this.siblings("ul.tree-nav").toggle(300);
-        $this.toggleClass("collapsed");
+    $(document).ready(function(){
+        $('body').on('click', 'a.page-sync-btn', function(){
+            ContactsModel.syncContacts();
+        });
 
-        if($icon.hasClass('fa-folder')){
-            $icon.removeClass('fa-folder').addClass('fa-folder-open');
-        } else {
-            $icon.removeClass('fa-folder-open').addClass('fa-folder');
-        }
+        $('body').on('click', '.tree-nav-link.folder', function(e){
+            e.preventDefault();
+            var $this = $(this),
+                nodeId = $this.attr("data-item-name"),
+                container = $this.siblings("ul.tree-nav"),
+                $icon = $('.fa', $this);
+
+            if(container.length && $('li', container).length === 0){
+                ContactsUI.updateContactTree(container, nodeId);
+            }
+
+            $this.siblings("ul.tree-nav").toggle(300);
+            $this.toggleClass("collapsed");
+
+            if($icon.hasClass('fa-folder')){
+                $icon.removeClass('fa-folder').addClass('fa-folder-open');
+            } else {
+                $icon.removeClass('fa-folder-open').addClass('fa-folder');
+            }
+        });
+
+        $('body').on('click', '.tree-nav-link.person', function(e){
+            e.preventDefault();
+
+            var $this = $(this),
+                contactId = $this.attr("data-item-id");
+
+            if(!$this.hasClass('active-contact')){
+                ContactsUI.displayContactInfo(contactId);
+                $('.tree-nav-link.person.active-contact').removeClass('active-contact')
+                $this.addClass('active-contact');
+            }
+        });
+
     });
 
-    $('body').on('click', '.tree-nav-link.person', function(e){
-        e.preventDefault();
-
-        var $this = $(this),
-            contactId = $this.attr("data-item-id");
-
-        if(!$this.hasClass('active-contact')){
-            ContactsUI.displayContactInfo(contactId);
-            $('.tree-nav-link.person.active-contact').removeClass('active-contact')
-            $this.addClass('active-contact');
-        }
-    });
-
-});
+})(jQuery);

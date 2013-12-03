@@ -3,12 +3,19 @@ var CALENDAR_CONTAINER = "#calendar-items-container",
     CALENDAR_EMPTY_CONTAINER = "#calendar-empty-container";
 
 var CalendarUI = {
+    resetCalendar : function(){
+        $(CALENDAR_CONTAINER + " > div").not(CALENDAR_EMPTY_CONTAINER).not(CALENDAR_ITEM_TEMPLATE).remove();
+    },
+
     displayCalendar : function(){
         var $container = $(CALENDAR_CONTAINER),
-            $template = $(CALENDAR_ITEM_TEMPLATE);
+            $template = $(CALENDAR_ITEM_TEMPLATE),
+            requestParam = utils.getUrlParameter('calendarID');
 
         if($container.length && $template.length){
-            Calendar.all().order('startDate', false).list(null, function(results){
+            var calendarList = (requestParam !== "")? Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10)) : Calendar.all();
+
+            calendarList.order('startDate', false).list(null, function(results){
                 if(results.length){
 
                     $(CALENDAR_EMPTY_CONTAINER).addClass('hidden');
@@ -20,7 +27,12 @@ var CalendarUI = {
 
                         $('.calendar-item-title', $newItem).html(data.title);
                         $('.calendar-item-body', $newItem).html(data.body);
-                        $('a.calendar-item-to-phone').attr('data-calendar-id', data.nodeId);
+
+                        $('a.calendar-item-to-phone', $newItem).attr('data-calendar-id', data.nodeId);
+
+                        $('a.calendar-item-to-phone', $newItem).attr('data-calendar-id', data.nodeId);
+
+
                         if(data.location) {
                             $('.calendar-item-location', $newItem).html(data.location);
                         } else {
@@ -57,7 +69,7 @@ var CalendarUI = {
 
 (function($){
     //Display calendar items when sync is ready
-    $('body').on('calendar-sync-ready', CalendarUI.displayCalendar);
+    $('body').on('calendar-sync-ready db-schema-ready', CalendarUI.displayCalendar);
 
     $(document).ready(function(){
         //Bind action to sync calendar button

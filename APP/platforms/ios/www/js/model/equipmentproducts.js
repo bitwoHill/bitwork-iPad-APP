@@ -1,4 +1,4 @@
-﻿var equipmentproducts_SYNC_URL = "content/equipmentproducts.json";
+﻿var EQUIPMENTPRODUCTS_LIST = "ProduktbezeichnungEquipment";
 
 //DB model
 //EquipmentProducts
@@ -21,37 +21,43 @@ EquipmentProducts.index(['equipmentId', 'piecenumber'], { unique: true });
 
 //create mock data for equipment products
 var equipmentproductsModel = {
-    sharePointSync: function (callback) {
+    sharePointEquipmentproducts: function () {
 
-        //TODO: replace with sharepoint connection
-        $.getJSON(equipmentproducts_SYNC_URL, function (data) {
+        $('body').trigger('sync-start');
 
-            $.each(data, function (index, value) {
-                var equipmentproductsItem;
+                  SharePoint.sharePointRequest(EQUIPMENTPRODUCTS_LIST, equipmentproductsModel.mapSharePointData);
+         },
+    //maps SharePoint data to current model
+    mapSharePointData: function (data) {
+        //data.d comes from sharepoint
+        var spData = data.d;
+        if (spData && spData.results.length) {
+            $.each(spData.results, function (index, value) {
 
-                equipmentproductsItem = new EquipmentProducts(value);
-                persistence.add(equipmentproductsItem);
+                var equipmentproductsItem = {
+                    equipmentId: value.ID,
+                    productDescription: (value.ProduktbezeichnungEquipment) ? value.ProduktbezeichnungEquipment : "",
+                    pieceNumber: (value.Teilenummer) ? value.Teilenummer : "",
+                    price: (value.Listenpreis) ? value.Listenpreis : "",
+                    cooling: (value.Kühlung) ? value.Kühlung : "",
+                    variant: (value.AusstattungsvarianteValue) ? value.AusstattungsvarianteValue : "",
+                    volume: (value.FADInMMinMaxDruck) ? value.FADInMMinMaxDruck : "",
+                    pressure: (value.MaxDruckInBar) ? value.MaxDruckInBar : "",
+                    performance: (value.MotorleistungInKW) ? value.MotorleistungInKW : "",
+                    productFK: (value.ProduktId) ? value.ProduktId : ""
+                };
+
+
+                persistence.add(new EquipmentProducts(equipmentproductsItem));
             });
 
             persistence.flush(
                 function () {
-                    //DB is updated - trigger custom event
-                    if (typeof callback === "function") {
-                        callback();
-                    }
-
+                    SyncModel.addSync(EQUIPMENTPRODUCTS_LIST);
+                //      $('body').trigger('sync-end');
                     $('body').trigger('equipmentproducts-sync-ready');
                 }
             );
-        }).fail(
-            function () {
-                //TODO: error handling if necessary
-                alert("MPL Equipmentproducts: Mock data read error.");
-
-                if (typeof callback === "function") {
-                    callback();
-                }
-            }
-        );
+        }
     }
 }
