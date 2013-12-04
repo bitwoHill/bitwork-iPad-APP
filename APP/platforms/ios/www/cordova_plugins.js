@@ -1,13 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/org.apache.cordova.inappbrowser/www/InAppBrowser.js",
-        "id": "org.apache.cordova.inappbrowser.InAppBrowser",
-        "clobbers": [
-            "window.open"
-        ]
-    },
-    {
         "file": "plugins/org.apache.cordova.contacts/www/contacts.js",
         "id": "org.apache.cordova.contacts.contacts",
         "clobbers": [
@@ -225,6 +218,13 @@ module.exports = [
         "id": "nl.x-services.plugins.calendar.Calendar",
         "clobbers": [
             "Calendar"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/InAppBrowser.js",
+        "id": "org.apache.cordova.inappbrowser.InAppBrowser",
+        "clobbers": [
+            "window.open"
         ]
     }
 ]

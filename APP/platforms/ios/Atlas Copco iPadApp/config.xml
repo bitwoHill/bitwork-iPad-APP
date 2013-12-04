@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.bitwork.iPadApp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Atlas Copco iPadApp</name>
+    <name>Hello Cordova</name>
     <description>
-        An Apache Cordova application that allows to Access Atlas Copco Sharepoint Server.
+        A sample Apache Cordova application that responds to the deviceready event.
     </description>
+    <access origin="*" />
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="BackupWebStorage" value="cloud" />
@@ -25,13 +26,9 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
-    <author email="hill@bitwork.net" href="http://cordova.io">
-       bitwork GmbH
-    </author>
-    <content src="LoginPage.html" />
-    <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="true" />
-    <access origin="*" />
+    <feature name="Calendar">
+        <param name="ios-package" value="Calendar" />
+    </feature>
     <feature name="Contacts">
         <param name="ios-package" value="CDVContacts" />
     </feature>
@@ -41,7 +38,13 @@
     <feature name="FileTransfer">
         <param name="ios-package" value="CDVFileTransfer" />
     </feature>
-    <feature name="Calendar">
-        <param name="ios-package" value="Calendar" />
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
+    <author email="hill@bitwork.net" href="http://cordova.io">
+       bitwork GmbH
+    </author>
+    <content src="LoginPage.html" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
 </widget>
