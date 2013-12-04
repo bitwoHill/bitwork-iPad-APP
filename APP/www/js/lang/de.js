@@ -11,9 +11,9 @@ var i18n = {
         "login-auto": "Automatisch anmelden",
         "login-page-title": "Am SharePoint anmelden",
         "login-error-username": "Benutzername muss eingetragen werden",
-        "login-error-password": "Password muss eingetragen werden",
-        "login-failed-msg": "User name or password are incorrect.",
-        "db-reset": "Due to too many login attempts all data hhase been wiped.",
+        "login-error-password": "Passwort muss eingetragen werden",
+        "login-failed-msg": "Benutzername oder Passwort sind inkorrekt.",
+        "db-reset": "Aufgrund von zuvielen falschen Loginversuchen wurden alle lokalen Anwendungsdaten gelöscht.",
 
         //Menu
         "menu-news": "News",
@@ -36,9 +36,9 @@ var i18n = {
         "ort": "Ort",
         "anfangszeit": "Anfangszeit",
         "endzeit": "Endzeit",
-        "calendar-add-phone": "Zum Telefonkalender hinzuf�gen",
+        "calendar-add-phone": "Zum Telefonkalender hinzufügen",
         "empty-calendar": "Es wurden noch keine Events geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Events zu laden.",
-
+        "add-calendar-entry": "Es wird ein Ereignis zum Kalender hinzugefügt",
         //News
         "news": "News",
         "last-sync-news": "Letzte News Synchonisation",
@@ -97,6 +97,7 @@ var i18n = {
         //Contacts
         "contacts": "Telefonbuch",
         "empty-contacts": "Es wurden noch keine Kontakte geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Kontakdaten zu laden.",
-        "last-sync-contacts": "Letzte Kontaktdaten Synchonisation"
+        "last-sync-contacts": "Letzte Kontaktdaten Synchonisation",
+        "contacts-add-phone": "zum Telefonbuch hinzufügen"
     }
 }

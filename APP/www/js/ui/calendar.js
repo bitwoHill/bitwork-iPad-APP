@@ -30,7 +30,7 @@ var CalendarUI = {
 
                         $('a.calendar-item-to-phone', $newItem).attr('data-calendar-id', data.nodeId);
 
-                        $('a.calendar-item-to-phone', $newItem).attr('data-calendar-id', data.nodeId);
+                    
 
 
                         if(data.location) {

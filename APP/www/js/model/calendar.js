@@ -66,7 +66,9 @@ var CalendarModel = {
        
     },
 
-    addCalendarToPhone: function(id, callback){
+    addCalendarToPhone: function (id, callback) {
+      
+            // do things if OK
         CalendarModel.getCalendarItem(id, function(calendarItem){
 
             var startDate = calendarItem.startDate;
@@ -83,8 +85,12 @@ var CalendarModel = {
             };
 
             //create the event
-            window.plugins.calendar.createEvent(title,location,notes,startDate,endDate,success,error);
+            if (confirm("Es wird das Ereignis " + title + " zum Kalender hinzugefügt")) {
+                window.plugins.calendar.createEvent(title, location, notes, startDate, endDate, success, error);
+            }
+      
         });
+      
     },
 
     getCalendarItem: function(id, callback){
