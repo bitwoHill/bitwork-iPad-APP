@@ -20,9 +20,9 @@ var InfothekModel = {
     },
 
     mapSharePointData: function(data){
-        console.log(data);
+    
         var spData = data.d || false;
-
+        Infothek.all().destroyAll(function (ele) {
         if(spData && spData.results.length){
             $.each(spData.results, function(index, value){
                 var newItem = {
@@ -68,6 +68,7 @@ var InfothekModel = {
             });
 
         }
+        });
     },
 
     downloadInfothekFile : function(infothekItem, index, length, callback){

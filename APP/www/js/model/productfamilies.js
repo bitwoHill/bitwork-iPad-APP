@@ -19,6 +19,7 @@ var ProductFamiliesModel = {
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
+        Productfamilies.all().destroyAll(function (ele) {
         if (spData && spData.results.length) {
             $.each(spData.results, function (index, value) {
                                 //mapping
@@ -40,5 +41,6 @@ var ProductFamiliesModel = {
                 }
             );
         }
+        });
     }
 };

@@ -141,7 +141,9 @@ var ProductsUI = {
 
     $(document).ready(function () {
         $('body').on('click', 'a.page-sync-btn', function () {
+            equipmentproductsModel.sharePointEquipmentproducts();
+            otherproductsModel.sharePointOtherproducts();
             ProductsModel.sharePointProducts();
-        });
+           });
     });
 })(jQuery);

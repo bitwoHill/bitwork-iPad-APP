@@ -87,7 +87,7 @@ var ContactsModel = {
     //maps SharePoint data to current model
     mapSharePointData: function(data){
         var spData = data.d;
-
+        Contacts.all().destroyAll(function (ele) { 
         if(spData && spData.results.length){
             var dataLength = spData.results.length,
                 index = 0,
@@ -115,6 +115,7 @@ var ContactsModel = {
 
             addContactCallback();
         }
+        });
     }
 };
 

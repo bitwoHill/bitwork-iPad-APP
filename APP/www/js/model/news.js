@@ -22,34 +22,37 @@ var NewsModel = {
     //maps SharePoint data to current model
     mapSharePointData: function(data){
         var spData = data.d;
-        if(spData && spData.results.length){
-            $.each(spData.results, function(index, value){
-                var newsItem = {
-                    nodeId : value.ID,
-                    title : value.Titel,
-                    body : NewsModel.formatBodyText(value.Textkörper)
-                };
+        //wipe database of old entries
+        News.all().destroyAll(function (ele) { 
+            if (spData && spData.results.length) {
+                $.each(spData.results, function (index, value) {
+                    var newsItem = {
+                        nodeId: value.ID,
+                        title: value.Titel,
+                        body: NewsModel.formatBodyText(value.Textkörper)
+                    };
 
-                if(value.LäuftAb) {
-                    newsItem.expirationDate = utils.parseSharePointDate(value.LäuftAb);
-                }
+                    if (value.LäuftAb) {
+                        newsItem.expirationDate = utils.parseSharePointDate(value.LäuftAb);
+                    }
 
-                if(value.Erstellt) {
-                    newsItem.createdDate = utils.parseSharePointDate(value.Erstellt);
-                }
+                    if (value.Erstellt) {
+                        newsItem.createdDate = utils.parseSharePointDate(value.Erstellt);
+                    }
 
 
-                persistence.add(new News(newsItem));
-            });
+                    persistence.add(new News(newsItem));
+                });
 
-            persistence.flush(
-                function(){
-                    SyncModel.addSync(NEWS_LIST);
-                    $('body').trigger('sync-end');
-                    $('body').trigger('news-sync-ready');
-                }
-            );
-        }
+                persistence.flush(
+                    function () {
+                        SyncModel.addSync(NEWS_LIST);
+                        $('body').trigger('sync-end');
+                        $('body').trigger('news-sync-ready');
+                    }
+                );
+            }
+        });
     },
 
     formatBodyText : function(body){

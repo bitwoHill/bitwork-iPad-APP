@@ -21,6 +21,7 @@ var LinkModel = {
     //maps SharePoint data to current model
     mapSharePointData: function(data){
         var spData = data.d;
+        Link.all().destroyAll(function (ele) {
         if(spData && spData.results.length){
             $.each(spData.results, function(index, value){
                 var linkItem = {
@@ -51,5 +52,6 @@ var LinkModel = {
                 }
             );
         }
+        });
     }
 };

@@ -16,6 +16,7 @@ var ProductPlatformsModel = {
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
+        Productplatforms.all().destroyAll(function (ele) { 
         if (spData && spData.results.length) {
             $.each(spData.results, function (index, value) {
                 //mapping
@@ -37,6 +38,6 @@ var ProductPlatformsModel = {
                     $('body').trigger('productplatforms-sync-ready');
                 }
             );
-        }
+        }});
     }
 };

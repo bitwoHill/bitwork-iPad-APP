@@ -23,7 +23,7 @@ EquipmentProducts.index(['equipmentId', 'piecenumber'], { unique: true });
 var equipmentproductsModel = {
     sharePointEquipmentproducts: function () {
 
-        $('body').trigger('sync-start');
+        //$('body').trigger('sync-start');
 
                   SharePoint.sharePointRequest(EQUIPMENTPRODUCTS_LIST, equipmentproductsModel.mapSharePointData);
          },
@@ -31,33 +31,35 @@ var equipmentproductsModel = {
     mapSharePointData: function (data) {
         //data.d comes from sharepoint
         var spData = data.d;
-        if (spData && spData.results.length) {
-            $.each(spData.results, function (index, value) {
+        EquipmentProducts.all().destroyAll(function (ele) {
+            if (spData && spData.results.length) {
+                $.each(spData.results, function (index, value) {
 
-                var equipmentproductsItem = {
-                    equipmentId: value.ID,
-                    productDescription: (value.ProduktbezeichnungEquipment) ? value.ProduktbezeichnungEquipment : "",
-                    pieceNumber: (value.Teilenummer) ? value.Teilenummer : "",
-                    price: (value.Listenpreis) ? value.Listenpreis : "",
-                    cooling: (value.Kühlung) ? value.Kühlung : "",
-                    variant: (value.AusstattungsvarianteValue) ? value.AusstattungsvarianteValue : "",
-                    volume: (value.FADInMMinMaxDruck) ? value.FADInMMinMaxDruck : "",
-                    pressure: (value.MaxDruckInBar) ? value.MaxDruckInBar : "",
-                    performance: (value.MotorleistungInKW) ? value.MotorleistungInKW : "",
-                    productFK: (value.ProduktId) ? value.ProduktId : ""
-                };
+                    var equipmentproductsItem = {
+                        equipmentId: value.ID,
+                        productDescription: (value.ProduktbezeichnungEquipment) ? value.ProduktbezeichnungEquipment : "",
+                        pieceNumber: (value.Teilenummer) ? value.Teilenummer : "",
+                        price: (value.Listenpreis) ? value.Listenpreis : "",
+                        cooling: (value.Kühlung) ? value.Kühlung : "",
+                        variant: (value.AusstattungsvarianteValue) ? value.AusstattungsvarianteValue : "",
+                        volume: (value.FADInMMinMaxDruck) ? value.FADInMMinMaxDruck : "",
+                        pressure: (value.MaxDruckInBar) ? value.MaxDruckInBar : "",
+                        performance: (value.MotorleistungInKW) ? value.MotorleistungInKW : "",
+                        productFK: (value.ProduktId) ? value.ProduktId : ""
+                    };
 
 
-                persistence.add(new EquipmentProducts(equipmentproductsItem));
-            });
+                    persistence.add(new EquipmentProducts(equipmentproductsItem));
+                });
 
-            persistence.flush(
-                function () {
-                    SyncModel.addSync(EQUIPMENTPRODUCTS_LIST);
-                //      $('body').trigger('sync-end');
-                    $('body').trigger('equipmentproducts-sync-ready');
-                }
-            );
-        }
+                persistence.flush(
+                    function () {
+                        SyncModel.addSync(EQUIPMENTPRODUCTS_LIST);
+                        //      $('body').trigger('sync-end');
+                        $('body').trigger('equipmentproducts-sync-ready');
+                    }
+                );
+            }
+        }        );
     }
 }

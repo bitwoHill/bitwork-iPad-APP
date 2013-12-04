@@ -61,7 +61,7 @@ var i18n = {
         "volumenstrom": "Volumenstrom",
         "druck": "Druck",
         "antriebsleistung": "Antriebsleistung",
-        "empty-mpl": "Es wurden noch keine Equipments / Sonstigen Produkte geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um  Equipments / Sonstigen Produkte zu laden.",
+        "empty-mpl": "Es wurden noch keine Optionen und Dokumente geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Optionen und Dokumente zu laden.",
         "last-sync-mpl": "Letzte Stammdaten Synchonisation",
 
         //MPL Documents
