@@ -5,6 +5,7 @@ var appUser;
     var modelDependencies = [
             "js/config.js",
             "js/model/login.js",
+            "js/model/downloads.js",
             "js/model/sharepoint.js",
             "js/model/calendar.js",
             "js/model/contacts.js",
