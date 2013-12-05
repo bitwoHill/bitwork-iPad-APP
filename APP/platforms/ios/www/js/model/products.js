@@ -20,6 +20,7 @@ var ProductsModel = {
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
+        Products.all().destroyAll(function (ele) { 
         if (spData && spData.results.length) {
             $.each(spData.results, function (index, value) {
                 //mapping
@@ -39,9 +40,9 @@ var ProductsModel = {
                function () {
                    SyncModel.addSync(PRODUCTS_LIST);
                   $('body').trigger('sync-end');
-                   $('body').trigger('products-sync-ready');
+                  $('body').trigger('products-sync-ready');
                }
            );
-        }
+        }});
     }
 };

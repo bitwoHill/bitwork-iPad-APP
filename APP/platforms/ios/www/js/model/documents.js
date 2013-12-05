@@ -96,142 +96,66 @@ var documentsModel = {
 
  /*.filter("documentId", "=", "964")
             .or(new persistence.PropertyFilter("documentId", "=", "966"))*/
-            
+
     downloadSharePointFiles: function () {
         Documents.all()
         .filter("documentId", "=", "964")
-            .or(new persistence.PropertyFilter("documentId", "=", "966"))
-                  .list(null, function (results2) {
-                      if (results2.length) {
+        .or(new persistence.PropertyFilter("documentId", "=", "966"))
+        .list(null, function (results) {
+            if (results.length) {
 
+                $.each(results, function(index, value){
+                    var data = value._data,
+                        downloadData = {
+                            folderName: "Dokumente",
+                            fileName: data.documentname,
+                            path: data.path
+                        };
 
-                          //Create  file to filesystem
-                          window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-                          window.requestFileSystem(window.PERSISTENT, 7 * 1024 * 1024, initFS, errorHandler);
-
-
-                          //get documents and download them
-                          function initFS(fs) {
-
-                              $.each(results2, function (index, value) {
-                                  var data = value._data;
-                                  console.debug(data);
-//var path = data.path;
-
-                                  // create filetransfer object
-                                  var ft = new FileTransfer();
-
-                                  var folderName = "Dokumente";
-                                  var fileName = data.documentname;
-                                  var folderDir;
-                                  var fileDir;
-
-                                  // download url
-                               
-                                  var uri = encodeURI("http://www.atlas-cms.com"+data.path);
-                                  
-                  
-                                  //               create folder if not existant else access it
-                                  fs.root.getDirectory(folderName, { create: true, exclusive: false },
-                                      function (dirEntry) {
-                                          folderDir = dirEntry;
-                                          //     Create File. somehow this needs to be done first before the download started
-                                          folderDir.getFile
-                                              (fileName, { create: true, exclusive: false }, function (fileEntry) {
-                                                  fileDir = fileEntry;
-                                                  //  created the files hull needed for download. Save the path. 
-                                                  var fullpath = fileDir.fullPath.replace(fileName, "");
-                                                  // now delete the file (for what ever reason)
-                                                  fileDir.remove();
-//alert("Filename" + fileName);
-//alert("Filepath" + fullpath);
-
-//store new name of file
-             
-// value.path =  fileName;
-                                                       //   persistence.flush(function(){alert("Done flushing");});
-                                                 
-                                                 
-                                                 
-                                                  //      download file
-                                                   console.debug(uri);
-
-                                                  ft.download
-                                                      (uri, 
-                                                      fullpath + fileName,
-                                                       function (entry) {
-                                                       
-                                                          console.debug("Download success!" + entry.fullPath);
-                                                         
-                                                          alert("Succes" +  entry.fullPath);
-                                                          value.path = entry.name;
-                                                          alert("New Value " + value.path);
-                                                       persistence.flush(function(){alert("Done flushing");});
-                                                 
-                                                      },
-                                                  function (error) {
-                                                      console.debug("download error source " + error.source);
-                                                      console.debug("download error target " + error.target);
-                                                      console.debug("upload error code" + error.code);
-
-                                                  },
-                                                        true,
-                                                        {
-                                                        headers: 
-                                                        {
-                                                        "Authorization": "Basic " + Base64.encode(appUser.username+ ":" + appUser.password)
-                                                        }
-                                                        }
-                                                    );
-
-                                              });
-
-
-                                      });
-
-                              });
-                          }
-
-                          function errorHandler() {
-                              console.debug('An error occured');
-                          }
-                      }
-                  });
-
+                    $.downloadQueue(downloadData).done(
+                        function(entrie){
+                            results[index].documentname(entrie.fullPath);
+                            console.log("cnt:" + index);
+                            persistence.flush();
+                        }
+                    ).fail(
+                        function(entrie){
+                            console.log("cnt f:" + index);
+                        }
+                    ).always(
+                        function(){
+                            //TODO: trigger custom event to determine progress
+                        }
+                    );
+                });
+            }
+        });
     },
-    UpdateSharePointFiles: function () {
+   UpdateSharePointFiles: function () {
         Documents.all()
-                .order('documentname', true, false)
-                  .list(null, function (results2) {
-                      if (results2.length) {
-                          //get documents and download them
-                          $.each(results2, function (index, value) {
-                              var data = value._data;
+            .order('documentname', true, false)
+            .list(null, function (results2) {
+                if (results2.length) {
+                    //get documents and download them
+                    $.each(results2, function (index, value) {
+                        var data = value._data;
+                    });
+                }
+            });
 
+   },
 
-
-                          });
-                      }
-                  });
-
-    },
-
-    DownloadSharePointFile: function (filename) {
+   DownloadSharePointFile: function (filename) {
         Documents.all()
-                .order('documentname', true, false)
-                  .list(null, function (results2) {
-                      if (results2.length) {
-                          //get documents and download them
-                          $.each(results2, function (index, value) {
-                              var data = value._data;
+            .order('documentname', true, false)
+            .list(null, function (results2) {
+                if (results2.length) {
+                    //get documents and download them
+                    $.each(results2, function (index, value) {
+                        var data = value._data;
+                    });
+                }
+            });
 
-
-
-                          });
-                      }
-                  });
-
-    }
-
-
+   }
 };

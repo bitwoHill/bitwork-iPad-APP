@@ -31,11 +31,16 @@
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
-		2B98CD3AD703456D86F6F3D8 /* EventKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9258A53DD4EE4A818C36D603 /* EventKit.framework */; };
-		FC408D44559D40E3916FE02F /* EventKitUI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9DCE536537634C3D880EF833 /* EventKitUI.framework */; };
-		B05F5EF1372C4BE78C65B6BE /* AddressBook.framework in Resources */ = {isa = PBXBuildFile; fileRef = A57DAC99DA8043AF956A6498 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A187EB8A834F4ED8947F5459 /* AddressBookUI.framework in Resources */ = {isa = PBXBuildFile; fileRef = E068F7D5941F434297218A03 /* AddressBookUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		D4DC518840A444659DDC8F0D /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 985472E41C834289A199B492 /* CDVInAppBrowser.m */; };
+		048D7201300246D3BFE0264A /* CDVContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 92292C303C9D4F41B1A9E237 /* CDVContacts.m */; };
+		C3257230933F466BA9CC4D15 /* CDVContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FC56A63D04280BCF18C22 /* CDVContact.m */; };
+		E2136F86E91941A79069723E /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6DCB00E00C44FAB1CE755C /* CDVFile.m */; };
+		F4B2A1453FD84C5CAEC65C28 /* AddressBook.framework in Resources */ = {isa = PBXBuildFile; fileRef = CC5C77A8B66B4D96A6E85929 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2720639CFBD642F0B0EAE527 /* AddressBookUI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 55A5494CA9C44D4E95189461 /* AddressBookUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2EC09C30031B4DABAA756244 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 432D1963CD9B40D1BC0A08CB /* CDVFileTransfer.m */; };
+		544A28AE4F6E43D58DA11C2E /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFFB1D66E14EADB9C2569E /* CDVInAppBrowser.m */; };
+		4C605C1DA3FF49398B1044C7 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4D8B6002B452180504286 /* Calendar.m */; };
+		4765C3BF08444352BADC4488 /* EventKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = AEA2406E253C444F80F00874 /* EventKit.framework */; };
+		02B3229A77714111AE6C322E /* EventKitUI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 301AD0A7E24547A18F1B7E98 /* EventKitUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,12 +92,22 @@
 		8D1107310486CEB800E47090 /* Atlas Copco iPadApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Atlas Copco iPadApp-Info.plist"; path = "../Atlas Copco iPadApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Atlas Copco iPadApp/config.xml"; sourceTree = "<group>"; };
-		9258A53DD4EE4A818C36D603 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKit.framework"; path = "System/Library/Frameworks/EventKit.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		9DCE536537634C3D880EF833 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKitUI.framework"; path = "System/Library/Frameworks/EventKitUI.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		A57DAC99DA8043AF956A6498 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		E068F7D5941F434297218A03 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AddressBookUI.framework"; path = "System/Library/Frameworks/AddressBookUI.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		985472E41C834289A199B492 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		41AF791FD3D940AD8BEB172F /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		92292C303C9D4F41B1A9E237 /* CDVContacts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVContacts.m"; path = "org.apache.cordova.contacts/CDVContacts.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		4E5FC56A63D04280BCF18C22 /* CDVContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVContact.m"; path = "org.apache.cordova.contacts/CDVContact.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		3ECFE20DC81D4CBF9E095C0F /* CDVContacts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVContacts.h"; path = "org.apache.cordova.contacts/CDVContacts.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		CD44D57EC4EB470FBEB21183 /* CDVContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVContact.h"; path = "org.apache.cordova.contacts/CDVContact.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		0E6DCB00E00C44FAB1CE755C /* CDVFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFile.m"; path = "org.apache.cordova.file/CDVFile.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		44FBC1DE1AD44DCA93704B4C /* CDVFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFile.h"; path = "org.apache.cordova.file/CDVFile.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		CC5C77A8B66B4D96A6E85929 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		55A5494CA9C44D4E95189461 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AddressBookUI.framework"; path = "System/Library/Frameworks/AddressBookUI.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		432D1963CD9B40D1BC0A08CB /* CDVFileTransfer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFileTransfer.m"; path = "org.apache.cordova.file-transfer/CDVFileTransfer.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		1038D05112AC4280964640CC /* CDVFileTransfer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFileTransfer.h"; path = "org.apache.cordova.file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		0FCFFB1D66E14EADB9C2569E /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		2F6B9A921825474B8E97BA8F /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		45F4D8B6002B452180504286 /* Calendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Calendar.m"; path = "nl.x-services.plugins.calendar/Calendar.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		29943B05F6BC424880B5D1BA /* Calendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Calendar.h"; path = "nl.x-services.plugins.calendar/Calendar.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		AEA2406E253C444F80F00874 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKit.framework"; path = "System/Library/Frameworks/EventKit.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		301AD0A7E24547A18F1B7E98 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKitUI.framework"; path = "System/Library/Frameworks/EventKitUI.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +120,10 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
-				2B98CD3AD703456D86F6F3D8 /* EventKit.framework in Resources */,
-				FC408D44559D40E3916FE02F /* EventKitUI.framework in Resources */,
-				B05F5EF1372C4BE78C65B6BE /* AddressBook.framework in Resources */,
-				A187EB8A834F4ED8947F5459 /* AddressBookUI.framework in Resources */,
+				F4B2A1453FD84C5CAEC65C28 /* AddressBook.framework in Resources */,
+				2720639CFBD642F0B0EAE527 /* AddressBookUI.framework in Resources */,
+				4765C3BF08444352BADC4488 /* EventKit.framework in Resources */,
+				02B3229A77714111AE6C322E /* EventKitUI.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,10 +215,10 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
-				9258A53DD4EE4A818C36D603 /* EventKit.framework */,
-				9DCE536537634C3D880EF833 /* EventKitUI.framework */,
-				A57DAC99DA8043AF956A6498 /* AddressBook.framework */,
-				E068F7D5941F434297218A03 /* AddressBookUI.framework */,
+				CC5C77A8B66B4D96A6E85929 /* AddressBook.framework */,
+				55A5494CA9C44D4E95189461 /* AddressBookUI.framework */,
+				AEA2406E253C444F80F00874 /* EventKit.framework */,
+				301AD0A7E24547A18F1B7E98 /* EventKitUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -219,8 +234,18 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				985472E41C834289A199B492 /* CDVInAppBrowser.m */,
-				41AF791FD3D940AD8BEB172F /* CDVInAppBrowser.h */,
+				92292C303C9D4F41B1A9E237 /* CDVContacts.m */,
+				4E5FC56A63D04280BCF18C22 /* CDVContact.m */,
+				3ECFE20DC81D4CBF9E095C0F /* CDVContacts.h */,
+				CD44D57EC4EB470FBEB21183 /* CDVContact.h */,
+				0E6DCB00E00C44FAB1CE755C /* CDVFile.m */,
+				44FBC1DE1AD44DCA93704B4C /* CDVFile.h */,
+				432D1963CD9B40D1BC0A08CB /* CDVFileTransfer.m */,
+				1038D05112AC4280964640CC /* CDVFileTransfer.h */,
+				0FCFFB1D66E14EADB9C2569E /* CDVInAppBrowser.m */,
+				2F6B9A921825474B8E97BA8F /* CDVInAppBrowser.h */,
+				45F4D8B6002B452180504286 /* Calendar.m */,
+				29943B05F6BC424880B5D1BA /* Calendar.h */,
 			);
 			name = Plugins;
 			path = "Atlas Copco iPadApp/Plugins";
@@ -388,7 +413,12 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				D4DC518840A444659DDC8F0D /* CDVInAppBrowser.m in Sources */,
+				048D7201300246D3BFE0264A /* CDVContacts.m in Sources */,
+				C3257230933F466BA9CC4D15 /* CDVContact.m in Sources */,
+				E2136F86E91941A79069723E /* CDVFile.m in Sources */,
+				2EC09C30031B4DABAA756244 /* CDVFileTransfer.m in Sources */,
+				544A28AE4F6E43D58DA11C2E /* CDVInAppBrowser.m in Sources */,
+				4C605C1DA3FF49398B1044C7 /* Calendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

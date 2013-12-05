@@ -54,7 +54,7 @@ var ProductFamiliesUI = {
 
     $(document).ready(function () {
         $('body').on('click', 'a.page-sync-btn', function () {
-            ProductFamiliesModel.syncProductFamilies();
+            ProductFamiliesModel.sharePointFamilies();
         });
     })
 

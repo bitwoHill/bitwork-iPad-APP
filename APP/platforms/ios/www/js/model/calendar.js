@@ -24,40 +24,51 @@ var CalendarModel = {
     mapSharePointData : function(data){
         var spData = data.d;
         console.log(spData);
-        if(spData && spData.results.length){
-            $.each(spData.results, function(index, value){
-                var calendarItem = {
-                    nodeId : value.ID,
-                    title : value.Titel,
-                    body : CalendarModel.formatBodyText(value.Beschreibung)
-                };
+        console.debug(data);
+        //wipe database of old entries
+        Calendar.all().destroyAll(function (ele) {
+           
+            if (spData && spData.results.length) {
+                $.each(spData.results, function (index, value) {
+                    var calendarItem = {
+                        nodeId: value.ID,
+                        title: value.Titel,
+                        body: CalendarModel.formatBodyText(value.Beschreibung)
+                    };
 
-                if(value.Anfangszeit) {
-                    calendarItem.startDate = utils.parseSharePointDate(value.Anfangszeit);
-                }
+                    if (value.Anfangszeit) {
+                        calendarItem.startDate = utils.parseSharePointDate(value.Anfangszeit);
+                    }
 
-                if(value.Endzeit) {
-                    calendarItem.expirationDate = utils.parseSharePointDate(value.Endzeit);
-                }
+                    if (value.Endzeit) {
+                        calendarItem.expirationDate = utils.parseSharePointDate(value.Endzeit);
+                    }
 
-                if(value.Ort) {
-                    calendarItem.location = value.Ort;
-                }
+                    if (value.Ort) {
+                        calendarItem.location = value.Ort;
+                    }
 
-                persistence.add(new Calendar(calendarItem));
-            });
+                    persistence.add(new Calendar(calendarItem));
+                });
 
-            persistence.flush(
-                function(){
-                    SyncModel.addSync(CALENDAR_LIST);
-                    $('body').trigger('sync-end');
-                    $('body').trigger('calendar-sync-ready');
-                }
-            );
-        }
+                persistence.flush(
+                    function () {
+                        SyncModel.addSync(CALENDAR_LIST);
+                        $('body').trigger('sync-end');
+                        $('body').trigger('calendar-sync-ready');
+                    }
+                );
+            }
+
+
+        });
+
+       
     },
 
-    addCalendarToPhone: function(id, callback){
+    addCalendarToPhone: function (id, callback) {
+      
+            // do things if OK
         CalendarModel.getCalendarItem(id, function(calendarItem){
 
             var startDate = calendarItem.startDate;
@@ -74,8 +85,12 @@ var CalendarModel = {
             };
 
             //create the event
-            window.plugins.calendar.createEvent(title,location,notes,startDate,endDate,success,error);
+            if (confirm("Es wird das Ereignis " + title + " zum Kalender hinzugefügt")) {
+                window.plugins.calendar.createEvent(title, location, notes, startDate, endDate, success, error);
+            }
+      
         });
+      
     },
 
     getCalendarItem: function(id, callback){

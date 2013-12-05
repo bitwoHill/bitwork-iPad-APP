@@ -16,6 +16,7 @@ var ProductGroupsModel = {
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
+        News.all().destroyAll(function (ele) { 
         if (spData && spData.results.length) {
             $.each(spData.results, function (index, value) {
                 var ProductGroupItem =
@@ -34,6 +35,6 @@ var ProductGroupsModel = {
                     $('body').trigger('productgroups-sync-ready');
                 }
             );
-        }
+        }});
     }
 };

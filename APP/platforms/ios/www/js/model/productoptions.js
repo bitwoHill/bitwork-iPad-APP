@@ -24,6 +24,7 @@ var productoptionsModel = {
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
+        ProductOptions.all().destroyAll(function (ele) {
         if (spData && spData.results.length) {
             $.each(spData.results, function (index, value) {
                 var productoptionsItem =
@@ -49,7 +50,7 @@ var productoptionsModel = {
                     $('body').trigger('productoptions-sync-ready');
                 }
             );
-        }
+        } });
 
 
     }

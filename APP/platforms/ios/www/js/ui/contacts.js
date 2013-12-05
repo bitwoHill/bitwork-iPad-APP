@@ -92,6 +92,8 @@ var ContactsUI = {
                 if(results.length) {
                     var data = results[0]._data;
 
+                    $('a.contact-item-to-phone', $templateContactInfo).attr('data-contact-id', data.contactId);
+                
                     $(".contact-details-name", $templateContactInfo).html(data.name + " " + data.forename);
                     $(".contact-details-function", $templateContactInfo).html(data.jobFunction);
                     $(".contact-details-department", $templateContactInfo).html(data.department);
@@ -171,6 +173,19 @@ var ContactsUI = {
     $(document).ready(function(){
         $('body').on('click', 'a.page-sync-btn', function(){
             ContactsModel.syncContacts();
+        });
+
+        //bind action to add calendar to phone button
+        $('body').on('click', 'a.contact-item-to-phone', function (e) {
+            e.preventDefault();
+            var $this = $(this),
+                contactid;
+
+            contactid = $this.attr('data-contact-id');
+
+            ContactsModel.addContactToPhone(contactid, function () {
+                $this.addClass("disabled");
+            });
         });
 
         $('body').on('click', '.tree-nav-link.folder', function(e){

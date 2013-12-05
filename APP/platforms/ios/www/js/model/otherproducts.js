@@ -24,7 +24,8 @@ var otherproductsModel = {
     },
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
-       var spData = data.d;
+        var spData = data.d;
+        OtherProducts.all().destroyAll(function (ele) { 
         if (spData && spData.results.length) {
             $.each(spData.results, function (index, value) {
 
@@ -48,6 +49,7 @@ var otherproductsModel = {
                 }
             );
         }
+        });
     }
 
 };
