@@ -100,6 +100,13 @@
         // queue our ajax request
         downloadsQueue.queue( doDownload );
 
+        promise.abort = function( statusText ) {
+
+            downloadsQueue.clearQueue();
+
+            return promise;
+        };
+
         return promise;
     }
 

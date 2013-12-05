@@ -20,6 +20,33 @@
 
 <body>
 
+    <div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title i18n" data-i18n-key="label-download-progress"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%">
+                            <span class="">Loading</span>
+                        </div>
+                    </div>
+                    <div class="alert alert-info alert-dismissable download-modal-message hidden">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong class="i18n" data-i18n-key="label-download-compleated"></strong><br><br>
+                        <span class="label label-success badge-download-success"></span> <span class="i18n" data-i18n-key="label-download-success"></span><br>
+                        <span class="label label-danger badge-download-fail"></span> <span class="i18n" data-i18n-key="label-download-fail"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-close-modal i18n" data-i18n-key="label-close" data-dismiss="modal"></button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
     <div id="wrapper">
 
         <header id="header" class="header">
@@ -92,73 +119,31 @@
         <div id="page-wrapper">
 
             <div id="lblHeaderText" class="page-header clearfix">
-                <div class="page-header-info pull-right">
-                    <a class="page-sync-btn btn btn-primary hidden hidden-phone" data-sync-type="Documents">
-                        <span class="fa fa-refresh"></span>
-                        <span class="i18n" data-i18n-key="last-sync-Documents"></span>
-                        <span class="page-sync-btn-date"></span>
-                    </a>
-                </div>
-
-                <h1 class="page-header-title"><span class="i18n" data-i18n-key="Documents"></span></h1>
+                <h1 class="page-header-title"><span class="i18n" data-i18n-key="downloads-title"></span></h1>
             </div>
 
-              <div id="documents-items-container">
-                <div class="thumbnail  box" id="documents-item-template">
-                    <span class="box-label documents-item-date hidden-phone"></span>
-                    <div class="col-lg-12 bitworkPadding clearfix box-container">
-                        <div class="box-content">
-                          
+            <div id="downloads-container" class="row hidden">
 
-                         
-
-                            <div class="box-actions">
-                                <a href="#" class="documents-item-link btn btn-primary">
-                                    <i class="fa fa-external-link"></i>&nbsp;&nbsp;
-                                    <span class="i18n" data-i18n-key="Download" onclick="documentsModel.downloadSharePointFiles();">Download</span>
-                                </a>
-                            </div>
-                        </div>
+                <div class="col-xs-6">
+                    <div class="well well-sm">
+                        <h3 class="i18n" data-i18n-key="prod-documents-sync"></h3>
+                        <p class="text-muted i18n" data-i18n-key="prod-documents-sync-text"></p>
+                        <a class="btn btn-primary sync-btn i18n" data-i18n-key="label-download" data-sync-type="Products"></a>
                     </div>
                 </div>
 
-                <div class="empty-page hidden" id="documents-empty-container">
-                    <p class="text-center i18n" data-i18n-key="empty-documents"></p>
+                <div class="col-xs-6">
+                    <div class="well well-sm">
+                        <h3 class="i18n" data-i18n-key="infothek-documents-sync"></h3>
+                        <p class="text-muted i18n" data-i18n-key="infothek-documents-sync-text"></p>
+                        <a class="btn btn-primary sync-btn i18n" data-i18n-key="label-download" data-sync-type="Infothek"></a>
+                    </div>
                 </div>
 
             </div>
         </div>
 
-       <!--  <div id="documents-items-container">
-                <div class="thumbnail hidden box" id="documents-item-template">
-                    <span class="box-label documents-item-date hidden-phone"></span>
-                    <div class="col-lg-12 bitworkPadding clearfix box-container">
-                        <div class="box-content">
-                            <div class="content-heading">
-                                <h3 class="documents-item-title"></h3>
-                            </div>
 
-                            <div class="documents-item-body clearfix">
-
-                            </div>
-
-                            <div class="box-actions">
-                                <a href="" class="documents-item-link btn btn-primary" target="_system">
-                                    <i class="fa fa-external-link"></i>&nbsp;&nbsp;
-                                    <span class="i18n" data-i18n-key="weiterlesen"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="empty-page hidden" id="documents-empty-container">
-                    <p class="text-center i18n" data-i18n-key="empty-documents"></p>
-                </div>
-
-            </div>
-        </div>-->
-        <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
@@ -173,28 +158,10 @@
     <script src="js/lang/de.js" type="text/javascript"></script>
     <script src="js/i18n.js" type="text/javascript"></script>
     <script src="js/utils.js" type="text/javascript"></script>
-     <script  src="cordova.js" type="text/javascript"></script>
+    <script  src="cordova.js" type="text/javascript"></script>
+
     <script src="js/dbsetup.js" type="text/javascript"></script>
-   <!--<script src="js/ui/documents.js" type="text/javascript"></script>-->
+    <script src="js/ui/downloads.js" type="text/javascript"></script>
     <script src="js/index.js" type="text/javascript"></script>
-
-
-
-    
-    <script type="text/javascript" charset="utf-8">
-
-        // Wait for device API libraries to load
-        //
-        document.addEventListener("deviceready", onDeviceReady, false);
-
-        // device APIs are available
-        //
-        function onDeviceReady() {
-            alert("hey");
-        }
-
-
-
-        </script>
 </body>
 </html>
