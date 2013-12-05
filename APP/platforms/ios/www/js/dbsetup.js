@@ -42,7 +42,6 @@ var appUser;
 
     var dbSetup = function(){
         //init User
-        console.debug("Creating new User");
         appUser = new User();
         //setup DB connection
         persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 10 * 1024 * 1024);
@@ -63,9 +62,9 @@ var appUser;
         syncQueue.queue("sync-queue", function(next){
             //bind event
             $('body').on('news-sync-ready sync-error', function(){
-                next();
-                //unbind event
+                           //unbind event
                 $('body').off('news-sync-ready sync-error', next);
+                next();
             });
             NewsModel.syncNews();
         });
@@ -182,6 +181,16 @@ var appUser;
                 next();
             });
             documentsModel.sharePointDocuments();
+        });
+
+        syncQueue.queue("sync-queue", function (next) {
+            //bind event
+            $('body').on('infothek-sync-ready sync-error', function () {
+                //unbind event
+                $('body').off('infothek-sync-ready sync-error', next);
+                next();
+            });
+            InfothekModel.syncInfothek();
         });
            
         syncQueue.dequeue("sync-queue");

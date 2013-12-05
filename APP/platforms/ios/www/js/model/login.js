@@ -47,11 +47,16 @@ var User = function(){
             this.password = "";
 
             var currentPageURL = window.location.pathname;
-            currentPageURL = currentPageURL.replace("/", "");
+            
+            //removal of server path in front of url //.pathname returns to much on PhoneGap. for exmaple it returns /app/infothek.html instead of infothek.html. The /app/ needs to be cut away
+            var res = currentPageURL.split("/");
+           currentPageURL = res[res.length - 1];
 
             //Check if user is in login page
             if(currentPageURL.indexOf(loginPageUrl) === -1 ){
                 //redirect to login page
+            
+
                 window.open(loginPageUrl + "?returnURL=" + encodeURIComponent(currentPageURL), "_self");
             }
         },

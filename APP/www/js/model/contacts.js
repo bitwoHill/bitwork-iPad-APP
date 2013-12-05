@@ -125,7 +125,7 @@ var ContactsModel = {
             var name = contactItem.name,
              forename = contactItem.forename,
              phone = contactItem.phone,
-             mobilephone = contactItem.mobilephone,
+             mobilephone = contactItem.mobilePhone,
              fax = contactItem.fax,
              email = contactItem.email,
              department = contactItem.department,
@@ -145,16 +145,19 @@ var ContactsModel = {
             if (confirm("Es wird der Kontakt " + name + " " + forename + " zum Telefonbuch hinzugefügt")) {
                 // TODO
 
-                var myContact = navigator.contacts.create({ "displayName": name });
-                myContact.name.familyName = name;
-                myContact.name.givenName = forename;
+                var myContact = navigator.contacts.create();
+                var contactname = new ContactName();
+                contactname.familyName = name;
+                contactname.givenName = forename;
+                myContact.name = contactname;
 
                 //Phonenumbers TODO check what happens if there no number
                 var phoneNumbers = [];
                 phoneNumbers[0] = new ContactField('Festnetz', phone, false);
                 phoneNumbers[1] = new ContactField('Mobil', mobilephone, false); // preferred number
                 phoneNumbers[2] = new ContactField('Fax', fax, false);
-
+                
+myContact.phoneNumbers =phoneNumbers;
                 //email
                 var emails = [];
                 emails[0] = new ContactField('E-Mail', email, false);
