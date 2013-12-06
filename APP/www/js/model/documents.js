@@ -95,7 +95,6 @@ var documentsModel = {
     },
 
     downloadSharePointFiles: function () {
-        alert(1);
         Documents.all().limit(1)
         .list(null, function (results) {
             if (results.length) {

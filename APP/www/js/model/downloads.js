@@ -29,7 +29,7 @@
                             fileName = downloadData.fileName,
                             folderDir,
                             fileDir,
-                            uri = encodeURI("http://www.atlas-cms.com" + downloadData.path),
+                            uri = encodeURI("http://bitwork:Test1234!@www.atlas-cms.com" + downloadData.path),
                             ft = new FileTransfer();
 
                         fs.root.getDirectory(
@@ -50,8 +50,7 @@
 
                                         // now delete the file (for what ever reason)
                                         fileDir.remove();
-
-                                        ft.download(
+                                      ft.download(
                                             uri,
                                             fullpath + fileName,
                                             function (entry) {
@@ -60,21 +59,18 @@
                                                 download.resolve(entry);
                                             },
                                             function (error) {
-                                                console.debug("download error source " + error.source);
-                                                console.debug("download error target " + error.target);
-                                                console.debug("upload error code" + error.code);
+                                                alert("download error source " + error.source);
+                                              alert("download error target " + error.target);
+                                                alert("upload error code" + error.code);
+                                                console.debug(error);
                                                 download.reject(error);
                                             },
-                                            true,
-                                            {
-                                                headers: {
-                                                    "Authorization": "Basic " + Base64.encode(appUser.username + ":" + appUser.password)
-                                                }
-                                            }
-                                        );
+                                            true
+                                        	);
                                     },
                                     function(error){
                                         download.reject(error);
+                                        // Base64.encode(appUser.username + ":" + appUser.password)
                                     }
                                 );
                             },
