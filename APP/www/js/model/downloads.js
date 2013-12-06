@@ -31,8 +31,7 @@
                             fileDir,
                             uri = encodeURI("http://www.atlas-cms.com" + downloadData.path),
                             ft = new FileTransfer();
-alert(downloadData.fileName);
-alert("Basic " + Base64.encode(appUser.username + ":" + appUser.password));
+
                         fs.root.getDirectory(
                             folderName,
                             { create: true, exclusive: false },

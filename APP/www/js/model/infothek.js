@@ -72,7 +72,7 @@ var InfothekModel = {
     },
 
     downloadSharePointFiles: function () {
-        Infothek.all().filter("isFolder", "=", false)
+        Infothek.all().limit(1).filter("isFolder", "=", false)
             .list(null, function (results) {
                 if (results.length) {
                     var queueProgress = {

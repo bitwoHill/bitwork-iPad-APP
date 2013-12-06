@@ -18,7 +18,7 @@ var User = function(){
                 type: 'GET',
                 url: Settings.spDomain + "/" + SPTestList,
                 crossDomain: true,
-                timeout: 5000,
+                timeout: 10000,
                 username: user,
                 password: pass,
                 dataType: 'json'
