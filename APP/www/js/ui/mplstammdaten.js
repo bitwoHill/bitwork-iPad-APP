@@ -169,7 +169,22 @@ var DocumentsUI = {
             $templateFolder = $(documents_FOLDER_TEMPLATE);
 
         if ($containerRoot.length && $templateFolder.length) {
+        //get filesystem object to get current app folder. the GUID changes after reinstall or update of app
+try{
+                    window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+                  //  window.requestFileSystem(window.PERSISTENT, 4096 * 1024 * 1024, initFS, errorHandler);
+                    window.requestFileSystem(window.PERSISTENT, 0, initFS, errorHandler);
+              
+                } catch(err) {
+                    console.debug(err);
+                }
+
+                function initFS(fs) {
+                alert(fs.root.name);
+                alert(fs.name);
+                
             //load documents by current url parameter / andhand von aktueller ID laden
+          
             var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
             var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
             var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
@@ -292,6 +307,13 @@ var DocumentsUI = {
                     });
                          
 
+        
+        }
+             function errorHandler() {
+                    console.debug('An error occured');
+                    alert("Could not create Filesystem. Not enough Local Storage available");
+                    download.reject();
+                }
         }
     },
 

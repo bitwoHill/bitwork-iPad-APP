@@ -40,7 +40,7 @@ var InfothekModel = {
                 }
 
                 if(!newItem.isFolder){
-                    newItem.path = Settings.spContent + value.Pfad + "/" + value.Name;
+                    newItem.path = value.Pfad + "/" + value.Name;
 
                     //TODO: replace with file upload
                     /*InfothekModel.downloadInfothekFile(newItem, index, spData.results.length, function(infothekItem, pos, length){
@@ -69,6 +69,62 @@ var InfothekModel = {
 
         }
         });
+    },
+
+    downloadSharePointFiles: function () {
+        Infothek.all().filter("isFolder", "=", false)
+            .list(null, function (results) {
+                if (results.length) {
+                    var queueProgress = {
+                        qLength: results.length,
+                        qIndex: 0,
+                        qSuccess: 0,
+                        qFail: 0
+                    }
+
+                    $('body').trigger('download-queue-started', queueProgress);
+
+                    $.each(results, function(index, value){
+                        var data = value._data,
+                            downloadData = {
+                                folderName: "Infothek",
+                                fileName: data.title,
+                                path: data.path
+                            };
+
+                        $.downloadQueue(downloadData)
+                            .done(
+                            function(entrie){
+                                queueProgress.qSuccess++;
+                                results[index].path(entrie.fullPath);
+                                //console.log("cnt:" + index);
+                                persistence.flush();
+                            }
+                        ).fail(
+                            function(entrie){
+                                queueProgress.qFail++;
+                                //console.log("cnt f:" + index);
+                            }
+                        ).always(
+                            function(){
+                                queueProgress.qIndex = index + 1;
+                                if(queueProgress.qIndex === queueProgress.qLength){
+                                    $('body').trigger('download-queue-ended', queueProgress);
+                                } else {
+                                    $('body').trigger('download-queue-progress', queueProgress);
+                                }
+                            }
+                        );
+                    });
+                } else {
+                    $('body').trigger('download-queue-ended', {
+                        qLength: 1,
+                        qIndex: 1,
+                        qSuccess: 0,
+                        qFail: 0
+                    });
+                }
+            });
     },
 
     downloadInfothekFile : function(infothekItem, index, length, callback){

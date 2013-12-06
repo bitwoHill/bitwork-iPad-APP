@@ -98,6 +98,20 @@ var i18n = {
         "contacts": "Telefonbuch",
         "empty-contacts": "Es wurden noch keine Kontakte geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Kontakdaten zu laden.",
         "last-sync-contacts": "Letzte Kontaktdaten Synchonisation",
-        "contacts-add-phone": "zum Telefonbuch hinzufügen"
+        "contacts-add-phone": "zum Telefonbuch hinzufügen",
+
+        //Downloads
+        "downloads-title": "Downloads",
+        "label-download": "Download",
+        "label-close": "Close",
+        "label-download-progress": "Download progress",
+        "label-aboard-download": "Aboard download",
+        "label-download-compleated": "Download completed",
+        "label-download-success": "File(s) downloaded.",
+        "label-download-fail": "File(s) not downloaded.",
+        "prod-documents-sync": "Products documents sync",
+        "prod-documents-sync-text": "This will synchronise products documents.",
+        "infothek-documents-sync": "Infothek documents sync",
+        "infothek-documents-sync-text": "This will synchronise infothek documents."
     }
 }

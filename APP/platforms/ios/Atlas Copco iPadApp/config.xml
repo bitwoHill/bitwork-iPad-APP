@@ -47,4 +47,5 @@
     <content src="LoginPage.html" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
+    <access origin="http://www.atlas-cms.com" />
 </widget>

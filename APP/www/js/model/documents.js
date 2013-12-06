@@ -96,7 +96,7 @@ var documentsModel = {
 
     downloadSharePointFiles: function () {
         alert(1);
-        Documents.all().limit(100)
+        Documents.all().limit(1)
         .list(null, function (results) {
             if (results.length) {
                 var queueProgress = {
@@ -120,7 +120,7 @@ var documentsModel = {
                     .done(
                         function(entrie){
                             queueProgress.qSuccess++;
-                            results[index].documentname(entrie.fullPath);
+                            results[index].path(entrie.fullPath);
                             //console.log("cnt:" + index);
                             persistence.flush();
                         }

@@ -43,6 +43,15 @@ h4 {
     color: white;
 }
 
+h4.modal-title {
+    color: #333;
+    text-shadow: 1px 1px 0 #efefef;
+}
+
+.modal .alert {
+    margin-bottom: 0;
+}
+
 .row {
     margin-right: -15px;
     margin-left: -15px;

@@ -94,15 +94,19 @@ var documentsModel = {
         }
     },
 
- /*.filter("documentId", "=", "964")
-            .or(new persistence.PropertyFilter("documentId", "=", "966"))*/
-
     downloadSharePointFiles: function () {
-        Documents.all()
-        .filter("documentId", "=", "964")
-        .or(new persistence.PropertyFilter("documentId", "=", "966"))
+        alert(1);
+        Documents.all().limit(1)
         .list(null, function (results) {
             if (results.length) {
+                var queueProgress = {
+                    qLength: results.length,
+                    qIndex: 0,
+                    qSuccess: 0,
+                    qFail: 0
+                }
+
+                $('body').trigger('download-queue-started', queueProgress);
 
                 $.each(results, function(index, value){
                     var data = value._data,
@@ -112,25 +116,42 @@ var documentsModel = {
                             path: data.path
                         };
 
-                    $.downloadQueue(downloadData).done(
+                    $.downloadQueue(downloadData)
+                    .done(
                         function(entrie){
-                            results[index].documentname(entrie.fullPath);
-                            console.log("cnt:" + index);
+                            queueProgress.qSuccess++;
+                            results[index].path(entrie.fullPath);
+                            //console.log("cnt:" + index);
                             persistence.flush();
                         }
                     ).fail(
                         function(entrie){
-                            console.log("cnt f:" + index);
+                            queueProgress.qFail++;
+                            //console.log("cnt f:" + index);
                         }
                     ).always(
                         function(){
-                            //TODO: trigger custom event to determine progress
+                            queueProgress.qIndex = index + 1;
+                            if(queueProgress.qIndex === queueProgress.qLength){
+                                $('body').trigger('download-queue-ended', queueProgress);
+                            } else {
+                                $('body').trigger('download-queue-progress', queueProgress);
+                            }
                         }
                     );
+                });
+            } else {
+                $('body').trigger('download-queue-ended', {
+                    qLength: 1,
+                    qIndex: 1,
+                    qSuccess: 0,
+                    qFail: 0
                 });
             }
         });
     },
+
+
    UpdateSharePointFiles: function () {
         Documents.all()
             .order('documentname', true, false)

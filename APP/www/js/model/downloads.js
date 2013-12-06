@@ -14,19 +14,25 @@
 
                 try{
                     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-                    window.requestFileSystem(window.PERSISTENT, 7 * 1024 * 1024, initFS, errorHandler);
+                  //  window.requestFileSystem(window.PERSISTENT, 4096 * 1024 * 1024, initFS, errorHandler);
+                    window.requestFileSystem(window.PERSISTENT, 0, initFS, errorHandler);
+              
                 } catch(err) {
                     download.reject(err);
                 }
 
                 function initFS(fs) {
+              
                     try {
+                    //console.debug(downloadData);
                         var folderName = downloadData.folderName,
                             fileName = downloadData.fileName,
                             folderDir,
                             fileDir,
-                            uri = encodeURI("http://www.atlas-cms.com" + downloadData.path);
-
+                            uri = encodeURI("http://www.atlas-cms.com" + downloadData.path),
+                            ft = new FileTransfer();
+alert(downloadData.fileName);
+alert("Basic " + Base64.encode(appUser.username + ":" + appUser.password));
                         fs.root.getDirectory(
                             folderName,
                             { create: true, exclusive: false },
@@ -84,6 +90,7 @@
 
                 function errorHandler() {
                     console.debug('An error occured');
+                    alert("Could not create Filesystem. Not enough Local Storage available");
                     download.reject();
                 }
 

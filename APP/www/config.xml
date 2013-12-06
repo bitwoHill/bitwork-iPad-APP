@@ -31,7 +31,7 @@
     <content src="LoginPage.html" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
-    <access origin="*" />
+    <access origin="http://www.atlas-cms.com" />
     <feature name="Contacts">
         <param name="ios-package" value="CDVContacts" />
     </feature>
