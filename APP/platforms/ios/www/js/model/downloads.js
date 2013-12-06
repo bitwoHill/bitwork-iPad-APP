@@ -29,7 +29,7 @@
                             fileName = downloadData.fileName,
                             folderDir,
                             fileDir,
-                            uri = encodeURI("http://bitwork:Test1234!@www.atlas-cms.com" + downloadData.path),
+                            uri = encodeURI("http://" + appUser.username +":"+appUser.password+"@www.atlas-cms.com" + downloadData.path),
                             ft = new FileTransfer();
 
                         fs.root.getDirectory(
@@ -59,9 +59,8 @@
                                                 download.resolve(entry);
                                             },
                                             function (error) {
-                                                alert("download error source " + error.source);
-                                              alert("download error target " + error.target);
-                                                alert("upload error code" + error.code);
+                                              
+                                                alert("Fehler beim Herunterladen. Zeitüberschreitung " + error.code);
                                                 console.debug(error);
                                                 download.reject(error);
                                             },
