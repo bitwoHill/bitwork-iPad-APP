@@ -3,7 +3,6 @@ var SharePoint = {
     sharePointRequest: function (listName, callback) {
 
         //see if sharepoint Paging is intact if so - recursive call
-        console.log(appUser);
         var jqXHR = $.ajax({
             type: 'GET',
             url: Settings.spDomain + "/" + listName,
@@ -79,6 +78,44 @@ var SharePoint = {
                 $('body').trigger('sync-error');
                 //if auth failed
                 if(responseData && responseData.status && responseData.status === 401){
+                    appUser.doLogout();
+                }
+            }
+        );
+
+
+    },
+
+
+
+    sharePointChangesRequest: function (listName,sincedate) {
+
+        
+        var soapRequest = '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">  <soap:Body> <GetListItemChanges xmlns="http://schemas.microsoft.com/sharepoint/soap/"> <listName>' + listName + '</listName>  <since>' + sincedate + ' </since>      </GetListItemChanges>  </soap:Body> </soap:Envelope>';
+
+        jQuery.support.cors = true;
+        console.debug(soapRequest);
+    
+        var jqXHR = $.ajax({
+            type: 'POST',
+            url: Settings.spListsWebservice,
+            crossDomain: true,
+            username: appUser.username,
+            password: appUser.password,
+            contentType: 'text/xml; charset="UTF-8"',
+            data: soapRequest,
+            dataType: 'xml'
+        }).done(function (responseData, textStatus, jqXHR) {
+            console.debug(responseData);
+                jQuery.support.cors = false;
+        }).fail(
+            function (responseData, textStatus, errorThrown) {
+                console.warn(responseData, textStatus, errorThrown);
+                $('body').trigger('sync-error');
+                jQuery.support.cors = false;
+
+                //if auth failed
+                if (responseData && responseData.status && responseData.status === 401) {
                     appUser.doLogout();
                 }
             }

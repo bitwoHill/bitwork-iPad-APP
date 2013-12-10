@@ -1,6 +1,7 @@
 var Settings = {
         spDomain: "http://www.atlas-cms.com/_vti_bin/ListData.svc",
         spContent: "http://www.atlas-cms.com",
+        spListsWebservice: "http://www.atlas-cms.com/_vti_bin/Lists.asmx",
         loginExpiration: 1, //login cookie expiration [hours]
         loginExpirationExtended: 24, //login cookie expiration extended (automatic login) [hours]
         loginFailedAttempts: 7, //max number of login failed attempts
@@ -15,8 +16,9 @@ var Settings = {
     // ProxyPass /SPbitwork/ http://www.atlas-cms.com/_vti_bin/ListData.svc
     // ProxyPassReverse /SPbitwork/ http://www.atlas-cms.com/_vti_bin/ListData.svc
     proxySettings = {
-        spDomain: "/SPbitwork"
-        //spContent: "/SPbitworkContent"
+        spDomain: "/SPbitwork",
+        spContent: "/SPbitworkContent",
+        spListsWebservice: "/SPbitworkListsASMX"
     },
     mockSettings = {
         spDomain: "content/mockdata",

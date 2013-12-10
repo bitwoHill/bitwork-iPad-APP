@@ -131,7 +131,6 @@ var User = function(){
         setCurrentUser = function(callback){
             var authCookie = utils.getCookie("bitwork_ipadapp_auth"),
                 currentPageURL = window.location.pathname;
-
             if(authCookie){
 
                 var tmp = Base64.decode(authCookie);
@@ -139,7 +138,13 @@ var User = function(){
                 this.username = tmp[0],
                 this.password = tmp[1]
             } else {
-                currentPageURL = currentPageURL.replace("/", "");
+               
+
+                //removal of server path in front of url //.pathname returns to much on PhoneGap. for exmaple it returns /app/infothek.html instead of infothek.html. The /app/ needs to be cut away
+               
+                var res = currentPageURL.split("/");
+                
+                currentPageURL = res[res.length - 1];
 
                 //Check if user is in login page
                 if(currentPageURL.indexOf(loginPageUrl) === -1 ){

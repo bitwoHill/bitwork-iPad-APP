@@ -68,7 +68,7 @@ var equipmentproductsUI = {
             }
         }
 
-        SyncModel.getSyncDate(OTHERPRODUCTS_LIST, function (date) {
+        SyncModel.getSyncDate(DOCUMENTS_LIST, function (date) {
             //update last sync date
             $('.page-sync-btn-date').html(date);
             $('.page-sync-btn').removeClass('hidden');
@@ -180,8 +180,7 @@ try{
                 }
 
                 function initFS(fs) {
-                alert(fs.root.name);
-                alert(fs.name);
+          
                 
             //load documents by current url parameter / andhand von aktueller ID laden
           
