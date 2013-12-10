@@ -184,6 +184,17 @@ var appUser;
             });
             documentsModel.sharePointDocuments   });
            
+		           syncQueue.queue("sync-queue", function (next) {
+            //bind event
+            $('body').on('infothek-sync-ready sync-error', function () {
+                //unbind event
+                $('body').off('infothek-sync-ready sync-error', next);
+                next();
+            });
+           InfothekModel.syncInfothek();
+        });
+
+		   
         syncQueue.dequeue("sync-queue");
     }
 
