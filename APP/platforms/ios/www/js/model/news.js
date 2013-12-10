@@ -11,6 +11,8 @@ var News = persistence.define('News', {
 });
 
 News.index('nodeId', { unique: true });
+News.textIndex('title');
+News.textIndex('body');
 
 var NewsModel = {
     syncNews : function(){
@@ -26,6 +28,7 @@ var NewsModel = {
         News.all().destroyAll(function (ele) { 
             if (spData && spData.results.length) {
                 $.each(spData.results, function (index, value) {
+                
                     var newsItem = {
                         nodeId: value.ID,
                         title: value.Titel,
@@ -60,7 +63,7 @@ var NewsModel = {
         var $body = $(body);
 
         //remove links
-        $body.find('a').remove();
+        //$body.find('a').remove();
 
         //remove images
         $body.find('img').remove();
@@ -69,5 +72,14 @@ var NewsModel = {
         $body.html($body.html().replace(/&nbsp;/g, ""));
 
         return $body.html();
+    },
+
+    searchNews: function(key){
+        var newsSearch = $.Deferred();
+        News.search(key).list(function(res){
+            newsSearch.resolve(res);
+        });
+
+        return newsSearch.promise();
     }
 };

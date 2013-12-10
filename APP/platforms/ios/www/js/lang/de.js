@@ -8,7 +8,7 @@ var i18n = {
 
         //Login
         "login-label": "Anmelden",
-        "login-auto": "Automatisch anmelden",
+        "login-auto": "Angemeldet bleiben",
         "login-page-title": "Am SharePoint anmelden",
         "login-error-username": "Benutzername muss eingetragen werden",
         "login-error-password": "Passwort muss eingetragen werden",
@@ -22,8 +22,9 @@ var i18n = {
         "menu-links": "Wichtige Links",
         "menu-mpl": "MPL",
         "menu-info": "Infothek",
+        "menu-downloads": "Dateien synchronisieren",
 
-        "last-sync": "Letzte Synchronisierung am",
+        "last-sync": "Alle Daten synchronisieren <br>",
         "toggle-nav": "Navigation umschalten",
         "user-message": "Angemeldet als ",
         "login-different-user": "Als anderer Benutzer anmelden",
@@ -32,23 +33,23 @@ var i18n = {
 
         //Calendar
         "kalender": "Kalender",
-        "last-sync-calendar": "Letzte Kalender Synchonisation",
+        "last-sync-calendar": "Letzte Kalender Synchronisierung",
         "ort": "Ort",
         "anfangszeit": "Anfangszeit",
         "endzeit": "Endzeit",
         "calendar-add-phone": "Zum Telefonkalender hinzufügen",
-        "empty-calendar": "Es wurden noch keine Events geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Events zu laden.",
+        "empty-calendar": "Es wurden noch keine Kalender-Events geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Kalender-Events zu laden.",
         "add-calendar-entry": "Es wird ein Ereignis zum Kalender hinzugefügt",
         //News
         "news": "News",
-        "last-sync-news": "Letzte News Synchonisation",
+        "last-sync-news": "Letzte News Synchronisierung",
         "weiterlesen": "Weiterlesen",
-        "empty-news": "Es wurden noch keine News geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um News zu laden.",
+        "empty-news": "Es wurden noch keine News geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um News zu laden.",
 
         //Links
         "wichtige-links": "Wichtige Links",
-        "last-sync-links": "Letzte wichtige Links Synchonisation",
-        "empty-links": "Es wurden noch keine wichtige Links geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um wichtige Links zu laden.",
+        "last-sync-links": "Letzte wichtige Links Synchronisierung",
+        "empty-links": "Es wurden noch keine wichtige Links geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um wichtige Links zu laden.",
 
         //MPL
         "stammdaten": "Stammdaten",
@@ -61,8 +62,8 @@ var i18n = {
         "volumenstrom": "Volumenstrom",
         "druck": "Druck",
         "antriebsleistung": "Antriebsleistung",
-        "empty-mpl": "Es wurden noch keine Optionen und Dokumente geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Optionen und Dokumente zu laden.",
-        "last-sync-mpl": "Letzte Stammdaten Synchonisation",
+        "empty-mpl": "Es wurden noch keine Optionen und Dokumente geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Optionen und Dokumente zu laden.  <br> <br> Wichtig: Produkt Dokumente können über die Schaltfläche 'Dokument Downloads' in der Menüleiste heruntergeladen werden.",
+        "last-sync-mpl": "Letzte Stammdaten Synchronisierung",
 
         //MPL Documents
         "dokumente": "Dokumente",
@@ -74,44 +75,54 @@ var i18n = {
 
         //MPL Produtgruppen
         "produktgruppen": "Produktgruppen",
-        "empty-produktgroups": "Es wurden noch keine Produktgruppen geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Produktgruppen zu laden.",
-        "last-sync-productgroups": "Letzte Produktgruppen Synchonisation",
+        "empty-produktgroups": "Es wurden noch keine Produktgruppen geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Produktgruppen zu laden.",
+        "last-sync-productgroups": "Letzte Produktgruppen Synchronisierung",
         //MPL Produktfamilien
         "produktfamilien": "Produktfamilien",
-        "empty-produktfamilies": "Es wurden noch keine Produktfamilien geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Produktfamilien zu laden.",
-        "last-sync-productfamilies": "Letzte Produktfamilien Synchonisation",
+        "empty-produktfamilies": "Es wurden noch keine Produktfamilien geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Produktfamilien zu laden.",
+        "last-sync-productfamilies": "Letzte Produktfamilien Synchronisierung",
         //MPL Produktplattformen
         "produktplattformen": "Produktplattformen",
-        "empty-productplatforms": "Es wurden noch keine Produktplattformen geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Produktplattformen zu laden.",
-        "last-sync-productplatforms": "Letzte Produktplattform Synchonisation",
+        "empty-productplatforms": "Es wurden noch keine Produktplattformen geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Produktplattformen zu laden.",
+        "last-sync-productplatforms": "Letzte Produktplattform Synchronisierung",
         //MPL Produkt
         "produkt": "Produkt",
-        "empty-products": "Es wurden noch keine Produkte geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Produkte zu laden.",
-        "last-sync-products": "Letzte Produkt Synchonisation",
+        "empty-products": "Es wurden noch keine Produkte geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Produkte zu laden.",
+        "last-sync-products": "Letzte Produkt Synchronisierung",
 
         //InfoThek
         "infothek": "Infothek",
-        "empty-infothek": "There are no infothek to be displayed. Use above <i class='fa fa-refresh'></i> button to syncronise the infothek page.",
-        "last-sync-infothek": "Last infothek sync",
+        "empty-infothek": "Es wurden noch keine Infothekdaten geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Infothekdaten zu laden. <br> <br> Wichtig: Infothek Dokumente können über die Schaltfläche 'Dokument Downloads' in der Menüleiste heruntergeladen werden.",
+        "last-sync-infothek": "Letzte Infothek Synchronisierung",
 
         //Contacts
         "contacts": "Telefonbuch",
-        "empty-contacts": "Es wurden noch keine Kontakte geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Synchronisier-Button um Kontakdaten zu laden.",
-        "last-sync-contacts": "Letzte Kontaktdaten Synchonisation",
+        "empty-contacts": "Es wurden noch keine Kontakte geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Kontakdaten zu laden.",
+        "last-sync-contacts": "Letzte Kontaktdaten Synchronisierung",
         "contacts-add-phone": "zum Telefonbuch hinzufügen",
 
         //Downloads
         "downloads-title": "Downloads",
         "label-download": "Download",
-        "label-close": "Close",
-        "label-download-progress": "Download progress",
-        "label-aboard-download": "Aboard download",
-        "label-download-compleated": "Download completed",
-        "label-download-success": "File(s) downloaded.",
-        "label-download-fail": "File(s) not downloaded.",
-        "prod-documents-sync": "Products documents sync",
-        "prod-documents-sync-text": "This will synchronise products documents.",
-        "infothek-documents-sync": "Infothek documents sync",
-        "infothek-documents-sync-text": "This will synchronise infothek documents."
+        "label-close": "Schliessen",
+        "label-download-progress": "Download Vorgang",
+        "label-aboard-download": "Download abbrechen",
+        "label-download-compleated": "Download abgeschlossen",
+        "label-download-success": "Datei(en) heruntergeladen.",
+        "label-download-fail": "Datei(en) nicht heruntergeladen.",
+        "prod-documents-sync": "Produkt Dokumente herunterladen (dauert sehr lange)",
+        "prod-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Produkt Dokumente.",
+        "infothek-documents-sync": "Infothek Dokumente herunterladen (dauert sehr lange)",
+        "infothek-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Infothek Dokumente.",
+
+        //Search
+        "search-results": "Suchergebnis für: ",
+        "search-input-error": "Suchkriterium muss mindestens drei Zeichen lang sein",
+        "empty-news-search": "Es wurden keine News gefunden.",
+        "empty-calendar-search": "Es wurden keine Kalendereinträge gefunden.",
+        "empty-contacts-search": "Es wurden keine Kontakte gefunden.",
+        "empty-infothek-search": "Es wurden keine Infothek Einträge gefunden.",
+        "empty-documents-search": "Es wurden keine Produktdokumente gefunden.",
+        "empty-mpl-search": "In der Maschinenpreisliste wurde nichts gefunden."
     }
 }

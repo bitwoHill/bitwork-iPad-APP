@@ -13,7 +13,10 @@ var Documents = persistence.define('Documents', {
     productfamilyFK: "INT",
     productplatformFK: "INT",
     productFK: "INT",
-    equipmentFK: "INT"
+    equipmentFK: "INT",
+    spModifiedDate: "DATE",
+    localPath: "TEXT",
+    localModifiedDate: "DATE"
 });
 
 Documents.index(['documentId'], { unique: true });
@@ -37,65 +40,123 @@ var documentsModel = {
     //maps SharePoint data to current model
     mapSharePointDataDocumentTypes: function (data) {
         var spData = data.d;
-        if (spData && spData.results.length) {
-            $.each(spData.results, function (index, value) {
-                var documenttypeItem =
-                        {
-                            documenttypeId: value.ID,
-                            name: (value.Dokumenttyp) ? value.Dokumenttyp : ""
-                        };
-
-                persistence.add(new Documenttypes(documenttypeItem));
+        Documenttypes.all().destroyAll(function (ele) {  // cant delete the whole list because of local path
 
 
-            });
+            if (spData && spData.results.length) {
+                $.each(spData.results, function (index, value) {
+                    var documenttypeItem =
+                            {
+                                documenttypeId: value.ID,
+                                name: (value.Dokumenttyp) ? value.Dokumenttyp : ""
+                            };
 
-            persistence.flush(
-                function () {
-                    SyncModel.addSync(DOCUMENTTYPES_LIST);
-                }
-            );
+                    persistence.add(new Documenttypes(documenttypeItem));
 
-        }
 
-        //get documents
-        SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData);
+                });
 
+                persistence.flush(
+                    function () {
+                        SyncModel.addSync(DOCUMENTTYPES_LIST);
+                        //get documents
+
+                        SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData);
+                    }
+                );
+
+            } else {
+                //get documents
+                SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData);
+            }
+
+        });
     },
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
-        if (spData && spData.results.length) {
-            $.each(spData.results, function (index, value) {
-                var documentsItem =
-                        {
 
-                            documentId: value.ID,
-                            documentname: (value.Name) ? value.Name : "",
-                            documenttypeFK: (value.DokumenttypId) ? value.DokumenttypId : "",
-                            path: (value.Pfad + "/" + value.Name) ? value.Pfad + "/" + value.Name : "",
-                            productgroupFK: (value.ProduktgruppeId) ? value.ProduktgruppeId : "",
-                            productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : "",
-                            productplatformFK: (value.ProduktplattformId) ? value.ProduktplattformId : "",
-                            productFK: (value.ProduktId) ? value.ProduktId : "",
-                            equipmentFK: (value.EquipmentId) ? value.EquipmentId : ""
-                        };
-
-                persistence.add(new Documents(documentsItem));
-            });
-
-            persistence.flush(
-                function () {
-                    SyncModel.addSync(DOCUMENTS_LIST);
-                    $('body').trigger('sync-end');
-                    $('body').trigger('documents-sync-ready');
-                }
-            );
+        //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to them on Sharepoint
+        var lookupIDsSharePoint = {};
+        for (var i = 0, len = spData.results.length; i < len; i++) {
+            lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
         }
+
+
+        //check wheter files need to be deleted
+        //get all local files and check wheter its in the collection of the new SP files
+        Documents.all().list(null, function (results) {
+            if (results.length) {
+                $.each(results, function (index, value) {
+                    //check if an object with the current ID exists. If Not delete it
+                    if (!lookupIDsSharePoint[value._data.documentId]) {
+                        console.debug("lokales element wurde nicht mehr gefunden: ");
+                        console.debug(value);
+
+                        // delete local file from filesystem
+                        try {
+                            //request filesystem to delete files if not found on SP anymore
+                            window.resolveLocalFileSystemURI(value.localPath, onSuccess, onError);
+
+                            function onSuccess(fileEntry) {
+                                fileEntry.remove();
+                            }
+
+                            function onError() {
+                                console.debug('An error occured');
+                                alert("Could not create Filesystem. No Files will be deleted");
+                            }
+                        } catch (e) {
+                            console.debug('An error occured');
+                            alert("Could not create Filesystem. No Files will be deleted");
+                        }
+
+                        // remove entity from persistence layer
+                        persistence.remove(value);
+                    }
+                });
+            }
+        });
+
+        //upate db to reflect the deleted items
+        persistence.flush(
+                function () {
+                    if (spData && spData.results.length) {
+
+                        $.each(spData.results, function (index, value) {
+
+                            var documentsItem =
+                                    {
+                                        documentId: value.ID,
+                                        documentname: (value.Name) ? value.Name : "",
+                                        documenttypeFK: (value.DokumenttypId) ? value.DokumenttypId : "",
+                                        path: (value.Pfad + "/" + value.Name) ? value.Pfad + "/" + value.Name : "",
+                                        productgroupFK: (value.ProduktgruppeId) ? value.ProduktgruppeId : "",
+                                        productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : "",
+                                        productplatformFK: (value.ProduktplattformId) ? value.ProduktplattformId : "",
+                                        productFK: (value.ProduktId) ? value.ProduktId : "",
+                                        equipmentFK: (value.EquipmentId) ? value.EquipmentId : ""
+                                    };
+                            if (value.Geändert) {
+                                documentsItem.spModifiedDate = utils.parseSharePointDate(value.Geändert);
+                            }
+                            persistence.add(new Documents(documentsItem));
+                        });
+
+                        persistence.flush(
+                            function () {
+                                SyncModel.addSync(DOCUMENTS_LIST);
+                                $('body').trigger('sync-end');
+                                $('body').trigger('documents-sync-ready');
+                            }
+                        );
+                    }
+
+                });
     },
 
     downloadSharePointFiles: function () {
-        Documents.all().limit(10)
+        Documents.all().limit(5)
         .list(null, function (results) {
             if (results.length) {
                 var queueProgress = {
@@ -107,37 +168,67 @@ var documentsModel = {
 
                 $('body').trigger('download-queue-started', queueProgress);
 
-                $.each(results, function(index, value){
+                $.each(results, function (index, value) {
                     var data = value._data,
                         downloadData = {
                             folderName: "Dokumente",
                             fileName: data.documentname,
                             path: data.path
                         };
-
-                    $.downloadQueue(downloadData)
-                    .done(
-                        function(entrie){
-                            queueProgress.qSuccess++;
-                            results[index].path(entrie.fullPath);
-                            //console.log("cnt:" + index);
-                            persistence.flush();
-                        }
-                    ).fail(
-                        function(entrie){
-                            queueProgress.qFail++;
-                            //console.log("cnt f:" + index);
-                        }
-                    ).always(
-                        function(){
-                            queueProgress.qIndex = index + 1;
-                            if(queueProgress.qIndex === queueProgress.qLength){
-                                $('body').trigger('download-queue-ended', queueProgress);
-                            } else {
-                                $('body').trigger('download-queue-progress', queueProgress);
+                    //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
+                 
+                 //   if (data.localModifiedDate) {
+                  //  if (data.localModifiedDate === data.spModifiedDate)
+                   // {
+                    //alert("skip");
+                    //queueProgress.qSuccess++;
+                     //return true; //skip
+                   // }
+                   
+                    // }
+                      //end if download necessary
+                        $.downloadQueue(downloadData)
+                        .done(
+                            function (entrie) {
+                                queueProgress.qSuccess++;
+                                results[index].localpath(entrie.fullPath);
+                                console.debug("overwritten path");
+                                //overwrite sync date with status of last sp modified date
+                                //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the Document list.
+                                //Hence the SP File could be newer and the local database would still have the old modified date. 
+                                // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
+                              //  try
+                              //  {
+                                //    results[index].localModifiedDate(results[index].spModifiedDate);
+                                 //        console.debug("modified date");
+                                //alert(results[index].localModifiedDate);
+                                //alert(results[index].spModifiedDate);
+                            
+                           //     }
+                            //  catch (e)
+                             // {
+                              //alert("Error overwriting modified date");
+                              //}
+                             
+                                persistence.flush();
                             }
-                        }
-                    );
+                        ).fail(
+                            function (entrie) {
+                                queueProgress.qFail++;
+                                //console.log("cnt f:" + index);
+                            }
+                        ).always(
+                            function () {
+                                queueProgress.qIndex = index + 1;
+                                if (queueProgress.qIndex === queueProgress.qLength) {
+                                    $('body').trigger('download-queue-ended', queueProgress);
+                                } else {
+                                    $('body').trigger('download-queue-progress', queueProgress);
+                                }
+                            }
+                        );
+                   
+
                 });
             } else {
                 $('body').trigger('download-queue-ended', {
@@ -148,34 +239,5 @@ var documentsModel = {
                 });
             }
         });
-    },
-
-
-   UpdateSharePointFiles: function () {
-        Documents.all()
-            .order('documentname', true, false)
-            .list(null, function (results2) {
-                if (results2.length) {
-                    //get documents and download them
-                    $.each(results2, function (index, value) {
-                        var data = value._data;
-                    });
-                }
-            });
-
-   },
-
-   DownloadSharePointFile: function (filename) {
-        Documents.all()
-            .order('documentname', true, false)
-            .list(null, function (results2) {
-                if (results2.length) {
-                    //get documents and download them
-                    $.each(results2, function (index, value) {
-                        var data = value._data;
-                    });
-                }
-            });
-
-   }
+    }
 };

@@ -67,6 +67,7 @@ var LoginUI = {
                 rememberUser = $("#remember-user").is(':checked');
 
             LoginUI.disableForm($form);
+            console.debug(appUser);
             appUser.doLogin(username, password, rememberUser);
         });
     })

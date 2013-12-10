@@ -19,6 +19,12 @@ var Contacts = persistence.define('Contacts', {
 });
 
 Contacts.index('contactId', { unique: true });
+//search indexed fields
+Contacts.textIndex('name');
+Contacts.textIndex('forename');
+Contacts.textIndex('department');
+Contacts.textIndex('jobFunction');
+Contacts.textIndex('description');
 
 var ContactsModel = {
     syncContacts: function () {
@@ -195,6 +201,15 @@ myContact.phoneNumbers =phoneNumbers;
                 callback(false);
             }
         })
+    },
+
+    searchContact: function(key){
+        var contactSearch = $.Deferred();
+        Contacts.search(key).list(function(res){
+            contactSearch.resolve(res);
+        });
+
+        return contactSearch.promise();
     }
 };
 

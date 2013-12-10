@@ -176,18 +176,40 @@ var documentsModel = {
                             path: data.path
                         };
                     //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
-                    if (!data.localModifiedDate || data.localModifiedDate < data.spModifiedDate) {
+                 
+                 //   if (data.localModifiedDate) {
+                  //  if (data.localModifiedDate === data.spModifiedDate)
+                   // {
+                    //alert("skip");
+                    //queueProgress.qSuccess++;
+                     //return true; //skip
+                   // }
+                   
+                    // }
+                      //end if download necessary
                         $.downloadQueue(downloadData)
                         .done(
                             function (entrie) {
                                 queueProgress.qSuccess++;
                                 results[index].localpath(entrie.fullPath);
+                                console.debug("overwritten path");
                                 //overwrite sync date with status of last sp modified date
                                 //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the Document list.
                                 //Hence the SP File could be newer and the local database would still have the old modified date. 
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
-                                results[index].localModifiedDate(results[index].spModifiedDate);
-                                //console.log("cnt:" + index);
+                              //  try
+                              //  {
+                                //    results[index].localModifiedDate(results[index].spModifiedDate);
+                                 //        console.debug("modified date");
+                                //alert(results[index].localModifiedDate);
+                                //alert(results[index].spModifiedDate);
+                            
+                           //     }
+                            //  catch (e)
+                             // {
+                              //alert("Error overwriting modified date");
+                              //}
+                             
                                 persistence.flush();
                             }
                         ).fail(
@@ -205,7 +227,7 @@ var documentsModel = {
                                 }
                             }
                         );
-                    } //end if download necessary
+                   
 
                 });
             } else {

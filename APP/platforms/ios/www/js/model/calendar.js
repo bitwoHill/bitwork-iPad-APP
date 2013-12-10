@@ -12,6 +12,8 @@ var Calendar = persistence.define('Calendar', {
 });
 
 Calendar.index('nodeId', { unique: true });
+Calendar.textIndex('title');
+Calendar.textIndex('body');
 
 var CalendarModel = {
 
@@ -85,7 +87,7 @@ var CalendarModel = {
             };
 
             //create the event
-            if (confirm("Es wird das Ereignis " + title + " zum Kalender hinzugefügt")) {
+            if (confirm("Es wird das Ereignis " + title + " zum Kalender hinzugefï¿½gt")) {
                 window.plugins.calendar.createEvent(title, location, notes, startDate, endDate, success, error);
             }
       
@@ -114,5 +116,14 @@ var CalendarModel = {
         $body.find('img').remove();
 
         return $body.html();
+    },
+
+    searchCalendar: function(key){
+        var calendarSearch = $.Deferred();
+        Calendar.search(key).list(function(res){
+            calendarSearch.resolve(res);
+        });
+
+        return calendarSearch.promise();
     }
 };

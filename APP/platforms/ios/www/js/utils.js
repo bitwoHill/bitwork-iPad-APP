@@ -56,7 +56,7 @@ var utils = {
         if( results == null )
             return "";
         else
-            return results[1];
+            return decodeURIComponent(results[1]);
     },
 
     //Parse date from data format SharePoint date type

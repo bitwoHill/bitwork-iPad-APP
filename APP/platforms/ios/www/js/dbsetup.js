@@ -1,6 +1,11 @@
 var appUser;
 
-(function($){
+(function ($) {
+    persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 10 * 1024 * 1024);
+    persistence.search.config(persistence, persistence.store.websql.sqliteDialect);
+    //create DB schema
+    persistence.debug = false;
+
 
     var modelDependencies = [
             "js/config.js",
@@ -20,59 +25,56 @@ var appUser;
             "js/model/products.js",
             "js/model/documents.js",
             "js/model/infothek.js"
-        ],
+    ],
         dbReady = false,
         loadCounter = 0,
-        jsLoadHelper = function(){
+        jsLoadHelper = function () {
             loadCounter++;
-         
-            if(loadCounter === modelDependencies.length){
+
+            if (loadCounter === modelDependencies.length) {
                 dbReady = true;
-            
+
                 $('body').trigger('js-model-ready');
             }
-         
-                 
+
+
         };
 
-    for(var i=0; i<modelDependencies.length; i++) {
-        $.getScript(modelDependencies[i],jsLoadHelper);
+    for (var i = 0; i < modelDependencies.length; i++) {
+        $.getScript(modelDependencies[i], jsLoadHelper);
     }
 
 
-    var dbSetup = function(){
+    var dbSetup = function () {
         //init User
         appUser = new User();
         //setup DB connection
-        persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 10 * 1024 * 1024);
-        //create DB schema
-        persistence.debug = false;
-        persistence.schemaSync(function(){
-            appUser.initUser(function(){
+        persistence.schemaSync(function () {
+            appUser.initUser(function () {
                 $('body').trigger('db-schema-ready');
             });
         });
     };
 
 
-    var sharePointSync = function(){
+    var sharePointSync = function () {
         var syncQueue = $({});
 
         //Add news sync to queue
-        syncQueue.queue("sync-queue", function(next){
+        syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('news-sync-ready sync-error', function(){
-                           //unbind event
-                $('body').off('news-sync-ready sync-error', next);
+            $('body').on('news-sync-ready sync-error', function () {
                 next();
+                //unbind event
+                $('body').off('news-sync-ready sync-error', next);
             });
             NewsModel.syncNews();
         });
 
         //Add calendar sync to queue
-        syncQueue.queue("sync-queue", function(next){
+        syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('calendar-sync-ready sync-error', function(){
+            $('body').on('calendar-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('calendar-sync-ready sync-error', next);
                 next();
@@ -81,9 +83,9 @@ var appUser;
         });
 
         //Add Link sync to queue
-        syncQueue.queue("sync-queue", function(next){
+        syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('link-sync-ready sync-error', function(){
+            $('body').on('link-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('link-sync-ready sync-error', next);
                 next();
@@ -92,9 +94,9 @@ var appUser;
         });
 
         //Add contacts sync to queue
-        syncQueue.queue("sync-queue", function(next){
+        syncQueue.queue("sync-queue", function (next) {
             //bind event
-            $('body').on('contacts-sync-ready sync-error', function(){
+            $('body').on('contacts-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('contacts-sync-ready sync-error', next);
                 next();
@@ -192,7 +194,8 @@ var appUser;
             });
             InfothekModel.syncInfothek();
         });
-           
+
+
         syncQueue.dequeue("sync-queue");
     }
 
@@ -201,7 +204,7 @@ var appUser;
     $('body').on('js-model-ready', dbSetup);
 
     //Sync on demand
-    $('body').on('click', 'a.side-menu-sync-link', function(){
+    $('body').on('click', 'a.side-menu-sync-link', function () {
         $('body').removeClass('side-menu-active');
         sharePointSync();
     });

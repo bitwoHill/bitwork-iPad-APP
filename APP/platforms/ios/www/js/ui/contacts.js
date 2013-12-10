@@ -49,7 +49,7 @@ var ContactsUI = {
 
         SyncModel.getSyncDate(CONTACTS_LIST, function(date){
             //update last sync date
-            $('.page-sync-btn-date').html(date);
+            $('.page-sync-btn-date').html(utils.dateFormat(new Date(date), "d.m.y, H:M"));
             $('.page-sync-btn').removeClass('hidden');
         });
     },
@@ -141,9 +141,9 @@ var ContactsUI = {
 
                     if(data.description) {
                         $(".contact-details-description", $templateContactInfo).html(data.description).removeClass("hidden");
-                        $("hr", $templateContactInfo).removeClass("hidden");
+                        $("hr:first", $templateContactInfo).removeClass("hidden");
                     } else {
-                        $("hr", $templateContactInfo).addClass("hidden");
+                        $("hr:first", $templateContactInfo).addClass("hidden");
                         $(".contact-details-description", $templateContactInfo).html(" ").addClass("hidden");
                     }
 

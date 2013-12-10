@@ -68,9 +68,9 @@ var equipmentproductsUI = {
             }
         }
 
-        SyncModel.getSyncDate(OTHERPRODUCTS_LIST, function (date) {
+        SyncModel.getSyncDate(DOCUMENTS_LIST, function (date) {
             //update last sync date
-            $('.page-sync-btn-date').html(date);
+            $('.page-sync-btn-date').html(utils.dateFormat(new Date(date), "d.m.y, H:M"));
             $('.page-sync-btn').removeClass('hidden');
         });
     }
@@ -86,6 +86,9 @@ var productoptions_CONTAINER = "#productoptions-items-container",
     productoptions_ITEM_TEMPLATE = "#productoptions-item-template";
 
 var productoptionsUI = {
+    resetOptions: function () {
+        $(productoptions_ITEM_CHILD_Container + ' > tr').not(productoptions_ITEM_TEMPLATE).remove();
+    },
     displayOptions: function () {
         var $container = $(productoptions_CONTAINER),
             $childcontainer = $(productoptions_ITEM_CHILD_Container),
@@ -93,6 +96,7 @@ var productoptionsUI = {
 
 
         if ($container.length && $template.length) {
+            productoptionsUI.resetOptions();
             //load options by current url parameter / andhand von aktueller ID laden
             var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
             var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
@@ -118,6 +122,7 @@ var productoptionsUI = {
                 .or(new persistence.PropertyFilter("productFK", "=", ProduktPar))
                 .order('productDescription', true, false)
                 .list(null, function (results) {
+                  
                     if (results.length != 0) {
                         $container.removeClass('hidden');
                     }
@@ -160,7 +165,9 @@ var documents_CONTAINER = "#document-items-container",
 
 //displaydata for options in MPL
 var DocumentsUI = {
- 
+    resetDocuments: function () {
+        $(tree_nav_CONTAINER + " > li").not(documents_FOLDER_TEMPLATE).not(documents_DOCUMENT_TEMPLATE).remove();
+    },
    
 
     displayDocumentTypes: function () {
@@ -169,6 +176,7 @@ var DocumentsUI = {
             $templateFolder = $(documents_FOLDER_TEMPLATE);
 
         if ($containerRoot.length && $templateFolder.length) {
+            DocumentsUI.resetDocuments();
         //get filesystem object to get current app folder. the GUID changes after reinstall or update of app
 try{
                     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -180,8 +188,7 @@ try{
                 }
 
                 function initFS(fs) {
-                alert(fs.root.name);
-                alert(fs.name);
+          
                 
             //load documents by current url parameter / andhand von aktueller ID laden
           
