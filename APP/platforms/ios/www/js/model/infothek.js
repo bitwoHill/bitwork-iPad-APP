@@ -147,14 +147,22 @@ var InfothekModel = {
                                 path: data.path
                             };
                         //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
-                        if (!data.localModifiedDate || data.localModifiedDate < data.spModifiedDate)
-                        {
+                        if (data.localModifiedDate) {
+                    if (data.localModifiedDate === data.spModifiedDate)
+                    {
+                    alert("skip");
+                queueProgress.qSuccess++;
+                     return true; //skip
+                   }
+                   
+                    }
+                        
                        
                         $.downloadQueue(downloadData)
                             .done(
                             function(entrie){
                                 queueProgress.qSuccess++;
-                                results[index].localpath(entrie.fullPath);
+                                results[index].localPath(entrie.fullPath);
                                 //overwrite sync date with status of last sp modified date
                                 //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the infothek list.
                                 //Hence the SP File could be newer and the local database would still have the old modified date. 
@@ -178,7 +186,7 @@ var InfothekModel = {
                                 }
                             }
                         );
-                        } //end if download necessary
+                        
                     });
                 } else {
                     $('body').trigger('download-queue-ended', {
