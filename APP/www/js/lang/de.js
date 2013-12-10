@@ -22,7 +22,7 @@ var i18n = {
         "menu-links": "Wichtige Links",
         "menu-mpl": "MPL",
         "menu-info": "Infothek",
-        "menu-downloads": "Dokument Downloads",
+        "menu-downloads": "Dateien synchronisieren",
 
         "last-sync": "Alle Daten synchronisieren <br>",
         "toggle-nav": "Navigation umschalten",
@@ -38,7 +38,7 @@ var i18n = {
         "anfangszeit": "Anfangszeit",
         "endzeit": "Endzeit",
         "calendar-add-phone": "Zum Telefonkalender hinzufügen",
-        "empty-calendar": "Es wurden noch keine Kalendar-Events geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Kalendar-Events zu laden.",
+        "empty-calendar": "Es wurden noch keine Kalender-Events geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Kalender-Events zu laden.",
         "add-calendar-entry": "Es wird ein Ereignis zum Kalender hinzugefügt",
         //News
         "news": "News",
@@ -104,25 +104,25 @@ var i18n = {
         //Downloads
         "downloads-title": "Downloads",
         "label-download": "Download",
-        "label-close": "Close",
-        "label-download-progress": "Download progress",
-        "label-aboard-download": "Aboard download",
-        "label-download-compleated": "Download completed",
-        "label-download-success": "File(s) downloaded.",
-        "label-download-fail": "File(s) not downloaded.",
-        "prod-documents-sync": "Products documents sync",
-        "prod-documents-sync-text": "This will synchronise products documents.",
-        "infothek-documents-sync": "Infothek documents sync",
-        "infothek-documents-sync-text": "This will synchronise infothek documents.",
+        "label-close": "Schliessen",
+        "label-download-progress": "Download Vorgang",
+        "label-aboard-download": "Download abbrechen",
+        "label-download-compleated": "Download abgeschlossen",
+        "label-download-success": "Datei(en) heruntergeladen.",
+        "label-download-fail": "Datei(en) nicht heruntergeladen.",
+        "prod-documents-sync": "Produkt Dokumente herunterladen (dauert sehr lange)",
+        "prod-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Produkt Dokumente.",
+        "infothek-documents-sync": "Infothek Dokumente herunterladen (dauert sehr lange)",
+        "infothek-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Infothek Dokumente.",
 
         //Search
-        "search-results": "Search results for: ",
-        "search-input-error": "String must have at least 3 characters",
-        "empty-news-search": "No news were found.",
-        "empty-calendar-search": "No calendar entries were found.",
-        "empty-contacts-search": "No contacts were found.",
-        "empty-infothek-search": "No infothek items were found.",
-        "empty-documents-search": "No documents were found.",
-        "empty-mpl-search": "No MPL items were found."
+        "search-results": "Suchergebnis für: ",
+        "search-input-error": "Suchkriterium muss mindestens drei Zeichen lang sein",
+        "empty-news-search": "Es wurden keine News gefunden.",
+        "empty-calendar-search": "Es wurden keine Kalendereinträge gefunden.",
+        "empty-contacts-search": "Es wurden keine Kontakte gefunden.",
+        "empty-infothek-search": "Es wurden keine Infothek Einträge gefunden.",
+        "empty-documents-search": "Es wurden keine Produktdokumente gefunden.",
+        "empty-mpl-search": "In der Maschinenpreisliste wurde nichts gefunden."
     }
 }
