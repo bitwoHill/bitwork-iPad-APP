@@ -24,7 +24,7 @@ var i18n = {
         "menu-info": "Infothek",
         "menu-downloads": "Dokument Downloads",
 
-        "last-sync": "Alle Daten synchronisieren",
+        "last-sync": "Alle Daten synchronisieren <br>",
         "toggle-nav": "Navigation umschalten",
         "user-message": "Angemeldet als ",
         "login-different-user": "Als anderer Benutzer anmelden",

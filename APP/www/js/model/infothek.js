@@ -6,7 +6,10 @@ var Infothek = persistence.define('Infothek', {
     title: "TEXT",
     path: "TEXT",
     isFolder: "BOOL",
-    parentFolder: "TEXT"
+    parentFolder: "TEXT",
+    spModifiedDate: "DATE",
+    localPath: "TEXT",
+    localModifiedDate: "DATE"
 });
 
 Infothek.index('nodeId', { unique: true });
@@ -23,12 +26,60 @@ var InfothekModel = {
     mapSharePointData: function(data){
     
         var spData = data.d || false;
-        Infothek.all().destroyAll(function (ele) {
+        //   Infothek.all().destroyAll(function (ele) {  // cant delete the whole list because of local path
+
+        //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to them on Sharepoint
+        var lookupIDsSharePoint = {};
+        for (var i = 0, len = spData.results.length; i < len; i++) {
+            lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
+        }
+      
+        //check wheter files need to be deleted
+        //get all local files and check wheter its in the collection of the new SP files
+        Infothek.all().list(null, function (results) {
+            if (results.length) {
+                $.each(results, function (index, value) {
+                    //check if an object with the current ID exists. If Not delete it
+                    if (!lookupIDsSharePoint[value._data.nodeId]) {
+                        console.debug("lokales element wurde nicht mehr gefunden: ");
+                        console.debug(value);
+
+                        // delete local file from filesystem
+                        try {
+                            //request filesystem to delete files if not found on SP anymore
+                            window.resolveLocalFileSystemURI(value.localPath, onSuccess, onError);
+
+                            function onSuccess(fileEntry) {
+                                fileEntry.remove();
+                            }
+
+                            function onError() {
+                                console.debug('An error occured');
+                                alert("Could not create Filesystem. No Files will be deleted");
+                            }
+                        } catch (e) {
+                            console.debug('An error occured');
+                            alert("Could not create Filesystem. No Files will be deleted");
+                        }
+
+                        // remove entity from persistence layer
+                        persistence.remove(value);
+                    }
+                });
+            }
+        });
+
+
+
+        //upate db to reflect the deleted items
+        persistence.flush(
+                function () {
+
         if(spData && spData.results.length){
             $.each(spData.results, function(index, value){
                 var newItem = {
                     nodeId : value.ID,
-                    title : value.Name
+                    title: value.Name
                 };
 
                 newItem.isFolder = (value.Inhaltstyp === "Ordner")? true : false;
@@ -42,7 +93,9 @@ var InfothekModel = {
 
                 if(!newItem.isFolder){
                     newItem.path = value.Pfad + "/" + value.Name;
-
+                    if (value.Geändert) {
+                        newItem.spModifiedDate = utils.parseSharePointDate(value.Geändert);
+                    }
                     //TODO: replace with file upload
                     /*InfothekModel.downloadInfothekFile(newItem, index, spData.results.length, function(infothekItem, pos, length){
                         persistence.add(new Infothek(infothekItem));
@@ -69,11 +122,12 @@ var InfothekModel = {
             });
 
         }
-        });
+                    //});
+                });
     },
 
     downloadSharePointFiles: function () {
-        Infothek.all().limit(30).filter("isFolder", "=", false)
+        Infothek.all().limit(5).filter("isFolder", "=", false)
             .list(null, function (results) {
                 if (results.length) {
                     var queueProgress = {
@@ -92,12 +146,20 @@ var InfothekModel = {
                                 fileName: data.title,
                                 path: data.path
                             };
-
+                        //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
+                        if (!data.localModifiedDate || data.localModifiedDate < data.spModifiedDate)
+                        {
+                       
                         $.downloadQueue(downloadData)
                             .done(
                             function(entrie){
                                 queueProgress.qSuccess++;
-                                results[index].path(entrie.fullPath);
+                                results[index].localpath(entrie.fullPath);
+                                //overwrite sync date with status of last sp modified date
+                                //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the infothek list.
+                                //Hence the SP File could be newer and the local database would still have the old modified date. 
+                                // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
+                                results[index].localModifiedDate(results[index].spModifiedDate);
                                 //console.log("cnt:" + index);
                                 persistence.flush();
                             }
@@ -116,6 +178,7 @@ var InfothekModel = {
                                 }
                             }
                         );
+                        } //end if download necessary
                     });
                 } else {
                     $('body').trigger('download-queue-ended', {

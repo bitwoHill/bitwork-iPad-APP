@@ -28,6 +28,7 @@ var NewsModel = {
         News.all().destroyAll(function (ele) { 
             if (spData && spData.results.length) {
                 $.each(spData.results, function (index, value) {
+                
                     var newsItem = {
                         nodeId: value.ID,
                         title: value.Titel,
@@ -62,7 +63,7 @@ var NewsModel = {
         var $body = $(body);
 
         //remove links
-        $body.find('a').remove();
+        //$body.find('a').remove();
 
         //remove images
         $body.find('img').remove();
