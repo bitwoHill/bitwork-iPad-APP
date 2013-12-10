@@ -112,6 +112,9 @@ var i18n = {
         "prod-documents-sync": "Products documents sync",
         "prod-documents-sync-text": "This will synchronise products documents.",
         "infothek-documents-sync": "Infothek documents sync",
-        "infothek-documents-sync-text": "This will synchronise infothek documents."
+        "infothek-documents-sync-text": "This will synchronise infothek documents.",
+
+        //Search
+        "search-results": "Search results for: "
     }
 }

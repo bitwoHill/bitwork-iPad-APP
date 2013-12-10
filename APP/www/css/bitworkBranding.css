@@ -276,3 +276,56 @@ h4.modal-title {
     border-top: 1px solid #dedede;
     border-bottom: 1px solid #FFF;
 }
+
+/* Tabs */
+.tab-content {
+    background: #FFF;
+    padding: 10px 15px;
+    border-radius: 0 0 4px 4px;
+}
+
+.nav-tabs>li>a {
+    margin-right: 3px;
+    color: #bbbbbb;
+    font-size: 16px;
+}
+
+.nav-tabs>li>a:hover {
+    color: #333;
+}
+
+.nav-tabs > li > a > .badge {
+    font-size: 11px;
+    border-radius: 9px;
+    vertical-align: text-top;
+}
+
+/* Search */
+a.result-item {
+    display: block;
+    position: relative;
+
+    padding-right: 40px;
+    border-bottom: 1px solid #dddddd;
+    text-decoration: none;
+}
+
+a.result-item:hover {
+    text-decoration: none;
+}
+
+h3.result-item-title {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.result-item .fa {
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 50%;
+
+    margin-top: -7px;
+}

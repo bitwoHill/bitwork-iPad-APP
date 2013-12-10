@@ -11,6 +11,8 @@ var News = persistence.define('News', {
 });
 
 News.index('nodeId', { unique: true });
+News.textIndex('title');
+News.textIndex('body');
 
 var NewsModel = {
     syncNews : function(){
@@ -69,5 +71,15 @@ var NewsModel = {
         $body.html($body.html().replace(/&nbsp;/g, ""));
 
         return $body.html();
+    },
+
+    searchNews: function(key){
+        var newsSearch = $.Deferred();
+        News.search(key).list(function(res){
+            console.log(res);
+            newsSearch.resolve(res);
+        });
+
+        return newsSearch.promise();
     }
 };

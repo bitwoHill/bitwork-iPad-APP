@@ -105,6 +105,8 @@ var documentsModel = {
                     qFail: 0
                 }
 
+
+
                 $('body').trigger('download-queue-started', queueProgress);
 
                 $.each(results, function(index, value){
