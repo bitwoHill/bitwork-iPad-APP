@@ -176,7 +176,9 @@ var documentsModel = {
                             path: data.path
                         };
                     //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
-                 
+                   // alert(data.localModifiedDate);
+                   //     alert(data.spModifiedDate);
+
                     if (data.localModifiedDate) {
                     if (data.localModifiedDate === data.spModifiedDate)
                     {
@@ -199,15 +201,16 @@ var documentsModel = {
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
                                 try
                                 {
-                                    results[index].localModifiedDate(results[index].spModifiedDate);
+                                 //   results[index].localModifiedDate(data.spModifiedDate);
                                  //        console.debug("modified date");
                                 //alert(results[index].localModifiedDate);
                                 //alert(results[index].spModifiedDate);
-                            
+                             
                                 }
                               catch (e)
                               {
                               alert("Error overwriting modified date");
+                              console.debug(e);
                               }
                              
                                 persistence.flush();
