@@ -127,7 +127,7 @@ var InfothekModel = {
     },
 
     downloadSharePointFiles: function () {
-        Infothek.all().limit(5).filter("isFolder", "=", false)
+        Infothek.all().filter("isFolder", "=", false)
             .list(null, function (results) {
                 if (results.length) {
                     var queueProgress = {
@@ -154,8 +154,14 @@ var InfothekModel = {
                         if (data.localModifiedDate) {
                     if (data.localModifiedDate === data.spModifiedDate)
                     {
-                    alert("skip");
+                   // alert("skip");
                 queueProgress.qSuccess++;
+                 queueProgress.qIndex = index + 1;
+                                if (queueProgress.qIndex === queueProgress.qLength) {
+                                    $('body').trigger('download-queue-ended', queueProgress);
+                                } else {
+                                    $('body').trigger('download-queue-progress', queueProgress);
+                                }
                      return true; //skip
                    }
                    
@@ -171,8 +177,20 @@ var InfothekModel = {
                                 //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the infothek list.
                                 //Hence the SP File could be newer and the local database would still have the old modified date. 
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
-                              //  results[index].localModifiedDate(data.spModifiedDate);
-                               alert( results[index].localModifiedDate);
+                                try
+                                {
+                                    results[index].localModifiedDate(data.spModifiedDate);
+                                 //        console.debug("modified date");
+                                //alert(results[index].localModifiedDate);
+                                //alert(results[index].spModifiedDate);
+                             
+                                }
+                              catch (e)
+                              {
+                              alert("Error overwriting modified date");
+                              console.debug(e);
+                              }
+                             
                                 //console.log("cnt:" + index);
                                 persistence.flush();
                             }

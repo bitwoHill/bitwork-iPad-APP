@@ -156,7 +156,7 @@ var documentsModel = {
     },
 
     downloadSharePointFiles: function () {
-        Documents.all().limit(5)
+        Documents.all()
         .list(null, function (results) {
             if (results.length) {
                 var queueProgress = {
@@ -182,8 +182,14 @@ var documentsModel = {
                     if (data.localModifiedDate) {
                     if (data.localModifiedDate === data.spModifiedDate)
                     {
-                    alert("skip");
+                   // alert("skip");
                 queueProgress.qSuccess++;
+                 queueProgress.qIndex = index + 1;
+                                if (queueProgress.qIndex === queueProgress.qLength) {
+                                    $('body').trigger('download-queue-ended', queueProgress);
+                                } else {
+                                    $('body').trigger('download-queue-progress', queueProgress);
+                                }
                      return true; //skip
                    }
                    
@@ -201,7 +207,7 @@ var documentsModel = {
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
                                 try
                                 {
-                                 //   results[index].localModifiedDate(data.spModifiedDate);
+                                    results[index].localModifiedDate(data.spModifiedDate);
                                  //        console.debug("modified date");
                                 //alert(results[index].localModifiedDate);
                                 //alert(results[index].spModifiedDate);
