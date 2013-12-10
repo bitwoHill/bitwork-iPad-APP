@@ -204,7 +204,8 @@ h4.modal-title {
     padding: 50px 0;
 }
 
-#infothek-page .empty-page {
+#infothek-page .empty-page,
+.empty-page.invert {
     color: #333;
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
@@ -280,7 +281,7 @@ h4.modal-title {
 /* Tabs */
 .tab-content {
     background: #FFF;
-    padding: 10px 15px;
+    padding: 10px 0;
     border-radius: 0 0 4px 4px;
 }
 
@@ -305,9 +306,13 @@ a.result-item {
     display: block;
     position: relative;
 
-    padding-right: 40px;
+    padding: 0 40px 0 15px;
     border-bottom: 1px solid #dddddd;
     text-decoration: none;
+}
+
+a.result-item:last-of-type {
+    border-bottom: none;
 }
 
 a.result-item:hover {
@@ -317,15 +322,21 @@ a.result-item:hover {
 h3.result-item-title {
     margin-top: 10px;
     margin-bottom: 5px;
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 16px;
+    line-height: 26px;
 }
 
-.result-item .fa {
+.result-item > .fa {
     position: absolute;
     display: block;
-    right: 0;
+    right: 15px;
     top: 50%;
 
     margin-top: -7px;
+}
+
+.result-item-title > .fa {
+    font-size: 14px;
+    color: #a2a2a2;
+    margin-right: 10px;
 }

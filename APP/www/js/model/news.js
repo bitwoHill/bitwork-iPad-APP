@@ -76,7 +76,6 @@ var NewsModel = {
     searchNews: function(key){
         var newsSearch = $.Deferred();
         News.search(key).list(function(res){
-            console.log(res);
             newsSearch.resolve(res);
         });
 

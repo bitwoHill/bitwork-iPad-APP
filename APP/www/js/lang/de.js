@@ -116,6 +116,13 @@ var i18n = {
         "infothek-documents-sync-text": "This will synchronise infothek documents.",
 
         //Search
-        "search-results": "Search results for: "
+        "search-results": "Search results for: ",
+        "search-input-error": "String must have at least 3 characters",
+        "empty-news-search": "No news were found.",
+        "empty-calendar-search": "No calendar entries were found.",
+        "empty-contacts-search": "No contacts were found.",
+        "empty-infothek-search": "No infothek items were found.",
+        "empty-documents-search": "No documents were found.",
+        "empty-mpl-search": "No MPL items were found."
     }
 }

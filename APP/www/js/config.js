@@ -17,7 +17,7 @@ var Settings = {
     // ProxyPassReverse /SPbitwork/ http://www.atlas-cms.com/_vti_bin/ListData.svc
     proxySettings = {
         spDomain: "/SPbitwork",
-        spContent: "/SPbitworkContent",
+        //spContent: "/SPbitworkContent",
         spListsWebservice: "/SPbitworkListsASMX"
     },
     mockSettings = {

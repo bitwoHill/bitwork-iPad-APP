@@ -10,6 +10,7 @@ var Infothek = persistence.define('Infothek', {
 });
 
 Infothek.index('nodeId', { unique: true });
+Infothek.textIndex('title');
 
 var InfothekModel = {
 
@@ -133,5 +134,14 @@ var InfothekModel = {
 
         //after download done use callback
         callback(infothekItem, index, length);
+    },
+
+    searchInfothek: function(key){
+        var infothekSearch = $.Deferred();
+        Infothek.search(key).list(function(res){
+            infothekSearch.resolve(res);
+        });
+
+        return infothekSearch.promise();
     }
 };

@@ -141,9 +141,9 @@ var ContactsUI = {
 
                     if(data.description) {
                         $(".contact-details-description", $templateContactInfo).html(data.description).removeClass("hidden");
-                        $("hr", $templateContactInfo).removeClass("hidden");
+                        $("hr:first", $templateContactInfo).removeClass("hidden");
                     } else {
-                        $("hr", $templateContactInfo).addClass("hidden");
+                        $("hr:first", $templateContactInfo).addClass("hidden");
                         $(".contact-details-description", $templateContactInfo).html(" ").addClass("hidden");
                     }
 

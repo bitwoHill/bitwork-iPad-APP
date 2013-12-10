@@ -60,11 +60,11 @@
             <div class="slide-menu-container">
                 <ul class="side-menu-nav">
                     <li>
-                        <form class="form-horizontal slide-menu-form">
+                        <form class="form-horizontal slide-menu-form" id="search-form" method="get" action="Search.html">
                             <div class="input-group">
-                                <input type="text" placeholder="Search ..." class="form-control">
+                                <input type="text" name="search" placeholder="Search ..." class="form-control">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-toolbar" type="button"><span class="fa fa-search"></span></button>
+                                    <button class="btn btn-toolbar" type="submit"><span class="fa fa-search"></span></button>
                                 </span>
                             </div>
                         </form>
@@ -172,6 +172,7 @@
                                 <p class="contact-details-representative-container"><i class="fa fa-user-md"></i><span class="contact-details-representative"></span></p>
                                 <hr>
                                 <p class="contact-details-description"></p>
+                                <hr>
                                 <div class="form-actions clearfix">
                                     <a href="#" class="btn btn-primary pull-right contact-item-to-phone" role="button"><i class="fa fa-male"></i>&nbsp;&nbsp;<span class="i18n" data-i18n-key="contacts-add-phone"></span></a>
                                 </div>
