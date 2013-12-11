@@ -102,8 +102,8 @@ a.tree-nav-link.collapsed > .fa.tree-nav-link-folder-state {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 
-    height: 1000px;
-    max-height: 1000px;
+    height: 800px;
+    max-height: 800px;
 }
 
 
