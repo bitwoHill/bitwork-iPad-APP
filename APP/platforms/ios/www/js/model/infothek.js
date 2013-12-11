@@ -17,14 +17,14 @@ Infothek.textIndex('title');
 
 var InfothekModel = {
 
-    syncInfothek : function(){
+    syncInfothek: function () {
         $('body').trigger('sync-start');
 
         SharePoint.sharePointRequest(INFOTHEK_LIST, InfothekModel.mapSharePointData);
     },
 
-    mapSharePointData: function(data){
-    
+    mapSharePointData: function (data) {
+
         var spData = data.d || false;
         //   Infothek.all().destroyAll(function (ele) {  // cant delete the whole list because of local path
 
@@ -33,7 +33,7 @@ var InfothekModel = {
         for (var i = 0, len = spData.results.length; i < len; i++) {
             lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
         }
-      
+
         //check wheter files need to be deleted
         //get all local files and check wheter its in the collection of the new SP files
         Infothek.all().list(null, function (results) {
@@ -75,59 +75,59 @@ var InfothekModel = {
         persistence.flush(
                 function () {
 
-        if(spData && spData.results.length){
-            $.each(spData.results, function(index, value){
-                var newItem = {
-                    nodeId : value.ID,
-                    title: value.Name
-                };
+                    if (spData && spData.results.length) {
+                        $.each(spData.results, function (index, value) {
+                            var newItem = {
+                                nodeId: value.ID,
+                                title: value.Name
+                            };
 
-                newItem.isFolder = (value.Inhaltstyp === "Ordner")? true : false;
+                            newItem.isFolder = (value.Inhaltstyp === "Ordner") ? true : false;
 
-                if(value.Pfad){
-                    var tmpPath = (value.Pfad).split("/").slice(1);
-                    if(tmpPath.length){
-                        newItem.parentFolder = tmpPath[tmpPath.length-1];
-                    }
-                }
-
-                if(!newItem.isFolder){
-                    newItem.path = value.Pfad + "/" + value.Name;
-                    if (value.Geändert) {
-                        newItem.spModifiedDate = utils.parseSharePointDate(value.Geändert);
-                    }
-                    //TODO: replace with file upload
-                    /*InfothekModel.downloadInfothekFile(newItem, index, spData.results.length, function(infothekItem, pos, length){
-                        persistence.add(new Infothek(infothekItem));
-
-                        persistence.flush(
-                            function(){
-                                if( pos+1 === length ){
-                                    SyncModel.addSync(INFOTHEK_LIST);
-                                    $('body').trigger('sync-end');
-                                    $('body').trigger('infothek-sync-ready');
+                            if (value.Pfad) {
+                                var tmpPath = (value.Pfad).split("/").slice(1);
+                                if (tmpPath.length) {
+                                    newItem.parentFolder = tmpPath[tmpPath.length - 1];
                                 }
                             }
-                        );
-                    });*/
-                }
 
-                persistence.add(new Infothek(newItem));
-            });
+                            if (!newItem.isFolder) {
+                                newItem.path = value.Pfad + "/" + value.Name;
+                                if (value.Geändert) {
+                                    newItem.spModifiedDate = utils.parseSharePointDate(value.Geändert);
+                                }
+                                //TODO: replace with file upload
+                                /*InfothekModel.downloadInfothekFile(newItem, index, spData.results.length, function(infothekItem, pos, length){
+                                    persistence.add(new Infothek(infothekItem));
+            
+                                    persistence.flush(
+                                        function(){
+                                            if( pos+1 === length ){
+                                                SyncModel.addSync(INFOTHEK_LIST);
+                                                $('body').trigger('sync-end');
+                                                $('body').trigger('infothek-sync-ready');
+                                            }
+                                        }
+                                    );
+                                });*/
+                            }
 
-            persistence.flush(function(){
-                SyncModel.addSync(INFOTHEK_LIST);
-                $('body').trigger('sync-end');
-                $('body').trigger('infothek-sync-ready');
-            });
+                            persistence.add(new Infothek(newItem));
+                        });
 
-        }
+                        persistence.flush(function () {
+                            SyncModel.addSync(INFOTHEK_LIST);
+                            $('body').trigger('sync-end');
+                            $('body').trigger('infothek-sync-ready');
+                        });
+
+                    }
                     //});
                 });
     },
 
     downloadSharePointFiles: function () {
-        Infothek.all().filter("isFolder", "=", false)
+        Infothek.all().limit(5).filter("isFolder", "=", false)
             .list(null, function (results) {
                 if (results.length) {
                     var queueProgress = {
@@ -139,77 +139,60 @@ var InfothekModel = {
 
                     $('body').trigger('download-queue-started', queueProgress);
 
-                    $.each(results, function(index, value){
+                    $.each(results, function (index, value) {
                         var data = value._data,
                             downloadData = {
                                 folderName: "Infothek",
                                 fileName: data.title,
                                 path: data.path
                             };
-                            
-                         //      alert(data.localModifiedDate);
-                    //    alert(data.spModifiedDate);
+
+                        console.debug(results);
+                        console.debug(results[1]);
+                        console.debug(results[1]._data.localModifiedDate);
 
                         //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
+                        alert(data.localModifiedDate);
+                        alert(data.spModifiedDate);
+
                         if (data.localModifiedDate) {
-                    if (data.localModifiedDate === data.spModifiedDate)
-                    {
-                   // alert("skip");
-                queueProgress.qSuccess++;
-                 queueProgress.qIndex = index + 1;
-                                if (queueProgress.qIndex === queueProgress.qLength) {
-                                    $('body').trigger('download-queue-ended', queueProgress);
-                                } else {
-                                    $('body').trigger('download-queue-progress', queueProgress);
-                                }
-                     return true; //skip
-                   }
-                   
-                    }
-                        
-                       
+                            if (data.localModifiedDate === data.spModifiedDate) {
+                                alert("skip");
+                                queueProgress.qSuccess++;
+                                return true; //skip
+                            }
+                        }
+
+
                         $.downloadQueue(downloadData)
                             .done(
-                            function(entrie){
+                            function (entrie) {
                                 queueProgress.qSuccess++;
                                 results[index].localPath(entrie.fullPath);
                                 //overwrite sync date with status of last sp modified date
                                 //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the infothek list.
                                 //Hence the SP File could be newer and the local database would still have the old modified date. 
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
-                                try
-                                {
-                                    results[index].localModifiedDate(data.spModifiedDate);
-                                 //        console.debug("modified date");
-                                //alert(results[index].localModifiedDate);
-                                //alert(results[index].spModifiedDate);
-                             
-                                }
-                              catch (e)
-                              {
-                              alert("Error overwriting modified date");
-                              console.debug(e);
-                              }
-                             
+                                results[index].localModifiedDate(results[index].spModifiedDate);
                                 //console.log("cnt:" + index);
                                 persistence.flush();
                             }
                         ).fail(
-                            function(entrie){
+                            function (entrie) {
                                 queueProgress.qFail++;
                                 //console.log("cnt f:" + index);
                             }
                         ).always(
-                            function(){
+                            function () {
                                 queueProgress.qIndex = index + 1;
-                                if(queueProgress.qIndex === queueProgress.qLength){
+                                if (queueProgress.qIndex === queueProgress.qLength) {
                                     $('body').trigger('download-queue-ended', queueProgress);
                                 } else {
                                     $('body').trigger('download-queue-progress', queueProgress);
                                 }
                             }
                         );
-                        
+
                     });
                 } else {
                     $('body').trigger('download-queue-ended', {
@@ -222,7 +205,7 @@ var InfothekModel = {
             });
     },
 
-    downloadInfothekFile : function(infothekItem, index, length, callback){
+    downloadInfothekFile: function (infothekItem, index, length, callback) {
         //TODO: use download mechanism to save file in device storage
         //Download mechanism should update infothekItem.path after upload.
 
@@ -230,9 +213,9 @@ var InfothekModel = {
         callback(infothekItem, index, length);
     },
 
-    searchInfothek: function(key){
+    searchInfothek: function (key) {
         var infothekSearch = $.Deferred();
-        Infothek.search(key).list(function(res){
+        Infothek.search(key).list(function (res) {
             infothekSearch.resolve(res);
         });
 

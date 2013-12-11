@@ -41,6 +41,9 @@
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="ios-package" value="CDVConnection" />
+    </feature>
     <author email="hill@bitwork.net" href="http://cordova.io">
        bitwork GmbH
     </author>

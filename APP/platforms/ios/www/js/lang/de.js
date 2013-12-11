@@ -2,8 +2,8 @@ var i18n = {
 
     langCode: "de",
     strings: {
-        "months": ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
-        "days": ["Son", "Mon", "Die", "Mit", "Don", "Fre", "Sam"],
+        "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+        "days": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
         "na" : "N/A",
 
         //Login

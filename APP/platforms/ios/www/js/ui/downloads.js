@@ -2,13 +2,20 @@ var DOWNLOADS_CONTAINER = "#downloads-container",
     DownloadsUI = {},
     DownloadModal;
 
-(function($){
+(function($)
+{
 
-    DownloadsUI.doDownload = function(e){
+    DownloadsUI.doDownload = function(e)
+    {
         e.preventDefault();
         var downloadType = $(this).attr("data-sync-type");
-
-        DownloadModal.show();
+//check connection type if not on wifi restrict user to use
+try
+{
+var networkState = navigator.connection.type;
+if (Connection.WIFI)
+{
+    DownloadModal.show();
 
         switch(downloadType){
             case "Infothek":
@@ -20,6 +27,17 @@ var DOWNLOADS_CONTAINER = "#downloads-container",
             default :
                 DownloadModal.hide();
         }
+
+}
+else
+{
+alert("Die Dokumente sind mehrere Gigabyte groß und können nur bei einer WiFi (WLAN) Verbindung abgerufen werden");
+}
+
+}
+catch (e)
+{}
+    
 
     }
 

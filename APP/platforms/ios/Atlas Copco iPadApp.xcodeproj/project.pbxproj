@@ -41,6 +41,9 @@
 		4C605C1DA3FF49398B1044C7 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4D8B6002B452180504286 /* Calendar.m */; };
 		4765C3BF08444352BADC4488 /* EventKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = AEA2406E253C444F80F00874 /* EventKit.framework */; };
 		02B3229A77714111AE6C322E /* EventKitUI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 301AD0A7E24547A18F1B7E98 /* EventKitUI.framework */; };
+		D596504A21D841BEA68F931D /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8168FA20B34EAD9019A256 /* CDVConnection.m */; };
+		759154D91AA342618AAB3916 /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EC81B35C684B679C9289B6 /* CDVReachability.m */; };
+		FF51B6AAD5814192B2775E5A /* SystemConfiguration.framework in Resources */ = {isa = PBXBuildFile; fileRef = 1683725D505C44CA8719EAF1 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +111,11 @@
 		29943B05F6BC424880B5D1BA /* Calendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Calendar.h"; path = "nl.x-services.plugins.calendar/Calendar.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		AEA2406E253C444F80F00874 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKit.framework"; path = "System/Library/Frameworks/EventKit.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		301AD0A7E24547A18F1B7E98 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKitUI.framework"; path = "System/Library/Frameworks/EventKitUI.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		DC8168FA20B34EAD9019A256 /* CDVConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVConnection.m"; path = "org.apache.cordova.network-information/CDVConnection.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		58EC81B35C684B679C9289B6 /* CDVReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVReachability.m"; path = "org.apache.cordova.network-information/CDVReachability.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		54A85CBBD1D7462B80B31202 /* CDVConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVConnection.h"; path = "org.apache.cordova.network-information/CDVConnection.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		4F796EC47CD94D86A2F79B34 /* CDVReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVReachability.h"; path = "org.apache.cordova.network-information/CDVReachability.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		1683725D505C44CA8719EAF1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,7 @@
 				2720639CFBD642F0B0EAE527 /* AddressBookUI.framework in Resources */,
 				4765C3BF08444352BADC4488 /* EventKit.framework in Resources */,
 				02B3229A77714111AE6C322E /* EventKitUI.framework in Resources */,
+				FF51B6AAD5814192B2775E5A /* SystemConfiguration.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +228,7 @@
 				55A5494CA9C44D4E95189461 /* AddressBookUI.framework */,
 				AEA2406E253C444F80F00874 /* EventKit.framework */,
 				301AD0A7E24547A18F1B7E98 /* EventKitUI.framework */,
+				1683725D505C44CA8719EAF1 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -246,6 +256,10 @@
 				2F6B9A921825474B8E97BA8F /* CDVInAppBrowser.h */,
 				45F4D8B6002B452180504286 /* Calendar.m */,
 				29943B05F6BC424880B5D1BA /* Calendar.h */,
+				DC8168FA20B34EAD9019A256 /* CDVConnection.m */,
+				58EC81B35C684B679C9289B6 /* CDVReachability.m */,
+				54A85CBBD1D7462B80B31202 /* CDVConnection.h */,
+				4F796EC47CD94D86A2F79B34 /* CDVReachability.h */,
 			);
 			name = Plugins;
 			path = "Atlas Copco iPadApp/Plugins";
@@ -419,6 +433,8 @@
 				2EC09C30031B4DABAA756244 /* CDVFileTransfer.m in Sources */,
 				544A28AE4F6E43D58DA11C2E /* CDVInAppBrowser.m in Sources */,
 				4C605C1DA3FF49398B1044C7 /* Calendar.m in Sources */,
+				D596504A21D841BEA68F931D /* CDVConnection.m in Sources */,
+				759154D91AA342618AAB3916 /* CDVReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

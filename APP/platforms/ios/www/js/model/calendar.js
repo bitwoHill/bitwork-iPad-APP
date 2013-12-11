@@ -87,7 +87,7 @@ var CalendarModel = {
             };
 
             //create the event
-            if (confirm("Es wird das Ereignis " + title + " zum Kalender hinzugef�gt")) {
+            if (confirm("Es wird das Ereignis '" + decodeURIComponent(title) + "' zum Kalender hinzugefügt")) {
                 window.plugins.calendar.createEvent(title, location, notes, startDate, endDate, success, error);
             }
       

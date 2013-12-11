@@ -91,13 +91,21 @@ a.tree-nav-link.collapsed > .fa.tree-nav-link-folder-state {
     max-height: 500px;
 }
 
-.tree-nav-container-MPL {
+.tree-nav-container-Fullsize {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    }
+
+.tree-nav-container-Infothek{
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 
-   
+    height: 800px;
+    max-height: 800px;
 }
+
 
 .contact-details-container .img-thumbnail {
     margin-bottom: 15px;

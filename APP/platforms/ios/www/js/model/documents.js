@@ -156,7 +156,7 @@ var documentsModel = {
     },
 
     downloadSharePointFiles: function () {
-        Documents.all()
+        Documents.all().limit(5)
         .list(null, function (results) {
             if (results.length) {
                 var queueProgress = {
@@ -176,20 +176,12 @@ var documentsModel = {
                             path: data.path
                         };
                     //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
-                   // alert(data.localModifiedDate);
-                   //     alert(data.spModifiedDate);
-
+                 
                     if (data.localModifiedDate) {
                     if (data.localModifiedDate === data.spModifiedDate)
                     {
-                   // alert("skip");
+                    alert("skip");
                 queueProgress.qSuccess++;
-                 queueProgress.qIndex = index + 1;
-                                if (queueProgress.qIndex === queueProgress.qLength) {
-                                    $('body').trigger('download-queue-ended', queueProgress);
-                                } else {
-                                    $('body').trigger('download-queue-progress', queueProgress);
-                                }
                      return true; //skip
                    }
                    
@@ -207,16 +199,15 @@ var documentsModel = {
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
                                 try
                                 {
-                                    results[index].localModifiedDate(data.spModifiedDate);
+                                    results[index]._data.localModifiedDate(results[index]._data.spModifiedDate);
                                  //        console.debug("modified date");
                                 //alert(results[index].localModifiedDate);
                                 //alert(results[index].spModifiedDate);
-                             
+                            
                                 }
                               catch (e)
                               {
                               alert("Error overwriting modified date");
-                              console.debug(e);
                               }
                              
                                 persistence.flush();
