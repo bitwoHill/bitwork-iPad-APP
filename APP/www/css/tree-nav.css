@@ -95,10 +95,16 @@ a.tree-nav-link.collapsed > .fa.tree-nav-link-folder-state {
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    }
 
-   
+.tree-nav-container-Infothek{
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    height: 1000px;
+    max-height: 1000px;
 }
-
 
 
 .contact-details-container .img-thumbnail {
