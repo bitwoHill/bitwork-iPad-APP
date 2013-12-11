@@ -203,8 +203,14 @@ var appUser;
     //DB setup when model is ready to load
     $('body').on('js-model-ready', dbSetup);
 
+    ////Sync on demand
+    //$('body').on('click', 'a.side-menu-sync-link', function () {
+    //    $('body').removeClass('side-menu-active');
+    //    sharePointSync();
+    //});
+
     //Sync on demand
-    $('body').on('click', 'a.side-menu-sync-link', function () {
+    $('body').on('click', '.sync-btn-metadata', function () {
         $('body').removeClass('side-menu-active');
         sharePointSync();
     });
