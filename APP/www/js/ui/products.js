@@ -61,9 +61,9 @@ var ProductsUI = {
                                     var $newItem = $template.clone();
                                     $newItem.removeAttr('id');
                                     $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK + "&EquipmentProdukt=" + data.equipmentId);
-                                    $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
-                                    $('.products-item-volume', $newItem).html(data.volume);
-                                    $('.products-item-price', $newItem).html(data.price);
+                                    $('.products-item-piecenumber', $newItem).html(data.pieceNumber).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK + "&EquipmentProdukt=" + data.equipmentId);
+                                    $('.products-item-volume', $newItem).html(data.volume).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK + "&EquipmentProdukt=" + data.equipmentId);
+                                    $('.products-item-price', $newItem).html(parseFloat(parseFloat(data.price)).toFixed(2).toLocaleString() + ' €').attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK + "&EquipmentProdukt=" + data.equipmentId);
                                     $container.append($newItem.removeClass('hidden'));
                                     Equipmentcounter = 1;
                                 });
@@ -91,8 +91,8 @@ var ProductsUI = {
                                     $newItem.removeAttr('id');
                                     $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&SonstigesProdukt=" + data.otherProductId);
                                     $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
-                                    $('.products-item-price', $newItem).html(data.price);
-
+                                    $('.products-item-price', $newItem).html( parseFloat(data.price).toFixed(2).toLocaleString() + ' €');
+                                 
                                     //hide volume column
                                     if (!Equipmentcounter) {
                                         $("#products-title-volume").hide();

@@ -31,7 +31,7 @@ var equipmentproductsUI = {
 
                         document.getElementById("valueProductDescription").innerHTML = data.productDescription;
                         document.getElementById("valuePiecenumber").innerHTML = data.pieceNumber;
-                        document.getElementById("valuePrice").innerHTML = data.price;
+                        document.getElementById("valuePrice").innerHTML = parseFloat(data.price).toFixed(2).toLocaleString() + ' €';
                         document.getElementById("valueCooling").innerHTML = data.cooling;
                         document.getElementById("valueVariant").innerHTML = data.variant;
                         document.getElementById("valueVolume").innerHTML = data.volume;
@@ -53,7 +53,7 @@ var equipmentproductsUI = {
                         var data = value._data;
                         document.getElementById("valueProductDescription").innerHTML = data.productDescription;
                         document.getElementById("valuePiecenumber").innerHTML = data.pieceNumber;
-                        document.getElementById("valuePrice").innerHTML = data.price;
+                        document.getElementById("valuePrice").innerHTML = parseFloat(data.price).toFixed(2).toLocaleString() + ' €';
                         $("#rowCooling").hide();
                         $("#rowVariant").hide();
                         $("#rowVolume").hide();
@@ -126,10 +126,11 @@ var productoptionsUI = {
                     if (results.length != 0) {
                         $container.removeClass('hidden');
                     }
-                    else
-                    {
+                    else {
                         $(MPL_EMPTY_CONTAINER).removeClass('hidden');
+                   
                     }
+                 
 
                     $.each(results, function (index, value) {
 
@@ -138,7 +139,7 @@ var productoptionsUI = {
                         $newItem.removeAttr('id');
                         $('.productoption-item-optionsbezeichnung', $newItem).html(data.productDescription);
                         $('.productoption-item-teilenummer', $newItem).html(data.pieceNumber);
-                        $('.productoption-item-listenpreis', $newItem).html(data.price);
+                        $('.productoption-item-listenpreis', $newItem).html( parseFloat(data.price).toFixed(2).toLocaleString() + ' €');
                         $childcontainer.append($newItem.removeClass('hidden'));
 
                     });
@@ -215,6 +216,7 @@ try{
                     .list(null, function (results2) {
                         if (results2.length) {
                             //get all types in found documents
+                           
                             $.each(results2, function (index, value)
                             {
                                 var data = value._data;
@@ -402,10 +404,14 @@ try{
                        $('.tree-nav-item-name', newItem).html(data.documentname);
                        $('.tree-nav-link', newItem).attr("data-item-id", data.documentId);
 
-                       if (data.path) {
-                           $('.tree-nav-link', newItem).attr("href", data.path);
+                       if (data.localPath) {
+                          // $('.tree-nav-link', newItem).attr("href", data.path);
+                           $('.tree-nav-link', newItem).click(function () { window.open(data.localPath, '_blank', 'location=yes'); });
                        }
-
+                       else //show that no file is available
+                       {
+                                                     $('.tree-nav-item-name', newItem).html(data.documentname + ' - keine lokale Version verfügbar');
+                       }
                        container.append(newItem.removeClass('hidden'));
                    }
 

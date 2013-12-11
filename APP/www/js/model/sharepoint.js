@@ -156,12 +156,18 @@ var SyncModel = {
 
     getSyncDate: function (type, callback) {
         Sync.all().filter("syncType", "=", type).limit(1).list(function (res) {
-            var syncDate;
-            //console.log(res[0]);
-            if (res.length && res[0]._data.syncDate) {
-                syncDate = utils.dateFormat(new Date(res[0]._data.syncDate), "m.d.y H:M");
-                callback(syncDate);
-            } else {
+            try{
+                var syncDate;
+                //console.log(res[0]);
+                if (res.length && res[0]._data.syncDate) {
+                    syncDate = utils.dateFormat(new Date(res[0]._data.syncDate), "m.d.y H:M");
+                    callback(syncDate);
+                } else {
+                    callback(i18n.strings["na"]);
+                }
+            }
+            catch (e)
+            {
                 callback(i18n.strings["na"]);
             }
         });

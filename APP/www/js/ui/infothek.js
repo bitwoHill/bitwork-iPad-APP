@@ -1,4 +1,4 @@
-var INFOTHEK_CONTAINER = "#infothek-items-container",
+ var INFOTHEK_CONTAINER = "#infothek-items-container",
     INFOTHEK_ITEM_TEMPLATE = "#infothek-person-item-template",
     INFOTHEK_FOLDER_TEMPLATE = "#infothek-folder-item-template",
     INFOTHEK_EMPTY_CONTAINER = "#infothek-empty-container";
@@ -70,9 +70,17 @@ var InfothekUI = {
         $('.tree-nav-item-name', newItem).html(data.title);
         $('.tree-nav-link', newItem).attr("data-item-id", data.nodeId);
         $('.tree-nav-link', newItem).attr("data-item-name", data.title);
-
-        if(data.path) {
-            $('.tree-nav-link', newItem).attr("href", data.path);
+    
+        if (data.localPath) {
+            $('.tree-nav-link', newItem).click(function () { window.open(data.localPath, '_blank', 'location=yes'); });
+           
+        }
+        else //show that no file is available
+        {
+            if (!data.isFolder)
+            {
+                $('.tree-nav-item-name', newItem).html(data.title + ' - keine lokale Version verfügbar');
+            }
         }
 
         return newItem;

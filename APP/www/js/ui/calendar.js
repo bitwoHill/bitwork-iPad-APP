@@ -61,7 +61,7 @@ var CalendarUI = {
 
         SyncModel.getSyncDate("Kalender", function(date){
             //update last sync date
-            $('.page-sync-btn-date').html(utils.dateFormat(new Date(date), "d.m.y, H:M"));
+            $('.page-sync-btn-date').html(date);
             $('.page-sync-btn').removeClass('hidden');
         });
     }
