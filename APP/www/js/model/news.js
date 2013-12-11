@@ -63,7 +63,7 @@ var NewsModel = {
         var $body = $(body);
 
         //remove links
-        //$body.find('a').remove();
+        $body.find('a').attr('target', "_system");
 
         //remove images
         $body.find('img').remove();
