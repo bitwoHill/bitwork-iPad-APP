@@ -25,8 +25,7 @@ var CalendarModel = {
 
     mapSharePointData : function(data){
         var spData = data.d;
-        console.log(spData);
-        console.debug(data);
+
         //wipe database of old entries
         Calendar.all().destroyAll(function (ele) {
            

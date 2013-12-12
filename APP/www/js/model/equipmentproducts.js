@@ -23,10 +23,9 @@ EquipmentProducts.index(['equipmentId', 'piecenumber'], { unique: true });
 var equipmentproductsModel = {
     sharePointEquipmentproducts: function () {
 
-        //$('body').trigger('sync-start');
-
-                  SharePoint.sharePointRequest(EQUIPMENTPRODUCTS_LIST, equipmentproductsModel.mapSharePointData);
-         },
+        $('body').trigger('sync-start');
+        SharePoint.sharePointRequest(EQUIPMENTPRODUCTS_LIST, equipmentproductsModel.mapSharePointData);
+    },
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         //data.d comes from sharepoint
@@ -55,7 +54,7 @@ var equipmentproductsModel = {
                 persistence.flush(
                     function () {
                         SyncModel.addSync(EQUIPMENTPRODUCTS_LIST);
-                        //      $('body').trigger('sync-end');
+                        $('body').trigger('sync-end');
                         $('body').trigger('equipmentproducts-sync-ready');
                     }
                 );
