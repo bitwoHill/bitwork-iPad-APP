@@ -141,8 +141,8 @@ var User = function(){
 
                 var tmp = Base64.decode(authCookie);
                 tmp = tmp.split(":");
-                this.username = tmp[0],
-                this.password = tmp[1]
+                this.username = tmp[0];
+                this.password = tmp[1];
             } else {
                
 
