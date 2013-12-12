@@ -64,9 +64,9 @@ var appUser;
         syncQueue.queue("sync-queue", function (next) {
             //bind event
             $('body').on('news-sync-ready sync-error', function () {
-                next();
                 //unbind event
                 $('body').off('news-sync-ready sync-error', next);
+                next();
             });
             NewsModel.syncNews();
         });
