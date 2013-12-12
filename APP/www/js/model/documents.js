@@ -20,7 +20,7 @@ var Documents = persistence.define('Documents', {
 });
 
 Documents.index(['documentId'], { unique: true });
-
+Documents.textIndex('documentname');
 
 //Documenttypes
 var Documenttypes = persistence.define('Documenttypes', {
@@ -239,5 +239,15 @@ var documentsModel = {
                 });
             }
         });
-    }
+    },
+
+    searchDocuments: function (key) {
+    var DocumentsSearch = $.Deferred();
+    Documents.search(key).list(function (res) {
+        DocumentsSearch.resolve(res);
+    });
+
+    return DocumentsSearch.promise();
+}
+
 };

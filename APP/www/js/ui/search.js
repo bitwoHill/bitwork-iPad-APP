@@ -66,6 +66,7 @@ var SearchUI = {
     createEquipmentproductItem: function (template, data) {
         var $newItem = template.clone(),
             link = $newItem.attr('href') + data.pieceNumber;
+
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
         $('.result-item-title-text', $newItem).html(data.productDescription);
@@ -73,20 +74,37 @@ var SearchUI = {
 
         return $newItem.removeClass('hidden');
     },
-   
+    createDocument: function (template, data) {
+        var $newItem = template.clone(),
+         link;
+        //generate hyperlink to local path
+        if (data.localPath) {
+            link = $newItem.click(function () { window.open(data.localPath, '_blank', 'location=yes'); });
+            $('.result-item-title-text', $newItem).html(data.documentname);
+        }
+        else {
+            link = $newItem.attr('href');
+            $('.result-item-title-text', $newItem).html(data.documentname + " - Keine lokale Version gefunden");
+        }
+
+        $newItem.removeAttr('id');
+        $newItem.attr('href', link);
+
+
+        return $newItem.removeClass('hidden');
+    },
+
 
     displayResults: function (type, results, additionalBadgeCount) {
         //overwrite MPL-Other Products to be displayed in MPL list as well
         var BadgeCount = results.length;
 
-        if (type == "mpl-other")
-        {
+        if (type == "mpl-other") {
             type = "mpl";
-            if (additionalBadgeCount)
-            {
+            if (additionalBadgeCount) {
                 BadgeCount = BadgeCount + additionalBadgeCount;
             }
-                 }
+        }
 
 
         var $resultsContainer = $("#" + type),
@@ -114,8 +132,11 @@ var SearchUI = {
                         case "infothek":
                             $newItem = SearchUI.createInfothekItem($resultItemTemplate, data);
                             break;
-                        case "mpl": 
+                        case "mpl":
                             $newItem = SearchUI.createEquipmentproductItem($resultItemTemplate, data);
+                            break;
+                        case "documents":
+                            $newItem = SearchUI.createDocument($resultItemTemplate, data);
                             break;
                         default:
                             $newItem = SearchUI.createNewsItem($resultItemTemplate, data);
@@ -124,7 +145,7 @@ var SearchUI = {
                     $resultsContainer.append($newItem);
                 });
             } else {
-                
+
                 $resultsEmptyTemplate.removeClass('hidden');
             }
         }
@@ -154,7 +175,11 @@ var SearchUI = {
                 SearchUI.displayResults("infothek", res);
             });
 
-      
+            var documentSearch = documentsModel.searchDocuments(key);
+            documentSearch.done(function (res) {
+                SearchUI.displayResults("documents", res);
+            });
+
             var equipmentProductSearch = equipmentproductsModel.searchEquipmentproduct(key); //search for both Equipment and Other Products
             var additionalbatchcount = 0 //workaround for badge disploay
             equipmentProductSearch.done(function (res) {
@@ -166,7 +191,7 @@ var SearchUI = {
                 });
             });
 
-          
+
         }
     }
 };
