@@ -52,6 +52,7 @@ var i18n = {
         "empty-links": "Es wurden noch keine wichtige Links geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um wichtige Links zu laden.",
 
         //MPL
+        "mpl": "Maschinen Preisliste",
         "stammdaten": "Stammdaten",
         "produktdetailinformationen": "Produktdetailinformationen",
         "produktbezeichnung": "Produktbezeichnung",
@@ -119,7 +120,7 @@ var i18n = {
    
         //Search
         "search-results": "Suchergebnis für: ",
-        "search-input-error": "Suchkriterium muss mindestens drei Zeichen lang sein",
+        "search-input-error": "Suchkriterium muss mindestens zwei Zeichen lang sein",
         "empty-news-search": "Es wurden keine News gefunden.",
         "empty-calendar-search": "Es wurden keine Kalendereinträge gefunden.",
         "empty-contacts-search": "Es wurden keine Kontakte gefunden.",

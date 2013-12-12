@@ -1,7 +1,7 @@
 var SEARCH_CONTAINER = "#search-container";
 
 var SearchUI = {
-    createNewsItem : function(template, data) {
+    createNewsItem: function (template, data) {
         var $newItem = template.clone(),
             link = $newItem.attr('href') + data.nodeId;
 
@@ -13,7 +13,7 @@ var SearchUI = {
         return $newItem.removeClass('hidden');
     },
 
-    createCalendarItem : function(template, data) {
+    createCalendarItem: function (template, data) {
         var $newItem = template.clone(),
             link = $newItem.attr('href') + data.nodeId;
 
@@ -25,20 +25,20 @@ var SearchUI = {
         return $newItem.removeClass('hidden');
     },
 
-    createContactItem : function(template, data) {
+    createContactItem: function (template, data) {
         var $newItem = template.clone(),
             link = $newItem.attr('href') + data.contactId;
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
         $('.result-item-title-text', $newItem).html(data.name + " " + data.forename);
-        if(data.jobFunction){
+        if (data.jobFunction) {
             $('.result-item-text', $newItem).html(data.jobFunction);
         } else {
             $('.result-item-text', $newItem).addClass('hidden');
         }
 
-        if(data.isFolder) {
+        if (data.isFolder) {
             $('.result-item-title > span.fa', $newItem).addClass("fa-folder");
         } else {
             $('.result-item-title > span.fa', $newItem).addClass("fa-user");
@@ -47,7 +47,7 @@ var SearchUI = {
         return $newItem.removeClass('hidden');
     },
 
-    createInfothekItem : function(template, data) {
+    createInfothekItem: function (template, data) {
         var $newItem = template.clone(),
             link = $newItem.attr('href') + data.nodeId;
 
@@ -55,7 +55,7 @@ var SearchUI = {
         $newItem.attr('href', link);
         $('.result-item-title-text', $newItem).html(data.title);
 
-        if(data.isFolder) {
+        if (data.isFolder) {
             $('.result-item-title > span.fa', $newItem).addClass("fa-folder");
         } else {
             $('.result-item-title > span.fa', $newItem).addClass("fa-file-o");
@@ -63,22 +63,45 @@ var SearchUI = {
 
         return $newItem.removeClass('hidden');
     },
+    createEquipmentproductItem: function (template, data) {
+        var $newItem = template.clone(),
+            link = $newItem.attr('href') + data.pieceNumber;
+        $newItem.removeAttr('id');
+        $newItem.attr('href', link);
+        $('.result-item-title-text', $newItem).html(data.productDescription);
+        $('.result-item-text', $newItem).html(data.pieceNumber);
 
-    displayResults : function(type, results){
+        return $newItem.removeClass('hidden');
+    },
+   
+
+    displayResults: function (type, results, additionalBadgeCount) {
+        //overwrite MPL-Other Products to be displayed in MPL list as well
+        var BadgeCount = results.length;
+
+        if (type == "mpl-other")
+        {
+            type = "mpl";
+            if (additionalBadgeCount)
+            {
+                BadgeCount = BadgeCount + additionalBadgeCount;
+            }
+                 }
+
+
         var $resultsContainer = $("#" + type),
             $resultsEmptyTemplate = $("#" + type + "-empty-container"),
             $resultItemTemplate = $("#" + type + "-result-template", $resultsContainer);
+        $(".badge-" + type).html(BadgeCount).removeClass('hidden');
 
-        $(".badge-" + type).html(results.length).removeClass('hidden');
-
-        if($resultsContainer.length && $resultItemTemplate.length && $resultsEmptyTemplate){
-            if(results.length){
+        if ($resultsContainer.length && $resultItemTemplate.length && $resultsEmptyTemplate) {
+            if (BadgeCount) {
                 $resultsEmptyTemplate.addClass('hidden');
-                $.each(results, function(index, value){
+                $.each(results, function (index, value) {
                     var data = value._data,
                         $newItem;
 
-                    switch (type){
+                    switch (type) {
                         case "news":
                             $newItem = SearchUI.createNewsItem($resultItemTemplate, data);
                             break;
@@ -91,6 +114,9 @@ var SearchUI = {
                         case "infothek":
                             $newItem = SearchUI.createInfothekItem($resultItemTemplate, data);
                             break;
+                        case "mpl": 
+                            $newItem = SearchUI.createEquipmentproductItem($resultItemTemplate, data);
+                            break;
                         default:
                             $newItem = SearchUI.createNewsItem($resultItemTemplate, data);
                     }
@@ -98,39 +124,54 @@ var SearchUI = {
                     $resultsContainer.append($newItem);
                 });
             } else {
+                
                 $resultsEmptyTemplate.removeClass('hidden');
             }
         }
     },
 
-    doSearch : function(){
+    doSearch: function () {
         var key = utils.getUrlParameter("search");
 
-        if(key && key !== ""){
+        if (key && key !== "") {
             var newsSearch = NewsModel.searchNews(key);
-            newsSearch.done(function(res){
+            newsSearch.done(function (res) {
                 SearchUI.displayResults("news", res);
             });
 
             var calendarSearch = CalendarModel.searchCalendar(key);
-            calendarSearch.done(function(res){
+            calendarSearch.done(function (res) {
                 SearchUI.displayResults("calendar", res);
             });
 
             var contactsSearch = ContactsModel.searchContact(key);
-            contactsSearch.done(function(res){
+            contactsSearch.done(function (res) {
                 SearchUI.displayResults("contacts", res);
             });
 
             var infothekSearch = InfothekModel.searchInfothek(key);
-            infothekSearch.done(function(res){
+            infothekSearch.done(function (res) {
                 SearchUI.displayResults("infothek", res);
             });
+
+      
+            var equipmentProductSearch = equipmentproductsModel.searchEquipmentproduct(key); //search for both Equipment and Other Products
+            var additionalbatchcount = 0 //workaround for badge disploay
+            equipmentProductSearch.done(function (res) {
+                additionalbatchcount = res.length;
+                SearchUI.displayResults("mpl", res);
+                var otherProductSearch = otherproductsModel.searchOtherproduct(key);
+                otherProductSearch.done(function (res) {
+                    SearchUI.displayResults("mpl-other", res, additionalbatchcount);
+                });
+            });
+
+          
         }
     }
 };
 
-(function($){
+(function ($) {
     //Display news when sync is ready
     $('body').on('db-schema-ready', SearchUI.doSearch);
 

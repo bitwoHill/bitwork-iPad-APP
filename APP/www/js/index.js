@@ -109,7 +109,7 @@ var app = {
         $('body').on('submit', '#search-form', function(){
             var searchKey = $('input', $(this)).val();
 
-            if(searchKey.length > 2){
+            if(searchKey.length > 1){
                 return true;
             } else {
                 alert(i18n.strings["search-input-error"]);

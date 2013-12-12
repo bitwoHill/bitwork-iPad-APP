@@ -63,6 +63,7 @@ var appUser;
         //Add news sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("sync News");
             $('body').on('news-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('news-sync-ready sync-error', next);
@@ -74,6 +75,7 @@ var appUser;
         //Add calendar sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("sync Calendar");
             $('body').on('calendar-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('calendar-sync-ready sync-error', next);
@@ -85,6 +87,7 @@ var appUser;
         //Add Link sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("sync Links");
             $('body').on('link-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('link-sync-ready sync-error', next);
@@ -96,6 +99,7 @@ var appUser;
         //Add contacts sync to queue
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("sync Contacts");
             $('body').on('contacts-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('contacts-sync-ready sync-error', next);
@@ -106,6 +110,7 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("Product Groups News");
             $('body').on('productgroups-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('productgroups-sync-ready sync-error', next);
@@ -116,6 +121,7 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("sync Families");
             $('body').on('productfamilies-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('productfamilies-sync-ready sync-error', next);
@@ -126,6 +132,7 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("sync product platforms");
             $('body').on('productplatforms-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('productplatforms-sync-ready sync-error', next);
@@ -135,7 +142,8 @@ var appUser;
         });
 
         syncQueue.queue("sync-queue", function (next) {
-            //bind event
+            //bind event 
+            console.log("sync products");
             $('body').on('products-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('products-sync-ready sync-error', next);
@@ -146,6 +154,7 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("other products News");
             $('body').on('otherproducts-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('otherproducts-sync-ready sync-error', next);
@@ -156,6 +165,7 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("sync equipment");
             $('body').on('equipmentproducts-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('equipmentproducts-sync-ready sync-error', next);
@@ -166,6 +176,7 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("sync product options");
             $('body').on('productoptions-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('productoptions-sync-ready sync-error', next);
@@ -177,6 +188,7 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("sync Product Documents");
             $('body').on('documents-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('documents-sync-ready sync-error', next);
@@ -187,6 +199,7 @@ var appUser;
 
         syncQueue.queue("sync-queue", function (next) {
             //bind event
+            console.log("sync Infothek");
             $('body').on('infothek-sync-ready sync-error', function () {
                 //unbind event
                 $('body').off('infothek-sync-ready sync-error', next);

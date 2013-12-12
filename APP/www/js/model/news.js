@@ -73,10 +73,10 @@ var NewsModel = {
             if (oldhref.substring(0, input.length) === input) // checks if URL starts with "/"
             {
                 //if so, add http://www.atlas-cms.com/
-                console.debug(oldhref);
+            //    console.debug(oldhref);
                 $body.find('a').attr('href', Settings.spContent + oldhref)
                 var newhref = $body.find('a').attr('href');
-                console.debug(newhref);
+              //  console.debug(newhref);
             }
 
 

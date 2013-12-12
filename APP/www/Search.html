@@ -102,9 +102,10 @@
                     <li class="active"><a href="#news" data-toggle="tab"><span class="i18n" data-i18n-key="news"></span> <span class="badge badge-news hidden">0</span></a></li>
                     <li><a href="#calendar" data-toggle="tab"><span class="i18n" data-i18n-key="kalender"></span> <span class="badge badge-calendar hidden">0</span></a></li>
                     <li><a href="#contacts" data-toggle="tab"><span class="i18n" data-i18n-key="contacts"></span> <span class="badge badge-contacts hidden">0</span></a></li>
-                    <li><a href="#infothek" data-toggle="tab"><span class="i18n" data-i18n-key="infothek"></span> <span class="badge badge-infothek hidden">0</span></a></li>
+                    <li><a href="#mpl" data-toggle="tab"><span class="i18n" data-i18n-key="mpl"></span> <span class="badge badge-mpl hidden">0</span></a></li>
                     <li><a href="#documents" data-toggle="tab"><span class="i18n" data-i18n-key="dokumente"></span> <span class="badge badge-documents hidden">0</span></a></li>
-                    <li><a href="#mpl" data-toggle="tab"><span class="i18n" data-i18n-key="stammdaten"></span> <span class="badge badge-mpl hidden">0</span></a></li>
+                    <li><a href="#infothek" data-toggle="tab"><span class="i18n" data-i18n-key="infothek"></span> <span class="badge badge-infothek hidden">0</span></a></li>
+
                 </ul>
 
                 <!-- Tab panes -->
@@ -152,12 +153,20 @@
                             <p class="text-center i18n" data-i18n-key="empty-infothek-search"></p>
                         </div>
                     </div>
-                    <div class="tab-pane" id="documents">
+
+
+                    <div class="tab-pane" id="documents-result-template">
                         <div class="empty-page invert" id="documents-empty-container">
                             <p class="text-center i18n" data-i18n-key="empty-documents-search"></p>
                         </div>
                     </div>
+
+
                     <div class="tab-pane" id="mpl">
+                        <a href="Mplstammdaten.html?Piecenumber=" id="mpl-result-template" class="result-item hidden">
+                            <h3 class="result-item-title"><span class="fa"></span><span class="result-item-title-text"></span></h3>
+                            <span class="fa fa-chevron-right"></span>
+                        </a>
                         <div class="empty-page invert" id="mpl-empty-container">
                             <p class="text-center i18n" data-i18n-key="empty-mpl-search"></p>
                         </div>

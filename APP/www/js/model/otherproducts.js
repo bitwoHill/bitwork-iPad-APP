@@ -12,6 +12,9 @@ var OtherProducts = persistence.define('OtherProducts', {
 
 //OtherProducts.index(['otherProductId', 'pieceNumber'], { unique: true });
 OtherProducts.index('otherProductId', { unique: true });
+//search indexed fields
+OtherProducts.textIndex('productDescription');
+OtherProducts.textIndex('pieceNumber');
 
 
 
@@ -50,6 +53,15 @@ var otherproductsModel = {
             );
         }
         });
+    },
+
+    searchOtherproduct: function (key) {
+        var otherproductSearch = $.Deferred();
+        OtherProducts.search(key).list(function (res) {
+            otherproductSearch.resolve(res);
+        });
+
+        return otherproductSearch.promise();
     }
 
 };

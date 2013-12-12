@@ -16,6 +16,10 @@ var EquipmentProducts = persistence.define('EquipmentProducts', {
 });
 
 EquipmentProducts.index(['equipmentId', 'piecenumber'], { unique: true });
+//search indexed fields
+EquipmentProducts.textIndex('productDescription');
+EquipmentProducts.textIndex('pieceNumber');
+
 
 
 
@@ -59,6 +63,16 @@ var equipmentproductsModel = {
                     }
                 );
             }
-        }        );
+        });
+    },
+
+
+    searchEquipmentproduct: function (key) {
+        var equipmentproductSearch = $.Deferred();
+        EquipmentProducts.search(key).list(function (res) {
+            equipmentproductSearch.resolve(res);
+        });
+
+        return equipmentproductSearch.promise();
     }
-}
+};

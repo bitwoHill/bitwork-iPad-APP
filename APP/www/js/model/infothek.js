@@ -41,7 +41,7 @@ var InfothekModel = {
                 $.each(results, function (index, value) {
                     //check if an object with the current ID exists. If Not delete it
                     if (!lookupIDsSharePoint[value._data.nodeId]) {
-                        console.debug("lokales element wurde nicht mehr gefunden: ");
+                        console.debug("lokales element wurde nicht mehr gefunden und wird gelöscht: ");
                         console.debug(value);
 
                         // delete local file from filesystem
@@ -51,6 +51,8 @@ var InfothekModel = {
 
                             function onSuccess(fileEntry) {
                                 fileEntry.remove();
+                                console.debug("deleted element");
+
                             }
 
                             function onError() {
@@ -69,13 +71,14 @@ var InfothekModel = {
             }
         });
 
-
+        console.debug("Cleaned local files");
 
         //upate db to reflect the deleted items
         persistence.flush(
                 function () {
 
                     if (spData && spData.results.length) {
+                        //add new elements
                         $.each(spData.results, function (index, value) {
                             var newItem = {
                                 nodeId: value.ID,
@@ -96,20 +99,7 @@ var InfothekModel = {
                                 if (value.Geändert) {
                                     newItem.spModifiedDate = utils.parseSharePointDate(value.Geändert);
                                 }
-                                //TODO: replace with file upload
-                                /*InfothekModel.downloadInfothekFile(newItem, index, spData.results.length, function(infothekItem, pos, length){
-                                    persistence.add(new Infothek(infothekItem));
-            
-                                    persistence.flush(
-                                        function(){
-                                            if( pos+1 === length ){
-                                                SyncModel.addSync(INFOTHEK_LIST);
-                                                $('body').trigger('sync-end');
-                                                $('body').trigger('infothek-sync-ready');
-                                            }
-                                        }
-                                    );
-                                });*/
+                              
                             }
 
                             persistence.add(new Infothek(newItem));
@@ -147,13 +137,13 @@ var InfothekModel = {
                                 path: data.path
                             };
 
-                        console.debug(results);
-                        console.debug(results[1]);
-                        console.debug(results[1]._data.localModifiedDate);
+                        //console.debug(results);
+                        //console.debug(results[1]);
+                        //console.debug(results[1]._data.localModifiedDate);
 
                         //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
-                        alert(data.localModifiedDate);
-                        alert(data.spModifiedDate);
+                        //alert(data.localModifiedDate);
+                        //alert(data.spModifiedDate);
 
                         if (data.localModifiedDate) {
                             if (data.localModifiedDate === data.spModifiedDate) {
@@ -203,14 +193,6 @@ var InfothekModel = {
                     });
                 }
             });
-    },
-
-    downloadInfothekFile: function (infothekItem, index, length, callback) {
-        //TODO: use download mechanism to save file in device storage
-        //Download mechanism should update infothekItem.path after upload.
-
-        //after download done use callback
-        callback(infothekItem, index, length);
     },
 
     searchInfothek: function (key) {
