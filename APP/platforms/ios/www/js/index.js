@@ -118,5 +118,24 @@ var app = {
                 return false;
             }
         });
+
+        //Orientation change
+        $(window).on('orientationchange', function(e, onready){
+            switch(window.orientation)
+            {
+                case 0:
+                    $('body').removeClass('landscape').addClass('portrait');
+                case -90:
+                    $('body').removeClass('portrait').addClass('landscape');
+                    break;
+                case 90:
+                    $('body').removeClass('portrait').addClass('landscape');
+                    break;
+                default:
+                    $('body').removeClass('landscape').addClass('portrait');
+                    break;
+            }
+        });
+        $(window).trigger('orientationchange', true);
     })
 })(jQuery);

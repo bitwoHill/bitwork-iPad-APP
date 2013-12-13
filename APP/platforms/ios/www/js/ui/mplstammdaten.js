@@ -1,5 +1,6 @@
 var equipmentproducts_CONTAINER = "#equipmentproducts-items-container",
-MPL_EMPTY_CONTAINER = "#mpl-empty-container";
+MPL_EMPTY_CONTAINER = "#mpl-empty-container",
+    localFileSystemRoot;
 //MPLstammdaten.js combines the data from equipmentproducts, otherprodcuts, documents, documenttypes and product options for mplstammdaten.html
 
 //create mock data for equipment products
@@ -524,9 +525,34 @@ var DocumentsUI = {
                        $('.tree-nav-item-name', newItem).html(data.documentname);
                        $('.tree-nav-link', newItem).attr("data-item-id", data.documentId);
 
+//create instance of local filesystem if not allready created
+if (!localFileSystemRoot)
+{
+
+    try{
+            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                function(fileSystem) {
+                      localFileSystemRoot = fileSystem.root.fullPath;
+                },
+                function() {
+                     console.debug("could not create filesystem");
+                }
+            );
+        } catch (err) {
+           console.debug(err);
+        }
+}
+
+
+
                        if (data.localPath) {
                            // $('.tree-nav-link', newItem).attr("href", data.path);
-                           $('.tree-nav-link', newItem).click(function () { window.open(data.localPath, '_blank', 'location=yes'); });
+                           $('.tree-nav-link', newItem).click(function () { window.open(localFileSystemRoot + "/Dokumente/" + data.localPath, '_blank', 'location=yes'); });
+                           console.debug(localFileSystemRoot + "/Dokumente/" + data.localPath);
+                         
+           
                        }
                        else //show that no file is available
                        {

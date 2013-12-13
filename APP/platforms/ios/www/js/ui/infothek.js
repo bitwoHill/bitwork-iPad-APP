@@ -1,7 +1,8 @@
  var INFOTHEK_CONTAINER = "#infothek-items-container",
     INFOTHEK_ITEM_TEMPLATE = "#infothek-person-item-template",
     INFOTHEK_FOLDER_TEMPLATE = "#infothek-folder-item-template",
-    INFOTHEK_EMPTY_CONTAINER = "#infothek-empty-container";
+    INFOTHEK_EMPTY_CONTAINER = "#infothek-empty-container",
+    localFileSystemRoot;
 
 var InfothekUI = {
     resetInfothek : function(){
@@ -71,8 +72,31 @@ var InfothekUI = {
         $('.tree-nav-link', newItem).attr("data-item-id", data.nodeId);
         $('.tree-nav-link', newItem).attr("data-item-name", data.title);
     
+//create instance of local filesystem if not allready created
+if (!localFileSystemRoot)
+{
+
+    try{
+            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                function(fileSystem) {
+                    localFileSystemRoot = fileSystem.root.fullPath;
+                },
+                function() {
+                     console.debug("could not create filesystem");
+                }
+            );
+        } catch (err) {
+           console.debug(err);
+        }
+}
+
+
         if (data.localPath) {
-            $('.tree-nav-link', newItem).click(function () { window.open(data.localPath, '_blank', 'location=yes'); });
+            $('.tree-nav-link', newItem).click(function () { window.open(localFileSystemRoot + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
+            console.debug(localFileSystemRoot + "/Infothek/" + data.localPath);
+          
            
         }
         else //show that no file is available

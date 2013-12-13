@@ -1526,7 +1526,10 @@ persistence.get = function(arg1, arg2) {
         return propValue >= value;
         break;
       case 'like':
-              return ((propValue + "").indexOf(value)) > -1;
+        return ((propValue + "").indexOf(value)) > -1;
+        break;
+      case 'LIKE':
+        return ((propValue + "").indexOf(value)) > -1;
         break;
       case 'in':
         return arrayContains(value, propValue);
@@ -1676,8 +1679,6 @@ persistence.get = function(arg1, arg2) {
       s += this._skip;
       s += '|Reverse:';
       s += this._reverse;
-
-        console.log(s);
       return s;
     };
 

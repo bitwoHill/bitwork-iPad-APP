@@ -120,7 +120,7 @@ var InfothekModel = {
     },
 
     downloadSharePointFiles: function () {
-        Infothek.all().limit(5).filter("isFolder", "=", false)
+        Infothek.all().filter("isFolder", "=", false)
             .list(null, function (results) {
                 if (results.length) {
                     var queueProgress = {
@@ -149,10 +149,11 @@ var InfothekModel = {
                         //alert(data.spModifiedDate);
 
                         if (data.localModifiedDate) {
-                            console.debug("local" + data.localModifiedDate);
-                              console.debug("local" + data.spModifiedDate);
-                            if (data.localModifiedDate == data.spModifiedDate) {
-                              //  alert("skiped " + data.title);
+                           
+                       
+
+                    if (data.localModifiedDate.getTime() === data.spModifiedDate.getTime()){
+                               console.debug("skiped " + data.title);
                                 queueProgress.qSuccess++;
 
                                      //trigger event, as if downloaded 
@@ -165,10 +166,7 @@ var InfothekModel = {
                                 return true; //skip download
                             }
                         }
-                        else
-                        {
-                            console.debug("starte download");
-                        }
+                        
 
 
                         $.downloadQueue(downloadData)

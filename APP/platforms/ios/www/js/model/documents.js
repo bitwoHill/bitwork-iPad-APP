@@ -155,7 +155,7 @@ var documentsModel = {
     },
 
     downloadSharePointFiles: function () {
-        Documents.all().limit(5)
+        Documents.all()
         .list(null, function (results) {
             if (results.length) {
                 var queueProgress = {
@@ -177,9 +177,8 @@ var documentsModel = {
                     //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
                  
                     if (data.localModifiedDate) {
-                                  console.debug("local" + data.localModifiedDate);
-                              console.debug("local" + data.spModifiedDate);
-                    if (data.localModifiedDate == data.spModifiedDate)
+                  
+                             if (data.localModifiedDate.getTime() === data.spModifiedDate.getTime())
                     {
 
                         console.debug("skipped " + data.documentname);
@@ -196,10 +195,7 @@ var documentsModel = {
                    }
                    
                     }
-                       else
-                        {
-                            console.debug("starte download");
-                        }
+                    
                       //end if download necessary
                         $.downloadQueue(downloadData)
                         .done(
