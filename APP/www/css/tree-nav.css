@@ -87,8 +87,13 @@ a.tree-nav-link.collapsed > .fa.tree-nav-link-folder-state {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 
-    height: 500px;
-    max-height: 500px;
+    height: 505px;
+    max-height: 505px;
+}
+
+.portrait .tree-nav-container {
+    height: 760px;
+    max-height: 760px;
 }
 
 .tree-nav-container-Fullsize {
@@ -102,8 +107,13 @@ a.tree-nav-link.collapsed > .fa.tree-nav-link-folder-state {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 
-    height: 800px;
-    max-height: 800px;
+    height: 760px;
+    max-height: 760px;
+}
+
+.landscape .tree-nav-container-Infothek{
+    height: 505px;
+    max-height: 505px;
 }
 
 

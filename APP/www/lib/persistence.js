@@ -1505,7 +1505,7 @@ persistence.get = function(arg1, arg2) {
           propValue = Math.round(propValue.getTime() / 1000) * 1000; // Deal with precision
         }
       }
-        console.log(this.operator);
+
       switch (this.operator) {
       case '=':
         return propValue === value;
@@ -1526,7 +1526,9 @@ persistence.get = function(arg1, arg2) {
         return propValue >= value;
         break;
       case 'like':
-        alert("like");
+        return ((propValue + "").indexOf(value)) > -1;
+        break;
+      case 'LIKE':
         return ((propValue + "").indexOf(value)) > -1;
         break;
       case 'in':
@@ -1677,8 +1679,6 @@ persistence.get = function(arg1, arg2) {
       s += this._skip;
       s += '|Reverse:';
       s += this._reverse;
-
-        console.log(s);
       return s;
     };
 
