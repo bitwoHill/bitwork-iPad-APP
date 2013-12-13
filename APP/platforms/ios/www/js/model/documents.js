@@ -20,7 +20,6 @@ var Documents = persistence.define('Documents', {
 });
 
 Documents.index(['documentId'], { unique: true });
-Documents.textIndex('documentname');
 
 //Documenttypes
 var Documenttypes = persistence.define('Documenttypes', {
@@ -75,9 +74,6 @@ var documentsModel = {
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
-
-        //clear search index. its rebuild completly everytime items get added. we did not yet find a way to rebuild it partly
-        utils.emptySearchIndex("Documents");
 
         //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to them on Sharepoint
         var lookupIDsSharePoint = {};
@@ -181,8 +177,11 @@ var documentsModel = {
                     //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
                  
                     if (data.localModifiedDate) {
-                    if (data.localModifiedDate === data.spModifiedDate)
+                                  console.debug("local" + data.localModifiedDate);
+                              console.debug("local" + data.spModifiedDate);
+                    if (data.localModifiedDate == data.spModifiedDate)
                     {
+
                         console.debug("skipped " + data.documentname);
                 queueProgress.qSuccess++;
 
@@ -197,6 +196,10 @@ var documentsModel = {
                    }
                    
                     }
+                       else
+                        {
+                            console.debug("starte download");
+                        }
                       //end if download necessary
                         $.downloadQueue(downloadData)
                         .done(
@@ -252,12 +255,14 @@ var documentsModel = {
     },
 
     searchDocuments: function (key) {
-    var DocumentsSearch = $.Deferred();
-       Documents.search(key).list(function (res) {
-                DocumentsSearch.resolve(res);
-    });
+        var DocumentsSearch = $.Deferred();
+        key = "%" + key.replace("*", "") + "%";
 
-    return DocumentsSearch.promise();
-}
+        Documents.all().filter("documentname", "LIKE", key).list(function (res) {
+            DocumentsSearch.resolve(res);
+        });
+
+        return DocumentsSearch.promise();
+    }
 
 };

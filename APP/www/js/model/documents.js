@@ -177,8 +177,11 @@ var documentsModel = {
                     //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
                  
                     if (data.localModifiedDate) {
-                    if (data.localModifiedDate === data.spModifiedDate)
+                                  console.debug("local" + data.localModifiedDate);
+                              console.debug("local" + data.spModifiedDate);
+                    if (data.localModifiedDate == data.spModifiedDate)
                     {
+
                         console.debug("skipped " + data.documentname);
                 queueProgress.qSuccess++;
 
@@ -193,6 +196,10 @@ var documentsModel = {
                    }
                    
                     }
+                       else
+                        {
+                            console.debug("starte download");
+                        }
                       //end if download necessary
                         $.downloadQueue(downloadData)
                         .done(

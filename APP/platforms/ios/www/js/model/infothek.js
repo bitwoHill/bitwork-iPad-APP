@@ -13,7 +13,6 @@ var Infothek = persistence.define('Infothek', {
 });
 
 Infothek.index('nodeId', { unique: true });
-Infothek.textIndex('title');
 
 var InfothekModel = {
 
@@ -150,7 +149,9 @@ var InfothekModel = {
                         //alert(data.spModifiedDate);
 
                         if (data.localModifiedDate) {
-                            if (data.localModifiedDate === data.spModifiedDate) {
+                            console.debug("local" + data.localModifiedDate);
+                              console.debug("local" + data.spModifiedDate);
+                            if (data.localModifiedDate == data.spModifiedDate) {
                               //  alert("skiped " + data.title);
                                 queueProgress.qSuccess++;
 
@@ -163,6 +164,10 @@ var InfothekModel = {
                                 }
                                 return true; //skip download
                             }
+                        }
+                        else
+                        {
+                            console.debug("starte download");
                         }
 
 
@@ -210,8 +215,11 @@ var InfothekModel = {
     },
 
     searchInfothek: function (key) {
+
         var infothekSearch = $.Deferred();
-        Infothek.search(key).list(function (res) {
+        key = "%" + key.replace("*", "") + "%";
+
+        Infothek.all().filter("title", "LIKE", key).list(function (res) {
             infothekSearch.resolve(res);
         });
 

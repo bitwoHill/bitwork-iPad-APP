@@ -149,7 +149,9 @@ var InfothekModel = {
                         //alert(data.spModifiedDate);
 
                         if (data.localModifiedDate) {
-                            if (data.localModifiedDate === data.spModifiedDate) {
+                            console.debug("local" + data.localModifiedDate);
+                              console.debug("local" + data.spModifiedDate);
+                            if (data.localModifiedDate == data.spModifiedDate) {
                               //  alert("skiped " + data.title);
                                 queueProgress.qSuccess++;
 
@@ -162,6 +164,10 @@ var InfothekModel = {
                                 }
                                 return true; //skip download
                             }
+                        }
+                        else
+                        {
+                            console.debug("starte download");
                         }
 
 

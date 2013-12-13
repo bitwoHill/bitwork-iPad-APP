@@ -1491,7 +1491,7 @@ persistence.get = function(arg1, arg2) {
      */
     function PropertyFilter (property, operator, value) {
       this.property = property;
-      this.operator = operator.toLowerCase();
+      this.operator = operator;
       this.value = value;
     }
 
@@ -1505,6 +1505,7 @@ persistence.get = function(arg1, arg2) {
           propValue = Math.round(propValue.getTime() / 1000) * 1000; // Deal with precision
         }
       }
+        console.log(this.operator);
       switch (this.operator) {
       case '=':
         return propValue === value;
@@ -1523,6 +1524,9 @@ persistence.get = function(arg1, arg2) {
         break;
       case '>=':
         return propValue >= value;
+        break;
+      case 'like':
+              return ((propValue + "").indexOf(value)) > -1;
         break;
       case 'in':
         return arrayContains(value, propValue);
@@ -1672,6 +1676,8 @@ persistence.get = function(arg1, arg2) {
       s += this._skip;
       s += '|Reverse:';
       s += this._reverse;
+
+        console.log(s);
       return s;
     };
 
