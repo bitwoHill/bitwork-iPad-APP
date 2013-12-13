@@ -160,7 +160,7 @@ var SyncModel = {
                 var syncDate;
                 //console.log(res[0]);
                 if (res.length && res[0]._data.syncDate) {
-                    syncDate = utils.dateFormat(new Date(res[0]._data.syncDate), "m.d.y H:M");
+                    syncDate = utils.dateFormat(new Date(res[0]._data.syncDate), "d.m.y H:M");
                     callback(syncDate);
                 } else {
                     callback(i18n.strings["na"]);

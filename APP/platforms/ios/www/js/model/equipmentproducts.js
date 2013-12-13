@@ -16,6 +16,10 @@ var EquipmentProducts = persistence.define('EquipmentProducts', {
 });
 
 EquipmentProducts.index(['equipmentId', 'piecenumber'], { unique: true });
+//search indexed fields
+EquipmentProducts.textIndex('productDescription');
+EquipmentProducts.textIndex('pieceNumber');
+
 
 
 
@@ -23,15 +27,16 @@ EquipmentProducts.index(['equipmentId', 'piecenumber'], { unique: true });
 var equipmentproductsModel = {
     sharePointEquipmentproducts: function () {
 
-        //$('body').trigger('sync-start');
-
-                  SharePoint.sharePointRequest(EQUIPMENTPRODUCTS_LIST, equipmentproductsModel.mapSharePointData);
-         },
+        $('body').trigger('sync-start');
+        SharePoint.sharePointRequest(EQUIPMENTPRODUCTS_LIST, equipmentproductsModel.mapSharePointData);
+    },
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         //data.d comes from sharepoint
         var spData = data.d;
         EquipmentProducts.all().destroyAll(function (ele) {
+            utils.emptySearchIndex("EquipmentProducts");
+
             if (spData && spData.results.length) {
                 $.each(spData.results, function (index, value) {
 
@@ -55,11 +60,21 @@ var equipmentproductsModel = {
                 persistence.flush(
                     function () {
                         SyncModel.addSync(EQUIPMENTPRODUCTS_LIST);
-                        //      $('body').trigger('sync-end');
+                        $('body').trigger('sync-end');
                         $('body').trigger('equipmentproducts-sync-ready');
                     }
                 );
             }
-        }        );
+        });
+    },
+
+
+    searchEquipmentproduct: function (key) {
+        var equipmentproductSearch = $.Deferred();
+        EquipmentProducts.search(key).list(function (res) {
+            equipmentproductSearch.resolve(res);
+        });
+
+        return equipmentproductSearch.promise();
     }
-}
+};

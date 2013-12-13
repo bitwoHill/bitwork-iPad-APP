@@ -340,3 +340,13 @@ h3.result-item-title {
     color: #a2a2a2;
     margin-right: 10px;
 }
+
+.progress-bar {
+    background-color: #545454;
+}
+
+.alert-info {
+    color: #545454;
+    background-color: #EAEAEA;
+    border-color: #DFDFDF;
+}

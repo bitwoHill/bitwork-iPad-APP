@@ -52,6 +52,7 @@ var i18n = {
         "empty-links": "Es wurden noch keine wichtige Links geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um wichtige Links zu laden.",
 
         //MPL
+        "mpl": "Maschinen Preisliste",
         "stammdaten": "Stammdaten",
         "produktdetailinformationen": "Produktdetailinformationen",
         "produktbezeichnung": "Produktbezeichnung",
@@ -102,22 +103,24 @@ var i18n = {
         "contacts-add-phone": "zum Telefonbuch hinzufügen",
 
         //Downloads
-        "downloads-title": "Downloads",
+        "downloads-title": "Daten Synchronisieren & Downloads",
         "label-download": "Download",
         "label-close": "Schliessen",
-        "label-download-progress": "Download Vorgang",
+        "label-download-progress": "Download Vorgang - Bitte schliessen Sie die App nicht",
         "label-aboard-download": "Download abbrechen",
         "label-download-compleated": "Download abgeschlossen",
         "label-download-success": "Datei(en) heruntergeladen.",
         "label-download-fail": "Datei(en) nicht heruntergeladen.",
-        "prod-documents-sync": "Produkt Dokumente herunterladen (dauert sehr lange)",
-        "prod-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Produkt Dokumente.",
-        "infothek-documents-sync": "Infothek Dokumente herunterladen (dauert sehr lange)",
-        "infothek-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Infothek Dokumente.",
-
+        "prod-documents-sync": "Produkt Dokumente herunterladen",
+        "prod-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Produkt Dokumente. Es werden alle im SharePoint befindlichen Dokumente heruntergeladen. Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine Wlan Verbindung möglich.",
+        "infothek-documents-sync": "Infothek Dokumente herunterladen",
+        "infothek-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Infothek Dokumente.Es werden alle im SharePoint befindlichen Dokumente der Infotheksbibliothek heruntergeladen. Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine Wlan Verbindung möglich.",
+        "metadata-sync": "Metadaten aus SharePoint laden",
+        "metadata-sync-text": "Hiermit starten Sie die Synchronisierung der SharePoint Metadaten. Dabei handelt es sich um alle im SharePoint befindlichen Daten, wie Produktinformationen und News und Telefonbuchdaten - aber keine Dateien.",
+   
         //Search
         "search-results": "Suchergebnis für: ",
-        "search-input-error": "Suchkriterium muss mindestens drei Zeichen lang sein",
+        "search-input-error": "Suchkriterium muss mindestens zwei Zeichen lang sein",
         "empty-news-search": "Es wurden keine News gefunden.",
         "empty-calendar-search": "Es wurden keine Kalendereinträge gefunden.",
         "empty-contacts-search": "Es wurden keine Kontakte gefunden.",

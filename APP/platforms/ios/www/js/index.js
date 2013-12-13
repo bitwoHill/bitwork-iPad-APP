@@ -106,11 +106,13 @@ var app = {
         });
 
         //menu search
-        $('body').on('submit', '#search-form', function(){
+        $('body').on('submit', '#search-form', function(e){
+            e.preventDefault();
+
             var searchKey = $('input', $(this)).val();
 
-            if(searchKey.length > 2){
-                return true;
+            if(searchKey.length > 1){
+                window.open("Search.html?search=" + encodeURIComponent(searchKey), "_self");
             } else {
                 alert(i18n.strings["search-input-error"]);
                 return false;

@@ -5,6 +5,7 @@ var News = persistence.define('News', {
     nodeId: "INT",
     title: "TEXT",
     body: "TEXT",
+    bodySearch: "TEXT",
     image: "TEXT",
     expirationDate: "DATE",
     createdDate: "DATE"
@@ -12,7 +13,7 @@ var News = persistence.define('News', {
 
 News.index('nodeId', { unique: true });
 News.textIndex('title');
-News.textIndex('body');
+News.textIndex('bodySearch');
 
 var NewsModel = {
     syncNews : function(){
@@ -25,15 +26,18 @@ var NewsModel = {
     mapSharePointData: function(data){
         var spData = data.d;
         //wipe database of old entries
-        News.all().destroyAll(function (ele) { 
+        News.all().destroyAll(function (ele) {
+            utils.emptySearchIndex("News");
             if (spData && spData.results.length) {
                 $.each(spData.results, function (index, value) {
                 
-                    var newsItem = {
-                        nodeId: value.ID,
-                        title: value.Titel,
-                        body: NewsModel.formatBodyText(value.Textkörper)
-                    };
+                    var bodyContent = (value.Textkörper)? NewsModel.formatBodyText(value.Textkörper) : false,
+                        newsItem = {
+                            nodeId: value.ID,
+                            title: value.Titel,
+                            body: (bodyContent)? bodyContent["bodyFormatted"] : "",
+                            bodySearch: (bodyContent)? bodyContent["bodyFormattedSearch"] : ""
+                        };
 
                     if (value.LäuftAb) {
                         newsItem.expirationDate = utils.parseSharePointDate(value.LäuftAb);
@@ -73,10 +77,10 @@ var NewsModel = {
             if (oldhref.substring(0, input.length) === input) // checks if URL starts with "/"
             {
                 //if so, add http://www.atlas-cms.com/
-                console.debug(oldhref);
+            //    console.debug(oldhref);
                 $body.find('a').attr('href', Settings.spContent + oldhref)
                 var newhref = $body.find('a').attr('href');
-                console.debug(newhref);
+              //  console.debug(newhref);
             }
 
 
@@ -90,9 +94,12 @@ var NewsModel = {
 
         //remove empty paragrafs
         $body.html($body.html().replace(/&nbsp;/g, ""));
-   
 
-        return $body.html();
+
+        return {
+            bodyFormatted : $body.html(),
+            bodyFormattedSearch: $body.text()
+        };
     },
 
     searchNews: function(key){

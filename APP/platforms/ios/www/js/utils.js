@@ -94,6 +94,14 @@ var utils = {
 
     deleteCookie: function(name) {
         document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    },
+
+    emptySearchIndex: function(type) {
+        var conn = openDatabase("bitwork_ipadapp", '1.0', "bitwork iPadApp database", 10 * 1024 * 1024);
+
+        conn.transaction(function (tx) {
+            tx.executeSql("DELETE FROM " + type + "_Index");
+        });
     }
 
 }

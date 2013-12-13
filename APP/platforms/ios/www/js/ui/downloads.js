@@ -124,6 +124,8 @@ catch (e)
             show: false
         });
         $('body').on('click', '.sync-btn', DownloadsUI.doDownload);
+
+    
     })
 
 })(jQuery)

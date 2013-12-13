@@ -5,6 +5,7 @@ var Calendar = persistence.define('Calendar', {
     nodeId: "INT",
     title: "TEXT",
     body: "TEXT",
+    bodySearch: "TEXT",
     image: "TEXT",
     location: "TEXT",
     startDate: "DATE",
@@ -13,7 +14,7 @@ var Calendar = persistence.define('Calendar', {
 
 Calendar.index('nodeId', { unique: true });
 Calendar.textIndex('title');
-Calendar.textIndex('body');
+Calendar.textIndex('bodySearch');
 
 var CalendarModel = {
 
@@ -25,18 +26,20 @@ var CalendarModel = {
 
     mapSharePointData : function(data){
         var spData = data.d;
-        console.log(spData);
-        console.debug(data);
+
         //wipe database of old entries
         Calendar.all().destroyAll(function (ele) {
-           
+            utils.emptySearchIndex("Calendar");
+
             if (spData && spData.results.length) {
                 $.each(spData.results, function (index, value) {
-                    var calendarItem = {
-                        nodeId: value.ID,
-                        title: value.Titel,
-                        body: CalendarModel.formatBodyText(value.Beschreibung)
-                    };
+                    var calendarContent = (value.Beschreibung)? CalendarModel.formatBodyText(value.Beschreibung) : false,
+                        calendarItem = {
+                            nodeId: value.ID,
+                            title: value.Titel,
+                            body: (calendarContent)? calendarContent["bodyFormatted"] : "",
+                            bodySearch: (calendarContent)? calendarContent["bodyFormattedSearch"] : ""
+                        };
 
                     if (value.Anfangszeit) {
                         calendarItem.startDate = utils.parseSharePointDate(value.Anfangszeit);
@@ -115,7 +118,10 @@ var CalendarModel = {
         //remove images
         $body.find('img').remove();
 
-        return $body.html();
+        return {
+            bodyFormatted : $body.html(),
+            bodyFormattedSearch: $body.text()
+        };
     },
 
     searchCalendar: function(key){

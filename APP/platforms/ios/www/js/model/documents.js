@@ -20,7 +20,7 @@ var Documents = persistence.define('Documents', {
 });
 
 Documents.index(['documentId'], { unique: true });
-
+Documents.textIndex('documentname');
 
 //Documenttypes
 var Documenttypes = persistence.define('Documenttypes', {
@@ -75,6 +75,9 @@ var documentsModel = {
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
+
+        //clear search index. its rebuild completly everytime items get added. we did not yet find a way to rebuild it partly
+        utils.emptySearchIndex("Documents");
 
         //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to them on Sharepoint
         var lookupIDsSharePoint = {};
@@ -180,8 +183,16 @@ var documentsModel = {
                     if (data.localModifiedDate) {
                     if (data.localModifiedDate === data.spModifiedDate)
                     {
-                    alert("skip");
+                        console.debug("skipped " + data.documentname);
                 queueProgress.qSuccess++;
+
+                //trigger event, as if downloaded 
+                   queueProgress.qIndex = index + 1;
+                 if (queueProgress.qIndex === queueProgress.qLength) {
+                                    $('body').trigger('download-queue-ended', queueProgress);
+                                } else {
+                                    $('body').trigger('download-queue-progress', queueProgress);
+                                }
                      return true; //skip
                    }
                    
@@ -191,7 +202,8 @@ var documentsModel = {
                         .done(
                             function (entrie) {
                                 queueProgress.qSuccess++;
-                                results[index].localPath(entrie.fullPath);
+                              //   results[index].localPath(entrie.fullPath);
+                                results[index].localPath(entrie.name);
                                
                                 //overwrite sync date with status of last sp modified date
                                 //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the Document list.
@@ -199,14 +211,12 @@ var documentsModel = {
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
                                 try
                                 {
-                                    results[index]._data.localModifiedDate(results[index]._data.spModifiedDate);
+                                    results[index].localModifiedDate(results[index]._data.spModifiedDate);
                                  //        console.debug("modified date");
-                                //alert(results[index].localModifiedDate);
-                                //alert(results[index].spModifiedDate);
-                            
-                                }
+                                                           }
                               catch (e)
                               {
+                                console.debug(e);
                               alert("Error overwriting modified date");
                               }
                              
@@ -239,5 +249,15 @@ var documentsModel = {
                 });
             }
         });
-    }
+    },
+
+    searchDocuments: function (key) {
+    var DocumentsSearch = $.Deferred();
+       Documents.search(key).list(function (res) {
+                DocumentsSearch.resolve(res);
+    });
+
+    return DocumentsSearch.promise();
+}
+
 };
