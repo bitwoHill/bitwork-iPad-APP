@@ -1526,8 +1526,7 @@ persistence.get = function(arg1, arg2) {
         return propValue >= value;
         break;
       case 'like':
-        alert("like");
-        return ((propValue + "").indexOf(value)) > -1;
+              return ((propValue + "").indexOf(value)) > -1;
         break;
       case 'in':
         return arrayContains(value, propValue);
