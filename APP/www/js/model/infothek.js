@@ -28,6 +28,10 @@ var InfothekModel = {
         var spData = data.d || false;
         //   Infothek.all().destroyAll(function (ele) {  // cant delete the whole list because of local path
 
+        //clear search index. its rebuild completly everytime items get added. we did not yet find a way to rebuild it partly
+        utils.emptySearchIndex("Infothek");
+
+
         //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to them on Sharepoint
         var lookupIDsSharePoint = {};
         for (var i = 0, len = spData.results.length; i < len; i++) {
@@ -147,7 +151,7 @@ var InfothekModel = {
 
                         if (data.localModifiedDate) {
                             if (data.localModifiedDate === data.spModifiedDate) {
-                                alert("skip");
+                                alert("skiped " + data.fileName);
                                 queueProgress.qSuccess++;
                                 return true; //skip
                             }

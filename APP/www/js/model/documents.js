@@ -76,6 +76,9 @@ var documentsModel = {
     mapSharePointData: function (data) {
         var spData = data.d;
 
+        //clear search index. its rebuild completly everytime items get added. we did not yet find a way to rebuild it partly
+        utils.emptySearchIndex("Documents");
+
         //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to them on Sharepoint
         var lookupIDsSharePoint = {};
         for (var i = 0, len = spData.results.length; i < len; i++) {
@@ -180,7 +183,7 @@ var documentsModel = {
                     if (data.localModifiedDate) {
                     if (data.localModifiedDate === data.spModifiedDate)
                     {
-                    alert("skip");
+                        alert("skiped " + data.fileName);
                 queueProgress.qSuccess++;
                      return true; //skip
                    }
@@ -191,6 +194,7 @@ var documentsModel = {
                         .done(
                             function (entrie) {
                                 queueProgress.qSuccess++;
+                                console.debug(entrie);
                                 results[index].localPath(entrie.fullPath);
                                
                                 //overwrite sync date with status of last sp modified date
@@ -201,10 +205,7 @@ var documentsModel = {
                                 {
                                     results[index]._data.localModifiedDate(results[index]._data.spModifiedDate);
                                  //        console.debug("modified date");
-                                //alert(results[index].localModifiedDate);
-                                //alert(results[index].spModifiedDate);
-                            
-                                }
+                                                           }
                               catch (e)
                               {
                               alert("Error overwriting modified date");
@@ -243,8 +244,8 @@ var documentsModel = {
 
     searchDocuments: function (key) {
     var DocumentsSearch = $.Deferred();
-    Documents.search(key).list(function (res) {
-        DocumentsSearch.resolve(res);
+       Documents.search(key).list(function (res) {
+                DocumentsSearch.resolve(res);
     });
 
     return DocumentsSearch.promise();
