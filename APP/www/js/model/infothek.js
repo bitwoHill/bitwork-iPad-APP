@@ -149,11 +149,25 @@ var InfothekModel = {
                         //alert(data.spModifiedDate);
 
                         if (data.localModifiedDate) {
-                            if (data.localModifiedDate === data.spModifiedDate) {
-                                alert("skiped " + data.fileName);
+                            console.debug("local" + data.localModifiedDate);
+                              console.debug("local" + data.spModifiedDate);
+                            if (data.localModifiedDate == data.spModifiedDate) {
+                              //  alert("skiped " + data.title);
                                 queueProgress.qSuccess++;
-                                return true; //skip
+
+                                     //trigger event, as if downloaded 
+                  queueProgress.qIndex = index + 1;
+                                if (queueProgress.qIndex === queueProgress.qLength) {
+                                    $('body').trigger('download-queue-ended', queueProgress);
+                                } else {
+                                    $('body').trigger('download-queue-progress', queueProgress);
+                                }
+                                return true; //skip download
                             }
+                        }
+                        else
+                        {
+                            console.debug("starte download");
                         }
 
 
@@ -161,12 +175,14 @@ var InfothekModel = {
                             .done(
                             function (entrie) {
                                 queueProgress.qSuccess++;
-                                results[index].localPath(entrie.fullPath);
+                                //  console.debug(entrie);
+                             //   results[index].localPath(entrie.fullPath);
+                                results[index].localPath(entrie.name);
                                 //overwrite sync date with status of last sp modified date
                                 //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the infothek list.
                                 //Hence the SP File could be newer and the local database would still have the old modified date. 
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
-                                results[index].localModifiedDate(results[index].spModifiedDate);
+                                    results[index].localModifiedDate(results[index]._data.spModifiedDate);
                                 //console.log("cnt:" + index);
                                 persistence.flush();
                             }

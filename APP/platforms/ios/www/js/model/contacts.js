@@ -94,6 +94,8 @@ var ContactsModel = {
     mapSharePointData: function (data) {
         var spData = data.d;
         Contacts.all().destroyAll(function (ele) {
+            utils.emptySearchIndex("Contacts");
+
             if (spData && spData.results.length) {
                 var dataLength = spData.results.length,
                     index = 0,

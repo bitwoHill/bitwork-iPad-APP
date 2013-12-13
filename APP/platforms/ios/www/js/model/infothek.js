@@ -13,7 +13,6 @@ var Infothek = persistence.define('Infothek', {
 });
 
 Infothek.index('nodeId', { unique: true });
-Infothek.textIndex('title');
 
 var InfothekModel = {
 
@@ -28,6 +27,10 @@ var InfothekModel = {
         var spData = data.d || false;
         //   Infothek.all().destroyAll(function (ele) {  // cant delete the whole list because of local path
 
+        //clear search index. its rebuild completly everytime items get added. we did not yet find a way to rebuild it partly
+        utils.emptySearchIndex("Infothek");
+
+
         //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to them on Sharepoint
         var lookupIDsSharePoint = {};
         for (var i = 0, len = spData.results.length; i < len; i++) {
@@ -41,7 +44,7 @@ var InfothekModel = {
                 $.each(results, function (index, value) {
                     //check if an object with the current ID exists. If Not delete it
                     if (!lookupIDsSharePoint[value._data.nodeId]) {
-                        console.debug("lokales element wurde nicht mehr gefunden: ");
+                        console.debug("lokales element wurde nicht mehr gefunden und wird gelöscht: ");
                         console.debug(value);
 
                         // delete local file from filesystem
@@ -51,6 +54,8 @@ var InfothekModel = {
 
                             function onSuccess(fileEntry) {
                                 fileEntry.remove();
+                                console.debug("deleted element");
+
                             }
 
                             function onError() {
@@ -69,13 +74,14 @@ var InfothekModel = {
             }
         });
 
-
+        console.debug("Cleaned local files");
 
         //upate db to reflect the deleted items
         persistence.flush(
                 function () {
 
                     if (spData && spData.results.length) {
+                        //add new elements
                         $.each(spData.results, function (index, value) {
                             var newItem = {
                                 nodeId: value.ID,
@@ -96,20 +102,7 @@ var InfothekModel = {
                                 if (value.Geändert) {
                                     newItem.spModifiedDate = utils.parseSharePointDate(value.Geändert);
                                 }
-                                //TODO: replace with file upload
-                                /*InfothekModel.downloadInfothekFile(newItem, index, spData.results.length, function(infothekItem, pos, length){
-                                    persistence.add(new Infothek(infothekItem));
-            
-                                    persistence.flush(
-                                        function(){
-                                            if( pos+1 === length ){
-                                                SyncModel.addSync(INFOTHEK_LIST);
-                                                $('body').trigger('sync-end');
-                                                $('body').trigger('infothek-sync-ready');
-                                            }
-                                        }
-                                    );
-                                });*/
+                              
                             }
 
                             persistence.add(new Infothek(newItem));
@@ -147,20 +140,34 @@ var InfothekModel = {
                                 path: data.path
                             };
 
-                        console.debug(results);
-                        console.debug(results[1]);
-                        console.debug(results[1]._data.localModifiedDate);
+                        //console.debug(results);
+                        //console.debug(results[1]);
+                        //console.debug(results[1]._data.localModifiedDate);
 
                         //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
-                        alert(data.localModifiedDate);
-                        alert(data.spModifiedDate);
+                        //alert(data.localModifiedDate);
+                        //alert(data.spModifiedDate);
 
                         if (data.localModifiedDate) {
-                            if (data.localModifiedDate === data.spModifiedDate) {
-                                alert("skip");
+                            console.debug("local" + data.localModifiedDate);
+                              console.debug("local" + data.spModifiedDate);
+                            if (data.localModifiedDate == data.spModifiedDate) {
+                              //  alert("skiped " + data.title);
                                 queueProgress.qSuccess++;
-                                return true; //skip
+
+                                     //trigger event, as if downloaded 
+                  queueProgress.qIndex = index + 1;
+                                if (queueProgress.qIndex === queueProgress.qLength) {
+                                    $('body').trigger('download-queue-ended', queueProgress);
+                                } else {
+                                    $('body').trigger('download-queue-progress', queueProgress);
+                                }
+                                return true; //skip download
                             }
+                        }
+                        else
+                        {
+                            console.debug("starte download");
                         }
 
 
@@ -168,12 +175,14 @@ var InfothekModel = {
                             .done(
                             function (entrie) {
                                 queueProgress.qSuccess++;
-                                results[index].localPath(entrie.fullPath);
+                                //  console.debug(entrie);
+                             //   results[index].localPath(entrie.fullPath);
+                                results[index].localPath(entrie.name);
                                 //overwrite sync date with status of last sp modified date
                                 //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the infothek list.
                                 //Hence the SP File could be newer and the local database would still have the old modified date. 
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
-                                results[index].localModifiedDate(results[index].spModifiedDate);
+                                    results[index].localModifiedDate(results[index]._data.spModifiedDate);
                                 //console.log("cnt:" + index);
                                 persistence.flush();
                             }
@@ -205,17 +214,12 @@ var InfothekModel = {
             });
     },
 
-    downloadInfothekFile: function (infothekItem, index, length, callback) {
-        //TODO: use download mechanism to save file in device storage
-        //Download mechanism should update infothekItem.path after upload.
-
-        //after download done use callback
-        callback(infothekItem, index, length);
-    },
-
     searchInfothek: function (key) {
+
         var infothekSearch = $.Deferred();
-        Infothek.search(key).list(function (res) {
+        key = "%" + key.replace("*", "") + "%";
+
+        Infothek.all().filter("title", "LIKE", key).list(function (res) {
             infothekSearch.resolve(res);
         });
 

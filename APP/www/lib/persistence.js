@@ -1505,7 +1505,7 @@ persistence.get = function(arg1, arg2) {
           propValue = Math.round(propValue.getTime() / 1000) * 1000; // Deal with precision
         }
       }
-
+        console.log(this.operator);
       switch (this.operator) {
       case '=':
         return propValue === value;

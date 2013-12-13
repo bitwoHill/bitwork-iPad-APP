@@ -30,17 +30,13 @@ var LoginUI = {
     enableForm : function($form){
         $('input, button', $form).removeAttr('disabled');
   
-    }
-};
+    },
 
-(function($){
-
-    $(document).ready(function(){
-        var $loginForm = $(LOGIN_FORM_ID);
-        //alert(window.location.pathname);
-        try //try to get the last sucessful logged in user
+    fillInLastSuccessfulUsername : function() {
+ try //try to get the last sucessful logged in user
         {
                         Users.all().limit(1).order('lastLoginDate', false).list(null, function (results) {
+                            console.debug(results);
                 if (results.length) {
                     $.each(results, function (index, value) {
                         var data = value._data;
@@ -53,8 +49,20 @@ var LoginUI = {
         }
         catch (e)
         {
-
+console.debug(e);
         }
+       
+        
+    }
+};
+
+(function($){
+ //Display news when sync is ready
+    $('body').on('db-schema-ready', LoginUI.fillInLastSuccessfulUsername);
+
+    $(document).ready(function(){
+        var $loginForm = $(LOGIN_FORM_ID);
+        //alert(window.location.pathname);
        
         $('body').on('login-failed', function(){
             $('#login-failed-msg', $loginForm).show(200);

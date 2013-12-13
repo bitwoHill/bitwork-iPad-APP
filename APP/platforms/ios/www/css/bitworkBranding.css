@@ -6,7 +6,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: rgb(76, 76, 76); /* Old browsers */
+    background: #4c4c4c; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* FF3.6+ */
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(76, 76, 76, 1)), color-stop(100%, rgba(19, 19, 19, 1))); /* Chrome,Safari4+ */
     background: -webkit-radial-gradient(center, ellipse cover, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* Chrome10+,Safari5.1+ */
@@ -46,6 +46,13 @@ h4 {
 h4.modal-title {
     color: #333;
     text-shadow: 1px 1px 0 #efefef;
+}
+
+mark {
+    color: #4c4c4c;
+    text-shadow: 1px 0 1px rgba(0,0,0,0.1);
+    background: #efefef;
+    background: rgba(0,0,0,0.1);
 }
 
 .modal .alert {
@@ -339,4 +346,14 @@ h3.result-item-title {
     font-size: 14px;
     color: #a2a2a2;
     margin-right: 10px;
+}
+
+.progress-bar {
+    background-color: #545454;
+}
+
+.alert-info {
+    color: #545454;
+    background-color: #EAEAEA;
+    border-color: #DFDFDF;
 }

@@ -1,4 +1,63 @@
+var DownloadModel = {};
+
 (function($) {
+    DownloadModel.deleteAllFolders = function(){
+        var def = $.Deferred(),
+            removeDir1 = DownloadModel.removeDir("Dokumente"),
+            removeDir2 = DownloadModel.removeDir("Infothek");
+
+        $.when(removeDir1, removeDir2)
+            .done(
+                function(rem1, rem2){
+                    def.resolve()
+                }
+            ).fail(
+                function(rem1, rem2){
+                    def.reject();
+                }
+            );
+
+        return def.promise();
+    };
+
+    DownloadModel.removeDir = function(dirName) {
+        var root,
+            def = $.Deferred();
+
+        try{
+            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                function(fileSystem) {
+                    root = fileSystem.root;
+                },
+                function() {
+                    def.reject();
+                }
+            );
+        } catch (err) {
+            def.reject();
+        }
+
+        var remove_dir = function(entry) {
+            entry.removeRecursively(
+                function(parent) {
+                    def.resolve(parent);
+                },
+                function(err) {
+                    def.reject(err);
+                }
+            );
+        };
+
+        // retrieve a file and truncate it
+        root.getDirectory(dirName, {create: false}, remove_dir, onFileSystemError);
+
+        return def.promise();
+    };
+
+
+
     var downloadsQueue = $({});
 
     $.downloadQueue = function(data){

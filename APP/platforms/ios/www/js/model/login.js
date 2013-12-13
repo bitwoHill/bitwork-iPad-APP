@@ -102,11 +102,17 @@ var User = function(){
                 loginAttempts = (loginAttemptsCookie)? loginAttemptsCookie+1 : 1;
 
             if(loginAttempts === Settings.loginFailedAttempts){
-                //reset DB
-                persistence.reset(function(){
-                    alert(i18n.strings["db-reset"]);
-                    setLoginCounter(0);
-                })
+                //try to delete all files and folder
+                DownloadModel.deleteAllFolders().always(
+                    function(){
+                        //reset DB
+                        persistence.reset(function(){
+                            alert(i18n.strings["db-reset"]);
+                            setLoginCounter(0);
+                        });
+                    }
+                )
+
             } else {
                 setLoginCounter(loginAttempts);
             }
@@ -135,8 +141,8 @@ var User = function(){
 
                 var tmp = Base64.decode(authCookie);
                 tmp = tmp.split(":");
-                this.username = tmp[0],
-                this.password = tmp[1]
+                this.username = tmp[0];
+                this.password = tmp[1];
             } else {
                
 

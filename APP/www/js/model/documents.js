@@ -177,21 +177,36 @@ var documentsModel = {
                     //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
                  
                     if (data.localModifiedDate) {
-                    if (data.localModifiedDate === data.spModifiedDate)
+                                  console.debug("local" + data.localModifiedDate);
+                              console.debug("local" + data.spModifiedDate);
+                    if (data.localModifiedDate == data.spModifiedDate)
                     {
-                        alert("skiped " + data.fileName);
+
+                        console.debug("skipped " + data.documentname);
                 queueProgress.qSuccess++;
+
+                //trigger event, as if downloaded 
+                   queueProgress.qIndex = index + 1;
+                 if (queueProgress.qIndex === queueProgress.qLength) {
+                                    $('body').trigger('download-queue-ended', queueProgress);
+                                } else {
+                                    $('body').trigger('download-queue-progress', queueProgress);
+                                }
                      return true; //skip
                    }
                    
                     }
+                       else
+                        {
+                            console.debug("starte download");
+                        }
                       //end if download necessary
                         $.downloadQueue(downloadData)
                         .done(
                             function (entrie) {
                                 queueProgress.qSuccess++;
-                                console.debug(entrie);
-                                results[index].localPath(entrie.fullPath);
+                              //   results[index].localPath(entrie.fullPath);
+                                results[index].localPath(entrie.name);
                                
                                 //overwrite sync date with status of last sp modified date
                                 //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the Document list.
@@ -199,11 +214,12 @@ var documentsModel = {
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
                                 try
                                 {
-                                    results[index]._data.localModifiedDate(results[index]._data.spModifiedDate);
+                                    results[index].localModifiedDate(results[index]._data.spModifiedDate);
                                  //        console.debug("modified date");
                                                            }
                               catch (e)
                               {
+                                console.debug(e);
                               alert("Error overwriting modified date");
                               }
                              

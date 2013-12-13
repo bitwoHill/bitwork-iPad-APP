@@ -103,10 +103,10 @@ var i18n = {
         "contacts-add-phone": "zum Telefonbuch hinzufügen",
 
         //Downloads
-        "downloads-title": "Downloads",
+        "downloads-title": "Daten Synchronisieren & Downloads",
         "label-download": "Download",
         "label-close": "Schliessen",
-        "label-download-progress": "Download Vorgang",
+        "label-download-progress": "Download Vorgang - Bitte schliessen Sie die App nicht",
         "label-aboard-download": "Download abbrechen",
         "label-download-compleated": "Download abgeschlossen",
         "label-download-success": "Datei(en) heruntergeladen.",
