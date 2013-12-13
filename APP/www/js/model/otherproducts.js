@@ -28,30 +28,32 @@ var otherproductsModel = {
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
-        OtherProducts.all().destroyAll(function (ele) { 
-        if (spData && spData.results.length) {
-            $.each(spData.results, function (index, value) {
+        OtherProducts.all().destroyAll(function (ele) {
+            utils.emptySearchIndex("OtherProducts");
+
+            if (spData && spData.results.length) {
+                $.each(spData.results, function (index, value) {
 
 
-                var otherproductsItem = {
-                    otherProductId: value.ID,
-                    productDescription: (value.ProduktbezeichnungSonstige) ? value.ProduktbezeichnungSonstige : "",
-                    pieceNumber: (value.Teilenummer) ? value.Teilenummer : "",
-                    price: (value.Listenpreis) ? value.Listenpreis : "",
-                    productFK: (value.ProduktId) ? value.ProduktId : -1
-                };
-             
-                persistence.add(new OtherProducts(otherproductsItem));
-            });
+                    var otherproductsItem = {
+                        otherProductId: value.ID,
+                        productDescription: (value.ProduktbezeichnungSonstige) ? value.ProduktbezeichnungSonstige : "",
+                        pieceNumber: (value.Teilenummer) ? value.Teilenummer : "",
+                        price: (value.Listenpreis) ? value.Listenpreis : "",
+                        productFK: (value.ProduktId) ? value.ProduktId : -1
+                    };
 
-            persistence.flush(
-                function () {
-                    SyncModel.addSync(OTHERPRODUCTS_LIST);
-                    $('body').trigger('sync-end');
-                    $('body').trigger('otherproducts-sync-ready');
-                }
-            );
-        }
+                    persistence.add(new OtherProducts(otherproductsItem));
+                });
+
+                persistence.flush(
+                    function () {
+                        SyncModel.addSync(OTHERPRODUCTS_LIST);
+                        $('body').trigger('sync-end');
+                        $('body').trigger('otherproducts-sync-ready');
+                    }
+                );
+            }
         });
     },
 

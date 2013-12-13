@@ -35,6 +35,8 @@ var equipmentproductsModel = {
         //data.d comes from sharepoint
         var spData = data.d;
         EquipmentProducts.all().destroyAll(function (ele) {
+            utils.emptySearchIndex("EquipmentProducts");
+
             if (spData && spData.results.length) {
                 $.each(spData.results, function (index, value) {
 

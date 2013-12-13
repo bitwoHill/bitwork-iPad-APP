@@ -152,7 +152,12 @@ var SearchUI = {
     },
 
     doSearch: function () {
-        var key = utils.getUrlParameter("search");
+        var key = utils.getUrlParameter("search"),
+            tmp = (key && key.indexOf("*") === -1)? key.split(" ") : "";
+
+        if(tmp.length == 1){
+            key = key + "*";
+        }
 
         if (key && key !== "") {
             var newsSearch = NewsModel.searchNews(key);
