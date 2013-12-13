@@ -7,7 +7,7 @@ var SearchUI = {
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
-        $('.result-item-title', $newItem).html(data.title);
+        $('.result-item-title', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
         $('.result-item-text', $newItem).html(utils.dateFormat(new Date(data.createdDate), "d.m.y, H:M"));
 
         return $newItem.removeClass('hidden');
@@ -19,7 +19,7 @@ var SearchUI = {
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
-        $('.result-item-title', $newItem).html(data.title);
+        $('.result-item-title', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
         $('.result-item-text', $newItem).html(utils.dateFormat(new Date(data.startDate), "l, d F y, H:M"));
 
         return $newItem.removeClass('hidden');
@@ -53,7 +53,7 @@ var SearchUI = {
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
-        $('.result-item-title-text', $newItem).html(data.title);
+        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
 
         if (data.isFolder) {
             $('.result-item-title > span.fa', $newItem).addClass("fa-folder");
@@ -65,12 +65,13 @@ var SearchUI = {
     },
     createEquipmentproductItem: function (template, data) {
         var $newItem = template.clone(),
-            link = $newItem.attr('href') + data.pieceNumber;
+            link = $newItem.attr('href') + data.pieceNumber,
+            searchKey = utils.getUrlParameter("search");
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
-        $('.result-item-title-text', $newItem).html(data.productDescription);
-        $('.result-item-text', $newItem).html(data.pieceNumber);
+        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.productDescription, searchKey));
+        $('.result-item-text', $newItem).html(SearchUI.highlightSearchKey(data.pieceNumber, searchKey));
 
         return $newItem.removeClass('hidden');
     },
@@ -80,11 +81,11 @@ var SearchUI = {
         //generate hyperlink to local path
         if (data.localPath) {
             link = $newItem.click(function () { window.open(data.localPath, '_blank', 'location=yes'); });
-            $('.result-item-title-text', $newItem).html(data.documentname);
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")));
         }
         else {
             link = $newItem.attr('href');
-            $('.result-item-title-text', $newItem).html(data.documentname + " - Keine lokale Version gefunden");
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
         }
 
         $newItem.removeAttr('id');
@@ -92,6 +93,16 @@ var SearchUI = {
 
 
         return $newItem.removeClass('hidden');
+    },
+
+    highlightSearchKey: function(text, term){
+        term = term.replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
+        var pattern = new RegExp("("+term+")", "i");
+
+        text = text.replace(pattern, "<mark>$1</mark>");
+        text = text.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/,"$1</mark>$2<mark>$4");
+
+        return text;
     },
 
 
@@ -141,6 +152,7 @@ var SearchUI = {
                         default:
                             $newItem = SearchUI.createNewsItem($resultItemTemplate, data);
                     }
+
 
                     $resultsContainer.append($newItem);
                 });

@@ -16,12 +16,6 @@ var EquipmentProducts = persistence.define('EquipmentProducts', {
 });
 
 EquipmentProducts.index(['equipmentId', 'piecenumber'], { unique: true });
-//search indexed fields
-EquipmentProducts.textIndex('productDescription');
-EquipmentProducts.textIndex('pieceNumber');
-
-
-
 
 //create mock data for equipment products
 var equipmentproductsModel = {
@@ -71,7 +65,9 @@ var equipmentproductsModel = {
 
     searchEquipmentproduct: function (key) {
         var equipmentproductSearch = $.Deferred();
-        EquipmentProducts.search(key).list(function (res) {
+        key = "%" + key.replace("*", "") + "%";
+
+        EquipmentProducts.all().filter("productDescription", "like", key).or(new persistence.PropertyFilter("pieceNumber", "LIKE", key)).list(function (res) {
             equipmentproductSearch.resolve(res);
         });
 

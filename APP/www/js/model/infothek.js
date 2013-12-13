@@ -13,7 +13,6 @@ var Infothek = persistence.define('Infothek', {
 });
 
 Infothek.index('nodeId', { unique: true });
-Infothek.textIndex('title');
 
 var InfothekModel = {
 
@@ -200,8 +199,11 @@ var InfothekModel = {
     },
 
     searchInfothek: function (key) {
+
         var infothekSearch = $.Deferred();
-        Infothek.search(key).list(function (res) {
+        key = "%" + key.replace("*", "") + "%";
+
+        Infothek.all().filter("title", "LIKE", key).list(function (res) {
             infothekSearch.resolve(res);
         });
 
