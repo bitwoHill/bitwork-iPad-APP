@@ -37,7 +37,7 @@ var i18n = {
         "ort": "Ort",
         "anfangszeit": "Anfangszeit",
         "endzeit": "Endzeit",
-        "calendar-add-phone": "Zum Telefonkalender hinzufügen",
+        "calendar-add-phone": "Zum Kalender hinzufügen",
         "empty-calendar": "Es wurden noch keine Kalender-Events geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Kalender-Events zu laden.",
         "add-calendar-entry": "Es wird ein Ereignis zum Kalender hinzugefügt",
         //News
@@ -63,7 +63,7 @@ var i18n = {
         "volumenstrom": "Volumenstrom",
         "druck": "Druck",
         "antriebsleistung": "Antriebsleistung",
-        "empty-mpl": "Es wurden noch keine Optionen und Dokumente geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Optionen und Dokumente zu laden.  <br> <br> Wichtig: Produkt Dokumente können über die Schaltfläche 'Dokument Downloads' in der Menüleiste heruntergeladen werden.",
+        "empty-mpl": "Es wurden noch keine Optionen und Dokumente geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Optionen und Dokumente zu laden.  <br> <br> Wichtig: Produkt Dokumente können über die Schaltfläche 'Alle Daten synchronisieren' in der Menüleiste heruntergeladen werden.",
         "last-sync-mpl": "Letzte Stammdaten Synchronisierung",
 
         //MPL Documents
@@ -93,7 +93,7 @@ var i18n = {
 
         //InfoThek
         "infothek": "Infothek",
-        "empty-infothek": "Es wurden noch keine Infothekdaten geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Infothekdaten zu laden. <br> <br> Wichtig: Infothek Dokumente können über die Schaltfläche 'Dokument Downloads' in der Menüleiste heruntergeladen werden.",
+        "empty-infothek": "Es wurden noch keine Infothekdaten geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Infothekdaten zu laden. <br> <br> Wichtig: Infothek Dokumente können über die Schaltfläche 'Alle Daten synchronisieren' in der Menüleiste heruntergeladen werden.",
         "last-sync-infothek": "Letzte Infothek Synchronisierung",
 
         //Contacts

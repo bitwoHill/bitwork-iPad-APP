@@ -19,7 +19,7 @@ var ContactsUI = {
 
         if($container.length && $templateFolder.length && $templatePerson.length){
             ContactsUI.resetContactTree();
-            Contacts.all().filter("parentFolder", "=", CONTACTS_ROOT_FOLDER).order('isFolder', false).order('name', true).list(null, function(results){
+            Contacts.all().filter("parentFolder", "=", CONTACTS_ROOT_FOLDER).order('isFolder', true).order('name', true).list(null, function(results){
                 if(results.length){
                     $(CONTACTS_EMPTY_CONTAINER).addClass('hidden');
                     $.each(results, function(index, value){
