@@ -1,6 +1,16 @@
 var equipmentproducts_CONTAINER = "#equipmentproducts-items-container",
 MPL_EMPTY_CONTAINER = "#mpl-empty-container",
     localFileSystemRoot;
+
+    var documents_CONTAINER = "#document-items-container",
+    tree_nav_CONTAINER = "#document-tree-nav-container",
+    documents_DOCUMENT_TEMPLATE = "#document-document-item-template",
+    documents_FOLDER_TEMPLATE = "#document-folder-item-template";
+
+    var productoptions_CONTAINER = "#productoptions-items-container",
+    productoptions_ITEM_CHILD_Container = "#productoptions-item-child-container",
+    productoptions_ITEM_TEMPLATE = "#productoptions-item-template";
+
 //MPLstammdaten.js combines the data from equipmentproducts, otherprodcuts, documents, documenttypes and product options for mplstammdaten.html
 
 //create mock data for equipment products
@@ -40,7 +50,7 @@ var equipmentproductsUI = {
                     if (results.length) { //if not check other products
                         $.each(results, function (index, value) {
                             //check products with product FK
-                            console.debug(value);
+                           // console.debug(value);
                             neededProductFK = value._data.productFK;
                             neededEquipmentProductID = value._data.equipmentId;
 
@@ -208,9 +218,7 @@ $('body').on('equipmentproducts-sync-ready otherproducts-sync-ready db-schema-re
 
 
 //this part is about the options
-var productoptions_CONTAINER = "#productoptions-items-container",
-    productoptions_ITEM_CHILD_Container = "#productoptions-item-child-container",
-    productoptions_ITEM_TEMPLATE = "#productoptions-item-template";
+
 
 var productoptionsUI = {
     resetOptions: function () {
@@ -282,10 +290,6 @@ $('body').on('productoptions-sync-ready db-schema-ready', productoptionsUI.displ
 
 //this part is about the documents
 
-var documents_CONTAINER = "#document-items-container",
-    tree_nav_CONTAINER = "#document-tree-nav-container",
-    documents_DOCUMENT_TEMPLATE = "#document-document-item-template",
-    documents_FOLDER_TEMPLATE = "#document-folder-item-template";
 
 
 //displaydata for options in MPL
@@ -304,9 +308,11 @@ var DocumentsUI = {
             DocumentsUI.resetDocuments();
             //get filesystem object to get current app folder. the GUID changes after reinstall or update of app
             try {
+                console.log("try opening filesystem");
                 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
                 //  window.requestFileSystem(window.PERSISTENT, 4096 * 1024 * 1024, initFS, errorHandler);
                 window.requestFileSystem(window.PERSISTENT, 0, initFS, errorHandler);
+                console.log("sucess fs");
 
             } catch (err) {
                 console.debug(err);
@@ -314,7 +320,7 @@ var DocumentsUI = {
 
             function initFS(fs) {
 
-
+console.log("opened filesystem");
                 //load documents by current url parameter / andhand von aktueller ID laden
 
                 var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
@@ -340,7 +346,7 @@ var DocumentsUI = {
                         .list(null, function (results2) {
                             if (results2.length) {
                                 //get all types in found documents
-
+console.log("found documents");
                                 $.each(results2, function (index, value) {
                                     var data = value._data;
 

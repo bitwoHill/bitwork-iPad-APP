@@ -1,4 +1,70 @@
 var utils = {
+
+     addDots: function(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(d+)(d{3})/;
+    
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + '.' + '$2');
+    }
+    alert(x1+x2);
+    return x1 + x2;
+},
+ number_format:function (number, decimals, dec_point, thousands_sep) {
+number = (number + '').replace(/[^0-9+-Ee.]/g, '');
+var n = !isFinite(+number) ? 0 : +number,
+prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+s = '',
+toFixedFix = function (n, prec) {
+var k = Math.pow(10, prec);
+return '' + Math.round(n * k) / k;
+};
+// Fix for IE parseFloat(0.55).toFixed(0) = 0;
+s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+if (s[0].length > 3) {
+s[0] = s[0].replace(/B(?=(?:d{3})+(?!d))/g, sep);
+}
+if ((s[1] || '').length < prec) {
+s[1] = s[1] || '';
+s[1] += new Array(prec - s[1].length + 1).join('0');
+}
+return s.join(dec);
+},
+     CommaFormatted: function(amount) {
+        var delimiter = "."; // replace comma if desired
+        amount = new String(amount);
+        var a = amount.split('.',2)
+        var d = a[1];
+        var i = parseInt(a[0]);
+        if(isNaN(i)) { return ''; }
+        var minus = '';
+        if(i < 0) { minus = '-'; }
+        i = Math.abs(i);
+        var n = new String(i);
+        var a = [];
+        while(n.length > 3)
+        {
+            var nn = n.substr(n.length-3);
+            a.unshift(nn);
+            n = n.substr(0,n.length-3);
+        }
+        if(n.length > 0) { a.unshift(n); }
+        n = a.join(delimiter);
+        if(d.length < 1) { amount = n; }
+        else { amount = n + '.' + d; }
+        amount = minus + amount;
+        return amount;
+    },
+    /**
+    *    Usage:     CommaFormatted(12345678);
+    *    result:    12,345,678
+    **/
+
     getBase64FromImage: function(img, extension) {
         var canvas = document.createElement("canvas"),
             base64Image = img.src;

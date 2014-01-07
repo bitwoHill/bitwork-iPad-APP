@@ -44,6 +44,7 @@
 		D596504A21D841BEA68F931D /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8168FA20B34EAD9019A256 /* CDVConnection.m */; };
 		759154D91AA342618AAB3916 /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EC81B35C684B679C9289B6 /* CDVReachability.m */; };
 		FF51B6AAD5814192B2775E5A /* SystemConfiguration.framework in Resources */ = {isa = PBXBuildFile; fileRef = 1683725D505C44CA8719EAF1 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BE9F93A618F0421CBADBC0B7 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D14639B2FDE147AE9C449885 /* CDVLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,8 @@
 		54A85CBBD1D7462B80B31202 /* CDVConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVConnection.h"; path = "org.apache.cordova.network-information/CDVConnection.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		4F796EC47CD94D86A2F79B34 /* CDVReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVReachability.h"; path = "org.apache.cordova.network-information/CDVReachability.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		1683725D505C44CA8719EAF1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		D14639B2FDE147AE9C449885 /* CDVLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLogger.m"; path = "org.apache.cordova.console/CDVLogger.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		788E64D485D7401BB372708B /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +263,8 @@
 				58EC81B35C684B679C9289B6 /* CDVReachability.m */,
 				54A85CBBD1D7462B80B31202 /* CDVConnection.h */,
 				4F796EC47CD94D86A2F79B34 /* CDVReachability.h */,
+				D14639B2FDE147AE9C449885 /* CDVLogger.m */,
+				788E64D485D7401BB372708B /* CDVLogger.h */,
 			);
 			name = Plugins;
 			path = "Atlas Copco iPadApp/Plugins";
@@ -435,6 +440,7 @@
 				4C605C1DA3FF49398B1044C7 /* Calendar.m in Sources */,
 				D596504A21D841BEA68F931D /* CDVConnection.m in Sources */,
 				759154D91AA342618AAB3916 /* CDVReachability.m in Sources */,
+				BE9F93A618F0421CBADBC0B7 /* CDVLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

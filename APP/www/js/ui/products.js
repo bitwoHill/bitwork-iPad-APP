@@ -58,6 +58,20 @@ var ProductsUI = {
                                     //console.debug(ProduktPar);
                                     var data = value2._data;
                                     var $newItem = $template.clone();
+//formatting of price
+ var formattedPrice = parseFloat(parseFloat(data.price)).toFixed(2).toLocaleString() + ' €';
+  //var tmp1 = parseFloat(parseFloat(data.price)).toFixed(2).toLocaleString(); // parseFloat(parseFloat(data.price)).toFixed(0).toLocaleString();
+/* // console.debug(tmp1);
+                                    //parse price to decimal
+var formattedPrice;
+                                    //add 1000. dots for better readability
+var tmp2 = new String(utils.number_format(tmp1, 2, ".",",")) ;
+
+console.debug(tmp2);
+                                    //add Euro sign
+var formattedPrice = new String(tmp2 + " €");
+                                   */
+
                                     $newItem.removeAttr('id');
                                     $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar +
                                         "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" +
@@ -68,7 +82,7 @@ var ProductsUI = {
                                     $('.products-item-volume', $newItem).html(data.volume).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar +
                                         "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK +
                                         "&EquipmentProdukt=" + data.equipmentId);
-                                    $('.products-item-price', $newItem).html(parseFloat(parseFloat(data.price)).toFixed(2).toLocaleString() + ' €').attr("href", "MPLStammdaten.html?Produktgruppe=" +
+                                    $('.products-item-price', $newItem).html(formattedPrice).attr("href", "MPLStammdaten.html?Produktgruppe=" +
                                         ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK +
                                         "&EquipmentProdukt=" + data.equipmentId);
                                     $container.append($newItem.removeClass('hidden'));
@@ -143,13 +157,14 @@ var ProductsUI = {
 
 (function ($) {
     //Display productgroups when sync is ready
-    $('body').on('products-sync-ready db-schema-ready', ProductsUI.displayproducts);
+    $('body').on(' db-schema-ready otherproducts-sync-ready', ProductsUI.displayproducts);
 
     $(document).ready(function () {
         $('body').on('click', 'a.page-sync-btn', function () {
+            ProductsModel.sharePointProducts();
             equipmentproductsModel.sharePointEquipmentproducts();
             otherproductsModel.sharePointOtherproducts();
-            ProductsModel.sharePointProducts();
+            
         });
     });
 })(jQuery);

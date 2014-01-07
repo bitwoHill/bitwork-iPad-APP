@@ -44,10 +44,13 @@
     <feature name="NetworkStatus">
         <param name="ios-package" value="CDVConnection" />
     </feature>
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <feature name="Console">
+        <param name="ios-package" value="CDVLogger" />
+    </feature>
     <author email="hill@bitwork.net" href="http://cordova.io">
        bitwork GmbH
     </author>
     <content src="LoginPage.html" />
-    <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="true" />
 </widget>

@@ -88,6 +88,7 @@ var ContactsModel = {
             persistence.add(new Contacts(newItem));
             callback();
         }
+       
     },
 
     //maps SharePoint data to current model
