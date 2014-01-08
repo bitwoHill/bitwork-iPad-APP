@@ -59,7 +59,7 @@ var otherproductsModel = {
         key = key.replace(/ /g, '%'); //replace changes only first instance . thats why the global modifier "g" of a regular expression was used. find all whitepaces and change to %
 
 
-        OtherProducts.all().filter("productDescription", "LIKE", key).or(new persistence.PropertyFilter("pieceNumber", "LIKE", key)).list(function (res) {
+        OtherProducts.all().filter("productDescription", "LIKE", key).or(new persistence.PropertyFilter("pieceNumber", "LIKE", key)).order('productDescription', true, false).list(function (res) {
             otherproductSearch.resolve(res);
         });
 

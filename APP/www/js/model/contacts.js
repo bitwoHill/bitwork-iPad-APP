@@ -227,7 +227,7 @@ var ContactsModel = {
 
     searchContact: function (key) {
         var contactSearch = $.Deferred();
-        Contacts.search(key).list(function (res) {
+        Contacts.search(key).filter("isFolder", "=", false).list(function (res) {
             contactSearch.resolve(res);
         });
 

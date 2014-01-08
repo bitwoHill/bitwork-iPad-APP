@@ -32,9 +32,9 @@ var SearchUI = {
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
-        $('.result-item-title-text', $newItem).html(data.name + " " + data.forename);
+        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.name, utils.getUrlParameter("search")) + " " + SearchUI.highlightSearchKey(data.forename, utils.getUrlParameter("search")));
         if (data.jobFunction) {
-            $('.result-item-text', $newItem).html(data.jobFunction);
+            $('.result-item-text', $newItem).html(SearchUI.highlightSearchKey(data.jobFunction, utils.getUrlParameter("search")));
         } else {
             $('.result-item-text', $newItem).addClass('hidden');
         }
@@ -74,7 +74,7 @@ var SearchUI = {
                         console.log("could not create filesystem");
 
                         link = $newItem.attr('href');
-                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + "  <span class='label label-default'> Nicht Heruntergeladen</span>");
                     }
                 );
             }
@@ -86,7 +86,7 @@ var SearchUI = {
         }
         else {
             link = $newItem.attr('href');
-            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + "   <span class='label label-default'> Nicht Heruntergeladen</span>");
         }
 
         $newItem.removeAttr('id');
@@ -95,83 +95,6 @@ var SearchUI = {
 
         return $newItem.removeClass('hidden');
 
-
-
-
-        /*       //only show files
-        if (!data.isFolder) {
-                 
-                   var $newItem = template.clone(),
-                   link = $newItem.attr('href') + data.nodeId;
-       
-               $newItem.removeAttr('id');
-               $newItem.attr('href', link);
-               $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
-       
-              
-                   $('.result-item-title > span.fa', $newItem).addClass("fa-file-o");
-               
-               return $newItem.removeClass('hidden');
-       
-               } */
-
-
-
-        /*       
-                 var $newItem = template.clone(),
-                 link;
-     
-     
-      if (data.localPath) {
-         
-                  //create path to filesystem needed for infothek and documents
-                             var localFileSystemRootSearchJs;
-     
-                             try{
-                                 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-     
-                                 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
-                                     function(fileSystem) 
-                                     {
-                                         //created filesystem path. use it
-                                           localFileSystemRootSearchJs = fileSystem.root.fullPath;
-                                     //create hyperlink to local file 
-                                    // console.log(localFileSystemRootSearchJs + "/Infothek/" + data.localPath)   ;
-                        
-     
-                link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
-     $newItem.attr('href', link);
-                  
-                 $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
-                                       },
-                                     function() {
-                                          console.log("could not create filesystem");
-     
-                                                 $newItem.attr('href', "#");
-                 $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
-                                     }
-                                 );
-                                 }
-     
-                                 catch (err) {
-                                console.log(err);
-                                 }
-     
-             }
-             else {
-               
-                 $newItem.attr('href', "#");
-                 $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
-             }
-     
-     
-             $newItem.removeAttr('id');
-           
-             
-             $('.result-item-title > span.fa', $newItem).addClass("fa-file-o");
-             
-             return $newItem.removeClass('hidden');
-     */
 
     },
     createEquipmentproductItem: function (template, data) {
@@ -213,7 +136,7 @@ var SearchUI = {
                         console.log("could not create filesystem");
 
                         link = $newItem.attr('href');
-                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " <span class='label label-default'> Nicht Heruntergeladen</span>");
                     }
                 );
             }
@@ -225,7 +148,7 @@ var SearchUI = {
         }
         else {
             link = $newItem.attr('href');
-            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " <span class='label label-default'> Nicht Heruntergeladen</span>");
         }
 
         $newItem.removeAttr('id');
@@ -235,16 +158,44 @@ var SearchUI = {
         return $newItem.removeClass('hidden');
     },
 
+    //highlightSearchKey: function (text, term) {
+    //    term = term.replace(/(\s+)/, "(<[^>]+>)*$1(<[^>]+>)*");
+    //    var pattern = new RegExp("(" + term + ")", "i");
+
+    //    text = text.replace(pattern, "<mark>$1</mark>");
+    //    text = text.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/g, "$1</mark>$2<mark>$4");
+    //    return text;
+
+    //},
+
     highlightSearchKey: function (text, term) {
-        term = term.replace(/(\s+)/, "(<[^>]+>)*$1(<[^>]+>)*");
-        var pattern = new RegExp("(" + term + ")", "i");
+        //term = term.replace(/(\s+)/g, "(<[^>]+>)*$1(<[^>]+>)*");
+        var pattern; //= new RegExp("(" + term + ")", "i");
 
-        text = text.replace(pattern, "<mark>$1</mark>");
-        text = text.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/, "$1</mark>$2<mark>$4");
+        //split term into several words
+        var terms = term.split(" ");
+      
+        for (index = 0; index < terms.length; ++index) {
+           
+            //console.debug(texts[index]);
 
+            //console.debug(texts);
+            var tmpterm = terms[index];
+
+            tmpterm = tmpterm.replace(/(\s+)/g, "(<[^>]+>)*$1(<[^>]+>)*");
+            console.debug(tmpterm);
+            pattern = new RegExp("(" + tmpterm + ")", "ig");
+            console.debug(pattern);
+            text = text.replace(pattern, "<mark>$1</mark>");
+        }
+
+        ////console.debug(texts);
+        //text = text.replace(pattern, "<mark>$1</mark>");
+        //text = text.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/g, "$1</mark>$2<mark>$4");
+        //return text;
+        console.debug(text);
         return text;
     },
-
 
     displayResults: function (type, results, additionalBadgeCount) {
         //overwrite MPL-Other Products to be displayed in MPL list as well
@@ -349,6 +300,10 @@ var SearchUI = {
                 });
             });
 
+            
+
+
+          
 
         }
     }

@@ -252,7 +252,7 @@ var documentsModel = {
         key = "%" + key.replace("*", "") + "%";
         key = key.replace(/ /g, '%'); //replace changes only first instance . thats why the global modifier "g" of a regular expression was used. find all whitepaces and change to %
 
-        Documents.all().filter("documentname", "LIKE", key).list(function (res) {
+        Documents.all().filter("documentname", "LIKE", key).order("documentname", true, false).list(function (res) {
             DocumentsSearch.resolve(res);
         });
 

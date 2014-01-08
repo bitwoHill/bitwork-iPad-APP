@@ -91,7 +91,7 @@ var InfothekUI = {
                         else //show that no file is available
                         {
                             if (!data.isFolder) {
-                                $('.tree-nav-item-name', newItem).html(data.title + ' - keine lokale Version verfügbar');
+                                $('.tree-nav-item-name', newItem).html(data.title + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
                             }
                         }
 
@@ -99,7 +99,7 @@ var InfothekUI = {
                     function () {
                         console.debug("could not create filesystem");
                         if (!data.isFolder) {
-                            $('.tree-nav-item-name', newItem).html(data.title + ' - keine lokale Version verfügbar');
+                            $('.tree-nav-item-name', newItem).html(data.title + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
                         }
                     }
                 );

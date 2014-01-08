@@ -561,7 +561,7 @@ var DocumentsUI = {
                        }
                        else //show that no file is available
                        {
-                           $('.tree-nav-item-name', newItem).html(data.documentname + ' - keine lokale Version verfügbar');
+                           $('.tree-nav-item-name', newItem).html(data.documentname + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
                        }
                        container.append(newItem.removeClass('hidden'));
                    }

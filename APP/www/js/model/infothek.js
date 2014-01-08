@@ -220,7 +220,8 @@ var InfothekModel = {
         key = key.replace(/ /g, '%'); //replace changes only first instance . thats why the global modifier "g" of a regular expression was used. find all whitepaces and change to %
 
 
-        Infothek.all().filter("title", "LIKE", key).and(new persistence.PropertyFilter("isFolder", "=", false)).list(function (res) {
+        Infothek.all().filter("title", "LIKE", key).and(new persistence.PropertyFilter("isFolder", "=", false)).order('title', true, false).list(function (res) {
+         
             infothekSearch.resolve(res);
         });
 
