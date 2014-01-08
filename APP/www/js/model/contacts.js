@@ -34,6 +34,7 @@ var ContactsModel = {
     },
 
     addNewsItemToDB: function (value, callback) {
+     
         var newItem = {
             contactId: value.ID
         };
@@ -73,19 +74,23 @@ var ContactsModel = {
                 img.onload = function () {
                     newItem.profilePicture = utils.getBase64FromImage(img, imageExtension);
                     persistence.add(new Contacts(newItem));
+                     
                     callback();
                 };
                 img.onerror = function () {
                     newItem.profilePicture = Settings.spContent + value.Pfad + "/" + value.Name;
                     persistence.add(new Contacts(newItem));
+                      
                     callback();
                 };
             } else {
                 persistence.add(new Contacts(newItem));
+                   
                 callback();
             }
         } else {
             persistence.add(new Contacts(newItem));
+         
             callback();
         }
        
@@ -94,27 +99,42 @@ var ContactsModel = {
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
+      console.log("DataLength: " + spData.results.length);
         Contacts.all().destroyAll(function (ele) {
+            console.log("Deleted Contacts list");
             utils.emptySearchIndex("Contacts");
-
+            console.log("Deleted Contacts Search Index list");
             if (spData && spData.results.length) {
                 var dataLength = spData.results.length,
                     index = 0,
                     addContactCallback = function () {
-
+console.log("Index: " + index);
                         if (index === dataLength) {
                             index = 0;
-                            persistence.flush(
-                                function () {
-                                    SyncModel.addSync(CONTACTS_LIST);
+                            console.log("Added all Contacts");
+                        
+                                  SyncModel.addSync(CONTACTS_LIST);
                                     $('body').trigger('sync-end');
                                     $('body').trigger('contacts-sync-ready');
-                                }
-                            );
+                                            console.log("Triggered Events for Sync Ready");
+                persistence.flush(
+                    function () {
+                      console.log("finished Flush all Contacts");
+                                
+                    }
+                );
+
+
 
                             return;
                         } else {
                             index++;
+                            //flush persistence every fifth item. This is a workaround, as flushing all image files at once leads to a freeze on ios
+                            if (index % 5 == 0)
+                            {
+ persistence.flush();
+                            }
+                        
                             addNews(spData.results[index - 1]);
                         }
                     },

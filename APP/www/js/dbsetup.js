@@ -1,7 +1,7 @@
 var appUser;
 
 (function ($) {
-    persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 10 * 1024 * 1024);
+    persistence.store.websql.config(persistence, "bitwork_ipadapp", 'bitwork iPadApp database', 30 * 1024 * 1024);
     persistence.search.config(persistence, persistence.store.websql.sqliteDialect);
     //create DB schema
     persistence.debug = false;

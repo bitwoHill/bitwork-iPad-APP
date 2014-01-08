@@ -13,7 +13,18 @@ var CalendarUI = {
             requestParam = utils.getUrlParameter('calendarID');
 
         if($container.length && $template.length){
-            var calendarList = (requestParam !== "")? Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10)) : Calendar.all();
+        //    var calendarList = (requestParam !== "")? Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10)) : Calendar.all();
+
+var calendarList;
+if (requestParam == "")
+{
+        calendarList = Calendar.all()
+
+}
+else
+{
+calendarList = Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10)) 
+}
 
             calendarList.order('startDate', false).list(null, function(results){
                 if(results.length){

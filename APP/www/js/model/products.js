@@ -39,7 +39,7 @@ var ProductsModel = {
             persistence.flush(
                function () {
                    SyncModel.addSync(PRODUCTS_LIST);
-                  $('body').trigger('sync-end');
+                 
                   $('body').trigger('products-sync-ready');
                }
            );

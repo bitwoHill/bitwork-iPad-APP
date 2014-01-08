@@ -45,7 +45,7 @@ var otherproductsModel = {
                 persistence.flush(
                     function () {
                         SyncModel.addSync(OTHERPRODUCTS_LIST);
-                        $('body').trigger('sync-end');
+                        
                         $('body').trigger('otherproducts-sync-ready');
                     }
                 );

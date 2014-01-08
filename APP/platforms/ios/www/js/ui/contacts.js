@@ -160,8 +160,12 @@ var ContactsUI = {
 
 
 (function($){
-    //bind to sync ready event in order to display the news
+
+
+    $(document).ready(function(){
+  //bind to sync ready event in order to display the news
     $('body').on('contacts-sync-ready db-schema-ready', function(){
+      
         ContactsUI.displayContactTree();
 
         var requestParam = utils.getUrlParameter('contactID');
@@ -169,8 +173,7 @@ var ContactsUI = {
             ContactsUI.displayContactInfo(parseInt(requestParam, 10));
         }
     });
-
-    $(document).ready(function(){
+        
         $('body').on('click', 'a.page-sync-btn', function(){
             ContactsModel.syncContacts();
         });

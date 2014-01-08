@@ -156,14 +156,17 @@ var formattedPrice = new String(tmp2 + " €");
 };
 
 (function ($) {
-    //Display productgroups when sync is ready
-    $('body').on(' db-schema-ready otherproducts-sync-ready', ProductsUI.displayproducts);
-
+   
     $(document).ready(function () {
+ //Display productgroups when sync is ready
+    $('body').on(' db-schema-ready otherproducts-sync-ready equipmentproducts-sync-ready products-sync-ready', ProductsUI.displayproducts);
+
+
         $('body').on('click', 'a.page-sync-btn', function () {
             ProductsModel.sharePointProducts();
-            equipmentproductsModel.sharePointEquipmentproducts();
             otherproductsModel.sharePointOtherproducts();
+             equipmentproductsModel.sharePointEquipmentproducts();
+          
             
         });
     });
