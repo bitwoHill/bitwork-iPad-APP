@@ -49,40 +49,39 @@ var SearchUI = {
     },
 
     createInfothekItem: function (template, data) {
- var $newItem = template.clone(),
-         link;
+        var $newItem = template.clone(),
+                link;
         //generate hyperlink to local path
-       
+
         if (data.localPath) {
-             //create path to filesystem needed for infothek and documents
-                        var localFileSystemRootSearchJs;
+            //create path to filesystem needed for infothek and documents
+            var localFileSystemRootSearchJs;
 
-                        try{
-                            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+            try {
+                window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
-                            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
-                                function(fileSystem) 
-                                {
-                                    //created filesystem path. use it
-                                      localFileSystemRootSearchJs = fileSystem.root.fullPath;
-                                //create hyperlink to local file    
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                    function (fileSystem) {
+                        //created filesystem path. use it
+                        localFileSystemRootSearchJs = fileSystem.root.fullPath;
+                        //create hyperlink to local file    
 
-                         
-            link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
-            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
-                                    },
-                                function() {
-                                     console.log("could not create filesystem");
 
-                                        link = $newItem.attr('href');
-            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
-                                }
-                            );
-                            }
+                        link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
+                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
+                    },
+                    function () {
+                        console.log("could not create filesystem");
 
-                            catch (err) {
-                           console.log(err);
-                            }
+                        link = $newItem.attr('href');
+                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+                    }
+                );
+            }
+
+            catch (err) {
+                console.log(err);
+            }
 
         }
         else {
@@ -99,81 +98,81 @@ var SearchUI = {
 
 
 
- /*       //only show files
- if (!data.isFolder) {
-          
-            var $newItem = template.clone(),
-            link = $newItem.attr('href') + data.nodeId;
-
-        $newItem.removeAttr('id');
-        $newItem.attr('href', link);
-        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
-
+        /*       //only show files
+        if (!data.isFolder) {
+                 
+                   var $newItem = template.clone(),
+                   link = $newItem.attr('href') + data.nodeId;
        
-            $('.result-item-title > span.fa', $newItem).addClass("fa-file-o");
-        
-        return $newItem.removeClass('hidden');
+               $newItem.removeAttr('id');
+               $newItem.attr('href', link);
+               $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
+       
+              
+                   $('.result-item-title > span.fa', $newItem).addClass("fa-file-o");
+               
+               return $newItem.removeClass('hidden');
+       
+               } */
 
-        } */
 
 
- 
-   /*       
-            var $newItem = template.clone(),
-            link;
-
-
- if (data.localPath) {
-    
-             //create path to filesystem needed for infothek and documents
-                        var localFileSystemRootSearchJs;
-
-                        try{
-                            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-
-                            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
-                                function(fileSystem) 
-                                {
-                                    //created filesystem path. use it
-                                      localFileSystemRootSearchJs = fileSystem.root.fullPath;
-                                //create hyperlink to local file 
-                               // console.log(localFileSystemRootSearchJs + "/Infothek/" + data.localPath)   ;
-                   
-
-           link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
-$newItem.attr('href', link);
+        /*       
+                 var $newItem = template.clone(),
+                 link;
+     
+     
+      if (data.localPath) {
+         
+                  //create path to filesystem needed for infothek and documents
+                             var localFileSystemRootSearchJs;
+     
+                             try{
+                                 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+     
+                                 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                                     function(fileSystem) 
+                                     {
+                                         //created filesystem path. use it
+                                           localFileSystemRootSearchJs = fileSystem.root.fullPath;
+                                     //create hyperlink to local file 
+                                    // console.log(localFileSystemRootSearchJs + "/Infothek/" + data.localPath)   ;
+                        
+     
+                link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
+     $newItem.attr('href', link);
+                  
+                 $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
+                                       },
+                                     function() {
+                                          console.log("could not create filesystem");
+     
+                                                 $newItem.attr('href', "#");
+                 $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+                                     }
+                                 );
+                                 }
+     
+                                 catch (err) {
+                                console.log(err);
+                                 }
+     
+             }
+             else {
+               
+                 $newItem.attr('href', "#");
+                 $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+             }
+     
+     
+             $newItem.removeAttr('id');
+           
              
-            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
-                                  },
-                                function() {
-                                     console.log("could not create filesystem");
+             $('.result-item-title > span.fa', $newItem).addClass("fa-file-o");
+             
+             return $newItem.removeClass('hidden');
+     */
 
-                                            $newItem.attr('href', "#");
-            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
-                                }
-                            );
-                            }
-
-                            catch (err) {
-                           console.log(err);
-                            }
-
-        }
-        else {
-          
-            $newItem.attr('href', "#");
-            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
-        }
-
-
-        $newItem.removeAttr('id');
-      
-        
-        $('.result-item-title > span.fa', $newItem).addClass("fa-file-o");
-        
-        return $newItem.removeClass('hidden');
-*/
-      
     },
     createEquipmentproductItem: function (template, data) {
         var $newItem = template.clone(),
@@ -192,37 +191,36 @@ $newItem.attr('href', link);
         var $newItem = template.clone(),
          link;
         //generate hyperlink to local path
-       
+
         if (data.localPath) {
-             //create path to filesystem needed for infothek and documents
-                        var localFileSystemRootSearchJs;
+            //create path to filesystem needed for infothek and documents
+            var localFileSystemRootSearchJs;
 
-                        try{
-                            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+            try {
+                window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
-                            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
-                                function(fileSystem) 
-                                {
-                                    //created filesystem path. use it
-                                      localFileSystemRootSearchJs = fileSystem.root.fullPath;
-                                //create hyperlink to local file    
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                    function (fileSystem) {
+                        //created filesystem path. use it
+                        localFileSystemRootSearchJs = fileSystem.root.fullPath;
+                        //create hyperlink to local file    
 
-                         
-            link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Dokumente/" + data.localPath, '_blank', 'location=yes'); });
-            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")));
-                                    },
-                                function() {
-                                     console.log("could not create filesystem");
 
-                                        link = $newItem.attr('href');
-            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
-                                }
-                            );
-                            }
+                        link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Dokumente/" + data.localPath, '_blank', 'location=yes'); });
+                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")));
+                    },
+                    function () {
+                        console.log("could not create filesystem");
 
-                            catch (err) {
-                           console.log(err);
-                            }
+                        link = $newItem.attr('href');
+                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+                    }
+                );
+            }
+
+            catch (err) {
+                console.log(err);
+            }
 
         }
         else {
@@ -237,12 +235,12 @@ $newItem.attr('href', link);
         return $newItem.removeClass('hidden');
     },
 
-    highlightSearchKey: function(text, term){
-        term = term.replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
-        var pattern = new RegExp("("+term+")", "i");
+    highlightSearchKey: function (text, term) {
+        term = term.replace(/(\s+)/, "(<[^>]+>)*$1(<[^>]+>)*");
+        var pattern = new RegExp("(" + term + ")", "i");
 
         text = text.replace(pattern, "<mark>$1</mark>");
-        text = text.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/,"$1</mark>$2<mark>$4");
+        text = text.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/, "$1</mark>$2<mark>$4");
 
         return text;
     },
@@ -251,7 +249,7 @@ $newItem.attr('href', link);
     displayResults: function (type, results, additionalBadgeCount) {
         //overwrite MPL-Other Products to be displayed in MPL list as well
         var BadgeCount = results.length;
-                       
+
 
         if (type == "mpl-other") {
             type = "mpl";
@@ -308,9 +306,9 @@ $newItem.attr('href', link);
 
     doSearch: function () {
         var key = utils.getUrlParameter("search"),
-            tmp = (key && key.indexOf("*") === -1)? key.split(" ") : "";
+            tmp = (key && key.indexOf("*") === -1) ? key.split(" ") : "";
 
-        if(tmp.length == 1){
+        if (tmp.length == 1) {
             key = key + "*";
         }
 
