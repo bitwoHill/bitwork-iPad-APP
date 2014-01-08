@@ -18,6 +18,7 @@ var InfothekModel = {
 
     syncInfothek: function () {
         $('body').trigger('sync-start');
+        $('#msgInfothek').toggleClass('in');
 
         SharePoint.sharePointRequest(INFOTHEK_LIST, InfothekModel.mapSharePointData);
     },
@@ -112,6 +113,8 @@ var InfothekModel = {
                             SyncModel.addSync(INFOTHEK_LIST);
                             $('body').trigger('sync-end');
                             $('body').trigger('infothek-sync-ready');
+                            $('#msgInfothek').removeClass('in');
+
                         });
 
                     }

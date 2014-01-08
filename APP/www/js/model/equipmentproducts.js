@@ -22,6 +22,8 @@ var equipmentproductsModel = {
     sharePointEquipmentproducts: function () {
 
         $('body').trigger('sync-start');
+        $('#msgEquipmentProducts').toggleClass('in');
+
         SharePoint.sharePointRequest(EQUIPMENTPRODUCTS_LIST, equipmentproductsModel.mapSharePointData);
     },
     //maps SharePoint data to current model
@@ -56,6 +58,8 @@ var equipmentproductsModel = {
                         SyncModel.addSync(EQUIPMENTPRODUCTS_LIST);
                         $('body').trigger('sync-end');
                         $('body').trigger('equipmentproducts-sync-ready');
+                        $('#msgEquipmentProducts').removeClass('in');
+
                     }
                 );
             }

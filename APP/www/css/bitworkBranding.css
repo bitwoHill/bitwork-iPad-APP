@@ -357,3 +357,30 @@ h3.result-item-title {
     background-color: #EAEAEA;
     border-color: #DFDFDF;
 }
+.flyover {
+   left: 180%;
+   overflow: hidden;
+   position: fixed;
+   width: 50%;
+   opacity: 0.9;
+   z-index: 1050;
+   transition: left 0.6s ease-out 0s;
+}
+ 
+.flyover-centered {
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
+.flyover.in {
+   left: 50%;
+}
+.flyover-bottom {
+   bottom: 10px;
+}
+.modal.fade .modal-dialog {
+    transform: translate(0px, -25%);
+    transition: transform 0.3s ease-out 0s;
+}
+.modal.fade.in .modal-dialog {
+    transform: translate(0px, 0px);
+}

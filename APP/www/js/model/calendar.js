@@ -20,7 +20,8 @@ var CalendarModel = {
 
     syncCalendar: function () {
         $('body').trigger('sync-start');
-
+              $('#msgCalendar').toggleClass('in');
+         
         SharePoint.sharePointRequest(CALENDAR_LIST, CalendarModel.mapSharePointData);
     },
 
@@ -61,6 +62,7 @@ var CalendarModel = {
                         SyncModel.addSync(CALENDAR_LIST);
                         $('body').trigger('sync-end');
                         $('body').trigger('calendar-sync-ready');
+                        $('#msgCalendar').removeClass('in');
                     }
                 );
             }

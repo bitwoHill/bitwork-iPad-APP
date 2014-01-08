@@ -18,6 +18,7 @@ News.textIndex('bodySearch');
 var NewsModel = {
     syncNews: function () {
         $('body').trigger('sync-start');
+        $('#msgNews').toggleClass('in');
 
         SharePoint.sharePointRequest(NEWS_LIST, NewsModel.mapSharePointData);
     },
@@ -56,6 +57,8 @@ var NewsModel = {
                         SyncModel.addSync(NEWS_LIST);
                         $('body').trigger('sync-end');
                         $('body').trigger('news-sync-ready');
+                        $('#msgNews').removeClass('in');
+
                     }
                 );
             }

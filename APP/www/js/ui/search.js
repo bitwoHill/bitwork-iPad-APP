@@ -176,24 +176,13 @@ var SearchUI = {
         var terms = term.split(" ");
       
         for (index = 0; index < terms.length; ++index) {
-           
-            //console.debug(texts[index]);
-
-            //console.debug(texts);
             var tmpterm = terms[index];
 
             tmpterm = tmpterm.replace(/(\s+)/g, "(<[^>]+>)*$1(<[^>]+>)*");
-            console.debug(tmpterm);
             pattern = new RegExp("(" + tmpterm + ")", "ig");
-            console.debug(pattern);
             text = text.replace(pattern, "<mark>$1</mark>");
         }
 
-        ////console.debug(texts);
-        //text = text.replace(pattern, "<mark>$1</mark>");
-        //text = text.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/g, "$1</mark>$2<mark>$4");
-        //return text;
-        console.debug(text);
         return text;
     },
 

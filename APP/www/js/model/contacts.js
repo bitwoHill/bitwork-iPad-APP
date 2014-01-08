@@ -29,6 +29,7 @@ Contacts.textIndex('description');
 var ContactsModel = {
     syncContacts: function () {
         $('body').trigger('sync-start');
+        $('#msgContacts').toggleClass('in');
 
         SharePoint.sharePointRequest(CONTACTS_LIST, ContactsModel.mapSharePointData);
     },
@@ -116,7 +117,8 @@ var ContactsModel = {
                             SyncModel.addSync(CONTACTS_LIST);
                             $('body').trigger('sync-end');
                             $('body').trigger('contacts-sync-ready');
-                            console.log("Triggered Events for Sync Ready");
+                            $('#msgContacts').removeClass('in');
+
                             persistence.flush(
                                 function () {
                                     console.log("finished Flush all Contacts");

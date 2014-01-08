@@ -11,6 +11,8 @@ Productgroups.index('productgroupid', { unique: true });
 var ProductGroupsModel = {
     syncProductGroups: function () {
         $('body').trigger('sync-start');
+        $('#msgProductGroups').toggleClass('in');
+
         SharePoint.sharePointRequest(PRODUCTGROUPS_LIST, ProductGroupsModel.mapSharePointData);
     },
     //maps SharePoint data to current model
@@ -33,6 +35,8 @@ var ProductGroupsModel = {
                      SyncModel.addSync(PRODUCTGROUPS_LIST);
                      $('body').trigger('sync-end');
                      $('body').trigger('productgroups-sync-ready');
+                     $('#msgProductGroups').removeClass('in');
+
                  }
              );
             }

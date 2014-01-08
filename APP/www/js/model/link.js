@@ -14,6 +14,7 @@ var LinkModel = {
 
     syncLinks: function () {
         $('body').trigger('sync-start');
+        $('#msgLinks').toggleClass('in');
 
         SharePoint.sharePointRequest(LINK_LIST, LinkModel.mapSharePointData);
     },
@@ -49,6 +50,8 @@ var LinkModel = {
                         SyncModel.addSync(LINK_LIST);
                         $('body').trigger('sync-end');
                         $('body').trigger('link-sync-ready');
+                        $('#msgLinks').removeClass('in');
+
                     }
                 );
             }

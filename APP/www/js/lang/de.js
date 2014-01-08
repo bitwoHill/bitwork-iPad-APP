@@ -112,9 +112,9 @@ var i18n = {
         "label-download-success": "Datei(en) heruntergeladen.",
         "label-download-fail": "Datei(en) nicht heruntergeladen.",
         "prod-documents-sync": "Produkt Dokumente herunterladen",
-        "prod-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Produkt Dokumente. Es werden alle im SharePoint befindlichen Dokumente heruntergeladen. Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine Wlan Verbindung möglich.",
+        "prod-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Produkt Dokumente. Es werden alle im SharePoint befindlichen Dokumente heruntergeladen. Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine WLAN Verbindung möglich. <br> <br>",
         "infothek-documents-sync": "Infothek Dokumente herunterladen",
-        "infothek-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Infothek Dokumente.Es werden alle im SharePoint befindlichen Dokumente der Infotheksbibliothek heruntergeladen. Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine Wlan Verbindung möglich.",
+        "infothek-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Infothek Dokumente.Es werden alle im SharePoint befindlichen Dokumente der Infotheksbibliothek heruntergeladen. Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine WLAN Verbindung möglich.",
         "metadata-sync": "Metadaten aus SharePoint laden",
         "metadata-sync-text": "Hiermit starten Sie die Synchronisierung der SharePoint Metadaten. Dabei handelt es sich um alle im SharePoint befindlichen Daten, wie Produktinformationen und News und Telefonbuchdaten - aber keine Dateien.",
    
@@ -126,6 +126,21 @@ var i18n = {
         "empty-contacts-search": "Es wurden keine Kontakte gefunden.",
         "empty-infothek-search": "Es wurden keine Infothek Einträge gefunden.",
         "empty-documents-search": "Es wurden keine Produktdokumente gefunden.",
-        "empty-mpl-search": "In der Maschinenpreisliste wurde nichts gefunden."
+        "empty-mpl-search": "In der Maschinenpreisliste wurde nichts gefunden.",
+
+        //Sync Notifications
+        "msgContacts-sync": "Kontakte werden geladen",
+        "msgCalendar-sync": "Kalendereinträge werden geladen",
+        "msgDocuments-sync": "Dokumente werden geladen",
+        "msgEquipmentProducts-sync": "Equipment wird geladen",
+        "msgInfothek-sync": "Infothekdokumente werden geladen",
+        "msgLinks-sync": "Wichtige Links werden geladen",
+        "msgNews-sync": "News werden geladen",
+        "msgOtherProducts-sync": "Andere Produkte werden geladen",
+        "msgProductFamilies-sync": "Produktfamilien werden geladen",
+        "msgProductGroups-sync": "Produktgruppen werden geladen",
+        "msgProductOptions-sync": "Produktoptionen werden geladen",
+        "msgProductPlatforms-sync": "Produktplattformen werden geladen",
+        "msgProducts-sync": "Produkte werden geladen"
     }
 }

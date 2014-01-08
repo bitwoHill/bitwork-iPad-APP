@@ -19,6 +19,8 @@ var productoptionsModel = {
     sharePointProductOptions: function () {
 
         $('body').trigger('sync-start');
+        $('#msgProductOptions').toggleClass('in');
+
         SharePoint.sharePointRequest(PRODUCTOPTIONS_LIST, productoptionsModel.mapSharePointData);
     },
     //maps SharePoint data to current model
@@ -48,6 +50,8 @@ var productoptionsModel = {
                     function () {
                         SyncModel.addSync(PRODUCTOPTIONS_LIST);
                         $('body').trigger('productoptions-sync-ready');
+                        $('#msgProductOptions').removeClass('in');
+
                     }
                 );
             }

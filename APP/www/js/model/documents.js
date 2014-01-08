@@ -34,6 +34,8 @@ var documentsModel = {
     sharePointDocuments: function () {
         //get documenttypes
         //  $('body').trigger('sync-start');
+        $('#msgDocuments').toggleClass('in');
+
         SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes);
     },
     //maps SharePoint data to current model
@@ -147,6 +149,7 @@ var documentsModel = {
                                 SyncModel.addSync(DOCUMENTS_LIST);
                                 $('body').trigger('sync-end');
                                 $('body').trigger('documents-sync-ready');
+                                $('#msgDocuments').removeClass('in');
                             }
                         );
                     }

@@ -11,6 +11,8 @@ Productplatforms.index('productplatformid', { unique: true });
 var ProductPlatformsModel = {
     sharePointPlatforms: function () {
         $('body').trigger('sync-start');
+        $('#msgProductPlatforms').toggleClass('in');
+
         SharePoint.sharePointRequest(PRODUCTPLATFORMS_LIST, ProductPlatformsModel.mapSharePointData);
     },
     //maps SharePoint data to current model
@@ -36,6 +38,8 @@ var ProductPlatformsModel = {
                         SyncModel.addSync(PRODUCTPLATFORMS_LIST);
                         $('body').trigger('sync-end');
                         $('body').trigger('productplatforms-sync-ready');
+                        $('#msgProductPlatforms').removeClass('in');
+
                     }
                 );
             }

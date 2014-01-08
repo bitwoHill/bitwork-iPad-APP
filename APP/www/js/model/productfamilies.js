@@ -13,6 +13,8 @@ Productfamilies.index('productfamilyid', { unique: true });
 var ProductFamiliesModel = {
     sharePointFamilies: function () {
         $('body').trigger('sync-start');
+        $('#msgProductFamilies').toggleClass('in');
+
         SharePoint.sharePointRequest(PRODUCTFAMILIES_LIST, ProductFamiliesModel.mapSharePointData);
     },
 
@@ -38,6 +40,8 @@ var ProductFamiliesModel = {
                         SyncModel.addSync(PRODUCTFAMILIES_LIST);
                         $('body').trigger('sync-end');
                         $('body').trigger('productfamilies-sync-ready');
+                        $('#msgProductFamilies').removeClass('in');
+
                     }
                 );
             }

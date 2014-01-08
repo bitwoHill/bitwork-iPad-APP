@@ -19,6 +19,8 @@ var otherproductsModel = {
     sharePointOtherproducts: function () {
 
         $('body').trigger('sync-start');
+        $('#msgOtherProducts').toggleClass('in');
+
         SharePoint.sharePointRequest(OTHERPRODUCTS_LIST, otherproductsModel.mapSharePointData);
     },
     //maps SharePoint data to current model
@@ -47,6 +49,8 @@ var otherproductsModel = {
                         SyncModel.addSync(OTHERPRODUCTS_LIST);
 
                         $('body').trigger('otherproducts-sync-ready');
+                        $('#msgOtherProducts').removeClass('in');
+
                     }
                 );
             }
