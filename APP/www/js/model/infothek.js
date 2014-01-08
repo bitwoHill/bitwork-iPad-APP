@@ -120,7 +120,8 @@ var InfothekModel = {
     },
 
     downloadSharePointFiles: function () {
-        Infothek.all().filter("isFolder", "=", false)
+        //search only files in infothek
+        Infothek.all().limit(10).filter("isFolder", "=", false)
             .list(null, function (results) {
                 if (results.length) {
                     var queueProgress = {
@@ -217,7 +218,7 @@ var InfothekModel = {
         var infothekSearch = $.Deferred();
         key = "%" + key.replace("*", "") + "%";
 
-        Infothek.all().filter("title", "LIKE", key).list(function (res) {
+        Infothek.all().filter("title", "LIKE", key).and(new persistence.PropertyFilter("isFolder", "=", false)).list(function (res) {
             infothekSearch.resolve(res);
         });
 

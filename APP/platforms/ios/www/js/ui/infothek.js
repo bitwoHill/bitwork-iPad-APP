@@ -82,18 +82,8 @@ if (!localFileSystemRoot)
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
                 function(fileSystem) {
                     localFileSystemRoot = fileSystem.root.fullPath;
-                },
-                function() {
-                     console.debug("could not create filesystem");
-                }
-            );
-        } catch (err) {
-           console.debug(err);
-        }
-}
 
-
-        if (data.localPath) {
+  if (data.localPath) {
             $('.tree-nav-link', newItem).click(function () { window.open(localFileSystemRoot + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
             console.debug(localFileSystemRoot + "/Infothek/" + data.localPath);
           
@@ -106,6 +96,23 @@ if (!localFileSystemRoot)
                 $('.tree-nav-item-name', newItem).html(data.title + ' - keine lokale Version verfügbar');
             }
         }
+
+                },
+                function() {
+                     console.debug("could not create filesystem");
+                       if (!data.isFolder)
+            {
+                $('.tree-nav-item-name', newItem).html(data.title + ' - keine lokale Version verfügbar');
+            }
+                }
+            );
+        } catch (err) {
+           console.debug(err);
+        }
+}
+
+
+      
 
         return newItem;
     },

@@ -49,20 +49,131 @@ var SearchUI = {
     },
 
     createInfothekItem: function (template, data) {
-        var $newItem = template.clone(),
+ var $newItem = template.clone(),
+         link;
+        //generate hyperlink to local path
+       
+        if (data.localPath) {
+             //create path to filesystem needed for infothek and documents
+                        var localFileSystemRootSearchJs;
+
+                        try{
+                            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+
+                            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                                function(fileSystem) 
+                                {
+                                    //created filesystem path. use it
+                                      localFileSystemRootSearchJs = fileSystem.root.fullPath;
+                                //create hyperlink to local file    
+
+                         
+            link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
+                                    },
+                                function() {
+                                     console.log("could not create filesystem");
+
+                                        link = $newItem.attr('href');
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+                                }
+                            );
+                            }
+
+                            catch (err) {
+                           console.log(err);
+                            }
+
+        }
+        else {
+            link = $newItem.attr('href');
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+        }
+
+        $newItem.removeAttr('id');
+        $newItem.attr('href', link);
+
+
+        return $newItem.removeClass('hidden');
+
+
+
+
+ /*       //only show files
+ if (!data.isFolder) {
+          
+            var $newItem = template.clone(),
             link = $newItem.attr('href') + data.nodeId;
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
         $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
 
-        if (data.isFolder) {
-            $('.result-item-title > span.fa', $newItem).addClass("fa-folder");
-        } else {
+       
             $('.result-item-title > span.fa', $newItem).addClass("fa-file-o");
+        
+        return $newItem.removeClass('hidden');
+
+        } */
+
+
+ 
+   /*       
+            var $newItem = template.clone(),
+            link;
+
+
+ if (data.localPath) {
+    
+             //create path to filesystem needed for infothek and documents
+                        var localFileSystemRootSearchJs;
+
+                        try{
+                            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+
+                            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                                function(fileSystem) 
+                                {
+                                    //created filesystem path. use it
+                                      localFileSystemRootSearchJs = fileSystem.root.fullPath;
+                                //create hyperlink to local file 
+                               // console.log(localFileSystemRootSearchJs + "/Infothek/" + data.localPath)   ;
+                   
+
+           link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
+$newItem.attr('href', link);
+             
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
+                                  },
+                                function() {
+                                     console.log("could not create filesystem");
+
+                                            $newItem.attr('href', "#");
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+                                }
+                            );
+                            }
+
+                            catch (err) {
+                           console.log(err);
+                            }
+
+        }
+        else {
+          
+            $newItem.attr('href', "#");
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
         }
 
+
+        $newItem.removeAttr('id');
+      
+        
+        $('.result-item-title > span.fa', $newItem).addClass("fa-file-o");
+        
         return $newItem.removeClass('hidden');
+*/
+      
     },
     createEquipmentproductItem: function (template, data) {
         var $newItem = template.clone(),
@@ -95,6 +206,8 @@ var SearchUI = {
                                     //created filesystem path. use it
                                       localFileSystemRootSearchJs = fileSystem.root.fullPath;
                                 //create hyperlink to local file    
+
+                         
             link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Dokumente/" + data.localPath, '_blank', 'location=yes'); });
             $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")));
                                     },
