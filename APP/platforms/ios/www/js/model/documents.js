@@ -75,7 +75,7 @@ var documentsModel = {
     mapSharePointData: function (data) {
         var spData = data.d;
 
-        //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to them on Sharepoint
+        //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to those on Sharepoint
         var lookupIDsSharePoint = {};
         for (var i = 0, len = spData.results.length; i < len; i++) {
             lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
@@ -155,7 +155,7 @@ var documentsModel = {
     },
 
     downloadSharePointFiles: function () {
-        Documents.all()
+        Documents.all().limit(10)
         .list(null, function (results) {
             if (results.length) {
                 var queueProgress = {

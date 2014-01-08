@@ -1,5 +1,6 @@
 var SEARCH_CONTAINER = "#search-container";
 
+
 var SearchUI = {
     createNewsItem: function (template, data) {
         var $newItem = template.clone(),
@@ -76,12 +77,40 @@ var SearchUI = {
         return $newItem.removeClass('hidden');
     },
     createDocument: function (template, data) {
+
         var $newItem = template.clone(),
          link;
         //generate hyperlink to local path
+       
         if (data.localPath) {
-            link = $newItem.click(function () { window.open(data.localPath, '_blank', 'location=yes'); });
+             //create path to filesystem needed for infothek and documents
+                        var localFileSystemRootSearchJs;
+
+                        try{
+                            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+
+                            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                                function(fileSystem) 
+                                {
+                                    //created filesystem path. use it
+                                      localFileSystemRootSearchJs = fileSystem.root.fullPath;
+                                //create hyperlink to local file    
+            link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Dokumente/" + data.localPath, '_blank', 'location=yes'); });
             $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")));
+                                    },
+                                function() {
+                                     console.log("could not create filesystem");
+
+                                        link = $newItem.attr('href');
+            $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " - Keine lokale Version gefunden");
+                                }
+                            );
+                            }
+
+                            catch (err) {
+                           console.log(err);
+                            }
+
         }
         else {
             link = $newItem.attr('href');
@@ -109,6 +138,7 @@ var SearchUI = {
     displayResults: function (type, results, additionalBadgeCount) {
         //overwrite MPL-Other Products to be displayed in MPL list as well
         var BadgeCount = results.length;
+                       
 
         if (type == "mpl-other") {
             type = "mpl";
