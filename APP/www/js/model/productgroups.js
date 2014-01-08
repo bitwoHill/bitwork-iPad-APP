@@ -17,24 +17,25 @@ var ProductGroupsModel = {
     mapSharePointData: function (data) {
         var spData = data.d;
         Productgroups.all().destroyAll(function (ele) {
-        if (spData && spData.results.length) {
-            $.each(spData.results, function (index, value) {
-                var ProductGroupItem =
-                    {
-                        productgroupid: value.ID,
-                        productgroup: (value.Produktgruppe) ? value.Produktgruppe : ""
-                    };
-                
-                persistence.add(new Productgroups(ProductGroupItem));
-            });
+            if (spData && spData.results.length) {
+                $.each(spData.results, function (index, value) {
+                    var ProductGroupItem =
+                        {
+                            productgroupid: value.ID,
+                            productgroup: (value.Produktgruppe) ? value.Produktgruppe : ""
+                        };
 
-               persistence.flush(
-                function () {
-                    SyncModel.addSync(PRODUCTGROUPS_LIST);
-                    $('body').trigger('sync-end');
-                    $('body').trigger('productgroups-sync-ready');
-                }
-            );
-        }});
+                    persistence.add(new Productgroups(ProductGroupItem));
+                });
+
+                persistence.flush(
+                 function () {
+                     SyncModel.addSync(PRODUCTGROUPS_LIST);
+                     $('body').trigger('sync-end');
+                     $('body').trigger('productgroups-sync-ready');
+                 }
+             );
+            }
+        });
     }
 };

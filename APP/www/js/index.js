@@ -18,28 +18,28 @@
  */
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
+    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
+    receivedEvent: function (id) {
         var parentElement = document.getElementById(id);
 
-        if(parentElement) {
+        if (parentElement) {
             var listeningElement = parentElement.querySelector('.listening');
             var receivedElement = parentElement.querySelector('.received');
 
@@ -49,69 +49,69 @@ var app = {
 
         console.log('Received Event: ' + id);
     },
-    onContactSaveSuccess: function(contract) {
+    onContactSaveSuccess: function (contract) {
         console.log("Save success");
     },
-    onContactSaveError: function(contact) {
+    onContactSaveError: function (contact) {
         console.log("Save Failed");
     }
 };
 
-(function($){
-    $(document).ready(function(){
+(function ($) {
+    $(document).ready(function () {
         //Display user info
-        $('body').on('db-schema-ready', function(){
+        $('body').on('db-schema-ready', function () {
             $("#username-container").text(appUser.username);
         });
 
         //Bind logout action
-        $('#user-logout-button').click(function(e){
+        $('#user-logout-button').click(function (e) {
             e.preventDefault();
             appUser.doLogout();
         });
 
         //Side-menu toggle
-        $('.toggle-side-menu').click(function(e){
+        $('.toggle-side-menu').click(function (e) {
             e.preventDefault();
             e.stopPropagation();
 
             //if sync in progress prevent menu display
-            if( !($('body').hasClass('sync-in-progress')) ){
+            if (!($('body').hasClass('sync-in-progress'))) {
                 $('body').toggleClass('side-menu-active');
             }
         });
 
         //Display mask while sync
-        $('body').on('sync-start', function(){
+        $('body').on('sync-start', function () {
             console.log("start");
             $('body').addClass('sync-in-progress');
         });
 
         //Hide mask when sync ended
-        $('body').on('sync-end', function(){
+        $('body').on('sync-end', function () {
             console.log("end");
             $('body').removeClass('sync-in-progress');
         });
 
         //Handle external links
-        $('body').on('click', 'a', function(e){
+        $('body').on('click', 'a', function (e) {
             var $link = $(this);
 
-            if($link.attr('target') === '_system'){
+            if ($link.attr('target') === '_system') {
                 e.preventDefault();
-              
 
-                window.open($link.attr('href'),'_system');
+
+                window.open($link.attr('href'), '_system');
             }
         });
 
         //menu search
-        $('body').on('submit', '#search-form', function(e){
+        $('body').on('submit', '#search-form', function (e) {
             e.preventDefault();
 
             var searchKey = $('input', $(this)).val();
 
-            if(searchKey.length > 1){
+            if (searchKey.length > 1) {
                 window.open("Search.html?search=" + encodeURIComponent(searchKey), "_self");
             } else {
                 alert(i18n.strings["search-input-error"]);
@@ -120,9 +120,8 @@ var app = {
         });
 
         //Orientation change
-        $(window).on('orientationchange', function(e, onready){
-            switch(window.orientation)
-            {
+        $(window).on('orientationchange', function (e, onready) {
+            switch (window.orientation) {
                 case 0:
                     $('body').removeClass('landscape').addClass('portrait');
                 case -90:

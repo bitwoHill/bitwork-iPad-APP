@@ -3,7 +3,7 @@ var productgroups_CONTAINER = "#productgroups-items-container",
     productgroups_ITEM_TEMPLATE = "#productgroups-item-template";
 
 var ProductGroupsUI = {
-    resetProductGroups : function(){
+    resetProductGroups: function () {
         $(productgroups_CONTAINER + ' > div').not(productgroups_ITEM_TEMPLATE).remove();
     },
 

@@ -25,8 +25,8 @@ var SharePoint = {
                     var tmp = url.split("?")
                     //get the last token
                     var newone = tmp[tmp.length - 1];
-                  
-                   // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
+
+                    // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
                     var jqXHR2 = $.ajax({
                         type: 'GET',
                         url: Settings.spDomain + "/" + listName + "/?" + newone,
@@ -39,7 +39,7 @@ var SharePoint = {
 
                         //check i the new result also contains a skiptoken - > if so keep loop running
                         if (responseDataSubQuery.d.__next) {
-                        //    console.debug("found new one" & responseDataSubQuery.d.__next);
+                            //    console.debug("found new one" & responseDataSubQuery.d.__next);
                             bFoundToken = true;
                         }
                         else {
@@ -63,7 +63,7 @@ var SharePoint = {
                         $('body').trigger('sync-error');
 
                         //if auth failed
-                        if(responseData && responseData.status && responseData.status === 401){
+                        if (responseData && responseData.status && responseData.status === 401) {
                             appUser.doLogout();
                         }
                     })
@@ -77,7 +77,7 @@ var SharePoint = {
                 console.warn(responseData, textStatus, errorThrown);
                 $('body').trigger('sync-error');
                 //if auth failed
-                if(responseData && responseData.status && responseData.status === 401){
+                if (responseData && responseData.status && responseData.status === 401) {
                     appUser.doLogout();
                 }
             }
@@ -90,12 +90,12 @@ var SharePoint = {
     //did not work as expected
     //sharePointChangesRequest: function (listName,sincedate) {
 
-        
+
     //    var soapRequest = '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">  <soap:Body> <GetListItemChanges xmlns="http://schemas.microsoft.com/sharepoint/soap/"> <listName>' + listName + '</listName>  <since>' + sincedate + ' </since>      </GetListItemChanges>  </soap:Body> </soap:Envelope>';
 
     //    jQuery.support.cors = true;
     //    console.debug(soapRequest);
-    
+
     //    var jqXHR = $.ajax({
     //        type: 'POST',
     //        url: Settings.spListsWebservice,
@@ -140,7 +140,7 @@ var SyncModel = {
             syncType: (type) ? type : "ALL",
             syncDate: new Date()
         };
-console.log("Adding Synctype: " + type);
+        console.log("Adding Synctype: " + type);
         Sync.all().filter("syncType", "=", type).destroyAll(function () {
             persistence.add(new Sync(syncItem));
             persistence.flush();
@@ -149,7 +149,7 @@ console.log("Adding Synctype: " + type);
 
     getSyncDate: function (type, callback) {
         Sync.all().filter("syncType", "=", type).limit(1).list(function (res) {
-            try{
+            try {
                 var syncDate;
                 //console.log(res[0]);
                 if (res.length && res[0]._data.syncDate) {
@@ -159,8 +159,7 @@ console.log("Adding Synctype: " + type);
                     callback(i18n.strings["na"]);
                 }
             }
-            catch (e)
-            {
+            catch (e) {
                 callback(i18n.strings["na"]);
             }
         });

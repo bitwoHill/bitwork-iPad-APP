@@ -2,14 +2,14 @@ var equipmentproducts_CONTAINER = "#equipmentproducts-items-container",
 MPL_EMPTY_CONTAINER = "#mpl-empty-container",
     localFileSystemRoot;
 
-    var documents_CONTAINER = "#document-items-container",
-    tree_nav_CONTAINER = "#document-tree-nav-container",
-    documents_DOCUMENT_TEMPLATE = "#document-document-item-template",
-    documents_FOLDER_TEMPLATE = "#document-folder-item-template";
+var documents_CONTAINER = "#document-items-container",
+tree_nav_CONTAINER = "#document-tree-nav-container",
+documents_DOCUMENT_TEMPLATE = "#document-document-item-template",
+documents_FOLDER_TEMPLATE = "#document-folder-item-template";
 
-    var productoptions_CONTAINER = "#productoptions-items-container",
-    productoptions_ITEM_CHILD_Container = "#productoptions-item-child-container",
-    productoptions_ITEM_TEMPLATE = "#productoptions-item-template";
+var productoptions_CONTAINER = "#productoptions-items-container",
+productoptions_ITEM_CHILD_Container = "#productoptions-item-child-container",
+productoptions_ITEM_TEMPLATE = "#productoptions-item-template";
 
 //MPLstammdaten.js combines the data from equipmentproducts, otherprodcuts, documents, documenttypes and product options for mplstammdaten.html
 
@@ -50,7 +50,7 @@ var equipmentproductsUI = {
                     if (results.length) { //if not check other products
                         $.each(results, function (index, value) {
                             //check products with product FK
-                           // console.debug(value);
+                            // console.debug(value);
                             neededProductFK = value._data.productFK;
                             neededEquipmentProductID = value._data.equipmentId;
 
@@ -261,7 +261,7 @@ var productoptionsUI = {
                     if (results.length != 0) {
                         $container.removeClass('hidden');
                     }
-                  
+
 
 
                     $.each(results, function (index, value) {
@@ -320,7 +320,7 @@ var DocumentsUI = {
 
             function initFS(fs) {
 
-console.log("opened filesystem");
+                console.log("opened filesystem");
                 //load documents by current url parameter / andhand von aktueller ID laden
 
                 var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
@@ -346,7 +346,7 @@ console.log("opened filesystem");
                         .list(null, function (results2) {
                             if (results2.length) {
                                 //get all types in found documents
-console.log("found documents");
+                                console.log("found documents");
                                 $.each(results2, function (index, value) {
                                     var data = value._data;
 
@@ -531,25 +531,24 @@ console.log("found documents");
                        $('.tree-nav-item-name', newItem).html(data.documentname);
                        $('.tree-nav-link', newItem).attr("data-item-id", data.documentId);
 
-//create instance of local filesystem if not allready created
-if (!localFileSystemRoot)
-{
+                       //create instance of local filesystem if not allready created
+                       if (!localFileSystemRoot) {
 
-    try{
-            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+                           try {
+                               window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
-                function(fileSystem) {
-                      localFileSystemRoot = fileSystem.root.fullPath;
-                },
-                function() {
-                     console.debug("could not create filesystem");
-                }
-            );
-        } catch (err) {
-           console.debug(err);
-        }
-}
+                               window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                                   function (fileSystem) {
+                                       localFileSystemRoot = fileSystem.root.fullPath;
+                                   },
+                                   function () {
+                                       console.debug("could not create filesystem");
+                                   }
+                               );
+                           } catch (err) {
+                               console.debug(err);
+                           }
+                       }
 
 
 
@@ -557,8 +556,8 @@ if (!localFileSystemRoot)
                            // $('.tree-nav-link', newItem).attr("href", data.path);
                            $('.tree-nav-link', newItem).click(function () { window.open(localFileSystemRoot + "/Dokumente/" + data.localPath, '_blank', 'location=yes'); });
                            console.debug(localFileSystemRoot + "/Dokumente/" + data.localPath);
-                         
-           
+
+
                        }
                        else //show that no file is available
                        {

@@ -4,7 +4,7 @@ var productplatforms_CONTAINER = "#productplatforms-items-container",
 
 
 var ProductPlatformsUI = {
-    resetProductPlatforms : function(){
+    resetProductPlatforms: function () {
         $(productplatforms_CONTAINER + ' > div').not(productplatforms_ITEM_TEMPLATE).remove();
     },
 

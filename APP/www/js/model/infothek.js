@@ -102,7 +102,7 @@ var InfothekModel = {
                                 if (value.Geändert) {
                                     newItem.spModifiedDate = utils.parseSharePointDate(value.Geändert);
                                 }
-                              
+
                             }
 
                             persistence.add(new Infothek(newItem));
@@ -150,15 +150,15 @@ var InfothekModel = {
                         //alert(data.spModifiedDate);
 
                         if (data.localModifiedDate) {
-                           
-                       
 
-                    if (data.localModifiedDate.getTime() === data.spModifiedDate.getTime()){
-                               console.debug("skiped " + data.title);
+
+
+                            if (data.localModifiedDate.getTime() === data.spModifiedDate.getTime()) {
+                                console.debug("skiped " + data.title);
                                 queueProgress.qSuccess++;
 
-                                     //trigger event, as if downloaded 
-                  queueProgress.qIndex = index + 1;
+                                //trigger event, as if downloaded 
+                                queueProgress.qIndex = index + 1;
                                 if (queueProgress.qIndex === queueProgress.qLength) {
                                     $('body').trigger('download-queue-ended', queueProgress);
                                 } else {
@@ -167,7 +167,7 @@ var InfothekModel = {
                                 return true; //skip download
                             }
                         }
-                        
+
 
 
                         $.downloadQueue(downloadData)
@@ -175,13 +175,13 @@ var InfothekModel = {
                             function (entrie) {
                                 queueProgress.qSuccess++;
                                 //  console.debug(entrie);
-                             //   results[index].localPath(entrie.fullPath);
+                                //   results[index].localPath(entrie.fullPath);
                                 results[index].localPath(entrie.name);
                                 //overwrite sync date with status of last sp modified date
                                 //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the infothek list.
                                 //Hence the SP File could be newer and the local database would still have the old modified date. 
                                 // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
-                                    results[index].localModifiedDate(results[index]._data.spModifiedDate);
+                                results[index].localModifiedDate(results[index]._data.spModifiedDate);
                                 //console.log("cnt:" + index);
                                 persistence.flush();
                             }
@@ -217,6 +217,8 @@ var InfothekModel = {
 
         var infothekSearch = $.Deferred();
         key = "%" + key.replace("*", "") + "%";
+        key = key.replace(/ /g, '%'); //replace changes only first instance . thats why the global modifier "g" of a regular expression was used. find all whitepaces and change to %
+
 
         Infothek.all().filter("title", "LIKE", key).and(new persistence.PropertyFilter("isFolder", "=", false)).list(function (res) {
             infothekSearch.resolve(res);

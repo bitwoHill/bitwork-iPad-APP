@@ -16,27 +16,27 @@ News.textIndex('title');
 News.textIndex('bodySearch');
 
 var NewsModel = {
-    syncNews : function(){
+    syncNews: function () {
         $('body').trigger('sync-start');
 
         SharePoint.sharePointRequest(NEWS_LIST, NewsModel.mapSharePointData);
     },
 
     //maps SharePoint data to current model
-    mapSharePointData: function(data){
+    mapSharePointData: function (data) {
         var spData = data.d;
         //wipe database of old entries
         News.all().destroyAll(function (ele) {
             utils.emptySearchIndex("News");
             if (spData && spData.results.length) {
                 $.each(spData.results, function (index, value) {
-                
-                    var bodyContent = (value.Textkörper)? NewsModel.formatBodyText(value.Textkörper) : false,
+
+                    var bodyContent = (value.Textkörper) ? NewsModel.formatBodyText(value.Textkörper) : false,
                         newsItem = {
                             nodeId: value.ID,
                             title: value.Titel,
-                            body: (bodyContent)? bodyContent["bodyFormatted"] : "",
-                            bodySearch: (bodyContent)? bodyContent["bodyFormattedSearch"] : ""
+                            body: (bodyContent) ? bodyContent["bodyFormatted"] : "",
+                            bodySearch: (bodyContent) ? bodyContent["bodyFormattedSearch"] : ""
                         };
 
                     if (value.LäuftAb) {
@@ -62,13 +62,12 @@ var NewsModel = {
         });
     },
 
-    formatBodyText : function(body){
+    formatBodyText: function (body) {
 
         var $body = $(body);
-    
+
         //remove links
-        try
-        {
+        try {
             $body.find('a').attr('target', "_system");
             var oldhref = $body.find('a').attr('href');
             var input = "/"
@@ -77,15 +76,15 @@ var NewsModel = {
             if (oldhref.substring(0, input.length) === input) // checks if URL starts with "/"
             {
                 //if so, add http://www.atlas-cms.com/
-            //    console.debug(oldhref);
+                //    console.debug(oldhref);
                 $body.find('a').attr('href', Settings.spContent + oldhref)
                 var newhref = $body.find('a').attr('href');
-              //  console.debug(newhref);
+                //  console.debug(newhref);
             }
 
 
 
-         
+
         }
         catch (e)
         { }
@@ -97,14 +96,14 @@ var NewsModel = {
 
 
         return {
-            bodyFormatted : $body.html(),
+            bodyFormatted: $body.html(),
             bodyFormattedSearch: $body.text()
         };
     },
 
-    searchNews: function(key){
+    searchNews: function (key) {
         var newsSearch = $.Deferred();
-        News.search(key).list(function(res){
+        News.search(key).list(function (res) {
             newsSearch.resolve(res);
         });
 

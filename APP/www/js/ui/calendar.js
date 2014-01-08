@@ -3,34 +3,32 @@ var CALENDAR_CONTAINER = "#calendar-items-container",
     CALENDAR_EMPTY_CONTAINER = "#calendar-empty-container";
 
 var CalendarUI = {
-    resetCalendar : function(){
+    resetCalendar: function () {
         $(CALENDAR_CONTAINER + " > div").not(CALENDAR_EMPTY_CONTAINER).not(CALENDAR_ITEM_TEMPLATE).remove();
     },
 
-    displayCalendar : function(){
+    displayCalendar: function () {
         var $container = $(CALENDAR_CONTAINER),
             $template = $(CALENDAR_ITEM_TEMPLATE),
             requestParam = utils.getUrlParameter('calendarID');
 
-        if($container.length && $template.length){
-        //    var calendarList = (requestParam !== "")? Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10)) : Calendar.all();
+        if ($container.length && $template.length) {
+            //    var calendarList = (requestParam !== "")? Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10)) : Calendar.all();
 
-var calendarList;
-if (requestParam == "")
-{
-        calendarList = Calendar.all()
+            var calendarList;
+            if (requestParam == "") {
+                calendarList = Calendar.all()
 
-}
-else
-{
-calendarList = Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10)) 
-}
+            }
+            else {
+                calendarList = Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10))
+            }
 
-            calendarList.order('startDate', false).list(null, function(results){
-                if(results.length){
+            calendarList.order('startDate', false).list(null, function (results) {
+                if (results.length) {
 
                     $(CALENDAR_EMPTY_CONTAINER).addClass('hidden');
-                    $.each(results, function(index, value){
+                    $.each(results, function (index, value) {
                         var data = value._data;
                         var $newItem = $template.clone();
 
@@ -41,22 +39,22 @@ calendarList = Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10))
 
                         $('a.calendar-item-to-phone', $newItem).attr('data-calendar-id', data.nodeId);
 
-                    
 
 
-                        if(data.location) {
+
+                        if (data.location) {
                             $('.calendar-item-location', $newItem).html(data.location);
                         } else {
                             $('.calendar-item-location-container', $newItem).addClass('hidden');
                         }
 
-                        if(data.startDate) {
+                        if (data.startDate) {
                             $('.calendar-item-startdate', $newItem).html(utils.dateFormat(new Date(data.startDate), "l, d F y, H:M"));
                         } else {
                             $('.calendar-item-startdate-container', $newItem).addClass('hidden');
                         }
 
-                        if(data.expirationDate) {
+                        if (data.expirationDate) {
                             $('.calendar-item-enddate', $newItem).html(utils.dateFormat(new Date(data.expirationDate), "l, d F y, H:M"));
                         } else {
                             $('.calendar-item-enddate-container', $newItem).addClass('hidden');
@@ -70,7 +68,7 @@ calendarList = Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10))
             });
         }
 
-        SyncModel.getSyncDate("Kalender", function(date){
+        SyncModel.getSyncDate("Kalender", function (date) {
             //update last sync date
             $('.page-sync-btn-date').html(date);
             $('.page-sync-btn').removeClass('hidden');
@@ -78,26 +76,26 @@ calendarList = Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10))
     }
 };
 
-(function($){
+(function ($) {
     //Display calendar items when sync is ready
     $('body').on('calendar-sync-ready db-schema-ready', CalendarUI.displayCalendar);
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         //Bind action to sync calendar button
-        $('body').on('click', 'a.page-sync-btn', function(e){
+        $('body').on('click', 'a.page-sync-btn', function (e) {
             e.preventDefault();
             CalendarModel.syncCalendar();
         });
 
         //bind action to add calendar to phone button
-        $('body').on('click', 'a.calendar-item-to-phone', function(e){
+        $('body').on('click', 'a.calendar-item-to-phone', function (e) {
             e.preventDefault();
             var $this = $(this),
                 calendarId;
 
             calendarId = $this.attr('data-calendar-id');
-           
-            CalendarModel.addCalendarToPhone(calendarId, function(){
+
+            CalendarModel.addCalendarToPhone(calendarId, function () {
                 $this.addClass("disabled");
             });
         });
