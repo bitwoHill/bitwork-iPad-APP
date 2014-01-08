@@ -22,6 +22,8 @@ var equipmentproductsModel = {
     sharePointEquipmentproducts: function () {
 
         $('body').trigger('sync-start');
+        $('#msgEquipmentProducts').toggleClass('in');
+
         SharePoint.sharePointRequest(EQUIPMENTPRODUCTS_LIST, equipmentproductsModel.mapSharePointData);
     },
     //maps SharePoint data to current model
@@ -54,8 +56,10 @@ var equipmentproductsModel = {
                 persistence.flush(
                     function () {
                         SyncModel.addSync(EQUIPMENTPRODUCTS_LIST);
-                    $('body').trigger('sync-end');
+                        $('body').trigger('sync-end');
                         $('body').trigger('equipmentproducts-sync-ready');
+                        $('#msgEquipmentProducts').removeClass('in');
+
                     }
                 );
             }
@@ -65,9 +69,11 @@ var equipmentproductsModel = {
 
     searchEquipmentproduct: function (key) {
         var equipmentproductSearch = $.Deferred();
+   
         key = "%" + key.replace("*", "") + "%";
+        key = key.replace(/ /g, '%'); //replace changes only first instance . thats why the global modifier "g" of a regular expression was used. find all whitepaces and change to %
 
-        EquipmentProducts.all().filter("productDescription", "like", key).or(new persistence.PropertyFilter("pieceNumber", "LIKE", key)).list(function (res) {
+        EquipmentProducts.all().filter("productDescription", "LIKE", key).or(new persistence.PropertyFilter("pieceNumber", "LIKE", key)).order('productDescription', true, false).list(function (res) {
             equipmentproductSearch.resolve(res);
         });
 

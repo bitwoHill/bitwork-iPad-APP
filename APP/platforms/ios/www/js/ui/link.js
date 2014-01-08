@@ -4,26 +4,26 @@ var LINK_CONTAINER = "#link-items-container",
 
 var LinkUI = {
 
-    resetLinks : function(){
+    resetLinks: function () {
         var $container = $(LINK_CONTAINER);
 
         $('li', $container).not(LINK_ITEM_TEMPLATE).remove();
     },
 
-    displayLinks : function(){
+    displayLinks: function () {
         var $container = $(LINK_CONTAINER),
             $template = $(LINK_ITEM_TEMPLATE),
             requestParam = utils.getUrlParameter('linkID');
 
-        if($container.length && $template.length){
+        if ($container.length && $template.length) {
             LinkUI.resetLinks();
 
-            var linksList = (requestParam !== "")? Link.all().filter('linkId', '=', parseInt(requestParam, 10)) : Link.all();
+            var linksList = (requestParam !== "") ? Link.all().filter('linkId', '=', parseInt(requestParam, 10)) : Link.all();
 
-            linksList.order('description').list(null, function(results){
-                if(results.length){
+            linksList.order('description').list(null, function (results) {
+                if (results.length) {
                     $(LINK_EMPTY_CONTAINER).addClass('hidden');
-                    $.each(results, function(index, value){
+                    $.each(results, function (index, value) {
                         var data = value._data;
                         var $newItem = $template.clone();
 
@@ -41,7 +41,7 @@ var LinkUI = {
             });
         }
 
-        SyncModel.getSyncDate(LINK_LIST, function(date){
+        SyncModel.getSyncDate(LINK_LIST, function (date) {
             //update last sync date
             $('.page-sync-btn-date').html(date);
             $('.page-sync-btn').removeClass('hidden');
@@ -49,13 +49,13 @@ var LinkUI = {
     }
 };
 
-(function($){
+(function ($) {
     //Display news when sync is ready
     $('body').on('link-sync-ready db-schema-ready', LinkUI.displayLinks);
 
-    $(document).ready(function(){
+    $(document).ready(function () {
 
-        $('body').on('click', 'a.page-sync-btn', function(){
+        $('body').on('click', 'a.page-sync-btn', function () {
             LinkModel.syncLinks();
         });
     })

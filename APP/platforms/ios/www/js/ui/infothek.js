@@ -1,29 +1,29 @@
- var INFOTHEK_CONTAINER = "#infothek-items-container",
-    INFOTHEK_ITEM_TEMPLATE = "#infothek-person-item-template",
-    INFOTHEK_FOLDER_TEMPLATE = "#infothek-folder-item-template",
-    INFOTHEK_EMPTY_CONTAINER = "#infothek-empty-container",
-    localFileSystemRoot;
+var INFOTHEK_CONTAINER = "#infothek-items-container",
+   INFOTHEK_ITEM_TEMPLATE = "#infothek-person-item-template",
+   INFOTHEK_FOLDER_TEMPLATE = "#infothek-folder-item-template",
+   INFOTHEK_EMPTY_CONTAINER = "#infothek-empty-container",
+   localFileSystemRoot;
 
 var InfothekUI = {
-    resetInfothek : function(){
+    resetInfothek: function () {
         $(INFOTHEK_CONTAINER + " > li").not(INFOTHEK_FOLDER_TEMPLATE).not(INFOTHEK_ITEM_TEMPLATE).remove();
     },
 
-    displayInfothekNavTree : function(){
+    displayInfothekNavTree: function () {
         var $container = $(INFOTHEK_CONTAINER),
             $templateItem = $(INFOTHEK_ITEM_TEMPLATE),
             $templateFolder = $(INFOTHEK_FOLDER_TEMPLATE),
             $emptyContainer = $(INFOTHEK_EMPTY_CONTAINER);
 
-        if($container.length && $templateFolder.length && $templateItem.length){
+        if ($container.length && $templateFolder.length && $templateItem.length) {
             InfothekUI.resetInfothek();
 
-            Infothek.all().filter("parentFolder", "=", 'InfothekHaendler').order('isFolder', false).order('title', true).list(null, function(results){
+            Infothek.all().filter("parentFolder", "=", 'InfothekHaendler').order('isFolder', false).order('title', true).list(null, function (results) {
 
-                if(results.length){
+                if (results.length) {
                     $emptyContainer.addClass("hidden");
 
-                    $.each(results, function(index, value){
+                    $.each(results, function (index, value) {
                         var newItem = InfothekUI.createTreeNavItem($templateItem, $templateFolder, value._data);
 
                         $container.append(newItem.removeClass('hidden'));
@@ -34,21 +34,21 @@ var InfothekUI = {
             });
         }
 
-        SyncModel.getSyncDate(INFOTHEK_LIST, function(date){
+        SyncModel.getSyncDate(INFOTHEK_LIST, function (date) {
             //update last sync date
             $('.page-sync-btn-date').html(date);
             $('.page-sync-btn').removeClass('hidden');
         });
     },
 
-    updateContactTree : function(container, nodeId){
+    updateContactTree: function (container, nodeId) {
         var $templateItem = $(INFOTHEK_ITEM_TEMPLATE),
             $templateFolder = $(INFOTHEK_FOLDER_TEMPLATE);
 
-        if(container.length && $templateFolder.length && $templateItem.length){
-            Infothek.all().filter("parentFolder", "=", nodeId).order('isFolder', false).order('title', true).list(null, function(results){
+        if (container.length && $templateFolder.length && $templateItem.length) {
+            Infothek.all().filter("parentFolder", "=", nodeId).order('isFolder', false).order('title', true).list(null, function (results) {
 
-                $.each(results, function(index, value){
+                $.each(results, function (index, value) {
                     var newItem = InfothekUI.createTreeNavItem($templateItem, $templateFolder, value._data);
 
                     container.append(newItem.removeClass('hidden'));
@@ -57,10 +57,10 @@ var InfothekUI = {
         }
     },
 
-    createTreeNavItem: function($templateItem, $templateFolder, data){
+    createTreeNavItem: function ($templateItem, $templateFolder, data) {
         var newItem;
 
-        if(data.isFolder){
+        if (data.isFolder) {
             newItem = $templateFolder.clone();
         } else {
             newItem = $templateItem.clone();
@@ -71,64 +71,61 @@ var InfothekUI = {
         $('.tree-nav-item-name', newItem).html(data.title);
         $('.tree-nav-link', newItem).attr("data-item-id", data.nodeId);
         $('.tree-nav-link', newItem).attr("data-item-name", data.title);
-    
-//create instance of local filesystem if not allready created
-if (!localFileSystemRoot)
-{
 
-    try{
-            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+        //create instance of local filesystem if not allready created
+        if (!localFileSystemRoot) {
 
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
-                function(fileSystem) {
-                    localFileSystemRoot = fileSystem.root.fullPath;
+            try {
+                window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
-  if (data.localPath) {
-            $('.tree-nav-link', newItem).click(function () { window.open(localFileSystemRoot + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
-            console.debug(localFileSystemRoot + "/Infothek/" + data.localPath);
-          
-           
-        }
-        else //show that no file is available
-        {
-            if (!data.isFolder)
-            {
-                $('.tree-nav-item-name', newItem).html(data.title + ' - keine lokale Version verfügbar');
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                    function (fileSystem) {
+                        localFileSystemRoot = fileSystem.root.fullPath;
+
+                        if (data.localPath) {
+                            $('.tree-nav-link', newItem).click(function () { window.open(localFileSystemRoot + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
+                            console.debug(localFileSystemRoot + "/Infothek/" + data.localPath);
+
+
+                        }
+                        else //show that no file is available
+                        {
+                            if (!data.isFolder) {
+                                $('.tree-nav-item-name', newItem).html(data.title + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
+                            }
+                        }
+
+                    },
+                    function () {
+                        console.debug("could not create filesystem");
+                        if (!data.isFolder) {
+                            $('.tree-nav-item-name', newItem).html(data.title + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
+                        }
+                    }
+                );
+            } catch (err) {
+                console.debug(err);
             }
         }
 
-                },
-                function() {
-                     console.debug("could not create filesystem");
-                       if (!data.isFolder)
-            {
-                $('.tree-nav-item-name', newItem).html(data.title + ' - keine lokale Version verfügbar');
-            }
-                }
-            );
-        } catch (err) {
-           console.debug(err);
-        }
-}
 
 
-      
 
         return newItem;
     },
 
-    displayInfothekNode : function(nodeID){
+    displayInfothekNode: function (nodeID) {
         var $container = $(INFOTHEK_CONTAINER),
             $templateItem = $(INFOTHEK_ITEM_TEMPLATE),
             $templateFolder = $(INFOTHEK_FOLDER_TEMPLATE),
             $emptyContainer = $(INFOTHEK_EMPTY_CONTAINER);
 
-        if($container.length && $templateFolder.length && $templateItem.length){
+        if ($container.length && $templateFolder.length && $templateItem.length) {
             InfothekUI.resetInfothek();
 
-            Infothek.all().filter("nodeId", "=", nodeID).list(null, function(results){
+            Infothek.all().filter("nodeId", "=", nodeID).list(null, function (results) {
 
-                if(results.length){
+                if (results.length) {
                     $emptyContainer.addClass("hidden");
 
                     InfothekUI.updateContactTree($container, results[0]._data.parentFolder);
@@ -141,38 +138,38 @@ if (!localFileSystemRoot)
     }
 };
 
-$(document).ready(function(){
+$(document).ready(function () {
 
-    $('body').on('infothek-sync-ready db-schema-ready', function(){
+    $('body').on('infothek-sync-ready db-schema-ready', function () {
         var requestParam = utils.getUrlParameter('infothekID');
 
-        if(requestParam !== "") {
+        if (requestParam !== "") {
             InfothekUI.displayInfothekNode(parseInt(requestParam));
         } else {
             InfothekUI.displayInfothekNavTree();
         }
     });
 
-    $('body').on('click', 'a.page-sync-btn', function(e){
+    $('body').on('click', 'a.page-sync-btn', function (e) {
         e.preventDefault();
         InfothekModel.syncInfothek();
     });
 
-    $('body').on('click', '.tree-nav-link.folder', function(e){
+    $('body').on('click', '.tree-nav-link.folder', function (e) {
         e.preventDefault();
         var $this = $(this),
             nodeId = $this.attr("data-item-name"),
             container = $this.siblings("ul.tree-nav"),
             $icon = $('.fa', $this);
 
-        if(container.length && $('li', container).length === 0){
+        if (container.length && $('li', container).length === 0) {
             InfothekUI.updateContactTree(container, nodeId);
         }
 
         $this.siblings("ul.tree-nav").toggle(300);
         $this.toggleClass("collapsed");
 
-        if($icon.hasClass('fa-folder')){
+        if ($icon.hasClass('fa-folder')) {
             $icon.removeClass('fa-folder').addClass('fa-folder-open');
         } else {
             $icon.removeClass('fa-folder-open').addClass('fa-folder');

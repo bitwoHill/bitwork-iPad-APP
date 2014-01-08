@@ -34,6 +34,8 @@ var documentsModel = {
     sharePointDocuments: function () {
         //get documenttypes
         //  $('body').trigger('sync-start');
+        $('#msgDocuments').toggleClass('in');
+
         SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes);
     },
     //maps SharePoint data to current model
@@ -147,6 +149,7 @@ var documentsModel = {
                                 SyncModel.addSync(DOCUMENTS_LIST);
                                 $('body').trigger('sync-end');
                                 $('body').trigger('documents-sync-ready');
+                                $('#msgDocuments').removeClass('in');
                             }
                         );
                     }
@@ -175,68 +178,65 @@ var documentsModel = {
                             path: data.path
                         };
                     //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
-                 
+
                     if (data.localModifiedDate) {
-                  
-                             if (data.localModifiedDate.getTime() === data.spModifiedDate.getTime())
-                    {
 
-                        console.debug("skipped " + data.documentname);
-                queueProgress.qSuccess++;
+                        if (data.localModifiedDate.getTime() === data.spModifiedDate.getTime()) {
 
-                //trigger event, as if downloaded 
-                   queueProgress.qIndex = index + 1;
-                 if (queueProgress.qIndex === queueProgress.qLength) {
-                                    $('body').trigger('download-queue-ended', queueProgress);
-                                } else {
-                                    $('body').trigger('download-queue-progress', queueProgress);
-                                }
-                     return true; //skip
-                   }
-                   
+                            console.debug("skipped " + data.documentname);
+                            queueProgress.qSuccess++;
+
+                            //trigger event, as if downloaded 
+                            queueProgress.qIndex = index + 1;
+                            if (queueProgress.qIndex === queueProgress.qLength) {
+                                $('body').trigger('download-queue-ended', queueProgress);
+                            } else {
+                                $('body').trigger('download-queue-progress', queueProgress);
+                            }
+                            return true; //skip
+                        }
+
                     }
-                    
-                      //end if download necessary
-                        $.downloadQueue(downloadData)
-                        .done(
-                            function (entrie) {
-                                queueProgress.qSuccess++;
-                              //   results[index].localPath(entrie.fullPath);
-                                results[index].localPath(entrie.name);
-                               
-                                //overwrite sync date with status of last sp modified date
-                                //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the Document list.
-                                //Hence the SP File could be newer and the local database would still have the old modified date. 
-                                // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
-                                try
-                                {
-                                    results[index].localModifiedDate(results[index]._data.spModifiedDate);
-                                 //        console.debug("modified date");
-                                                           }
-                              catch (e)
-                              {
+
+                    //end if download necessary
+                    $.downloadQueue(downloadData)
+                    .done(
+                        function (entrie) {
+                            queueProgress.qSuccess++;
+                            //   results[index].localPath(entrie.fullPath);
+                            results[index].localPath(entrie.name);
+
+                            //overwrite sync date with status of last sp modified date
+                            //this isnt 100% accurate but it shouldnt matter. Downloading files does not refresh the Document list.
+                            //Hence the SP File could be newer and the local database would still have the old modified date. 
+                            // but this really shouldnt matter. Worse thing that happens is one additional Download of the same file
+                            try {
+                                results[index].localModifiedDate(results[index]._data.spModifiedDate);
+                                //        console.debug("modified date");
+                            }
+                            catch (e) {
                                 console.debug(e);
-                              alert("Error overwriting modified date");
-                              }
-                             
-                                persistence.flush();
+                                alert("Error overwriting modified date");
                             }
-                        ).fail(
-                            function (entrie) {
-                                queueProgress.qFail++;
-                                //console.log("cnt f:" + index);
+
+                            persistence.flush();
+                        }
+                    ).fail(
+                        function (entrie) {
+                            queueProgress.qFail++;
+                            //console.log("cnt f:" + index);
+                        }
+                    ).always(
+                        function () {
+                            queueProgress.qIndex = index + 1;
+                            if (queueProgress.qIndex === queueProgress.qLength) {
+                                $('body').trigger('download-queue-ended', queueProgress);
+                            } else {
+                                $('body').trigger('download-queue-progress', queueProgress);
                             }
-                        ).always(
-                            function () {
-                                queueProgress.qIndex = index + 1;
-                                if (queueProgress.qIndex === queueProgress.qLength) {
-                                    $('body').trigger('download-queue-ended', queueProgress);
-                                } else {
-                                    $('body').trigger('download-queue-progress', queueProgress);
-                                }
-                            }
-                        );
-                   
+                        }
+                    );
+
 
                 });
             } else {
@@ -253,8 +253,9 @@ var documentsModel = {
     searchDocuments: function (key) {
         var DocumentsSearch = $.Deferred();
         key = "%" + key.replace("*", "") + "%";
+        key = key.replace(/ /g, '%'); //replace changes only first instance . thats why the global modifier "g" of a regular expression was used. find all whitepaces and change to %
 
-        Documents.all().filter("documentname", "LIKE", key).list(function (res) {
+        Documents.all().filter("documentname", "LIKE", key).order("documentname", true, false).list(function (res) {
             DocumentsSearch.resolve(res);
         });
 

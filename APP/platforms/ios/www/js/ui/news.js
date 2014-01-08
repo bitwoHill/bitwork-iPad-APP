@@ -4,24 +4,24 @@ var NEWS_CONTAINER = "#news-items-container",
     URL_SINGLE_NEWS = "http://www.atlas-cms.com/Lists/Ankuendigungen/DispForm.aspx?ID=";
 
 var NewsUI = {
-    resetNews : function(){
+    resetNews: function () {
         $(NEWS_CONTAINER + ' > div').not(NEWS_ITEM_TEMPLATE).not(NEWS_EMPTY_CONTAINER).remove();
     },
 
-    displayNews : function(){
+    displayNews: function () {
         var $container = $(NEWS_CONTAINER),
             $template = $(NEWS_ITEM_TEMPLATE),
             requestParam = utils.getUrlParameter('newsID');
 
-        if($container.length && $template.length){
+        if ($container.length && $template.length) {
             NewsUI.resetNews();
 
-            var newsList = (requestParam !== "")? News.all().filter("nodeId", "=", parseInt(requestParam, 10)) : News.all();
+            var newsList = (requestParam !== "") ? News.all().filter("nodeId", "=", parseInt(requestParam, 10)) : News.all();
 
-            newsList.order('createdDate', false).list(null, function(results){
-                if(results.length){
+            newsList.order('createdDate', false).list(null, function (results) {
+                if (results.length) {
                     $(NEWS_EMPTY_CONTAINER).addClass('hidden');
-                    $.each(results, function(index, value){
+                    $.each(results, function (index, value) {
                         var data = value._data;
                         var $newItem = $template.clone();
 
@@ -41,14 +41,14 @@ var NewsUI = {
                         $container.append($newItem.removeClass('hidden'));
                     });
                 }
-                //no results
+                    //no results
                 else {
                     $(NEWS_EMPTY_CONTAINER).removeClass('hidden');
                 }
             });
         }
 
-        SyncModel.getSyncDate("News", function(date){
+        SyncModel.getSyncDate("News", function (date) {
             //update last sync date
             $('.page-sync-btn-date').html(date);
             $('.page-sync-btn').removeClass('hidden');
@@ -56,12 +56,12 @@ var NewsUI = {
     }
 };
 
-(function($){
+(function ($) {
     //Display news when sync is ready
     $('body').on('news-sync-ready db-schema-ready', NewsUI.displayNews);
 
-    $(document).ready(function(){
-        $('body').on('click', 'a.page-sync-btn', function(){
+    $(document).ready(function () {
+        $('body').on('click', 'a.page-sync-btn', function () {
             NewsModel.syncNews();
         });
     })

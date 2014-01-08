@@ -29,12 +29,13 @@ Contacts.textIndex('description');
 var ContactsModel = {
     syncContacts: function () {
         $('body').trigger('sync-start');
+        $('#msgContacts').toggleClass('in');
 
         SharePoint.sharePointRequest(CONTACTS_LIST, ContactsModel.mapSharePointData);
     },
 
     addNewsItemToDB: function (value, callback) {
-     
+
         var newItem = {
             contactId: value.ID
         };
@@ -74,32 +75,32 @@ var ContactsModel = {
                 img.onload = function () {
                     newItem.profilePicture = utils.getBase64FromImage(img, imageExtension);
                     persistence.add(new Contacts(newItem));
-                     
+
                     callback();
                 };
                 img.onerror = function () {
                     newItem.profilePicture = Settings.spContent + value.Pfad + "/" + value.Name;
                     persistence.add(new Contacts(newItem));
-                      
+
                     callback();
                 };
             } else {
                 persistence.add(new Contacts(newItem));
-                   
+
                 callback();
             }
         } else {
             persistence.add(new Contacts(newItem));
-         
+
             callback();
         }
-       
+
     },
 
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
-      console.log("DataLength: " + spData.results.length);
+        console.log("DataLength: " + spData.results.length);
         Contacts.all().destroyAll(function (ele) {
             console.log("Deleted Contacts list");
             utils.emptySearchIndex("Contacts");
@@ -108,21 +109,22 @@ var ContactsModel = {
                 var dataLength = spData.results.length,
                     index = 0,
                     addContactCallback = function () {
-console.log("Index: " + index);
+                        console.log("Index: " + index);
                         if (index === dataLength) {
                             index = 0;
                             console.log("Added all Contacts");
-                        
-                                  SyncModel.addSync(CONTACTS_LIST);
-                                    $('body').trigger('sync-end');
-                                    $('body').trigger('contacts-sync-ready');
-                                            console.log("Triggered Events for Sync Ready");
-                persistence.flush(
-                    function () {
-                      console.log("finished Flush all Contacts");
-                                
-                    }
-                );
+
+                            SyncModel.addSync(CONTACTS_LIST);
+                            $('body').trigger('sync-end');
+                            $('body').trigger('contacts-sync-ready');
+                            $('#msgContacts').removeClass('in');
+
+                            persistence.flush(
+                                function () {
+                                    console.log("finished Flush all Contacts");
+
+                                }
+                            );
 
 
 
@@ -130,11 +132,10 @@ console.log("Index: " + index);
                         } else {
                             index++;
                             //flush persistence every fifth item. This is a workaround, as flushing all image files at once leads to a freeze on ios
-                            if (index % 5 == 0)
-                            {
- persistence.flush();
+                            if (index % 5 == 0) {
+                                persistence.flush();
                             }
-                        
+
                             addNews(spData.results[index - 1]);
                         }
                     },
@@ -185,8 +186,8 @@ console.log("Index: " + index);
                 phoneNumbers[0] = new ContactField('Festnetz', phone, false);
                 phoneNumbers[1] = new ContactField('Mobil', mobilephone, false); // preferred number
                 phoneNumbers[2] = new ContactField('Fax', fax, false);
-                
-myContact.phoneNumbers =phoneNumbers;
+
+                myContact.phoneNumbers = phoneNumbers;
                 //email
                 var emails = [];
                 emails[0] = new ContactField('E-Mail', email, false);
@@ -226,9 +227,9 @@ myContact.phoneNumbers =phoneNumbers;
         })
     },
 
-    searchContact: function(key){
+    searchContact: function (key) {
         var contactSearch = $.Deferred();
-        Contacts.search(key).list(function(res){
+        Contacts.search(key).filter("isFolder", "=", false).list(function (res) {
             contactSearch.resolve(res);
         });
 

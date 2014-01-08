@@ -18,39 +18,44 @@ ProductOptions.index(['productOptionId', 'piecenumber'], { unique: true });
 var productoptionsModel = {
     sharePointProductOptions: function () {
 
-                $('body').trigger('sync-start');
-                SharePoint.sharePointRequest(PRODUCTOPTIONS_LIST, productoptionsModel.mapSharePointData);
-            },
+        $('body').trigger('sync-start');
+        $('#msgProductOptions').toggleClass('in');
+
+        SharePoint.sharePointRequest(PRODUCTOPTIONS_LIST, productoptionsModel.mapSharePointData);
+    },
     //maps SharePoint data to current model
     mapSharePointData: function (data) {
         var spData = data.d;
         ProductOptions.all().destroyAll(function (ele) {
-        if (spData && spData.results.length) {
-            $.each(spData.results, function (index, value) {
-                var productoptionsItem =
-                    {
-                        productOptionId: value.ID,
-                        productDescription: (value.ProduktbezeichnungOptionen) ? value.ProduktbezeichnungOptionen : "",
-                        pieceNumber: (value.Teilenummer) ? value.Teilenummer : "",
-                        price: (value.Listenpreis) ? value.Listenpreis : "",
-                        productgroupFK: (value.ProduktgruppeId) ? value.ProduktgruppeId : "",
-                        productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : "",
-                        productplatformFK: (value.ProduktplattformId) ? value.ProduktplattformId : "",
-                        productFK: (value.ProduktId) ? value.ProduktId : "",
-                        equipmentFK: (value.ProduktbezeichnungEquipmentId) ? value.ProduktbezeichnungEquipmentId : ""
-                    };
+            if (spData && spData.results.length) {
+                $.each(spData.results, function (index, value) {
+                    var productoptionsItem =
+                        {
+                            productOptionId: value.ID,
+                            productDescription: (value.ProduktbezeichnungOptionen) ? value.ProduktbezeichnungOptionen : "",
+                            pieceNumber: (value.Teilenummer) ? value.Teilenummer : "",
+                            price: (value.Listenpreis) ? value.Listenpreis : "",
+                            productgroupFK: (value.ProduktgruppeId) ? value.ProduktgruppeId : "",
+                            productfamilyFK: (value.ProduktfamilieId) ? value.ProduktfamilieId : "",
+                            productplatformFK: (value.ProduktplattformId) ? value.ProduktplattformId : "",
+                            productFK: (value.ProduktId) ? value.ProduktId : "",
+                            equipmentFK: (value.ProduktbezeichnungEquipmentId) ? value.ProduktbezeichnungEquipmentId : ""
+                        };
 
-                persistence.add(new ProductOptions(productoptionsItem));
+                    persistence.add(new ProductOptions(productoptionsItem));
 
-            });
+                });
 
-            persistence.flush(
-                function () {
-                    SyncModel.addSync(PRODUCTOPTIONS_LIST);
-                    $('body').trigger('productoptions-sync-ready');
-                }
-            );
-        } });
+                persistence.flush(
+                    function () {
+                        SyncModel.addSync(PRODUCTOPTIONS_LIST);
+                        $('body').trigger('productoptions-sync-ready');
+                        $('#msgProductOptions').removeClass('in');
+
+                    }
+                );
+            }
+        });
 
 
     }

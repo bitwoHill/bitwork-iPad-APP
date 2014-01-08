@@ -6,13 +6,13 @@ var Users = persistence.define('Users', {
 
 Users.index('username', { unique: true });
 
-var User = function(){
+var User = function () {
     var username,
         password,
         SPTestList = "WichtigeLinks",
         loginPageUrl = "LoginPage.html",
 
-        doLogin = function(user, pass, rememberUser){
+        doLogin = function (user, pass, rememberUser) {
 
             var jqXHR = $.ajax({
                 type: 'GET',
@@ -28,8 +28,8 @@ var User = function(){
                 }
             ).fail(
                 function (responseData, textStatus, errorThrown) {
-                    if(responseData){
-                        if(responseData.status && responseData.status === 401){ //if Unauthorized status -> login failed
+                    if (responseData) {
+                        if (responseData.status && responseData.status === 401) { //if Unauthorized status -> login failed
                             loginFailed();
                         } else { //other fail status -> check if user in DB
                             checkDBUser(user, pass);
@@ -40,32 +40,32 @@ var User = function(){
             );
         },
 
-        doLogout = function(){
+        doLogout = function () {
             utils.deleteCookie('bitwork_ipadapp_auth');
             setLoginCounter(0);
             this.username = "";
             this.password = "";
 
             var currentPageURL = window.location.pathname;
-            
+
             //removal of server path in front of url //.pathname returns to much on PhoneGap. for exmaple it returns /app/infothek.html instead of infothek.html. The /app/ needs to be cut away
             var res = currentPageURL.split("/");
-           currentPageURL = res[res.length - 1];
+            currentPageURL = res[res.length - 1];
 
             //Check if user is in login page
-            if(currentPageURL.indexOf(loginPageUrl) === -1 ){
+            if (currentPageURL.indexOf(loginPageUrl) === -1) {
                 //redirect to login page
-            
+
 
                 window.open(loginPageUrl + "?returnURL=" + encodeURIComponent(currentPageURL), "_self");
             }
         },
 
-        loginSuccessful = function(user, pass, rememberUser){
+        loginSuccessful = function (user, pass, rememberUser) {
             var expDate = new Date(),
-                expDelay = (rememberUser)? Settings.loginExpirationExtended : Settings.loginExpiration;
+                expDelay = (rememberUser) ? Settings.loginExpirationExtended : Settings.loginExpiration;
 
-            expDate.setTime(expDate.getTime() + expDelay*60*60*1000);
+            expDate.setTime(expDate.getTime() + expDelay * 60 * 60 * 1000);
 
             utils.setCookie('bitwork_ipadapp_auth', Base64.encode(user + ":" + pass), expDate);
 
@@ -76,37 +76,37 @@ var User = function(){
                     password: Base64.encode(pass),
                     lastLoginDate: new Date()
                 }));
-                persistence.flush(function(){
+                persistence.flush(function () {
                     $('body').trigger('login-successful');
                     setLoginCounter(0);
                 });
             });
         },
 
-        loginFailed = function(){
+        loginFailed = function () {
             utils.deleteCookie('bitwork_ipadapp_auth');
             $('body').trigger('login-failed');
 
             checkLoginCounter();
         },
 
-        setLoginCounter = function(cnt){
+        setLoginCounter = function (cnt) {
             var expDate = new Date();
-            expDate.setTime(expDate.getTime() + Settings.loginFailedAttemptsExpiration*60*60*1000)
+            expDate.setTime(expDate.getTime() + Settings.loginFailedAttemptsExpiration * 60 * 60 * 1000)
 
             utils.setCookie('bitwork_ipadapp_auth_failed_cnt', cnt, expDate);
         },
 
-        checkLoginCounter = function(){
+        checkLoginCounter = function () {
             var loginAttemptsCookie = parseInt(utils.getCookie("bitwork_ipadapp_auth_failed_cnt"), 10),
-                loginAttempts = (loginAttemptsCookie)? loginAttemptsCookie+1 : 1;
+                loginAttempts = (loginAttemptsCookie) ? loginAttemptsCookie + 1 : 1;
 
-            if(loginAttempts === Settings.loginFailedAttempts){
+            if (loginAttempts === Settings.loginFailedAttempts) {
                 //try to delete all files and folder
                 DownloadModel.deleteAllFolders().always(
-                    function(){
+                    function () {
                         //reset DB
-                        persistence.reset(function(){
+                        persistence.reset(function () {
                             alert(i18n.strings["db-reset"]);
                             setLoginCounter(0);
                         });
@@ -118,11 +118,11 @@ var User = function(){
             }
         },
 
-        checkDBUser = function(user, pass){
+        checkDBUser = function (user, pass) {
 
             Users.all().filter("username", "=", user).list(null, function (res) {
-                if(res && res.length){
-                    if(res[0] && res[0]._data && pass === Base64.decode(res[0]._data.password)) {
+                if (res && res.length) {
+                    if (res[0] && res[0]._data && pass === Base64.decode(res[0]._data.password)) {
                         loginSuccessful(user, pass);
                     } else {
                         loginFailed();
@@ -134,38 +134,38 @@ var User = function(){
 
         },
 
-        setCurrentUser = function(callback){
+        setCurrentUser = function (callback) {
             var authCookie = utils.getCookie("bitwork_ipadapp_auth"),
                 currentPageURL = window.location.pathname;
-            if(authCookie){
+            if (authCookie) {
 
                 var tmp = Base64.decode(authCookie);
                 tmp = tmp.split(":");
                 this.username = tmp[0];
                 this.password = tmp[1];
             } else {
-               
+
 
                 //removal of server path in front of url //.pathname returns to much on PhoneGap. for exmaple it returns /app/infothek.html instead of infothek.html. The /app/ needs to be cut away
-               
+
                 var res = currentPageURL.split("/");
-                
+
                 currentPageURL = res[res.length - 1];
 
                 //Check if user is in login page
-                if(currentPageURL.indexOf(loginPageUrl) === -1 ){
+                if (currentPageURL.indexOf(loginPageUrl) === -1) {
                     //redirect to login page
                     window.open(loginPageUrl + "?returnURL=" + encodeURIComponent(currentPageURL), "_self");
                 }
             }
 
-            if(typeof callback === "function") {
+            if (typeof callback === "function") {
                 callback();
             }
         };
 
     return {
-        doLogin : doLogin,
+        doLogin: doLogin,
         doLogout: doLogout,
         initUser: setCurrentUser,
         username: username,

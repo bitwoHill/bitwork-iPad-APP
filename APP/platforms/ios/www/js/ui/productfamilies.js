@@ -3,12 +3,11 @@ var productfamilies_CONTAINER = "#productfamilies-items-container",
     productfamilies_ITEM_TEMPLATE = "#productfamilies-item-template";
 
 var ProductFamiliesUI = {
-    resetProductFamilies : function(){
+    resetProductFamilies: function () {
         $(productfamilies_CONTAINER + ' > div').not(productfamilies_ITEM_TEMPLATE).remove();
     },
 
-    displayproductfamilies: function () 
-    {
+    displayproductfamilies: function () {
         var $container = $(productfamilies_CONTAINER),
             $template = $(productfamilies_ITEM_TEMPLATE);
 
@@ -39,15 +38,15 @@ var ProductFamiliesUI = {
 
             });
         }
-            SyncModel.getSyncDate(PRODUCTFAMILIES_LIST, function (date) {
-                //update last sync date
-                $('.page-sync-btn-date').html(date);
-                $('.page-sync-btn').removeClass('hidden');
-            });
+        SyncModel.getSyncDate(PRODUCTFAMILIES_LIST, function (date) {
+            //update last sync date
+            $('.page-sync-btn-date').html(date);
+            $('.page-sync-btn').removeClass('hidden');
+        });
 
-        }
-    };
-       
+    }
+};
+
 (function ($) {
     //Display productgroups when sync is ready
     $('body').on('productfamilies-sync-ready db-schema-ready', ProductFamiliesUI.displayproductfamilies);
