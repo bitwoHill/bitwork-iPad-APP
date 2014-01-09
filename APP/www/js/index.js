@@ -34,9 +34,15 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
+       
+
+         if (parseFloat(device.version) >= 7.0) {
+       StatusBar.overlaysWebView(false);
+    }
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
+          console.log('Received Event: ' + id);
         var parentElement = document.getElementById(id);
 
         if (parentElement) {
@@ -47,7 +53,7 @@ var app = {
             receivedElement.setAttribute('style', 'display:block;');
         }
 
-        console.log('Received Event: ' + id);
+      
     },
     onContactSaveSuccess: function (contract) {
         console.log("Save success");

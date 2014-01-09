@@ -16,6 +16,8 @@ Calendar.index('nodeId', { unique: true });
 Calendar.textIndex('title');
 Calendar.textIndex('bodySearch');
 
+
+
 var CalendarModel = {
 
     syncCalendar: function () {
@@ -125,17 +127,28 @@ var CalendarModel = {
             bodyFormattedSearch: $body.text()
         };
     },
-
+ 
     searchCalendar: function (key) {
-        if (key)
-        {
-      
+
         var calendarSearch = $.Deferred();
-        Calendar.search(key).list(function (res) {
+          key = "%" + key.replace("*", "") + "%";
+        key = key.replace(/ /g, '%'); //replace changes only first instance . thats why the global modifier "g" of a regular expression was used. find all whitepaces and change to %
+
+      if(!Calendar)
+{
+    return calendarSearch.promise();  
+}
+
+
+        Calendar.all().filter("title", "LIKE", key).or(new persistence.PropertyFilter("bodySearch", "LIKE", key)).order("title", true, false).list(function (res) {
             calendarSearch.resolve(res);
         });
-
-        return calendarSearch.promise();
+       // Calendar.search(key).list(function (res) {
+     //       calendarSearch.resolve(res);
+     //   });
+      
+            return calendarSearch.promise();  
         }
-    }
+    
+    
 };

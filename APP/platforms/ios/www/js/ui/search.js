@@ -259,9 +259,12 @@ var SearchUI = {
             });
 
             var calendarSearch = CalendarModel.searchCalendar(key);
-            calendarSearch.done(function (res) {
+            if (calendarSearch)
+            {  calendarSearch.done(function (res) {
                 SearchUI.displayResults("calendar", res);
-            });
+            });}
+        
+          
 
             var contactsSearch = ContactsModel.searchContact(key);
             contactsSearch.done(function (res) {
