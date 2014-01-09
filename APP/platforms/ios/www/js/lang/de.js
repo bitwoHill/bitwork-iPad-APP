@@ -112,9 +112,9 @@ var i18n = {
         "label-download-success": "Datei(en) heruntergeladen.",
         "label-download-fail": "Datei(en) nicht heruntergeladen.",
         "prod-documents-sync": "Produkt Dokumente herunterladen",
-        "prod-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Produkt Dokumente. Es werden alle im SharePoint befindlichen Dokumente heruntergeladen. Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine WLAN Verbindung möglich. <br> <br>",
+        "prod-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Produkt Dokumente. <br> Es werden alle im SharePoint befindlichen Dokumente der Dokumentebibliothek heruntergeladen. <br> <br> Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine WLAN Verbindung möglich. <br> <br>",
         "infothek-documents-sync": "Infothek Dokumente herunterladen",
-        "infothek-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Infothek Dokumente.Es werden alle im SharePoint befindlichen Dokumente der Infotheksbibliothek heruntergeladen. Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine WLAN Verbindung möglich.",
+        "infothek-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Infothek Dokumente. <br> Es werden alle im SharePoint befindlichen Dokumente der Infotheksbibliothek heruntergeladen. <br> <br> Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine WLAN Verbindung möglich. <br> <br>",
         "metadata-sync": "Metadaten aus SharePoint laden",
         "metadata-sync-text": "Hiermit starten Sie die Synchronisierung der SharePoint Metadaten. Dabei handelt es sich um alle im SharePoint befindlichen Daten, wie Produktinformationen und News und Telefonbuchdaten - aber keine Dateien.",
    
