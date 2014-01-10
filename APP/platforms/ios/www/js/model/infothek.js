@@ -124,7 +124,7 @@ var InfothekModel = {
 
     downloadSharePointFiles: function () {
         //search only files in infothek
-        Infothek.all().limit(10).filter("isFolder", "=", false)
+        Infothek.all().filter("isFolder", "=", false)
             .list(null, function (results) {
                 if (results.length) {
                     var queueProgress = {

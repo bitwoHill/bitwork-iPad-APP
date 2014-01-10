@@ -158,7 +158,7 @@ var documentsModel = {
     },
 
     downloadSharePointFiles: function () {
-        Documents.all().limit(10)
+        Documents.all()
         .list(null, function (results) {
             if (results.length) {
                 var queueProgress = {

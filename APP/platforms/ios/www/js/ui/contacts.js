@@ -34,7 +34,7 @@ var ContactsUI = {
 
                         newItem.removeAttr('id');
 
-                        $('.tree-nav-item-name', newItem).html(data.name + " " + data.forename);
+                        $('.tree-nav-item-name', newItem).html(data.forename + " " + data.name);
                         $('.tree-nav-link', newItem).attr("data-item-id", data.contactId);
                         $('.tree-nav-link', newItem).attr("data-item-name", data.name);
 
@@ -73,7 +73,7 @@ var ContactsUI = {
 
                     newItem.removeAttr('id');
 
-                    $('.tree-nav-item-name', newItem).html(data.name + " " + data.forename);
+                    $('.tree-nav-item-name', newItem).html(data.forename + " " + data.name);
                     $('.tree-nav-link', newItem).attr("data-item-id", data.contactId);
                     $('.tree-nav-link', newItem).attr("data-item-name", data.name);
 
@@ -94,7 +94,7 @@ var ContactsUI = {
 
                     $('a.contact-item-to-phone', $templateContactInfo).attr('data-contact-id', data.contactId);
 
-                    $(".contact-details-name", $templateContactInfo).html(data.name + " " + data.forename);
+                    $(".contact-details-name", $templateContactInfo).html(data.forename + " " + data.name);
                     $(".contact-details-function", $templateContactInfo).html(data.jobFunction);
                     $(".contact-details-department", $templateContactInfo).html(data.department);
 
@@ -170,6 +170,9 @@ var ContactsUI = {
 
             var requestParam = utils.getUrlParameter('contactID');
             if (requestParam !== "") {
+                //show navigate backwardsbutton if site was opened from search (requestParam exists)
+                    $('#btnNavigateBackwardsSearch').removeClass('hidden');
+
                 ContactsUI.displayContactInfo(parseInt(requestParam, 10));
             }
         });

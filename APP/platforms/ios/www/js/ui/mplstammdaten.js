@@ -17,6 +17,10 @@ productoptions_ITEM_TEMPLATE = "#productoptions-item-template";
 var equipmentproductsUI = {
 
     displayStammdaten: function () {
+
+        //disable drawing of dialog as it will be reloaded anyway
+
+
         var $container = $(equipmentproducts_CONTAINER);
         if ($container.length) {
 
@@ -27,23 +31,24 @@ var equipmentproductsUI = {
 
 
             //load by current url parameter / andhand von aktueller ID laden
-            //var ProduktgruppePar = utils.getUrlParameter('Produktgruppe');
-            //var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
-            //var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
             var EquipmentProductPar = utils.getUrlParameter('EquipmentProdukt');
             var OtherProductPar = utils.getUrlParameter('SonstigesProdukt');
 
 
             //Workaround for Search. If Piecenumber Parameter is found, we need to find the IDS for Produkt,family, platform and group first
             var PiecenumberPar = utils.getUrlParameter("Piecenumber");
-            if (PiecenumberPar) {
+            var SearchPar = utils.getUrlParameter("SearchPar");
+
+
+            if (PiecenumberPar && SearchPar) {
+
+
                 var neededEquipmentProductID,
                     neededOtherProductID,
                     neededProductFK,
                  neededProductPlatformFK,
                  neededProductFamilyFK,
                  neededProductGroupFK;
-
 
                 //start digging in Equipments and Other Products
                 EquipmentProducts.all().filter("pieceNumber", "=", PiecenumberPar).list(null, function (results) {
@@ -53,7 +58,7 @@ var equipmentproductsUI = {
                             // console.debug(value);
                             neededProductFK = value._data.productFK;
                             neededEquipmentProductID = value._data.equipmentId;
-
+                            EquipmentProductPar = neededEquipmentProductID;
                             console.debug("found Equipment: " + neededEquipmentProductID);
                             console.debug("found Product: " + neededProductFK);
 
@@ -85,8 +90,8 @@ var equipmentproductsUI = {
                                                                 console.debug("found Productgroup: " + neededProductGroupFK);
 
                                                                 //create new url
-                                                                window.location.href = "MPLStammdaten.html?Produktgruppe=" + neededProductGroupFK + "&Produktfamilie=" + neededProductFamilyFK + "&Produktplattform=" + neededProductPlatformFK + "&Produkt=" + neededProductFK + "&EquipmentProdukt=" + neededEquipmentProductID;
-
+                                                                window.location.href = "MPLStammdaten.html?Produktgruppe=" + neededProductGroupFK + "&Produktfamilie=" + neededProductFamilyFK + "&Produktplattform=" + neededProductPlatformFK + "&Produkt=" + neededProductFK + "&EquipmentProdukt=" + neededEquipmentProductID + "&SearchPar=" + SearchPar;
+                                                                return;
                                                             })
                                                         });
                                                     }
@@ -106,6 +111,7 @@ var equipmentproductsUI = {
                                 //check products with product FK
                                 neededProductFK = value._data.productFK;
                                 neededOtherProductID = value._data.otherProductId;
+                                OtherProductPar = neededOtherProductID;
                                 console.debug("found Other Product: " + neededOtherProductID);
                                 console.debug("found Product: " + neededProductFK);
 
@@ -136,7 +142,8 @@ var equipmentproductsUI = {
                                                                     neededProductGroupFK = value._data.productgroupFK;
                                                                     console.debug("found Productgroup: " + neededProductGroupFK);
 
-                                                                    window.location.href = "MPLStammdaten.html?Produktgruppe=" + neededProductGroupFK + "&Produktfamilie=" + neededProductFamilyFK + "&Produktplattform=" + neededProductPlatformFK + "&Produkt=" + neededProductFK + "&SonstigesProdukt=" + neededOtherProductID;
+                                                                    window.location.href = "MPLStammdaten.html?Produktgruppe=" + neededProductGroupFK + "&Produktfamilie=" + neededProductFamilyFK + "&Produktplattform=" + neededProductPlatformFK + "&Produkt=" + neededProductFK + "&SonstigesProdukt=" + neededOtherProductID + "&SearchPar=" + SearchPar;
+                                                                    return;
                                                                 })
                                                             });
                                                         }
@@ -155,56 +162,76 @@ var equipmentproductsUI = {
                 });
 
 
-
-
             }
+            else {
+                //enable drawing of dialog. Doing it here removes flickering if opened from search
+                $("#ContentMPL").removeClass('hidden');
 
-            //check wheter its found in the equipment table. if not search other products
-            if (EquipmentProductPar) {
-                EquipmentProducts.all().filter("equipmentId", "=", EquipmentProductPar).list(null, function (results) {
-                    $.each(results, function (index, value) {
 
-                        var data = value._data;
+                //change navigate backwards button if search parameter was passed
+                if (SearchPar) {
+                    //show navigate backwardsbutton for search if site was opened from search (requestParam exists)
+                    $('#btnNavigateBackwardsSearch').removeClass('hidden');
+                    $('#btnNavigateBackwards').addClass('hidden');
+                    //change backwardsbuttonsearch to Search.html. This step is needed as a browser history back would lead to a loop.
+                    //Search openes MPLStammdaten with a different Parameter then MPLProdukt.
+                    var link = $('#btnNavigateBackwardsSearch').attr('href') + SearchPar;
+                    $('#btnNavigateBackwardsSearch').attr('href', link);
+                }
 
-                        document.getElementById("valueProductDescription").innerHTML = data.productDescription;
-                        document.getElementById("valuePiecenumber").innerHTML = data.pieceNumber;
-                        document.getElementById("valuePrice").innerHTML = parseFloat(data.price).toFixed(2).toLocaleString() + ' €';
-                        document.getElementById("valueCooling").innerHTML = data.cooling;
-                        document.getElementById("valueVariant").innerHTML = data.variant;
-                        document.getElementById("valueVolume").innerHTML = data.volume;
-                        document.getElementById("valuePressure").innerHTML = data.pressure;
-                        document.getElementById("valuePerformance").innerHTML = data.performance;
+                //check wheter its found in the equipment table. if not search other products
+
+
+
+                if (EquipmentProductPar) {
+                    EquipmentProducts.all().filter("equipmentId", "=", EquipmentProductPar).list(null, function (results) {
+                        $.each(results, function (index, value) {
+
+                            var data = value._data;
+
+                            document.getElementById("valueProductDescription").innerHTML = data.productDescription;
+                            document.getElementById("valuePiecenumber").innerHTML = data.pieceNumber;
+                            document.getElementById("valuePrice").innerHTML = parseFloat(data.price).toFixed(2).toLocaleString() + ' €';
+                            document.getElementById("valueCooling").innerHTML = data.cooling;
+                            document.getElementById("valueVariant").innerHTML = data.variant;
+                            document.getElementById("valueVolume").innerHTML = data.volume;
+                            document.getElementById("valuePressure").innerHTML = data.pressure;
+                            document.getElementById("valuePerformance").innerHTML = data.performance;
+
+                        });
+
+                        //if not found in equipment table look for other products
+
 
                     });
+                }
 
-                    //if not found in equipment table look for other products
+                if (OtherProductPar) {
+                    OtherProducts.all().filter("otherProductId", "=", OtherProductPar).list(null, function (results) {
+                        $.each(results, function (index, value) {
+
+                            var data = value._data;
+                            document.getElementById("valueProductDescription").innerHTML = data.productDescription;
+                            document.getElementById("valuePiecenumber").innerHTML = data.pieceNumber;
+                            document.getElementById("valuePrice").innerHTML = parseFloat(data.price).toFixed(2).toLocaleString() + ' €';
+                            $("#rowCooling").hide();
+                            $("#rowVariant").hide();
+                            $("#rowVolume").hide();
+                            $("#rowPressure").hide();
+                            $("#rowPerformance").hide();
+                        });
+
+                        //if not found in equipment table look for other products
 
 
-                });
-            }
-
-            if (OtherProductPar) {
-                OtherProducts.all().filter("otherProductId", "=", OtherProductPar).list(null, function (results) {
-                    $.each(results, function (index, value) {
-
-                        var data = value._data;
-                        document.getElementById("valueProductDescription").innerHTML = data.productDescription;
-                        document.getElementById("valuePiecenumber").innerHTML = data.pieceNumber;
-                        document.getElementById("valuePrice").innerHTML = parseFloat(data.price).toFixed(2).toLocaleString() + ' €';
-                        $("#rowCooling").hide();
-                        $("#rowVariant").hide();
-                        $("#rowVolume").hide();
-                        $("#rowPressure").hide();
-                        $("#rowPerformance").hide();
                     });
+                }
 
-                    //if not found in equipment table look for other products
-
-
-                });
             }
+
+          
         }
-
+     
         SyncModel.getSyncDate(DOCUMENTS_LIST, function (date) {
             //update last sync date
             $('.page-sync-btn-date').html(date);
@@ -300,6 +327,16 @@ var DocumentsUI = {
 
 
     displayDocumentTypes: function () {
+        console.debug("hole sync date");
+        SyncModel.getSyncDate(DOCUMENTS_LIST, function (date) {
+            //update last sync date
+            console.debug("date");
+
+            $('.page-sync-btn-date').html(date);
+            $('.page-sync-btn').removeClass('hidden');
+        });
+
+
         var $containerRoot = $(documents_CONTAINER),
             $treeNavContainer = $(tree_nav_CONTAINER),
             $templateFolder = $(documents_FOLDER_TEMPLATE);
@@ -405,14 +442,7 @@ var DocumentsUI = {
                                         }
                                     }
 
-
-
-
-
                                 });
-
-
-
 
                                 //get all Documenttypess. Then check if its used in the query for all documents
                                 Documenttypes.all()
@@ -592,6 +622,7 @@ var DocumentsUI = {
 
                 productoptionsModel.sharePointProductOptions();
                 documentsModel.sharePointDocuments();
+             
 
             });
         });

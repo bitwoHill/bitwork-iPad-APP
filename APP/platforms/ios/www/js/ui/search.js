@@ -32,7 +32,7 @@ var SearchUI = {
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
-        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.name, utils.getUrlParameter("search")) + " " + SearchUI.highlightSearchKey(data.forename, utils.getUrlParameter("search")));
+        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.forename, utils.getUrlParameter("search")) + " " + SearchUI.highlightSearchKey(data.name, utils.getUrlParameter("search")));
         if (data.jobFunction) {
             $('.result-item-text', $newItem).html(SearchUI.highlightSearchKey(data.jobFunction, utils.getUrlParameter("search")));
         } else {
@@ -98,9 +98,12 @@ var SearchUI = {
 
     },
     createEquipmentproductItem: function (template, data) {
+
+        //attach piecenumber and searchpar to url. Piecenumber is needed to find the object, searchpar is needed for backwards navigation
         var $newItem = template.clone(),
-            link = $newItem.attr('href') + data.pieceNumber,
-            searchKey = utils.getUrlParameter("search");
+              searchKey = utils.getUrlParameter("search"),
+            link = $newItem.attr('href') + data.pieceNumber + "&SearchPar=" + searchKey;
+          
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
