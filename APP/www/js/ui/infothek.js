@@ -84,7 +84,7 @@ var InfothekUI = {
 
                         if (data.localPath) {
                             $('.tree-nav-link', newItem).click(function () { window.open(localFileSystemRoot + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
-                          //  console.debug(localFileSystemRoot + "/Infothek/" + data.localPath);
+                            //  console.debug(localFileSystemRoot + "/Infothek/" + data.localPath);
 
 
                         }
@@ -108,6 +108,12 @@ var InfothekUI = {
                 if (!data.isFolder) {
                     $('.tree-nav-item-name', newItem).html(data.title + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
                 }
+            }
+        }
+        else
+        {
+            if (!data.isFolder) {
+                $('.tree-nav-item-name', newItem).html(data.title + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
             }
         }
 
