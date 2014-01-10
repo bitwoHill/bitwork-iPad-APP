@@ -327,6 +327,16 @@ var DocumentsUI = {
 
 
     displayDocumentTypes: function () {
+        console.debug("hole sync date");
+        SyncModel.getSyncDate(DOCUMENTS_LIST, function (date) {
+            //update last sync date
+            console.debug("date");
+
+            $('.page-sync-btn-date').html(date);
+            $('.page-sync-btn').removeClass('hidden');
+        });
+
+
         var $containerRoot = $(documents_CONTAINER),
             $treeNavContainer = $(tree_nav_CONTAINER),
             $templateFolder = $(documents_FOLDER_TEMPLATE);
@@ -612,6 +622,7 @@ var DocumentsUI = {
 
                 productoptionsModel.sharePointProductOptions();
                 documentsModel.sharePointDocuments();
+             
 
             });
         });
