@@ -92,16 +92,16 @@
        <!-- content -->
         <div id="page-wrapper">
             <div id="lblHeaderText" class="page-header">
-                <div class="page-header-info pull-right">
+                <div class="page-header-info pull-right btn-group">
                     <a class="page-sync-btn btn btn-primary " data-sync-type="Kalender">
                         <span class="fa fa-refresh"></span>
                         <span class="i18n" data-i18n-key="last-sync-calendar"></span>
                         <span class="page-sync-btn-date"></span>
                     </a>
+                    <a id="btnNavigateBackwardsSearch" class="btn btn-default active hidden" onclick="history.back();"><span class="fa fa-chevron-left"></span></a>
                 </div>
-                <h1>
-                    <span class="i18n" data-i18n-key="kalender"></span>
-                </h1>
+                   <!--headline-->
+                <h1><span class="i18n" data-i18n-key="kalender"></span></h1>
             </div>
 
             <div id="calendar-items-container">

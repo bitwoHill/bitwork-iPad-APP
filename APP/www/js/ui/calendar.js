@@ -12,6 +12,11 @@ var CalendarUI = {
             $template = $(CALENDAR_ITEM_TEMPLATE),
             requestParam = utils.getUrlParameter('calendarID');
 
+        //show navigate backwardsbutton if site was opened from search (requestParam exists)
+        if (requestParam !== "")
+            $('#btnNavigateBackwardsSearch').removeClass('hidden');
+
+
         if ($container.length && $template.length) {
             //    var calendarList = (requestParam !== "")? Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10)) : Calendar.all();
 

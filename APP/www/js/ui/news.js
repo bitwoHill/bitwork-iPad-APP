@@ -18,6 +18,10 @@ var NewsUI = {
 
             var newsList = (requestParam !== "") ? News.all().filter("nodeId", "=", parseInt(requestParam, 10)) : News.all();
 
+            //show navigate backwardsbutton if site was opened from search (requestParam exists)
+            if (requestParam !== "")
+                $('#btnNavigateBackwardsSearch').removeClass('hidden');
+
             newsList.order('createdDate', false).list(null, function (results) {
                 if (results.length) {
                     $(NEWS_EMPTY_CONTAINER).addClass('hidden');
