@@ -44,38 +44,38 @@ var InfothekModel = {
             if (results.length) {
                 $.each(results, function (index, value) {
                     //check if an object with the current ID exists. If Not delete it
-                    if (!lookupIDsSharePoint[value._data.nodeId]) {
+                    if (!lookupIDsSharePoint[value._data.nodeId])
+                    {
                         console.debug("lokales element wurde nicht mehr gefunden und wird gelöscht: ");
                         console.debug(value);
 
                         // delete local file from filesystem
-                        if (value.localPath)
-                        {
+                        if (value.localPath) {
 
 
-                        try {
-                            //request filesystem to delete files if not found on SP anymore
+                            try {
+                                //request filesystem to delete files if not found on SP anymore
 
-                            window.resolveLocalFileSystemURI(value.localPath, onSuccess, onError);
+                                window.resolveLocalFileSystemURI(value.localPath, onSuccess, onError);
 
-                            function onSuccess(fileEntry) {
-                                fileEntry.remove();
-                                console.debug("deleted element");
+                                function onSuccess(fileEntry) {
+                                    fileEntry.remove();
+                                    console.debug("deleted element");
 
-                            }
+                                }
 
-                            function onError() {
+                                function onError() {
+                                    console.log('An error occured with the filesystem object');
+                                    //  console.log(value);
+                                    //alert("Could not create Filesystem. No Files will be deleted");
+                                }
+                            } catch (e) {
                                 console.log('An error occured with the filesystem object');
-                                 //  console.log(value);
-                                //alert("Could not create Filesystem. No Files will be deleted");
+                                //        console.log(value);
+                                console.log(e);
+
                             }
-                        } catch (e) {
-                            console.log('An error occured with the filesystem object');
-                           //        console.log(value);
-                                   console.log(e);
-       
                         }
-                    }
                         // remove entity from persistence layer
                         persistence.remove(value);
                     }
@@ -232,7 +232,7 @@ var InfothekModel = {
 
 
         Infothek.all().filter("title", "LIKE", key).and(new persistence.PropertyFilter("isFolder", "=", false)).order('title', true, false).list(function (res) {
-         
+
             infothekSearch.resolve(res);
         });
 

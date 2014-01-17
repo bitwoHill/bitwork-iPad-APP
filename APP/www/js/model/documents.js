@@ -90,36 +90,36 @@ var documentsModel = {
             if (results.length) {
                 $.each(results, function (index, value) {
                     //check if an object with the current ID exists. If Not delete it
-                    if (!lookupIDsSharePoint[value._data.documentId]) {
+                    if (!lookupIDsSharePoint[value._data.documentId])
+                    {
                         console.debug("lokales element wurde nicht mehr gefunden: ");
                         console.debug(value);
 
                         // delete local file from filesystem
-                             if (value.localPath)
-                        {
-                     
-                        try {
-                            //request filesystem to delete files if not found on SP anymore
-                            window.resolveLocalFileSystemURI(value.localPath, onSuccess, onError);
+                        if (value.localPath) {
 
-                            function onSuccess(fileEntry) {
-                                fileEntry.remove();
-                            }
+                            try {
+                                //request filesystem to delete files if not found on SP anymore
+                                window.resolveLocalFileSystemURI(value.localPath, onSuccess, onError);
 
-                            function onError() {
+                                function onSuccess(fileEntry) {
+                                    fileEntry.remove();
+                                }
+
+                                function onError() {
                                     console.log('An error occured with the filesystem object');
-                                   console.log(value);
-                                
-                            }
-                        } catch (e) {
-                           console.log('An error occured with the filesystem object');
-                                  console.log(value);
-                                   console.log(e);
-                        }
+                                    console.log(value);
 
-       
+                                }
+                            } catch (e) {
+                                console.log('An error occured with the filesystem object');
+                                console.log(value);
+                                console.log(e);
+                            }
+
+
+
                         }
-                    }
                         // remove entity from persistence layer
                         persistence.remove(value);
                     }
