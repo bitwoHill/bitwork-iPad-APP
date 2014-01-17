@@ -178,7 +178,13 @@ var ContactsUI = {
         });
 
         $('body').on('click', 'a.page-sync-btn', function () {
+               var networkState = navigator.connection.type;
+           if (networkState != Connection.NONE) {
             ContactsModel.syncContacts();
+        }
+           else {
+                alert("Sie sind nicht mit dem Internet verbunden. Der Vorgang wird abgebrochen.");
+            }
         });
 
         //bind action to add calendar to phone button

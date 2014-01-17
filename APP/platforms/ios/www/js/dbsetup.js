@@ -225,6 +225,9 @@ var appUser;
     //Sync on demand
     $('body').on('click', '.sync-btn-metadata', function () {
         $('body').removeClass('side-menu-active');
-        sharePointSync();
+          var networkState = navigator.connection.type;
+            if (networkState != Connection.NONE) {
+        sharePointSync();}
+        else{alert("Es besteht keine Internetverbindung. Der Vorgang wird abgebrochen.")}
     });
 })(jQuery)

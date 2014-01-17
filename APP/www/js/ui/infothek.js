@@ -172,7 +172,13 @@ $(document).ready(function () {
 
     $('body').on('click', 'a.page-sync-btn', function (e) {
         e.preventDefault();
+          var networkState = navigator.connection.type;
+        if (networkState != Connection.NONE) {
         InfothekModel.syncInfothek();
+    }
+     else {
+                alert("Sie sind nicht mit dem Internet verbunden. Der Vorgang wird abgebrochen.");
+            }
     });
 
     $('body').on('click', '.tree-nav-link.folder', function (e) {

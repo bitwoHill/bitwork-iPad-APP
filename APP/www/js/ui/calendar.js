@@ -89,7 +89,13 @@ var CalendarUI = {
         //Bind action to sync calendar button
         $('body').on('click', 'a.page-sync-btn', function (e) {
             e.preventDefault();
+               var networkState = navigator.connection.type;
+           if (networkState != Connection.NONE) {
             CalendarModel.syncCalendar();
+        }
+           else {
+                alert("Sie sind nicht mit dem Internet verbunden. Der Vorgang wird abgebrochen.");
+            }
         });
 
         //bind action to add calendar to phone button

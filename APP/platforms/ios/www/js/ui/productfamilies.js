@@ -53,7 +53,13 @@ var ProductFamiliesUI = {
 
     $(document).ready(function () {
         $('body').on('click', 'a.page-sync-btn', function () {
+               var networkState = navigator.connection.type;
+            if (networkState != Connection.NONE) {
             ProductFamiliesModel.sharePointFamilies();
+        }
+           else {
+                alert("Sie sind nicht mit dem Internet verbunden. Der Vorgang wird abgebrochen.");
+            }
         });
     })
 

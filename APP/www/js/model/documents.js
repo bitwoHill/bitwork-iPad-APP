@@ -95,6 +95,9 @@ var documentsModel = {
                         console.debug(value);
 
                         // delete local file from filesystem
+                             if (value.localPath)
+                        {
+                     
                         try {
                             //request filesystem to delete files if not found on SP anymore
                             window.resolveLocalFileSystemURI(value.localPath, onSuccess, onError);
@@ -104,14 +107,19 @@ var documentsModel = {
                             }
 
                             function onError() {
-                                console.debug('An error occured');
-                                alert("Could not create Filesystem. No Files will be deleted");
+                                    console.log('An error occured with the filesystem object');
+                                   console.log(value);
+                                
                             }
                         } catch (e) {
-                            console.debug('An error occured');
-                            alert("Could not create Filesystem. No Files will be deleted");
+                           console.log('An error occured with the filesystem object');
+                                  console.log(value);
+                                   console.log(e);
                         }
 
+       
+                        }
+                    }
                         // remove entity from persistence layer
                         persistence.remove(value);
                     }
