@@ -1,4 +1,5 @@
-var INFOTHEK_LIST = "Infothek";
+var INFOTHEK_LIST = "Infothek",
+localFileSystemRoot;
 
 //DB model
 var Infothek = persistence.define('Infothek', {
@@ -41,10 +42,13 @@ var InfothekModel = {
         //check wheter files need to be deleted
         //get all local files and check wheter its in the collection of the new SP files
         Infothek.all().list(null, function (results) {
-            if (results.length) {
-                $.each(results, function (index, value) {
+            if (results.length)
+            {
+                $.each(results, function (index, value)
+                {
                     //check if an object with the current ID exists. If Not delete it
-                    if (!lookupIDsSharePoint[value._data.nodeId]) {
+                    if (!lookupIDsSharePoint[value._data.nodeId])
+                    {
                         console.debug("lokales element wurde nicht mehr gefunden und wird gelöscht: ");
                         console.debug(value);
 
@@ -52,32 +56,47 @@ var InfothekModel = {
                         if (value.localPath)
                         {
 
+                            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
-                        try {
-                            //request filesystem to delete files if not found on SP anymore
+                            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                                function (fileSystem)
+                                {
+                                    localFileSystemRoot = fileSystem.root.fullPath;
 
-                            window.resolveLocalFileSystemURI(value.localPath, onSuccess, onError);
 
-                            function onSuccess(fileEntry) {
-                                fileEntry.remove();
-                                console.debug("deleted element");
 
-                            }
 
-                            function onError() {
-                                console.log('An error occured with the filesystem object');
-                                 //  console.log(value);
-                                //alert("Could not create Filesystem. No Files will be deleted");
-                            }
-                        } catch (e) {
-                            console.log('An error occured with the filesystem object');
-                           //        console.log(value);
-                                   console.log(e);
-       
+
+                                    try {
+                                        //request filesystem to delete files if not found on SP anymore
+
+                                        window.resolveLocalFileSystemURI(localFileSystemRoot + "/Infothek/" + value.localPath, onSuccess, onError);
+
+                                        function onSuccess(fileEntry) {
+                                            fileEntry.remove();
+                                            console.debug("deleted element");
+
+                                        }
+
+                                        function onError() {
+                                            console.log('An error (on error) occured with the filesystem object');
+                                            //  console.log(value);
+                                            //alert("Could not create Filesystem. No Files will be deleted");
+                                        }
+                                    } catch (e) {
+                                        console.log('An error (exception) occured with the filesystem object');
+                                        //        console.log(value);
+                                        console.log(e);
+
+                                    }
+                                });
+                        
+
                         }
-                    }
+
                         // remove entity from persistence layer
                         persistence.remove(value);
+
                     }
                 });
             }
@@ -232,7 +251,7 @@ var InfothekModel = {
 
 
         Infothek.all().filter("title", "LIKE", key).and(new persistence.PropertyFilter("isFolder", "=", false)).order('title', true, false).list(function (res) {
-         
+
             infothekSearch.resolve(res);
         });
 

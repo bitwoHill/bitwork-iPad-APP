@@ -1,5 +1,6 @@
 var DOCUMENTS_LIST = "Dokumente",
- DOCUMENTTYPES_LIST = "Dokumenttypen";
+DOCUMENTTYPES_LIST = "Dokumenttypen",
+ localFileSystemRoot;
 //these documents and documenttypes are used in MPlstammdaten.js
 
 
@@ -86,46 +87,59 @@ var documentsModel = {
 
         //check wheter files need to be deleted
         //get all local files and check wheter its in the collection of the new SP files
-        Documents.all().list(null, function (results) {
-            if (results.length) {
-                $.each(results, function (index, value) {
+        Documents.all().list(null, function (results)
+        {
+            if (results.length)
+            {
+                $.each(results, function (index, value)
+                {
                     //check if an object with the current ID exists. If Not delete it
-                    if (!lookupIDsSharePoint[value._data.documentId]) {
+                    if (!lookupIDsSharePoint[value._data.documentId])
+                    {
                         console.debug("lokales element wurde nicht mehr gefunden: ");
                         console.debug(value);
 
                         // delete local file from filesystem
-                             if (value.localPath)
+                        if (value.localPath)
                         {
-                     
-                        try {
-                            //request filesystem to delete files if not found on SP anymore
-                            window.resolveLocalFileSystemURI(value.localPath, onSuccess, onError);
+                            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+                            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
+                                localFileSystemRoot = fileSystem.root.fullPath;
+                                try {
+                                    //request filesystem to delete files if not found on SP anymore
+                                    window.resolveLocalFileSystemURI(localFileSystemRoot + "/Dokumente/" + value.localPath, onSuccess, onError);
 
-                            function onSuccess(fileEntry) {
-                                fileEntry.remove();
-                            }
+                                    function onSuccess(fileEntry) {
+                                        fileEntry.remove();
+                                    }
 
-                            function onError() {
-                                    console.log('An error occured with the filesystem object');
-                                   console.log(value);
-                                
-                            }
-                        } catch (e) {
-                           console.log('An error occured with the filesystem object');
-                                  console.log(value);
-                                   console.log(e);
+                                    function onError() {
+                                        console.log('An error (on Error) occured with the filesystem object');
+                                        console.log(value);
+
+                                    }
+                                }
+                                catch (e) {
+                                    console.log('An error (exception) occured with the filesystem object');
+                                    console.log(value);
+                                    console.log(e);
+                                }
+
+                            });
+
                         }
 
-       
-                        }
-                    }
+
                         // remove entity from persistence layer
                         persistence.remove(value);
                     }
+
                 });
+
             }
         });
+
+        console.debug("Cleaned local files");
 
         //upate db to reflect the deleted items
         persistence.flush(
