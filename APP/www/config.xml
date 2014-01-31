@@ -1,12 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="net.bitwork.AtlasCopco.KIO" version="1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+=======
+﻿<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.bitwork.iPadApp" version="1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+>>>>>>> f2cdf791985da094e314657257b61d5828e52bea
     <name>Atlas Copco KIO</name>
     <description>
         iPad App die Zugriff auf KIO Portal ermöglicht
     </description>
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="BackupWebStorage" value="none" />
     <preference name="DisallowOverscroll" value="false" />
     <preference name="EnableViewportScale" value="false" />
     <preference name="FadeSplashScreen" value="true" />
