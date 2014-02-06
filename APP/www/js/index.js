@@ -28,13 +28,34 @@ var app = {
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
+    setFolderMetadata: function (localFileSystem, subFolder, metadataKey, metadataValue) {
+        var onSetMetadataWin = function () {
+            console.log("success setting metadata")
+        }
+        var onSetMetadataFail = function () {
+            console.log("error setting metadata")
+        }
+        var onGetDirectoryWin = function (parent) {
+            parent.setMetadata(onSetMetadataWin, onSetMetadataFail, { metadataKey: metadataValue });
+        }
+        var onGetDirectoryFail = function () {
+            console.log("error getting dir")
+        }
+        var onFSWin = function (fileSystem) {
+            fileSystem.root.getDirectory(subFolder, { create: true, exclusive: false }, onGetDirectoryWin, onGetDirectoryFail);
+        }
+        var onFSFail = function (evt) {
+            console.log(evt.target.error.code);
+        }
+        window.requestFileSystem(localFileSystem, 0, onFSWin, onFSFail);
+    },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
-       
+        setFolderMetadata(LocalFileSystem.PERSISTENT, "Documents", "com.apple.MobileBackup", 1);
 
          if (parseFloat(device.version) >= 7.0) {
        StatusBar.overlaysWebView(false);
