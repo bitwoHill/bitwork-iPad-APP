@@ -55,7 +55,8 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
-        setFolderMetadata(LocalFileSystem.PERSISTENT, "Documents", "com.apple.MobileBackup", 1);
+  app.setFolderMetadata(LocalFileSystem.PERSISTENT, "Dokumente", "com.apple.MobileBackup", 1);
+  app.setFolderMetadata(LocalFileSystem.PERSISTENT, "Infothek", "com.apple.MobileBackup", 1);
 
          if (parseFloat(device.version) >= 7.0) {
        StatusBar.overlaysWebView(false);
