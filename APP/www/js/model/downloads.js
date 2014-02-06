@@ -95,6 +95,16 @@ var DownloadModel = {};
                             folderName,
                             { create: true, exclusive: false },
                             function (dirEntry) {
+   dirEntry.setMetadata(success2, fail2, { "com.apple.MobileBackup": 1 });
+
+                                function success2() {
+                                    console.log("The metadata was successfully set.");
+                                }
+
+                                function fail2() {
+                                    console.log("There was an error in setting the metadata");
+                                }
+
                                 folderDir = dirEntry;
 
                                 //Create File. somehow this needs to be done first before the download started

@@ -95,6 +95,16 @@ var DownloadModel = {};
                             folderName,
                             { create: true, exclusive: false },
                             function (dirEntry) {
+   dirEntry.setMetadata(success2, fail2, { "com.apple.MobileBackup": 1 });
+
+                                function success2() {
+                                    console.log("The metadata was successfully set.");
+                                }
+
+                                function fail2() {
+                                    console.log("There was an error in setting the metadata");
+                                }
+
                                 folderDir = dirEntry;
 
                                 //Create File. somehow this needs to be done first before the download started
@@ -115,6 +125,23 @@ var DownloadModel = {};
                                               function (entry) {
 
                                                   console.debug("Download success!" + entry.fullPath);
+
+                                                  //Set donotbackup Attribute for iCloud. This is needed by Apple
+
+                                                  //iOS Quirk
+                                                 //only the "com.apple.MobileBackup" extended attribute is supported. Set the value to 1 to NOT enable the file to be backed up by iCloud. Set the value to 0 to re-enable the file to be backed up by iCloud.
+
+                                                   entry.setMetadata(success, fail, { "com.apple.MobileBackup": 1 });
+
+                                                   function success() {
+                                                       console.log("The metadata was successfully set.");
+                                                   }
+
+                                                   function fail() {
+                                                       console.log("There was an error in setting the metadata");
+                                                   }
+
+
                                                   download.resolve(entry);
                                               },
                                               function (error) {

@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.bitwork.iPadApp" version="1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="net.bitwork.AtlasCopco.KIO" version="1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Hello Cordova</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
+    <preference name="BackupWebStorage" value="cloud" />
     <feature name="Console">
         <param name="ios-package" value="CDVLogger" />
     </feature>
@@ -18,7 +19,7 @@
     </description>
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="BackupWebStorage" value="none" />
     <preference name="DisallowOverscroll" value="false" />
     <preference name="EnableViewportScale" value="false" />
     <preference name="FadeSplashScreen" value="true" />
