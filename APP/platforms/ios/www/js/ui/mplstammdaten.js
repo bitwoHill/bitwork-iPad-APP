@@ -584,7 +584,7 @@ var DocumentsUI = {
 
                        if (data.localPath) {
                            // $('.tree-nav-link', newItem).attr("href", data.path);
-                           $('.tree-nav-link', newItem).click(function () { window.open(localFileSystemRoot + "/Dokumente/" + data.localPath, '_blank', 'location=yes'); });
+                           $('.tree-nav-link', newItem).click(function () {LaunchFile('file://' + localFileSystemRoot + "/Dokumente/" + data.localPath); });
                            console.debug(localFileSystemRoot + "/Dokumente/" + data.localPath);
 
 

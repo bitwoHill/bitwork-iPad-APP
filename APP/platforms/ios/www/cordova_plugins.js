@@ -269,6 +269,13 @@ module.exports = [
         "clobbers": [
             "window.StatusBar"
         ]
+    },
+    {
+        "file": "plugins/com.contraterrene.LaunchFile/www/LaunchFile.js",
+        "id": "com.contraterrene.LaunchFile.LaunchFile",
+        "clobbers": [
+            "LaunchFile"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -282,7 +289,8 @@ module.exports.metadata =
     "org.apache.cordova.file-transfer": "0.3.4",
     "org.apache.cordova.inappbrowser": "0.2.4",
     "org.apache.cordova.network-information": "0.2.5",
-    "org.apache.cordova.statusbar": "0.1.3"
+    "org.apache.cordova.statusbar": "0.1.3",
+    "com.contraterrene.LaunchFile": "1.0.0"
 }
 // BOTTOM OF METADATA
 });

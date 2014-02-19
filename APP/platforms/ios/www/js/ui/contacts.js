@@ -59,7 +59,7 @@ var ContactsUI = {
             $templateFolder = $(CONTACTS_FOLDER_TEMPLATE);
 
         if (container.length && $templateFolder.length && $templatePerson.length) {
-            Contacts.all().filter("parentFolder", "=", nodeId).order('isFolder', false).order('name', true).list(null, function (results) {
+            Contacts.all().filter("parentFolder", "=", nodeId).order('isFolder', true).order('name', true).list(null, function (results) {
 
                 $.each(results, function (index, value) {
                     var data = value._data,

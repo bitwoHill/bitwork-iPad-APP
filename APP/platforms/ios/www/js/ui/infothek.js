@@ -83,7 +83,7 @@ var InfothekUI = {
                         localFileSystemRoot = fileSystem.root.fullPath;
 
                         if (data.localPath) {
-                            $('.tree-nav-link', newItem).click(function () { window.open(localFileSystemRoot + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
+                            $('.tree-nav-link', newItem).click(function () { LaunchFile('file://' + localFileSystemRoot + "/Infothek/" + data.localPath); });
                             //  console.debug(localFileSystemRoot + "/Infothek/" + data.localPath);
 
 
@@ -114,7 +114,7 @@ var InfothekUI = {
         {
             if (!data.isFolder) {
                 if (data.localPath) {
-                    $('.tree-nav-link', newItem).click(function () { window.open(localFileSystemRoot + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
+                    $('.tree-nav-link', newItem).click(function () { LaunchFile('file://' + localFileSystemRoot + "/Infothek/" + data.localPath); });
                     //  console.debug(localFileSystemRoot + "/Infothek/" + data.localPath);
 
 

@@ -35,6 +35,7 @@
 		E468844EAD3F4C85A535057F /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8957E7613C4A4AB6CCA8D7 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F5F3C777187F103100A0806A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5F3C776187F103100A0806A /* Images.xcassets */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
+		02E299EF27394D9FA9D80E7D /* LaunchFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FF83C49E0F8940E0A73B089B /* LaunchFile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,8 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Atlas Copco KIO/config.xml"; sourceTree = "<group>"; };
 		FE68F16C68574D1A8D060B5F /* CDVFileTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVFileTransfer.h; path = "org.apache.cordova.file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; };
 		FFAEFC2DA6CE4234935BCC96 /* CDVStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVStatusBar.h; path = org.apache.cordova.statusbar/CDVStatusBar.h; sourceTree = "<group>"; };
+		FF83C49E0F8940E0A73B089B /* LaunchFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "LaunchFile.m"; path = "com.contraterrene.LaunchFile/LaunchFile.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		8196667D5AC6451EAF783741 /* LaunchFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LaunchFile.h"; path = "com.contraterrene.LaunchFile/LaunchFile.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +255,8 @@
 				CE3A0BE166EE403ABA39763D /* CDVReachability.h */,
 				B2B78C8BB9774F47BB06907E /* CDVStatusBar.m */,
 				FFAEFC2DA6CE4234935BCC96 /* CDVStatusBar.h */,
+				FF83C49E0F8940E0A73B089B /* LaunchFile.m */,
+				8196667D5AC6451EAF783741 /* LaunchFile.h */,
 			);
 			name = Plugins;
 			path = "Atlas Copco KIO/Plugins";
@@ -398,6 +403,7 @@
 				61A641A2E474493084847C0F /* CDVConnection.m in Sources */,
 				2525623B2C7744D9AD3C782B /* CDVReachability.m in Sources */,
 				B03AD73A23584BFDAF3FA437 /* CDVStatusBar.m in Sources */,
+				02E299EF27394D9FA9D80E7D /* LaunchFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

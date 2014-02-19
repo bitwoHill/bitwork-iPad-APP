@@ -5,6 +5,9 @@
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
     <preference name="BackupWebStorage" value="cloud" />
+    <feature name="LaunchFile">
+        <param name="ios-package" value="LaunchFile" />
+    </feature>
     <feature name="Console">
         <param name="ios-package" value="CDVLogger" />
     </feature>

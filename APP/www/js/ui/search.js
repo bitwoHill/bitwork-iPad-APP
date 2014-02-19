@@ -67,7 +67,9 @@ var SearchUI = {
                         //create hyperlink to local file    
 
 
-                        link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank', 'location=yes'); });
+                       //link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank','EnableViewPortScale=yes', 'location=yes'); });
+                         link = $newItem.click(function () { LaunchFile('file://' + localFileSystemRootSearchJs + "/Infothek/" + data.localPath); });
+                      
                         $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
                     },
                     function () {
@@ -132,7 +134,10 @@ var SearchUI = {
                         //create hyperlink to local file    
 
 
-                        link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Dokumente/" + data.localPath, '_blank', 'location=yes'); });
+                     //   link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Dokumente/" + data.localPath, '_blank','EnableViewPortScale=yes', 'location=yes'); });
+                          console.log("file://" + localFileSystemRootSearchJs + "/Dokumente/" + data.localPath);
+                          link = $newItem.click(function () {LaunchFile("file://" + localFileSystemRootSearchJs + "/Dokumente/" + data.localPath); });
+                      
                         $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")));
                     },
                     function () {
