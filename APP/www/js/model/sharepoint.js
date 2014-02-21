@@ -7,9 +7,10 @@ var SharePoint = {
             type: 'GET',
             url: Settings.spDomain + "/" + listName,
             crossDomain: true,
-            username: appUser.username,
-            password: appUser.password,
-            dataType: 'json'
+            username: encodeURIComponent(appUser.username),
+            password: encodeURIComponent(appUser.password),
+            dataType: 'json',
+               contentType: "application/json; charset=utf-8"
         }).done(function (responseData, textStatus, jqXHR) {
             var newResponseData = responseData;
 
@@ -31,9 +32,10 @@ var SharePoint = {
                         type: 'GET',
                         url: Settings.spDomain + "/" + listName + "/?" + newone,
                         crossDomain: true,
-                        username: appUser.username,
-                        password: appUser.password,
+                        username: encodeURIComponent(appUser.username),
+                        password: encodeURIComponent(appUser.password),
                         dataType: 'json',
+                          contentType: "application/json; charset=utf-8",
                         async: false
                     }).done(function (responseDataSubQuery, textStatus, jqXHR2) {
 
@@ -87,42 +89,6 @@ var SharePoint = {
     },
 
 
-    //did not work as expected
-    //sharePointChangesRequest: function (listName,sincedate) {
-
-
-    //    var soapRequest = '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">  <soap:Body> <GetListItemChanges xmlns="http://schemas.microsoft.com/sharepoint/soap/"> <listName>' + listName + '</listName>  <since>' + sincedate + ' </since>      </GetListItemChanges>  </soap:Body> </soap:Envelope>';
-
-    //    jQuery.support.cors = true;
-    //    console.debug(soapRequest);
-
-    //    var jqXHR = $.ajax({
-    //        type: 'POST',
-    //        url: Settings.spListsWebservice,
-    //        crossDomain: true,
-    //        username: appUser.username,
-    //        password: appUser.password,
-    //        contentType: 'text/xml; charset="UTF-8"',
-    //        data: soapRequest,
-    //        dataType: 'xml'
-    //    }).done(function (responseData, textStatus, jqXHR) {
-    //        console.debug(responseData);
-    //            jQuery.support.cors = false;
-    //    }).fail(
-    //        function (responseData, textStatus, errorThrown) {
-    //            console.warn(responseData, textStatus, errorThrown);
-    //            $('body').trigger('sync-error');
-    //            jQuery.support.cors = false;
-
-    //            //if auth failed
-    //            if (responseData && responseData.status && responseData.status === 401) {
-    //                appUser.doLogout();
-    //            }
-    //        }
-    //    );
-
-
-    //}
 };
 
 var Sync = persistence.define('Sync', {

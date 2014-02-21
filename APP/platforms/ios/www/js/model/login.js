@@ -13,14 +13,16 @@ var User = function () {
         loginPageUrl = "LoginPage.html",
 
         doLogin = function (user, pass, rememberUser) {
-
+             
+console.log(user + ' ' + pass);
             var jqXHR = $.ajax({
                 type: 'GET',
                 url: Settings.spDomain + "/" + SPTestList,
                 crossDomain: true,
                 timeout: 10000,
-                username: user,
-                password: pass,
+                username: encodeURIComponent(user),
+                password: encodeURIComponent(pass),
+                contentType: "application/json; charset=utf-8",
                 dataType: 'json'
             }).done(
                 function (responseData, textStatus, jqXHR) {
@@ -28,6 +30,9 @@ var User = function () {
                 }
             ).fail(
                 function (responseData, textStatus, errorThrown) {
+                    console.log(responseData);
+                         console.log(textStatus);
+                              console.log(responseData);
                     if (responseData) {
                         if (responseData.status && responseData.status === 401) { //if Unauthorized status -> login failed
                             loginFailed();
