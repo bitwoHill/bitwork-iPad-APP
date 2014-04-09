@@ -364,6 +364,7 @@ var DocumentsUI = {
                 var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
                 var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
                 var ProduktPar = utils.getUrlParameter('Produkt');
+                             var ProduktNamePar = utils.getUrlParameter('ProduktName');
                 var EquipmentProductPar = utils.getUrlParameter('EquipmentProdukt');
                 var OtherProductPar = utils.getUrlParameter('SonstigesProdukt');
                 var documenttypeslist = []; //store all unique documenttypes
@@ -433,7 +434,8 @@ var DocumentsUI = {
                                         data.productFK == 0 &&
                                         data.productplatformFK == 0 &&
                                         data.productfamilyFK == 0 &&
-                                        data.productgroupFK == 0) {
+                                        data.productgroupFK == 0) 
+{
                                         // console.debug(data);
                                         if ($.inArray(data.documenttypeFK, documenttypeslist) === -1) {
                                             documenttypeslist[counter] = data.documenttypeFK;
@@ -441,8 +443,31 @@ var DocumentsUI = {
 
                                         }
                                     }
+                             
 
                                 });
+
+       //WORKAROUND  
+                                  
+//check if perhaps the name matches
+     //filter Database based on ID of SP Item
+            Products.all().filter("product", "=", ProduktNamePar)
+                        .list(null, function (results3) {
+                            if (results3.length) {
+                                //get all types in found documents
+                                console.log("found documenttype by name");
+                                $.each(results3, function (index, value) {
+                                    var data = value._data;
+
+                                     if ($.inArray(data.documenttypeFK, documenttypeslist) === -1)
+                                      {
+                                            documenttypeslist[counter] = data.documenttypeFK;
+                                            counter++;
+
+                                        }
+                                });
+                            }
+                        });
 
                                 //get all Documenttypess. Then check if its used in the query for all documents
                                 Documenttypes.all()
@@ -453,7 +478,7 @@ var DocumentsUI = {
                                         newItem;
 
 
-                                        //check wheter the current documenttyp is in documenttype list. if not skip the creation of an divblock
+                                        //check wheter the current documenttype is in documenttype list. if not skip the creation of an divblock
                                         if ($.inArray(data.documenttypeId, documenttypeslist) === -1) {
                                             return true; //skip in jquery way ;) 
                                         }
@@ -492,16 +517,41 @@ var DocumentsUI = {
         var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
         var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
         var ProduktPar = utils.getUrlParameter('Produkt');
+        var ProduktAlternativeID = "";
+         var ProduktNamePar = utils.getUrlParameter('ProduktName');
         var EquipmentProductPar = utils.getUrlParameter('EquipmentProdukt');
 
 console.debug("Produktgruppe:" + ProduktgruppePar);
 console.debug("ProduktfamiliePar:" + ProduktfamiliePar);
 console.debug("ProduktplatformPar:" + ProduktplatformPar);
 console.debug("ProduktPar:" + ProduktPar);
+console.debug("ProduktNamePar:" + ProduktNamePar);
 console.debug("EquipmentProductPar:" + EquipmentProductPar);
 
 
         if (container.length && $templateFolder.length && $templateItem.length) {
+
+//
+     
+    //check if there is a associated product which "exists" two times = two different products but same name => add as well
+   Products.all().filter("product", "=", ProduktNamePar)
+                        .list(null, function (results3) {
+                            if (results3.length) {
+                                //get all types in found documents
+                                console.log("found products by name");
+                                $.each(results3, function (index, value2) {
+  
+                                    var data = value2._data;
+                                    // Skip the product with allready used ID. hence get only the products which are not associated but happen to have the same name
+if (data !== ProduktPar)
+ProduktAlternativeID = data.productid;
+
+                                   
+                                });
+                            }
+                        });
+console.log("ProduktAlternativeID " + ProduktAlternativeID);
+
 
             //now get all documents based on the selected documenttypeID
 
@@ -557,7 +607,10 @@ console.debug("EquipmentProductPar:" + EquipmentProductPar);
                                 data.productFK == 0 &&
                                 data.productplatformFK == 0 &&
                                 data.productfamilyFK == 0 &&
-                                data.productgroupFK == 0) {
+                                data.productgroupFK == 0 ||
+data.ProductFK == ProduktNamePar
+                                ) 
+{
                        var newItem;
 
                        newItem = $templateItem.clone();

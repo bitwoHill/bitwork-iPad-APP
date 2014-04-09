@@ -1,6 +1,8 @@
 var products_CONTAINER = "#products-item-container",
     products_EMPTY_CONTAINER = "#products-empty-container",
-    products_ITEM_TEMPLATE = "#products-item-template";
+    products_ITEM_TEMPLATE = "#products-item-template",
+    ProduktNames = [];
+  
 
 var ProductsUI = {
     resetProducts: function () {
@@ -26,7 +28,9 @@ var ProductsUI = {
             var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
             var counter = 0;
             var ProduktPars = [];
+          
             var ProduktPar = "";
+            var ProduktName = "";
             var Equipmentcounter;
 
             //get all Products on the platform and then load all equips or others of the product ...
@@ -39,6 +43,7 @@ var ProductsUI = {
                         var data = value1._data;
 
                         ProduktPars[counter] = data.productid;
+                        ProduktNames[counter] = data.product;
                         //  console.debug(ProduktPars[counter]);
                         counter++;
 
@@ -48,7 +53,8 @@ var ProductsUI = {
                     //now we have all productFKs, use them to get equipments and options now
                     for (index = 0; index < ProduktPars.length; ++index) {
                         ProduktPar = ProduktPars[index];
-
+                     
+                     
                         //get all equipments
                         EquipmentProducts.all().filter("productFK", "=", ProduktPar).order('productDescription', true, false).list(null, function (results2) {
                             if (results2.length) {
@@ -58,33 +64,33 @@ var ProductsUI = {
                                     //console.debug(ProduktPar);
                                     var data = value2._data;
                                     var $newItem = $template.clone();
+                                 
+                                  //look for the index of the current Product in ProduktPars 
+                      var index = ProduktPars.indexOf(data.productFK);
+                      //use the index to find the product name
+                      ProduktName = ProduktNames[index];
+
+
                                     //formatting of price
                                     var formattedPrice = parseFloat(parseFloat(data.price)).toFixed(2).toLocaleString() + ' €';
-                                    //var tmp1 = parseFloat(parseFloat(data.price)).toFixed(2).toLocaleString(); // parseFloat(parseFloat(data.price)).toFixed(0).toLocaleString();
-                                    /* // console.debug(tmp1);
-                                                                        //parse price to decimal
-                                    var formattedPrice;
-                                                                        //add 1000. dots for better readability
-                                    var tmp2 = new String(utils.number_format(tmp1, 2, ".",",")) ;
-                                    
-                                    console.debug(tmp2);
-                                                                        //add Euro sign
-                                    var formattedPrice = new String(tmp2 + " €");
-                                                                       */
-
+                                   
                                     $newItem.removeAttr('id');
                                     $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar +
-                                        "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" +
-                                        data.productFK + "&EquipmentProdukt=" + data.equipmentId);
+                                        "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK +
+                                         "&ProduktName=" + ProduktName +  "&EquipmentProdukt=" + data.equipmentId);
+
                                     $('.products-item-piecenumber', $newItem).html(data.pieceNumber).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar +
                                         "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK +
-                                        "&EquipmentProdukt=" + data.equipmentId);
+                                       "&ProduktName=" + ProduktName +  "&EquipmentProdukt=" + data.equipmentId);
+
                                     $('.products-item-volume', $newItem).html(data.volume).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar +
                                         "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK +
-                                        "&EquipmentProdukt=" + data.equipmentId);
+                                       "&ProduktName=" + ProduktName +  "&EquipmentProdukt=" + data.equipmentId);
+
                                     $('.products-item-price', $newItem).html(formattedPrice).attr("href", "MPLStammdaten.html?Produktgruppe=" +
                                         ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK +
-                                        "&EquipmentProdukt=" + data.equipmentId);
+                                     "&ProduktName=" + ProduktName +    "&EquipmentProdukt=" + data.equipmentId);
+
                                     $container.append($newItem.removeClass('hidden'));
                                     Equipmentcounter = 1;
                                 });
@@ -107,13 +113,14 @@ var ProductsUI = {
                                     var data = value._data;
                                     var $newItem = $template.clone();
 
-
+  var formattedPrice = parseFloat(parseFloat(data.price)).toFixed(2).toLocaleString() + ' €';
+                                   
 
                                     $newItem.removeAttr('id');
-                                    $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&SonstigesProdukt=" + data.otherProductId);
-                                    $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
-                                    $('.products-item-price', $newItem).html(parseFloat(data.price).toFixed(2).toLocaleString() + ' €');
-  $('.products-item-volume', $newItem).html(parseFloat(data.price).toFixed(2).toLocaleString() + ' €');
+                                    $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&ProduktName=" + ProduktName +  "&SonstigesProdukt=" + data.otherProductId);
+                                    $('.products-item-piecenumber', $newItem).html(data.pieceNumber).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&ProduktName=" + ProduktName +  "&SonstigesProdukt=" + data.otherProductId);
+                                    $('.products-item-price', $newItem).html(formattedPrice).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&ProduktName=" + ProduktName + "&SonstigesProdukt=" + data.otherProductId);
+                                    $('.products-item-volume', $newItem).html(formattedPrice).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&ProduktName=" + ProduktName + "&SonstigesProdukt=" + data.otherProductId);
 
                                     //hide volume column
                                     if (!Equipmentcounter) {
