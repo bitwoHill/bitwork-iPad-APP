@@ -85,7 +85,7 @@ var i18n = {
         //MPL Produktplattformen
         "produktplattformen": "Produktplattformen",
         "empty-productplatforms": "Es wurden noch keine Produktplattformen geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Produktplattformen zu laden.",
-        "last-sync-productplatforms": "Letzte Plattform Synchronisierung",
+        "last-sync-productplatforms": "Letzte Plattform Synchr.",
         //MPL Produkt
         "produkt": "Produkt",
         "empty-products": "Es wurden noch keine Produkte geladen. Benutzen Sie den <i class='fa fa-refresh'></i> Sync-Button um Produkte zu laden.",

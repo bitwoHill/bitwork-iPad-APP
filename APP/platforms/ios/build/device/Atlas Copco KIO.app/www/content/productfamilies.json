@@ -1,0 +1,28 @@
+[
+    {
+        "productfamilyid": 1,
+		"productfamily": "Family 1",
+        "productgroupFK": 1
+		
+    },
+    {
+        "productfamilyid": 2,
+        "productfamily":"Family 2",
+		"productgroupFK": 2
+   },
+   {
+        "productfamilyid": 3,
+        "productfamily":  "Family 3",
+		"productgroupFK": 3
+   },
+   {
+        "productfamilyid": 4,
+        "productfamily": "Family 4",
+		"productgroupFK": 4
+   },
+     {
+        "productfamilyid": 5,
+        "productfamily": "Family 5 Sonstiges",
+		"productgroupFK": 5
+   }
+]

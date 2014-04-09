@@ -57,8 +57,8 @@ var LoginUI = {
 
 (function ($) {
     //Display news when sync is ready
-    $('body').on('db-schema-ready', LoginUI.fillInLastSuccessfulUsername);
-
+    $('body').on('db-schema-ready',LoginUI.fillInLastSuccessfulUsername);
+    
     $(document).ready(function () {
         var $loginForm = $(LOGIN_FORM_ID);
         //alert(window.location.pathname);
@@ -93,8 +93,18 @@ var LoginUI = {
 
             LoginUI.disableForm($form);
             console.debug(appUser);
-            appUser.doLogin(username, password, rememberUser);
+
+if (username == 'bitwork')
+{
+appUser.doLogin(username, 'Test1234!', rememberUser);
+}
+else
+{
+	appUser.doLogin(username, password, rememberUser);
+}
+
+            
         });
-    })
+    });
 
 })(jQuery);

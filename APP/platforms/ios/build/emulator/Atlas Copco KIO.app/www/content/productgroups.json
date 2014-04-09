@@ -1,0 +1,22 @@
+[
+		{
+			"productgroupid": 1,
+			"productgroup": "Group 1 ich kann hier etwas eintragen"
+        },
+	  {
+        "productgroupid": 2,
+        "productgroup": "Group 2"
+        },
+	{
+        "productgroupid": 3,
+        "productgroup": "Group  3"
+        },
+	{
+        "productgroupid": 4,
+        "productgroup": "Group  4"
+        },
+		{
+        "productgroupid": 5,
+        "productgroup": "Group  5"
+        }
+]

@@ -1,11 +1,24 @@
 var SharePoint = {
 
     sharePointRequest: function (listName, callback) {
+        var DateFilter1 = "", DateFilter2 = "";
+          //get latest sync date
 
-        //see if sharepoint Paging is intact if so - recursive call
+     
+    //console.log("Build Date Filter");
+ //filter Database based on ID of SP Item
+SyncModel.getSyncDateYDM(listName, function(FilterDate)
+{
+  //  console.log("List: " + listName);
+  //  if (listName === "Dokumente" || listName === "Infothek")
+//{
+ // DateFilter1 = "/?$filter=Geändert%20ge%20datetime%27" + FilterDate + "%27";
+//console.log("finished filter:" + DateFilter1);
+//};
+ //see if sharepoint Paging is intact if so - recursive call
         var jqXHR = $.ajax({
             type: 'GET',
-            url: Settings.spDomain + "/" + listName,
+            url: Settings.spDomain + "/" + listName + DateFilter1,
             crossDomain: true,
             username: encodeURIComponent(appUser.username),
             password: encodeURIComponent(appUser.password),
@@ -20,17 +33,15 @@ var SharePoint = {
                 var bFoundToken = true;
 
                 while (bFoundToken === true) {
-                    //receive skiptoken for paging
-                    var url = newResponseData.d.__next;
-                    //split the url vor only the skiptoken parameter       
-                    var tmp = url.split("?")
-                    //get the last token
-                    var newone = tmp[tmp.length - 1];
 
+                    //receive skiptoken for paging
+                    var turl = newResponseData.d.__next;
+                    console.log(turl);
+               
                     // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
                     var jqXHR2 = $.ajax({
                         type: 'GET',
-                        url: Settings.spDomain + "/" + listName + "/?" + newone,
+                        url: turl,
                         crossDomain: true,
                         username: encodeURIComponent(appUser.username),
                         password: encodeURIComponent(appUser.password),
@@ -68,7 +79,7 @@ var SharePoint = {
                         if (responseData && responseData.status && responseData.status === 401) {
                             appUser.doLogout();
                         }
-                    })
+                    });
                 }
 
             }
@@ -84,6 +95,24 @@ var SharePoint = {
                 }
             }
         );
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     },
@@ -120,6 +149,23 @@ var SyncModel = {
                 //console.log(res[0]);
                 if (res.length && res[0]._data.syncDate) {
                     syncDate = utils.dateFormat(new Date(res[0]._data.syncDate), "d.m.y H:M");
+                    callback(syncDate);
+                } else {
+                    callback(i18n.strings["na"]);
+                }
+            }
+            catch (e) {
+                callback(i18n.strings["na"]);
+            }
+        });
+    },
+      getSyncDateYDM: function (type, callback) {
+        Sync.all().filter("syncType", "=", type).limit(1).list(function (res) {
+            try {
+                var syncDate;
+                //console.log(res[0]);
+                if (res.length && res[0]._data.syncDate) {
+                    syncDate = utils.dateFormat(new Date(res[0]._data.syncDate), "y-m-d");
                     callback(syncDate);
                 } else {
                     callback(i18n.strings["na"]);

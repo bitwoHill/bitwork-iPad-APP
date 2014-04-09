@@ -1,10 +1,8 @@
 var SEARCH_CONTAINER = "#search-container";
 
-
 var SearchUI = {
-    createNewsItem: function (template, data) {
-        var $newItem = template.clone(),
-            link = $newItem.attr('href') + data.nodeId;
+    createNewsItem : function(template, data) {
+        var $newItem = template.clone(), link = $newItem.attr('href') + data.nodeId;
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
@@ -14,9 +12,8 @@ var SearchUI = {
         return $newItem.removeClass('hidden');
     },
 
-    createCalendarItem: function (template, data) {
-        var $newItem = template.clone(),
-            link = $newItem.attr('href') + data.nodeId;
+    createCalendarItem : function(template, data) {
+        var $newItem = template.clone(), link = $newItem.attr('href') + data.nodeId;
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
@@ -26,9 +23,8 @@ var SearchUI = {
         return $newItem.removeClass('hidden');
     },
 
-    createContactItem: function (template, data) {
-        var $newItem = template.clone(),
-            link = $newItem.attr('href') + data.contactId;
+    createContactItem : function(template, data) {
+        var $newItem = template.clone(), link = $newItem.attr('href') + data.contactId;
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
@@ -48,9 +44,8 @@ var SearchUI = {
         return $newItem.removeClass('hidden');
     },
 
-    createInfothekItem: function (template, data) {
-        var $newItem = template.clone(),
-                link;
+    createInfothekItem : function(template, data) {
+        var $newItem = template.clone(), link;
         //generate hyperlink to local path
 
         if (data.localPath) {
@@ -60,33 +55,28 @@ var SearchUI = {
             try {
                 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
-                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
-                    function (fileSystem) {
-                        //created filesystem path. use it
-                        localFileSystemRootSearchJs = fileSystem.root.fullPath;
-                        //create hyperlink to local file    
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                    //created filesystem path. use it
+                    localFileSystemRootSearchJs = fileSystem.root.fullPath;
+                    //create hyperlink to local file
 
+                    //link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank','EnableViewPortScale=yes', 'location=yes'); });
+                    link = $newItem.click(function() {
+                        LaunchFile('file://' + localFileSystemRootSearchJs + "/Infothek/" + data.localPath);
+                    });
 
-                       //link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank','EnableViewPortScale=yes', 'location=yes'); });
-                         link = $newItem.click(function () { LaunchFile('file://' + localFileSystemRootSearchJs + "/Infothek/" + data.localPath); });
-                      
-                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
-                    },
-                    function () {
-                        console.log("could not create filesystem");
+                    $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")));
+                }, function() {
+                    console.log("could not create filesystem");
 
-                        link = $newItem.attr('href');
-                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + "  <span class='label label-default'> Nicht Heruntergeladen</span>");
-                    }
-                );
-            }
-
-            catch (err) {
+                    link = $newItem.attr('href');
+                    $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + "  <span class='label label-default'> Nicht Heruntergeladen</span>");
+                });
+            } catch (err) {
                 console.log(err);
             }
 
-        }
-        else {
+        } else {
             link = $newItem.attr('href');
             $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + "   <span class='label label-default'> Nicht Heruntergeladen</span>");
         }
@@ -94,18 +84,13 @@ var SearchUI = {
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
 
-
         return $newItem.removeClass('hidden');
 
-
     },
-    createEquipmentproductItem: function (template, data) {
+    createEquipmentproductItem : function(template, data) {
 
         //attach piecenumber and searchpar to url. Piecenumber is needed to find the object, searchpar is needed for backwards navigation
-        var $newItem = template.clone(),
-              searchKey = utils.getUrlParameter("search"),
-            link = $newItem.attr('href') + data.pieceNumber + "&SearchPar=" + searchKey;
-          
+        var $newItem = template.clone(), searchKey = utils.getUrlParameter("search"), link = $newItem.attr('href') + data.pieceNumber + "&SearchPar=" + searchKey;
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
@@ -114,10 +99,9 @@ var SearchUI = {
 
         return $newItem.removeClass('hidden');
     },
-    createDocument: function (template, data) {
+    createDocument : function(template, data) {
 
-        var $newItem = template.clone(),
-         link;
+        var $newItem = template.clone(), link;
         //generate hyperlink to local path
 
         if (data.localPath) {
@@ -127,41 +111,35 @@ var SearchUI = {
             try {
                 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
-                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
-                    function (fileSystem) {
-                        //created filesystem path. use it
-                        localFileSystemRootSearchJs = fileSystem.root.fullPath;
-                        //create hyperlink to local file    
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                    //created filesystem path. use it
+                    localFileSystemRootSearchJs = fileSystem.root.fullPath;
+                    //create hyperlink to local file
 
+                    //   link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Dokumente/" + data.localPath, '_blank','EnableViewPortScale=yes', 'location=yes'); });
+                    console.log("file://" + localFileSystemRootSearchJs + "/Dokumente/" + data.localPath);
+                    link = $newItem.click(function() {
+                        LaunchFile("file://" + localFileSystemRootSearchJs + "/Dokumente/" + data.localPath);
+                    });
 
-                     //   link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Dokumente/" + data.localPath, '_blank','EnableViewPortScale=yes', 'location=yes'); });
-                          console.log("file://" + localFileSystemRootSearchJs + "/Dokumente/" + data.localPath);
-                          link = $newItem.click(function () {LaunchFile("file://" + localFileSystemRootSearchJs + "/Dokumente/" + data.localPath); });
-                      
-                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")));
-                    },
-                    function () {
-                        console.log("could not create filesystem");
+                    $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")));
+                }, function() {
+                    console.log("could not create filesystem");
 
-                        link = $newItem.attr('href');
-                        $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " <span class='label label-default'> Nicht Heruntergeladen</span>");
-                    }
-                );
-            }
-
-            catch (err) {
+                    link = $newItem.attr('href');
+                    $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " <span class='label label-default'> Nicht Heruntergeladen</span>");
+                });
+            } catch (err) {
                 console.log(err);
             }
 
-        }
-        else {
+        } else {
             link = $newItem.attr('href');
             $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " <span class='label label-default'> Nicht Heruntergeladen</span>");
         }
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
-
 
         return $newItem.removeClass('hidden');
     },
@@ -176,14 +154,15 @@ var SearchUI = {
 
     //},
 
-    highlightSearchKey: function (text, term) {
+    highlightSearchKey : function(text, term) {
         //term = term.replace(/(\s+)/g, "(<[^>]+>)*$1(<[^>]+>)*");
-        var pattern; //= new RegExp("(" + term + ")", "i");
+        var pattern;
+        //= new RegExp("(" + term + ")", "i");
 
         //split term into several words
         var terms = term.split(" ");
-      
-        for (index = 0; index < terms.length; ++index) {
+
+        for ( index = 0; index < terms.length; ++index) {
             var tmpterm = terms[index];
 
             tmpterm = tmpterm.replace(/(\s+)/g, "(<[^>]+>)*$1(<[^>]+>)*");
@@ -194,10 +173,9 @@ var SearchUI = {
         return text;
     },
 
-    displayResults: function (type, results, additionalBadgeCount) {
+    displayResults : function(type, results, additionalBadgeCount) {
         //overwrite MPL-Other Products to be displayed in MPL list as well
         var BadgeCount = results.length;
-
 
         if (type == "mpl-other") {
             type = "mpl";
@@ -206,18 +184,14 @@ var SearchUI = {
             }
         }
 
-
-        var $resultsContainer = $("#" + type),
-            $resultsEmptyTemplate = $("#" + type + "-empty-container"),
-            $resultItemTemplate = $("#" + type + "-result-template", $resultsContainer);
+        var $resultsContainer = $("#" + type), $resultsEmptyTemplate = $("#" + type + "-empty-container"), $resultItemTemplate = $("#" + type + "-result-template", $resultsContainer);
         $(".badge-" + type).html(BadgeCount).removeClass('hidden');
 
         if ($resultsContainer.length && $resultItemTemplate.length && $resultsEmptyTemplate) {
             if (BadgeCount) {
                 $resultsEmptyTemplate.addClass('hidden');
-                $.each(results, function (index, value) {
-                    var data = value._data,
-                        $newItem;
+                $.each(results, function(index, value) {
+                    var data = value._data, $newItem;
 
                     switch (type) {
                         case "news":
@@ -242,7 +216,6 @@ var SearchUI = {
                             $newItem = SearchUI.createNewsItem($resultItemTemplate, data);
                     }
 
-
                     $resultsContainer.append($newItem);
                 });
             } else {
@@ -252,9 +225,8 @@ var SearchUI = {
         }
     },
 
-    doSearch: function () {
-        var key = utils.getUrlParameter("search"),
-            tmp = (key && key.indexOf("*") === -1) ? key.split(" ") : "";
+    doSearch : function() {
+        var key = utils.getUrlParameter("search"), tmp = (key && key.indexOf("*") === -1) ? key.split(" ") : "";
 
         if (tmp.length == 1) {
             key = key + "*";
@@ -262,58 +234,53 @@ var SearchUI = {
 
         if (key && key !== "") {
             var newsSearch = NewsModel.searchNews(key);
-            newsSearch.done(function (res) {
+            newsSearch.done(function(res) {
                 SearchUI.displayResults("news", res);
             });
 
             var calendarSearch = CalendarModel.searchCalendar(key);
-            if (calendarSearch)
-            {  calendarSearch.done(function (res) {
-                SearchUI.displayResults("calendar", res);
-            });}
-        
-          
+            if (calendarSearch) {
+                calendarSearch.done(function(res) {
+                    SearchUI.displayResults("calendar", res);
+                });
+            }
 
             var contactsSearch = ContactsModel.searchContact(key);
-            contactsSearch.done(function (res) {
+            contactsSearch.done(function(res) {
                 SearchUI.displayResults("contacts", res);
             });
 
             var infothekSearch = InfothekModel.searchInfothek(key);
-            infothekSearch.done(function (res) {
+            infothekSearch.done(function(res) {
                 SearchUI.displayResults("infothek", res);
             });
 
             var documentSearch = documentsModel.searchDocuments(key);
-            documentSearch.done(function (res) {
+            documentSearch.done(function(res) {
                 SearchUI.displayResults("documents", res);
             });
 
-            var equipmentProductSearch = equipmentproductsModel.searchEquipmentproduct(key); //search for both Equipment and Other Products
-            var additionalbatchcount = 0 //workaround for badge disploay
-            equipmentProductSearch.done(function (res) {
+            var equipmentProductSearch = equipmentproductsModel.searchEquipmentproduct(key);
+            //search for both Equipment and Other Products
+            var additionalbatchcount = 0;//workaround for badge disploay
+            equipmentProductSearch.done(function(res) {
                 additionalbatchcount = res.length;
                 SearchUI.displayResults("mpl", res);
                 var otherProductSearch = otherproductsModel.searchOtherproduct(key);
-                otherProductSearch.done(function (res) {
+                otherProductSearch.done(function(res) {
                     SearchUI.displayResults("mpl-other", res, additionalbatchcount);
                 });
             });
-
-            
-
-
-          
 
         }
     }
 };
 
-(function ($) {
+(function($) {
     //Display news when sync is ready
     $('body').on('db-schema-ready', SearchUI.doSearch);
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.search-key-container').html(utils.getUrlParameter("search"));
     });
 })(jQuery);

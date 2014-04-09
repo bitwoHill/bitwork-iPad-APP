@@ -18,15 +18,14 @@ var CalendarUI = {
 
 
         if ($container.length && $template.length) {
-            //    var calendarList = (requestParam !== "")? Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10)) : Calendar.all();
-
+           
             var calendarList;
             if (requestParam == "") {
-                calendarList = Calendar.all()
+                calendarList = Calendar.all();
 
             }
             else {
-                calendarList = Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10))
+                calendarList = Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10));
             }
 
             calendarList.order('startDate', false).list(null, function (results) {
@@ -110,6 +109,6 @@ var CalendarUI = {
                 $this.addClass("disabled");
             });
         });
-    })
+    });
 
 })(jQuery);

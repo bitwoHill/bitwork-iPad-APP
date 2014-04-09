@@ -98,11 +98,11 @@ var ProductsUI = {
 
 
 
+
                         OtherProducts.all().filter("productFK", "=", ProduktPar).order('productDescription', true, false).list(null, function (results) {
 
                             if (results.length) {
-                                $container.append($newItem.removeClass('hidden'));
-
+                                
                                 $.each(results, function (index, value) {
                                     var data = value._data;
                                     var $newItem = $template.clone();
@@ -113,13 +113,19 @@ var ProductsUI = {
                                     $('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + ProduktPar + "&SonstigesProdukt=" + data.otherProductId);
                                     $('.products-item-piecenumber', $newItem).html(data.pieceNumber);
                                     $('.products-item-price', $newItem).html(parseFloat(data.price).toFixed(2).toLocaleString() + ' €');
+  $('.products-item-volume', $newItem).html(parseFloat(data.price).toFixed(2).toLocaleString() + ' €');
 
                                     //hide volume column
                                     if (!Equipmentcounter) {
-                                        $("#products-title-volume").hide();
-                                        $("#tableProducts tbody tr").each(function () {
-                                            $(this).find("td:eq(2)").remove();
-                                        });
+                                          $("#products-title-volume").html("Listenpreis");
+                                      //  $('.products-item-volume', $newItem).hide();
+                                           $("#tableProducts thead tr").each(function () {
+                                           $(this).find("th:eq(3)").remove();
+                                    });
+                                          $("#tableProducts tbody tr").each(function () {
+                                           $(this).find("td:eq(3)").remove();
+                                    });
+                                    
                                     }
                                     $container.append($newItem.removeClass('hidden'));
 

@@ -111,6 +111,7 @@
                 <h1><span class="i18n" data-i18n-key="produkt"></span></h1>
             </div>
 
+
             <div class="row ">
                 <div class="col-xs-12">
                     <div class="panel panel-default">
@@ -125,8 +126,7 @@
                                             </th>
                                             <th><span class="i18n" data-i18n-key="teilenummer"></span>
                                             </th>
-                                            <!--this column needs to be hidden if there is no other product available-->
-                                            <th id="products-title-volume"><span class="i18n" data-i18n-key="volumenstrom"></span>
+                                            <th><span class="i18n" data-i18n-key="volumenstrom"></span>
                                             </th>
                                             <th><span class="i18n" data-i18n-key="listenpreis"></span>
                                             </th>
@@ -135,11 +135,19 @@
                                     </thead>
                                     <tbody id="products-item-container">
                                         <tr id="products-item-template" class="hidden">
-                                            <td data-title="Produkt"><a href="MPLStammdaten.html?Produkt=1" class="products-item-title"></a></td>
-                                            <td data-title="Teilenummer"><a href="MPLStammdaten.html?Produkt=1" class="products-item-piecenumber"></a></td>
-                                            <!--this column value needs to be hidden if there is nother product available-->
-                                            <td data-title="Volumenstrom"><a href="MPLStammdaten.html?Produkt=1" class="products-item-volume"></a></td>
-                                            <td data-title="Listenpreis"><a href="MPLStammdaten.html?Produkt=1" class="products-item-price"></a></td>
+                                            <td data-title="Produkt">
+                                            <a href="MPLStammdaten.html?Produkt=1" class="products-item-title"></a>
+                                            </td>
+                                            <td data-title="Teilenummer">
+                                            <a href="MPLStammdaten.html?Produkt=1" class="products-item-piecenumber"></a>
+                                            </td>
+
+                                            <td data-title="Volumenstrom">
+                                            <a href="MPLStammdaten.html?Produkt=1" class="products-item-volume"></a>
+                                            </td>
+                                            <td data-title="Listenpreis">
+                                            <a href="MPLStammdaten.html?Produkt=1" class="products-item-price"></a>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

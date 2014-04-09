@@ -92,18 +92,18 @@ var equipmentproductsUI = {
                                                                 //create new url
                                                                 window.location.href = "MPLStammdaten.html?Produktgruppe=" + neededProductGroupFK + "&Produktfamilie=" + neededProductFamilyFK + "&Produktplattform=" + neededProductPlatformFK + "&Produkt=" + neededProductFK + "&EquipmentProdukt=" + neededEquipmentProductID + "&SearchPar=" + SearchPar;
                                                                 return;
-                                                            })
+                                                            });
                                                         });
                                                     }
 
-                                                })
+                                                });
                                             });
                                         }
 
-                                    })
+                                    });
                                 });
                             }
-                        })
+                        });
                     }
                     else { //check other products
                         OtherProducts.all().filter("pieceNumber", "=", PiecenumberPar).list(null, function (results) {
@@ -144,18 +144,18 @@ var equipmentproductsUI = {
 
                                                                     window.location.href = "MPLStammdaten.html?Produktgruppe=" + neededProductGroupFK + "&Produktfamilie=" + neededProductFamilyFK + "&Produktplattform=" + neededProductPlatformFK + "&Produkt=" + neededProductFK + "&SonstigesProdukt=" + neededOtherProductID + "&SearchPar=" + SearchPar;
                                                                     return;
-                                                                })
+                                                                });
                                                             });
                                                         }
 
-                                                    })
+                                                    });
                                                 });
                                             }
 
-                                        })
+                                        });
                                     });
                                 }
-                            })
+                            });
                         });
                     }
 
@@ -433,7 +433,8 @@ var DocumentsUI = {
                                         data.productFK == 0 &&
                                         data.productplatformFK == 0 &&
                                         data.productfamilyFK == 0 &&
-                                        data.productgroupFK == 0) {
+                                        data.productgroupFK == 0) 
+{
                                         // console.debug(data);
                                         if ($.inArray(data.documenttypeFK, documenttypeslist) === -1) {
                                             documenttypeslist[counter] = data.documenttypeFK;
@@ -441,6 +442,7 @@ var DocumentsUI = {
 
                                         }
                                     }
+                    
 
                                 });
 
@@ -493,6 +495,13 @@ var DocumentsUI = {
         var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
         var ProduktPar = utils.getUrlParameter('Produkt');
         var EquipmentProductPar = utils.getUrlParameter('EquipmentProdukt');
+
+console.debug("Produktgruppe:" + ProduktgruppePar);
+console.debug("ProduktfamiliePar:" + ProduktfamiliePar);
+console.debug("ProduktplatformPar:" + ProduktplatformPar);
+console.debug("ProduktPar:" + ProduktPar);
+console.debug("EquipmentProductPar:" + EquipmentProductPar);
+
 
         if (container.length && $templateFolder.length && $templateItem.length) {
 
@@ -621,7 +630,8 @@ var DocumentsUI = {
 
     var networkState = navigator.connection.type;
             if (networkState != Connection.NONE) {
-                productoptionsModel.sharePointProductOptions();
+               productoptionsModel.sharePointProductOptions();
+    
                 documentsModel.sharePointDocuments();
              }
                 else {

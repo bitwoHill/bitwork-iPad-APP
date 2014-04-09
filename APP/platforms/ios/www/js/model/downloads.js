@@ -5,7 +5,7 @@ var DownloadModel = {};
         var def = $.Deferred(), removeDir1 = DownloadModel.removeDir("Dokumente"), removeDir2 = DownloadModel.removeDir("Infothek");
 
         $.when(removeDir1, removeDir2).done(function(rem1, rem2) {
-            def.resolve()
+            def.resolve();
         }).fail(function(rem1, rem2) {
             def.reject();
         });
@@ -124,12 +124,10 @@ var DownloadModel = {};
 
                                     download.resolve(entry);
                                 }, function(error) {
-                                    console.debug(error.body);
                                     if (error.body == "404 NOT FOUND") {
                                         console.debug("404");
                                         download.reject(error);
-                                    } 
-                                    else {
+                                    } else {
                                         alert("Fehler beim Herunterladen. Zeitüberschreitung " + error.code);
                                         console.debug(error);
                                         download.reject(error);
@@ -154,7 +152,7 @@ var DownloadModel = {};
                     download.reject();
                 }
 
-                return download.promise()
+                return download.promise();
             }
 
             jqXHR = download(data).done(dfd.resolve).fail(dfd.reject).then(next, next);
