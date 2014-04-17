@@ -103,6 +103,8 @@ var InfothekModel = {
                         if (resultSP.Geändert)
                             item.spModifiedDate(utils.parseSharePointDate(resultSP.Geändert));
 
+ delete resultSPList;
+ delete resultSP;
                     }
 
                 }
@@ -169,7 +171,9 @@ var InfothekModel = {
 
             console.debug("Cleaned local files");
             console.log("flushing");
-
+delete spData;
+delete lookupIDsSharePoint;
+delete spItem;
             persistence.flush(function() {
                 SyncModel.addSync(INFOTHEK_LIST);
                 $('body').trigger('sync-end');

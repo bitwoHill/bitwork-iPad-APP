@@ -68,6 +68,8 @@ var documentsModel = {
             }
 
         });
+        delete spData;
+
     },
     //maps SharePoint data to current model
     mapSharePointData : function(data) {
@@ -161,6 +163,8 @@ var documentsModel = {
                         if (resultSP.Geändert)
                             item.spModifiedDate(utils.parseSharePointDate(resultSP.Geändert));
 
+delete resultSPList;
+delete resultSP;
                     
                     }
 
@@ -232,7 +236,8 @@ var documentsModel = {
                 $('#msgDocuments').removeClass('in');
             });
         });
-
+   delete lookupIDsSharePoint;
+        delete spItem;
     },
 
     downloadSharePointFiles : function() {

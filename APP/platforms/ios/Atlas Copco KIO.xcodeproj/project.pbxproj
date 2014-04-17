@@ -5,7 +5,9 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
+		02E299EF27394D9FA9D80E7D /* LaunchFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FF83C49E0F8940E0A73B089B /* LaunchFile.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1F766FE113BBADB100FB74C0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F766FDC13BBADB100FB74C0 /* Localizable.strings */; };
@@ -35,7 +37,6 @@
 		E468844EAD3F4C85A535057F /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8957E7613C4A4AB6CCA8D7 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F5F3C777187F103100A0806A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5F3C776187F103100A0806A /* Images.xcassets */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
-		02E299EF27394D9FA9D80E7D /* LaunchFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FF83C49E0F8940E0A73B089B /* LaunchFile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		69996E176E4244DE85471952 /* CDVContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVContacts.h; path = org.apache.cordova.contacts/CDVContacts.h; sourceTree = "<group>"; };
 		6AD5E61CE19E4AE392FC329B /* CDVConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVConnection.m; path = "org.apache.cordova.network-information/CDVConnection.m"; sourceTree = "<group>"; };
 		6E7642F8A6F4460B96E862D7 /* CDVContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVContacts.m; path = org.apache.cordova.contacts/CDVContacts.m; sourceTree = "<group>"; };
+		8196667D5AC6451EAF783741 /* LaunchFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchFile.h; path = com.contraterrene.LaunchFile/LaunchFile.h; sourceTree = "<group>"; };
 		87E04BDB4233479AA1FB1E19 /* CDVDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVDevice.m; path = org.apache.cordova.device/CDVDevice.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Atlas Copco KIO-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Atlas Copco KIO-Info.plist"; path = "../Atlas Copco KIO-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		8D8957E7613C4A4AB6CCA8D7 /* AddressBook.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -103,9 +105,8 @@
 		F5F3C776187F103100A0806A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Atlas Copco KIO/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Atlas Copco KIO/config.xml"; sourceTree = "<group>"; };
 		FE68F16C68574D1A8D060B5F /* CDVFileTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVFileTransfer.h; path = "org.apache.cordova.file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; };
+		FF83C49E0F8940E0A73B089B /* LaunchFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchFile.m; path = com.contraterrene.LaunchFile/LaunchFile.m; sourceTree = "<group>"; };
 		FFAEFC2DA6CE4234935BCC96 /* CDVStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVStatusBar.h; path = org.apache.cordova.statusbar/CDVStatusBar.h; sourceTree = "<group>"; };
-		FF83C49E0F8940E0A73B089B /* LaunchFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "LaunchFile.m"; path = "com.contraterrene.LaunchFile/LaunchFile.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		8196667D5AC6451EAF783741 /* LaunchFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LaunchFile.h"; path = "com.contraterrene.LaunchFile/LaunchFile.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,6 +487,7 @@
 				);
 				PRODUCT_NAME = "Atlas Copco KIO";
 				TARGETED_DEVICE_FAMILY = 2;
+				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT) ";
 			};
 			name = Debug;
 		};
@@ -504,6 +506,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Atlas Copco KIO/Atlas Copco KIO-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -520,6 +523,7 @@
 				);
 				PRODUCT_NAME = "Atlas Copco KIO";
 				TARGETED_DEVICE_FAMILY = 2;
+				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT) ";
 			};
 			name = Release;
 		};
