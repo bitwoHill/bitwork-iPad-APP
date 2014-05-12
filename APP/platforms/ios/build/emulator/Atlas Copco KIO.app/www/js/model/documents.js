@@ -73,120 +73,104 @@ var documentsModel = {
     },
     //maps SharePoint data to current model
     mapSharePointData : function(data) {
+        //SharePoint Item Array
         var spData = data.d;
-
-        //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to those on Sharepoint
+        //create lookup Array with all SP Items stored by ID. This is used to compare the Local Document IDs to those on Sharepoint
         var lookupIDsSharePoint = {};
-        var spItem;
-    
-        //For each SharePoint Resultitem
+        //One specific SharePoint Item used for Adding to local DB
+        var spItemAdd;
+
+        //For each SharePoint Resultitem- get all IDs which still exists on SP in order to delete local Documents not in this list.
         for (var i = 0, len = spData.results.length; i < len; i++) {
-
-            //add element to Array of IDs
+            //add element to Array of SPItems Indexed by ID
+            spItemAdd = spData.results[i];
             lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
-               //overwrite Item for easier use
-            spItem = spData.results[i];
-
+            //add all items => to create new items
             var doc = {
-                documentId : spItem.ID,
-                documentname : (spItem.Name) ? spItem.Name : "",
-                documenttypeFK : (spItem.DokumenttypId) ? spItem.DokumenttypId : "",
-                path : (spItem.Pfad) ? spItem.Pfad + "/" + spItem.Name : "",
-                productgroupFK : (spItem.ProduktgruppeId) ? spItem.ProduktgruppeId : "",
-                productfamilyFK : (spItem.ProduktfamilieId) ? spItem.ProduktfamilieId : "",
-                productplatformFK : (spItem.ProduktplattformId) ? spItem.ProduktplattformId : "",
-                productFK : (spItem.ProduktId) ? spItem.ProduktId : "",
-                equipmentFK : (spItem.EquipmentId) ? spItem.EquipmentId : ""
+                documentId : spItemAdd.ID,
+                documentname : (spItemAdd.Name) ? spItemAdd.Name : "",
+                documenttypeFK : (spItemAdd.DokumenttypId) ? spItemAdd.DokumenttypId : "",
+                path : (spItemAdd.Pfad) ? spItemAdd.Pfad + "/" + spItemAdd.Name : "",
+                productgroupFK : (spItemAdd.ProduktgruppeId) ? spItemAdd.ProduktgruppeId : "",
+                productfamilyFK : (spItemAdd.ProduktfamilieId) ? spItemAdd.ProduktfamilieId : "",
+                productplatformFK : (spItemAdd.ProduktplattformId) ? spItemAdd.ProduktplattformId : "",
+                productFK : (spItemAdd.ProduktId) ? spItemAdd.ProduktId : "",
+                equipmentFK : (spItemAdd.EquipmentId) ? spItemAdd.EquipmentId : ""
             };
             //Parse modified date
-            if (spItem.Geändert) {
-                doc.spModifiedDate = utils.parseSharePointDate(spItem.Geändert);
+
+            if (spItemAdd.Geändert) {
+                doc.spModifiedDate = utils.parseSharePointDate(spItemAdd.Geändert);
             }
             //add to persistence instance
             persistence.add(new Documents(doc));
 
-            //filter Database based on ID of SP Item
-            Documents.findBy("documentId", spItem.ID, function(item) {
-                //If item not found add new, else update
-                if (!item) {
-                    //  console.log("Adding item");
-
-                    //add to persistence instance
-                    //   persistence.add(new Documents(doc));
-
-                } else {//update Item
-
-                    //because of threading and instancing we now need to get the SP Item back
-                    //=> Grep gets data based on the function where the ID matches our current DB ID
-                    var resultSPList = $.grep(spData.results, function(e) {
-                        return e.ID === item._data.documentId;
-                    });
-                    //&& utils.parseSharePointDate(e.Geändert) > item._data.spModifiedDate
-
-                    //Grep gets a result set. but all we need is one item. we get the first (this should also be the only result!!)
-                    var resultSP = resultSPList[0];
-
-                    if (resultSP) {
-                      //  console.log("Updating Item");
-                        if (resultSP.Name)
-                            item.documentname(resultSP.Name);
-                        else
-                            item.documentname("");
-                        if (resultSP.DokumenttypId)
-                            item.documenttypeFK(resultSP.DokumenttypId);
-                        else
-                            item.documenttypeFK("");
-                        if (resultSP.Pfad)
-                            item.path(resultSP.Pfad + "/" + resultSP.Name);
-                        else
-                            item.path("");
-                        if (resultSP.ProduktgruppeId)
-                            item.productgroupFK(resultSP.ProduktgruppeId);
-                        else
-                            item.productgroupFK("");
-                        if (resultSP.ProduktfamilieId)
-                            item.productfamilyFK(resultSP.ProduktfamilieId);
-                        else
-                            item.productfamilyFK("");
-                        if (resultSP.ProduktplattformId)
-                            item.productplatformFK(resultSP.ProduktplattformId);
-                        else
-                            item.productplatformFK("");
-                        if (resultSP.ProduktId)
-                            item.productFK(resultSP.ProduktId);
-                        else
-                            item.productFK("");
-                        if (resultSP.EquipmentId)
-                            item.equipmentFK(resultSP.EquipmentId);
-                        else
-                            item.equipmentFK("");
-                        if (resultSP.Geändert)
-                            item.spModifiedDate(utils.parseSharePointDate(resultSP.Geändert));
-
-delete resultSPList;
-delete resultSP;
-                    
-                    }
-
-                }
-
-            });
-
+            console.log("adding " + spItemAdd.ID);
         }
 
-        console.log("done overwriting");
+        //persist new items to DB
         persistence.flush(function() {
+          
+            console.log("done adding new");
 
-            //check wheter files need to be deleted
-            //get all local files and check wheter its in the collection of the new SP files
+            //iterate all local files. If Document in LookupID List update, else delete by SP Item
             Documents.all().list(null, function(results) {
                 if (results.length) {
-                    $.each(results, function(index, value) {
-                        //check if an object with the current ID exists. If Not delete it
-                        if (!lookupIDsSharePoint[value._data.documentId]) {
-                            console.debug("lokales element wurde nicht mehr gefunden: ");
-                            console.debug(value);
 
+                    $.each(results, function(index, value) {
+
+                        //check if ID still exists on SharePoint
+                        if (lookupIDsSharePoint[value._data.documentId]) {
+                            //update routine / Adding routine
+                            //One specific SharePoint Item used for Updateing local DB
+                            var spItem;
+                            //get SP Item stored in Array by ID of current local Item
+                            spItem = lookupIDsSharePoint[value._data.documentId];
+                            if (spItem) {
+                                //  console.log("Updating Item");
+                                if (spItem.Name)
+                                    value.documentname(spItem.Name);
+                                else
+                                    value.documentname("");
+                                if (spItem.DokumenttypId)
+                                    value.documenttypeFK(spItem.DokumenttypId);
+                                else
+                                    value.documenttypeFK("");
+                                if (spItem.Pfad)
+                                    value.path(spItem.Pfad + "/" + spItem.Name);
+                                else
+                                    value.path("");
+                                if (spItem.ProduktgruppeId)
+                                    value.productgroupFK(spItem.ProduktgruppeId);
+                                else
+                                    value.productgroupFK("");
+                                if (spItem.ProduktfamilieId)
+                                    value.productfamilyFK(spItem.ProduktfamilieId);
+                                else
+                                    value.productfamilyFK("");
+                                if (spItem.ProduktplattformId)
+                                    value.productplatformFK(spItem.ProduktplattformId);
+                                else
+                                    value.productplatformFK("");
+                                if (spItem.ProduktId)
+                                    value.productFK(spItem.ProduktId);
+                                else
+                                    value.productFK("");
+                                if (spItem.EquipmentId)
+                                    value.equipmentFK(spItem.EquipmentId);
+                                else
+                                    value.equipmentFK("");
+                                if (spItem.Geändert)
+                                    value.spModifiedDate(utils.parseSharePointDate(spItem.Geändert));
+
+                                console.log("updated item: " + value._data.documentId);
+
+                            }
+                            delete spItem;
+                        } else//delete
+                        {
+                            console.debug("lokales element wurde nicht mehr gefunden: ");
+                            console.debug(value._data.documentId);
                             // delete local file from filesystem
                             if (value.localPath) {
                                 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -202,9 +186,8 @@ delete resultSP;
                                         }
 
                                         function onError() {
-                                            console.log('An error (on Error) occured with the filesystem object');
+                                            console.log('Local File not Found');
                                             console.log(value);
-
                                         }
 
                                     } catch (e) {
@@ -214,30 +197,30 @@ delete resultSP;
                                     }
 
                                 });
-
                             }
 
                             // remove entity from persistence layer
                             persistence.remove(value);
                         }
-
                     });
-                    persistence.flush();
                 }
-            });
+ console.log("done overwriting");
 
-            console.debug("Cleaned local files");
-            console.log("flushing");
+        persistence.flush(function() {
+            console.log("done flushing");
 
-            persistence.flush(function() {
-                SyncModel.addSync(DOCUMENTS_LIST);
-                $('body').trigger('sync-end');
-                $('body').trigger('documents-sync-ready');
-                $('#msgDocuments').removeClass('in');
-            });
+            SyncModel.addSync(DOCUMENTS_LIST);
+            $('body').trigger('sync-end');
+            $('body').trigger('documents-sync-ready');
+            $('#msgDocuments').removeClass('in');
         });
-   delete lookupIDsSharePoint;
-        delete spItem;
+        delete lookupIDsSharePoint;
+        delete spItemAdd;
+        });
+            });
+ 
+
+      
     },
 
     downloadSharePointFiles : function() {
@@ -283,7 +266,7 @@ delete resultSP;
                     //end if download necessary
                     $.downloadQueue(downloadData).done(function(entrie) {
                         queueProgress.qSuccess++;
-                        //   results[index].localPath(entrie.fullPath);
+
                         results[index].localPath(entrie.name);
 
                         //overwrite sync date with status of last sp modified date
@@ -313,6 +296,7 @@ delete resultSP;
 
                 });
             } else {
+
                 $('body').trigger('download-queue-ended', {
                     qLength : 1,
                     qIndex : 1,

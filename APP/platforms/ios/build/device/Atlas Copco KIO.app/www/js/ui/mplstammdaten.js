@@ -427,14 +427,14 @@ var DocumentsUI = {
                 console.log(results3);
                 if (results3.length) {
                     //get all types in found documents
-                    console.log("found products by name");
+                    console.log("found products by parameter");
                     $.each(results3, function(index, value2) {
 
                         var data = value2._data;
                         // Skip the product with allready used ID. hence get only the products which are not associated but happen to have the same name
                         if (data.productid != ProduktPar) {
                             ProduktAlternativeID = data.productid;
-                            console.log("ProduktAlternativeID 1 " + ProduktAlternativeID);
+                            console.log("found alternative ProduktAlternativeID 1 " + ProduktAlternativeID);
                         }
 
                     });
@@ -448,7 +448,7 @@ var DocumentsUI = {
                 $.each(results, function(index, value) {
                     var data = value._data;
          
-                    if (data.equipmentFK == EquipmentProductPar && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == 0 || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.equipmentFK == EquipmentProductPar && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.productFK == ProduktAlternativeID) {
+                    if (data.equipmentFK == EquipmentProductPar && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == 0 || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.equipmentFK == EquipmentProductPar && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.productFK == ProduktAlternativeID || data.productFK == ProduktPar ) {
                         var newItem;
 
                         newItem = $templateItem.clone();
