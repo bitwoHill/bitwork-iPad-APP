@@ -29,6 +29,7 @@ var InfothekModel = {
 //persistence.debug = true;
     
        //SharePoint Item Array
+       console.log(spData);
         var spData = data.d;
         //create lookup Array with all SP Items stored by ID. This is used to compare the Local Document IDs to those on Sharepoint
         var lookupIDsSharePoint = {};
@@ -53,10 +54,12 @@ var InfothekModel = {
             newItem.isFolder = (spItemAdd.Inhaltstyp === "Ordner") ? true : false;
 
             if (spItemAdd.Pfad) {
-                var tmpPath = (spItemAdd.Pfad).split("/").slice(1);
-                if (tmpPath.length) {
-                    newItem.parentFolder = tmpPath[tmpPath.length - 1];
-                }
+                //var tmpPath = (spItemAdd.Pfad).split("/").slice(1);
+                //if (tmpPath.length) {
+                 //   newItem.parentFolder = tmpPath[tmpPath.length - 1];
+                //}
+
+                 newItem.parentFolder = spItemAdd.Pfad;
             }
 
             if (!newItem.isFolder) {
@@ -103,7 +106,15 @@ var InfothekModel = {
 
                         if (spItem.Geändert)
                             value.spModifiedDate(utils.parseSharePointDate(spItem.Geändert));
-                            
+                         
+                         if (spItem.Pfad) {
+              //  var tmpPath = (spItem.Pfad).split("/").slice(1);
+            //    if (tmpPath.length) {
+                   // value.parentFolder(tmpPath[tmpPath.length - 1]);
+                   value.parentFolder(spItem.Pfad);
+                  
+                
+            } 
                               //  console.log("updated item: " + value._data.nodeId);
                           
                             }

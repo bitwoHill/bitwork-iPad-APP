@@ -18,7 +18,7 @@ var InfothekUI = {
         if ($container.length && $templateFolder.length && $templateItem.length) {
             InfothekUI.resetInfothek();
 
-            Infothek.all().filter("parentFolder", "=", 'InfothekHaendler').order('isFolder', false).order('title', true).list(null, function (results) {
+            Infothek.all().filter("parentFolder", "=", '/InfothekHaendler').order('isFolder', false).order('title', true).list(null, function (results) {
 
                 if (results.length) {
                     $emptyContainer.addClass("hidden");
@@ -69,8 +69,10 @@ var InfothekUI = {
         newItem.removeAttr('id');
 
         $('.tree-nav-item-name', newItem).html(data.title);
+        // $('.tree-nav-item-path', newItem).html(data.path);
         $('.tree-nav-link', newItem).attr("data-item-id", data.nodeId);
         $('.tree-nav-link', newItem).attr("data-item-name", data.title);
+$('.tree-nav-link', newItem).attr("data-item-path", data.path);
 
         //create instance of local filesystem if not allready created
         if (!localFileSystemRoot) {
@@ -184,9 +186,10 @@ $(document).ready(function () {
     $('body').on('click', '.tree-nav-link.folder', function (e) {
         e.preventDefault();
         var $this = $(this),
-            nodeId = $this.attr("data-item-name"),
+            nodeId = $this.attr("data-item-path"),
             container = $this.siblings("ul.tree-nav"),
             $icon = $('.fa', $this);
+
 
         if (container.length && $('li', container).length === 0) {
             InfothekUI.updateContactTree(container, nodeId);
