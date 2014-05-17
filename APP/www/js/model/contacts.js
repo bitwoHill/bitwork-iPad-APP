@@ -77,7 +77,7 @@ var ContactsModel = {
 
                     var img = new Image();
                     img.src = Settings.spContent + value.Pfad + "/" + value.Name;
-                    console.log("ID: " + value.ID + " " + value.Bildbreite + " " + value.Bildhöhe);
+                    //console.log("ID: " + value.ID + " " + value.Bildbreite + " " + value.Bildhöhe);
 
                     img.onload = function() {
                         newItem.profilePicture = utils.getBase64FromImage(img, imageExtension);

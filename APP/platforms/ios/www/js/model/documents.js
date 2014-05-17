@@ -105,7 +105,7 @@ var documentsModel = {
             //add to persistence instance
             persistence.add(new Documents(doc));
 
-            console.log("adding " + spItemAdd.ID);
+          //  console.log("adding " + spItemAdd.ID);
         }
 
         //persist new items to DB
@@ -163,14 +163,14 @@ var documentsModel = {
                                 if (spItem.Geändert)
                                     value.spModifiedDate(utils.parseSharePointDate(spItem.Geändert));
 
-                                console.log("updated item: " + value._data.documentId);
+                           //     console.log("updated item: " + value._data.documentId);
 
                             }
                             delete spItem;
                         } else//delete
                         {
-                            console.debug("lokales element wurde nicht mehr gefunden: ");
-                            console.debug(value._data.documentId);
+                           // console.debug("lokales element wurde nicht mehr gefunden: ");
+                          //  console.debug(value._data.documentId);
                             // delete local file from filesystem
                             if (value.localPath) {
                                 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -187,7 +187,7 @@ var documentsModel = {
 
                                         function onError() {
                                             console.log('Local File not Found');
-                                            console.log(value);
+                                        //    console.log(value);
                                         }
 
                                     } catch (e) {
@@ -195,7 +195,6 @@ var documentsModel = {
                                         console.log(value);
                                         console.log(e);
                                     }
-
                                 });
                             }
 
