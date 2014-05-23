@@ -112,13 +112,41 @@ var CalendarModel = {
     formatBodyText : function(body) {
 
         var $body = $(body);
+ //remove links
+        try {
+            $body.find('a').attr('target', "_system");
+            var oldhref = $body.find('a').attr('href');
+            var input = "/"
+            //check if URL neeeds to be rewritten
+            //add sharepoint domain to hyperlink. Atlas uses sharepoint functions to create hyperlinks. these are not comeplete for external users
+            if (oldhref.substring(0, input.length) === input) // checks if URL starts with "/"
+            {
+                //if so, add http://www.atlas-cms.com/
+                //    console.debug(oldhref);
+                $body.find('a').attr('href', Settings.spContent + oldhref)
+                var newhref = $body.find('a').attr('href');
+                //  console.debug(newhref);
+            }
 
+
+
+
+        }
+        catch (e)
+        { }
         //remove links
         $body.find('a').remove();
 
         //remove images
         $body.find('img').remove();
+//remove empty paragrafs
+        $body.html($body.html().replace(/&nbsp;/g, ""));
 
+ //remove &amp; paragrafs
+        $body.html($body.html().replace(/&amp;/g, "&"));
+ //replace curly brackets
+        $body.html($body.html().replace(/{/g, "%7B"));
+    $body.html($body.html().replace(/}/g, "%7D"));
         return {
             bodyFormatted : $body.html(),
             bodyFormattedSearch : $body.text()

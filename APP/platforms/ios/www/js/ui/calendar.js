@@ -18,7 +18,8 @@ var CalendarUI = {
 
 
         if ($container.length && $template.length) {
-           
+            CalendarUI.resetCalendar();
+
             var calendarList;
             if (requestParam == "") {
                 calendarList = Calendar.all();

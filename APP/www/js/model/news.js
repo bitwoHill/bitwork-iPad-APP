@@ -97,6 +97,12 @@ var NewsModel = {
         //remove empty paragrafs
         $body.html($body.html().replace(/&nbsp;/g, ""));
 
+ //remove &amp; paragrafs
+        $body.html($body.html().replace(/&amp;/g, "&"));
+ //replace curly brackets
+        $body.html($body.html().replace(/{/g, "%7B"));
+    $body.html($body.html().replace(/}/g, "%7D"));
+
 
         return {
             bodyFormatted: $body.html(),
