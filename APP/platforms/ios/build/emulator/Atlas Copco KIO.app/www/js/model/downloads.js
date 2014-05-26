@@ -128,7 +128,7 @@ var DownloadModel = {};
                                         console.debug("404");
                                         download.reject(error);
                                     } else {
-                                        alert("Fehler beim Herunterladen. Zeitüberschreitung " + error.code);
+                                        //alert("Fehler beim Herunterladen. Zeitüberschreitung " + error.code);
                                         console.debug(error);
                                         download.reject(error);
                                     }

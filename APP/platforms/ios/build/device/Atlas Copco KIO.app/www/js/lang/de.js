@@ -58,7 +58,7 @@ var i18n = {
         "produktbezeichnung": "Produktbezeichnung",
         "teilenummer": "Teilenummer",
         "listenpreis": "Listenpreis",
-        "kuehlung": "Kuehlung",
+        "kuehlung": "Kühlung",
         "austattungsvariante": "Austattungsvariante",
         "volumenstrom": "Volumenstrom",
         "druck": "Druck",
