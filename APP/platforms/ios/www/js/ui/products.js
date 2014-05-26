@@ -12,12 +12,12 @@ var ProductsUI = {
     displayproducts: function () {
         var $container = $(products_CONTAINER),
             $template = $(products_ITEM_TEMPLATE);
-
+console.log("resetproducts");
+    ProductsUI.resetProducts();
 
         if ($container.length && $template.length) {
 
-            ProductsUI.resetProducts();
-
+        
             //load by current url parameter / andhand von aktueller ID laden
 
             //the products page behaves a little weird. even though we have groups -> families - > platforms ->products -> details the webpart (and hence the app) IGNORES the Product.
@@ -172,15 +172,18 @@ var ProductsUI = {
 
     $(document).ready(function () {
         //Display productgroups when sync is ready
-        $('body').on(' db-schema-ready otherproducts-sync-ready equipmentproducts-sync-ready products-sync-ready', ProductsUI.displayproducts);
+        $('body').on(' db-schema-ready equipmentproducts-sync-ready', ProductsUI.displayproducts);
 
 
         $('body').on('click', 'a.page-sync-btn', function () {
             var networkState = navigator.connection.type;
           if (networkState != Connection.NONE) {
-            ProductsModel.sharePointProducts();
+           
+                ProductsModel.sharePointProducts();
             otherproductsModel.sharePointOtherproducts();
             equipmentproductsModel.sharePointEquipmentproducts();
+                
+                
 
 }
    else {
