@@ -321,23 +321,49 @@ var DocumentsUI = {
                 //counter to acces documenttype Array
 
                 //if its an equipment page the otherproduct is empty (or the other way around) -  this would cause problems in the SQL query - hence its set to -1)
-
+if (!OtherProductPar) {
+                    OtherProductPar = "-1";
+                }
+                else
+                { //reasign the equipemnt, if an otherproduct was found
+                	EquipmentProductPar = OtherProductPar;
+                }
                 if (!EquipmentProductPar) {
                     EquipmentProductPar = "-1";
                 }
-                if (!OtherProductPar) {
-                    OtherProductPar = "-1";
-                }
+                
 
                 Documents.all().order('documentname', true, false).list(null, function(results2) {
                     if (results2.length) {
                         //get all types in found documents
                         console.log("found documents");
+
+ console.debug("Produktgruppe:" + ProduktgruppePar);
+        console.debug("ProduktfamiliePar:" + ProduktfamiliePar);
+        console.debug("ProduktplatformPar:" + ProduktplatformPar);
+        console.debug("ProduktPar:" + ProduktPar);
+        console.debug("ProduktNamePar:" + ProduktNamePar);
+        console.debug("EquipmentProductPar:" + EquipmentProductPar);
+ console.debug("OtherProductPar:" + OtherProductPar);
+
                         $.each(results2, function(index, value) {
                             var data = value._data;
 
-                            if (data.equipmentFK == EquipmentProductPar && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == 0 || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.equipmentFK == EquipmentProductPar && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0) {
-                                // console.debug(data);
+
+
+
+
+                            if (data.equipmentFK == EquipmentProductPar && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || 
+                                data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || 
+                                data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || 
+                                data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || 
+                                data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == ProduktgruppePar || 
+                                data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == 0 || 
+                                data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == 0 && data.productgroupFK == 0 || 
+                                data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 || 
+                                data.equipmentFK == EquipmentProductPar && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0) {
+                                
+                                 console.log(data);
                                 if ($.inArray(data.documenttypeFK, documenttypeslist) === -1) {
                                     documenttypeslist[counter] = data.documenttypeFK;
                                     counter++;
@@ -409,9 +435,12 @@ var DocumentsUI = {
         var ProduktfamiliePar = utils.getUrlParameter('Produktfamilie');
         var ProduktplatformPar = utils.getUrlParameter('Produktplattform');
         var ProduktPar = utils.getUrlParameter('Produkt');
-        var ProduktAlternativeID = -1;
+       // var ProduktAlternativeID = -1;
+        var ProduktAlternativeID = new Array();
+
         var ProduktNamePar = utils.getUrlParameter('ProduktName');
         var EquipmentProductPar = utils.getUrlParameter('EquipmentProdukt');
+          var OtherProductPar = utils.getUrlParameter('SonstigesProdukt');
 
         console.debug("Produktgruppe:" + ProduktgruppePar);
         console.debug("ProduktfamiliePar:" + ProduktfamiliePar);
@@ -419,7 +448,19 @@ var DocumentsUI = {
         console.debug("ProduktPar:" + ProduktPar);
         console.debug("ProduktNamePar:" + ProduktNamePar);
         console.debug("EquipmentProductPar:" + EquipmentProductPar);
+ console.debug("OtherProductPar:" + OtherProductPar);
 
+if (!OtherProductPar) {
+                    OtherProductPar = "-1";
+                }
+                else
+                { //reasign the equipemnt, if an otherproduct was found
+                	EquipmentProductPar = OtherProductPar;
+                }
+                if (!EquipmentProductPar) {
+                    EquipmentProductPar = "-1";
+                }
+                
         if (container.length && $templateFolder.length && $templateItem.length) {
 
             //check if there is a associated product which "exists" two times = two different products but same name => add as well
@@ -433,7 +474,9 @@ var DocumentsUI = {
                         var data = value2._data;
                         // Skip the product with allready used ID. hence get only the products which are not associated but happen to have the same name
                         if (data.productid != ProduktPar) {
-                            ProduktAlternativeID = data.productid;
+                     
+                            ProduktAlternativeID.push(data.productid);
+
                             console.log("found alternative ProduktAlternativeID 1 " + ProduktAlternativeID);
                         }
 
@@ -447,8 +490,91 @@ var DocumentsUI = {
 
                 $.each(results, function(index, value) {
                     var data = value._data;
+
+
+
+
+
+//TEST
+
+
+  //   if (data.equipmentFK == EquipmentProductPar && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar)
+  //    {
+  //    	alert(1);
+  //   }
+
+  //    if (  data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar ) 
+  //     {
+  //    	alert(2);
+  //   }
+
+
+  //    if (data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar ) 
+  //     
+  //     {
+  //    	alert(3);
+  //   }
+
+  //  if (data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar ) 
+  //                          {
+  //                         	alert(4);
+  //                        }
+
+  //                         if (data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == ProduktgruppePar ) 
+  //                          {
+  //                         	alert(5);
+  //                        }
+
+  //                         if ( data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == 0 ) 
+  //                          {
+  //                         	alert(6);
+  //                        }
+
+  //                         if ( data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == 0 && data.productgroupFK == 0 ) 
+  //                          {
+  //                         	alert(7);
+  //                        }
+
+  //                         if (   data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 ) 
+  //                          {
+  //                         	alert(8);
+  //                        }
+
+  //                        if (data.equipmentFK == EquipmentProductPar && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0)
+  //                        {
+  //                        	alert(9);
+  //                        }
+
+  //                         if ( data.productFK == ProduktAlternativeID )
+  //                        {
+  //                        	alert(10);
+  //                        }
+
+  //                         if ( data.productFK == ProduktPar)
+  //                        {
+  //                        	alert(11);
+  //                        }
+
+  //                   
+                        
+                                
+
+
+// ENDE TEEST
+
+
          
-                    if (data.equipmentFK == EquipmentProductPar && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == ProduktgruppePar || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == 0 || data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.equipmentFK == EquipmentProductPar && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 || data.productFK == ProduktAlternativeID || data.productFK == ProduktPar ) {
+                    if (data.equipmentFK == EquipmentProductPar && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || 
+                        data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || 
+                        data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || 
+                        data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || 
+                        data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == ProduktgruppePar || 
+                        data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == 0 || 
+                        data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == 0 && data.productgroupFK == 0 || 
+                        data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 ||
+                         data.equipmentFK == EquipmentProductPar && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 || 
+                     $.inArray(data.productFK,ProduktAlternativeID) != -1 || 
+                         data.productFK == ProduktPar ) {
                         var newItem;
 
                         newItem = $templateItem.clone();
