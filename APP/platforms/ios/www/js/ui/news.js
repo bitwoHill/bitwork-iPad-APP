@@ -3,6 +3,11 @@ var NEWS_CONTAINER = "#news-items-container",
     NEWS_ITEM_TEMPLATE = "#news-item-template",
     URL_SINGLE_NEWS = "http://www.atlas-cms.com/Lists/Ankuendigungen/DispForm.aspx?ID=";
 
+Date.prototype.addHours = function(h) {    
+   this.setTime(this.getTime() + (h*60*60*1000)); 
+   return this;   
+};
+
 var NewsUI = {
     resetNews: function () {
         $(NEWS_CONTAINER + ' > div').not(NEWS_ITEM_TEMPLATE).not(NEWS_EMPTY_CONTAINER).remove();
@@ -16,7 +21,7 @@ var NewsUI = {
         if ($container.length && $template.length) {
             NewsUI.resetNews();
 
-            var newsList = (requestParam !== "") ? News.all().filter("nodeId", "=", parseInt(requestParam, 10)) : News.all();
+            var newsList = (requestParam !== "") ? News.all().filter("nodeId", "=", parseInt(requestParam, 10)) : News.all().order('createdDate', false, false);
 
             //show navigate backwardsbutton if site was opened from search (requestParam exists)
             if (requestParam !== "")
@@ -32,7 +37,7 @@ var NewsUI = {
                         $newItem.removeAttr('id');
                         $('.news-item-title', $newItem).html(data.title);
                         $('.news-item-body', $newItem).html(data.body);
-                        $('.news-item-date', $newItem).html(utils.dateFormat(new Date(data.createdDate), "d.m.y, H:M"));
+                        $('.news-item-date', $newItem).html(utils.dateFormat(new Date(data.createdDate).addHours(-2), "d.m.y, H:M"));
                         $('.news-item-link', $newItem).attr('href', URL_SINGLE_NEWS + data.nodeId);
 
                         //if(data.image) {

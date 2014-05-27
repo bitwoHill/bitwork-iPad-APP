@@ -98,6 +98,10 @@ if (username == 'bitwork')
 {
 appUser.doLogin(username, 'Test1234!', rememberUser);
 }
+else if (username == 'spfadmin')
+{
+appUser.doLogin(username, 'bit@SP2010!', rememberUser);	
+}
 else
 {
 	appUser.doLogin(username, password, rememberUser);
