@@ -69,7 +69,7 @@ var SearchUI = {
                 }, function() {
                     console.log("could not create filesystem");
 
-                    link = $newItem.attr('href');
+                    link = 'http://www.atlas-cms.com' + data.path;
                     $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + "  <span class='label label-default'> Nicht Heruntergeladen</span>");
                 });
             } catch (err) {
@@ -77,12 +77,13 @@ var SearchUI = {
             }
 
         } else {
-            link = $newItem.attr('href');
+            link = 'http://www.atlas-cms.com' + data.path;
             $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.title, utils.getUrlParameter("search")) + "   <span class='label label-default'> Nicht Heruntergeladen</span>");
         }
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
+             $newItem.attr('target', '_system');
 
         return $newItem.removeClass('hidden');
 
@@ -94,6 +95,7 @@ var SearchUI = {
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
+
         $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.productDescription, searchKey));
         $('.result-item-text', $newItem).html(SearchUI.highlightSearchKey(data.pieceNumber, searchKey));
 
@@ -126,7 +128,7 @@ var SearchUI = {
                 }, function() {
                     console.log("could not create filesystem");
 
-                    link = $newItem.attr('href');
+                  link = 'http://www.atlas-cms.com' + data.path;
                     $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " <span class='label label-default'> Nicht Heruntergeladen</span>");
                 });
             } catch (err) {
@@ -134,12 +136,14 @@ var SearchUI = {
             }
 
         } else {
-            link = $newItem.attr('href');
+            link = 'http://www.atlas-cms.com' + data.path;
             $('.result-item-title-text', $newItem).html(SearchUI.highlightSearchKey(data.documentname, utils.getUrlParameter("search")) + " <span class='label label-default'> Nicht Heruntergeladen</span>");
         }
 
         $newItem.removeAttr('id');
         $newItem.attr('href', link);
+          $newItem.attr('target', '_system');
+    
 
         return $newItem.removeClass('hidden');
     },

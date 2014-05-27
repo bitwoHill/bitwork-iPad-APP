@@ -84,6 +84,8 @@ $('.tree-nav-link', newItem).attr("data-item-path", data.path);
                     function (fileSystem) {
                         localFileSystemRoot = fileSystem.root.fullPath;
 
+
+
                         if (data.localPath) {
                             $('.tree-nav-link', newItem).click(function () { LaunchFile('file://' + localFileSystemRoot + "/Infothek/" + data.localPath); });
                             //  console.debug(localFileSystemRoot + "/Infothek/" + data.localPath);
@@ -93,6 +95,7 @@ $('.tree-nav-link', newItem).attr("data-item-path", data.path);
                         else //show that no file is available
                         {
                             if (!data.isFolder) {
+                                 $('.tree-nav-link', newItem).attr('href', 'http://www.atlas-cms.com' + data.path);
                                 $('.tree-nav-item-name', newItem).html(data.title + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
                             }
                         }
@@ -101,6 +104,7 @@ $('.tree-nav-link', newItem).attr("data-item-path", data.path);
                     function () {
                         console.log("could not create filesystem");
                         if (!data.isFolder) {
+                            $('.tree-nav-link', newItem).attr('href', 'http://www.atlas-cms.com' + data.path);
                             $('.tree-nav-item-name', newItem).html(data.title + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
                         }
                     }
@@ -108,6 +112,7 @@ $('.tree-nav-link', newItem).attr("data-item-path", data.path);
             } catch (err) {
                 console.log(err);
                 if (!data.isFolder) {
+                    $('.tree-nav-link', newItem).attr('href', 'http://www.atlas-cms.com' + data.path);
                     $('.tree-nav-item-name', newItem).html(data.title + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
                 }
             }
@@ -124,7 +129,9 @@ $('.tree-nav-link', newItem).attr("data-item-path", data.path);
                 else //show that no file is available
                 {
                     if (!data.isFolder) {
+                           $('.tree-nav-link', newItem).attr('href', 'http://www.atlas-cms.com' + data.path);
                         $('.tree-nav-item-name', newItem).html(data.title + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
+
                     }
                 }
             }

@@ -483,7 +483,10 @@ var DocumentsUI = {
 
                         } else//show that no file is available
                         {
+                            //Set Link to Online File. If the file was downloaded itll be changed to the local path
+
                             $('.tree-nav-item-name', newItem).html(data.documentname + ' <span class="label label-default"> Nicht Heruntergeladen</span>');
+                                  $('.tree-nav-link', newItem).attr('href', 'http://www.atlas-cms.com' + data.path);
                         }
                         container.append(newItem.removeClass('hidden'));
                     }

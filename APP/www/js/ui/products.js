@@ -44,13 +44,13 @@ console.log("resetproducts");
 
                         ProduktPars[counter] = data.productid;
                         ProduktNames[counter] = data.product;
-                        //  console.debug(ProduktPars[counter]);
+                         console.log(ProduktNames[counter]);
                         counter++;
 
                     });
 
 
-                    //now we have all productFKs, use them to get equipments and options now
+                    //now we have all productFKs, use them to get equipments and options 
                     for (index = 0; index < ProduktPars.length; ++index) {
                         ProduktPar = ProduktPars[index];
                      
