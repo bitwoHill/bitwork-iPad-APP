@@ -2077,34 +2077,6 @@ persistence.get = function(arg1, arg2) {
       }
     };
 
-function alphanum(a, b) {
-  function chunkify(t) {
-    var tz = [], x = 0, y = -1, n = 0, i, j;
-
-    while (i = (j = t.charAt(x++)).charCodeAt(0)) {
-      var m = (i == 46 || (i >=48 && i <= 57));
-      if (m !== n) {
-        tz[++y] = "";
-        n = m;
-      }
-      tz[y] += j;
-    }
-    return tz;
-  }
-
-  var aa = chunkify(a);
-  var bb = chunkify(b);
-
-  for (x = 0; aa[x] && bb[x]; x++) {
-    if (aa[x] !== bb[x]) {
-      var c = Number(aa[x]), d = Number(bb[x]);
-      if (c == aa[x] && d == bb[x]) {
-        return c - d;
-      } else return (aa[x] > bb[x]) ? 1 : -1;
-    }
-  }
-  return aa.length - bb.length;
-}
     LocalQueryCollection.prototype.list = function(tx, callback) {
       var args = argspec.getArgs(arguments, [
           { name: 'tx', optional: true, check: persistence.isTransaction, defaultValue: null },
@@ -2134,15 +2106,11 @@ function alphanum(a, b) {
               aVal = aVal.toLowerCase();
               bVal = bVal.toLowerCase();
             }
-console.log("sort");
-           return alphanum(aVal, bVal);
-          //  if(aVal < bVal) {
-            //  return asc ? -1 : 1;
-            //} else if(aVal > bVal) {
-            //  return asc ? 1 : -1;
-           // }
-
-
+            if(aVal < bVal) {
+              return asc ? -1 : 1;
+            } else if(aVal > bVal) {
+              return asc ? 1 : -1;
+            }
           }
           return 0;
         });

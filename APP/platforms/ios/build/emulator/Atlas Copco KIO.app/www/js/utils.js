@@ -38,7 +38,7 @@ var utils = {
     CommaFormatted: function (amount) {
         var delimiter = "."; // replace comma if desired
         amount = new String(amount);
-        var a = amount.split('.', 2)
+        var a = amount.split('.', 2);
         var d = a[1];
         var i = parseInt(a[0]);
         if (isNaN(i)) { return ''; }
@@ -169,7 +169,7 @@ var utils = {
         });
     }
 
-}
+};
 
 //Base64 encoding
 

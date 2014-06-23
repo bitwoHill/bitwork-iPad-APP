@@ -1,7 +1,7 @@
 var CALENDAR_LIST = "Kalender";
 
 //DB model
-var Calendar = persistence.define('Calendar', {
+var Calendar2 = persistence.define('Calendar', {
     nodeId : "INT",
     title : "TEXT",
     body : "TEXT",
@@ -12,11 +12,11 @@ var Calendar = persistence.define('Calendar', {
     expirationDate : "DATE"
 });
 
-Calendar.index('nodeId', {
+Calendar2.index('nodeId', {
     unique : true
 });
-Calendar.textIndex('title');
-Calendar.textIndex('bodySearch');
+Calendar2.textIndex('title');
+Calendar2.textIndex('bodySearch');
 
 var CalendarModel = {
 
@@ -31,7 +31,7 @@ var CalendarModel = {
         var spData = data.d;
 
         //wipe database of old entries
-        Calendar.all().destroyAll(function(ele) {
+        Calendar2.all().destroyAll(function(ele) {
             utils.emptySearchIndex("Calendar");
 
             if (spData && spData.results.length) {
@@ -55,7 +55,7 @@ var CalendarModel = {
                         calendarItem.location = value.Ort;
                     }
 
-                    persistence.add(new Calendar(calendarItem));
+                    persistence.add(new Calendar2(calendarItem));
                 });
 
                 persistence.flush(function() {
@@ -99,7 +99,7 @@ var CalendarModel = {
     },
 
     getCalendarItem : function(id, callback) {
-        Calendar.all().filter("nodeId", "=", parseInt(id, 10)).limit(1).list(function(res)
+        Calendar2.all().filter("nodeId", "=", parseInt(id, 10)).limit(1).list(function(res)
          {
             if (res.length && res[0]._data) {
                 callback(res[0]._data);
@@ -160,11 +160,11 @@ var CalendarModel = {
         key = key.replace(/ /g, '%');
         //replace changes only first instance . thats why the global modifier "g" of a regular expression was used. find all whitepaces and change to %
                                     try {
-                               if (!Calendar) {
+                               if (!Calendar2) {
             return calendarSearch.promise();
         }
 
-        Calendar.all().filter("title", "LIKE", key).or(new persistence.PropertyFilter("bodySearch", "LIKE", key)).order("title", true, false).list(function(res) {
+        Calendar2.all().filter("title", "LIKE", key).or(new persistence.PropertyFilter("bodySearch", "LIKE", key)).order("title", true, false).list(function(res) {
             calendarSearch.resolve(res);
         });
                                     } catch (e) {

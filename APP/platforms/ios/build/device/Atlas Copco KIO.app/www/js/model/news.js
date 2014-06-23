@@ -45,7 +45,7 @@ var NewsModel = {
                     }
 
                     if (value.Erstellt) {
-                        newsItem.createdDate = utils.parseSharePointDate(value.Erstellt);
+                        newsItem.createdDate = utils.parseSharePointDate(value.Geändert);
                     }
 
 
