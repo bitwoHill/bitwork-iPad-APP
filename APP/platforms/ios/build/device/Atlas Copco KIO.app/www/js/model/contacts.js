@@ -1,5 +1,23 @@
 var CONTACTS_LIST = "Telefonbuch";
 
+//Version 1
+//var Contacts = persistence.define('Contacts', {
+//    contactId : "INT",
+//    name : "TEXT",
+//    forename : "TEXT",
+//    phone : "TEXT",
+//    mobilePhone : "TEXT",
+//    fax : "TEXT",
+//    email : "TEXT",
+//    department : "TEXT",
+//    jobFunction : "TEXT",
+//    profilePicture : "TEXT",
+//    description : "TEXT",
+//    representative : "TEXT",
+//    isFolder : "BOOL",
+//    parentFolder : "TEXT"
+////});
+
 //DB model
 var Contacts = persistence.define('Contacts', {
     contactId : "INT",

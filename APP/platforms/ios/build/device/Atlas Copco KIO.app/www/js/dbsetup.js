@@ -25,18 +25,34 @@ var appUser;
         //init User
         appUser = new User();
         //setup DB connection
-   //     persistence.schemaSync(function() {
+persistence.schemaSync(function() {
+    
 
 //Alter Tables if necessary
 persistence.defineMigration(1, {
     up: function() {
-        this.addColumn('Contacts', 'path', 'TEXT');
-    },
+           this.dropTable('Contacts');
+            },
     down: function() {
-        this.removeColumn('Contacts', 'path');
+        this.executeSql('CREATE TABLE IF NOT EXISTS Contacts (contactId TEXT PRIMARY KEY, name TEXT, forename TEXT, phone TEXT, mobilePhone TEXT, fax TEXT, email TEXT, department TEXT, jobFunction TEXT, profilePicture TEXT, description TEXT, representative TEXT, isFolder BOOL, parentFolder TEXT)');
+
     }
 });
 
+////Alter Tables if necessary
+//persistence.defineMigration(2, {
+//    up: function() {
+//           this.dropTable('Contacts');
+//            },
+//    down: function() {
+//        this.executeSql('CREATE TABLE IF NOT EXISTS Contacts (contactId TEXT PRIMARY KEY, name TEXT, forename TEXT, phone TEXT, mobilePhone TEXT, fax TEXT, email TEXT, department TEXT, jobFunction TEXT, profilePicture TEXT, description TEXT, representative TEXT, isFolder BOOL, parentFolder TEXT)');
+//
+//    }
+//});
+
+
+
+//gutes beispiel für Callback methode 
 function migrate( callback ){
     console.log('migrating...');
     persistence.migrations.init( function(){
@@ -52,17 +68,22 @@ migrate( onMigrationComplete );
 
 function onMigrationComplete(){
     // database is ready. do amazing things...
-    appUser.initUser(function() {
+persistence.schemaSync(function() {
+                appUser.initUser(function() {
+                    console.log("DBReady");
                 $('body').trigger('db-schema-ready');
-            });
+            });     
+                });
+       
+ 
 };
 
-
+//ende beispiel
+});
 
 
 //start app
-          
-      //  });
+    
     };
 
     var sharePointSync = function() 
