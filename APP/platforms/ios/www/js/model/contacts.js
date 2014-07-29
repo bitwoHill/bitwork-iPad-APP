@@ -15,6 +15,7 @@ var Contacts = persistence.define('Contacts', {
     description : "TEXT",
     representative : "TEXT",
     isFolder : "BOOL",
+    path : "TEXT",
     parentFolder : "TEXT"
 });
 
@@ -35,6 +36,7 @@ var ContactsModel = {
 
         SharePoint.sharePointRequest(CONTACTS_LIST, ContactsModel.mapSharePointData);
     },
+
 
     addNewsItemToDB : function(value, callback) {
 
@@ -61,11 +63,20 @@ var ContactsModel = {
         newItem.isFolder = (value.Inhaltstyp == "Bild") ? false : true;
 
         if (value.Pfad) {
-            var tmpPath = (value.Pfad).split("/").slice(1);
-            if (tmpPath.length) {
-                newItem.parentFolder = tmpPath[tmpPath.length - 1];
-            }
+           // console.log(value.Pfad);
+            //var tmpPath = (value.Pfad).split("/").slice(1);
+            //if (tmpPath.length) {
+            //    newItem.parentFolder = tmpPath[tmpPath.length - 1];
+            //}
+//use fullpath instead of only name
+            newItem.parentFolder = value.Pfad;
+
+            
+                newItem.path = value.Pfad + "/" + value.Name;
+            
         }
+
+        
 
         if (!newItem.isFolder) {
             var tmp = (value.Name) ? value.Name.split('.') : false, imageExtension = (tmp && tmp.length > 1) ? (tmp[tmp.length - 1]).toLowerCase() : false;
@@ -112,6 +123,7 @@ var ContactsModel = {
 
     //maps SharePoint data to current model
     mapSharePointData : function(data) {
+     
         var spData = data.d;
         console.log("DataLength: " + spData.results.length);
         Contacts.all().destroyAll(function(ele) {

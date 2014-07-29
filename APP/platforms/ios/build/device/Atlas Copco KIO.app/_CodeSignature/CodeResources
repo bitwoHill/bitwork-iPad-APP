@@ -78,7 +78,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		pQgscc8OGB+znlxrw+fF+U2DhFM=
+		6IDSHFmt/kwsZNl3t+PFOM2RSLI=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -106,59 +106,59 @@
 		</data>
 		<key>www/Download.html</key>
 		<data>
-		vdgrXHYkShZq4pTrwUiZtoqsbao=
+		0ynaqXWfOrp8XZTxTUC2vu4B+nw=
 		</data>
 		<key>www/Infothek.html</key>
 		<data>
-		/U+chQMEZ9knuMrFl+RV60SQGRA=
+		eDR5xfW9DEInwilhRrkJSuk5MxA=
 		</data>
 		<key>www/Kalender.html</key>
 		<data>
-		Btn2PoHXZvyZx7J+0BRFbKsUuNA=
+		nzU9xKVaNaNxIoKYnX+gAF2maiw=
 		</data>
 		<key>www/LoginPage.html</key>
 		<data>
-		e+tNkg46bLFJ7AjydgMx/Pd9cIA=
+		JCMyMaHKFk/RXcIweEb2S/Ktr4k=
 		</data>
 		<key>www/MPLProdukt.html</key>
 		<data>
-		ATybzEDHbmceS6IgfYW3QOU95lI=
+		B5+Tvl5E2PBss0UuHrt4INRNfPY=
 		</data>
 		<key>www/MPLProduktfamilien.html</key>
 		<data>
-		KShkZ5JDImc9txwn6STbmGUn7o4=
+		pu9c4weUiWyJeeUskDwtXiFRHQI=
 		</data>
 		<key>www/MPLProduktgruppen.html</key>
 		<data>
-		s9XIFqPyWTJt++j5G8zWVBeVFMU=
+		1/zeceH+1M5JPamAbF7SqoAObl8=
 		</data>
 		<key>www/MPLProduktplattformen.html</key>
 		<data>
-		1J9/mvHVisGWO3qGjfgUkHcuT2I=
+		4giNrQKav4u1UGQIx+81gEGQwPE=
 		</data>
 		<key>www/MPLStammdaten.html</key>
 		<data>
-		2GlK+ue0mkqQiiTTx6d/V9gJX7w=
+		30ThEy2Z0v3aS5KVvmpE5hWsuFA=
 		</data>
 		<key>www/News.html</key>
 		<data>
-		YimY6ozEJGxb0YmQIE/ZB3q6yqY=
+		9zHYFWkc0xAsSmVRgO/rRyfjpHg=
 		</data>
 		<key>www/Search.html</key>
 		<data>
-		WkiutuCDAalneks/V8Ag64VL8N8=
+		DpwUS4wq9Ns7GQUf9yApDS7jlPc=
 		</data>
 		<key>www/Telefonbuch.html</key>
 		<data>
-		iRKzdAiEbvk/IX1lyZR6jbsNEhI=
+		nA8GRAKbCpTIqHQIXAC84wBQagY=
 		</data>
 		<key>www/Template.html</key>
 		<data>
-		EcVKgpJF1xzsBzJsetAboXZOxVk=
+		CJ4NPztOa/Dd30lRl5MUtOfzLXs=
 		</data>
 		<key>www/WichtigeLinks.html</key>
 		<data>
-		Pos7q2BKl4C8UySlOnTSgErdK7k=
+		euz9ayK0nVIJ8vi6FNOLKHlI56k=
 		</data>
 		<key>www/config.xml</key>
 		<data>
@@ -370,7 +370,7 @@
 		</data>
 		<key>www/js/dbsetup.js</key>
 		<data>
-		sFf91wlIn4H/TERBVjdKeLb2GCE=
+		RPSIxMgBPs1/OrOziFKRIGB5fUc=
 		</data>
 		<key>www/js/i18n.js</key>
 		<data>
@@ -386,11 +386,11 @@
 		</data>
 		<key>www/js/model/calendar.js</key>
 		<data>
-		L9C3phBfpI/+Vci4AP5m0CD0MRI=
+		/yttVnCx6qvf2NQvezoq/JzX9Eg=
 		</data>
 		<key>www/js/model/contacts.js</key>
 		<data>
-		PT4l/y/Vqf7HtYIU9KbBqMGPXB8=
+		fxr9X2VF8QSNENMwrccPVvKJBwg=
 		</data>
 		<key>www/js/model/documents.js</key>
 		<data>
@@ -450,11 +450,11 @@
 		</data>
 		<key>www/js/ui/calendar.js</key>
 		<data>
-		iMFUMKUxuA1VnxQWGxb3dzYMl7U=
+		Iy41pm4O0LtEYgAEffUAZIsgqHA=
 		</data>
 		<key>www/js/ui/contacts.js</key>
 		<data>
-		0QirYocjsgeS5/kwHXcpm75PjSA=
+		RoN/tyctfKgk1J4LwUh6SShLb8I=
 		</data>
 		<key>www/js/ui/downloads.js</key>
 		<data>
@@ -502,7 +502,7 @@
 		</data>
 		<key>www/js/utils.js</key>
 		<data>
-		Q+In598fZkdB9izBOVSopGXg5i0=
+		CfOgp7UnKL9LDxUorNtRn1QFtkc=
 		</data>
 		<key>www/lib/bootstrap.js</key>
 		<data>
@@ -531,6 +531,10 @@
 		<key>www/lib/persistence.js</key>
 		<data>
 		uZwMhKr60lAoalqDkpAzQAoZMfs=
+		</data>
+		<key>www/lib/persistence.migrations.js</key>
+		<data>
+		WQHllRPx89Y8QwlVK36HNM5TR5I=
 		</data>
 		<key>www/lib/persistence.search.js</key>
 		<data>
@@ -1009,7 +1013,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		pQgscc8OGB+znlxrw+fF+U2DhFM=
+		6IDSHFmt/kwsZNl3t+PFOM2RSLI=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -1037,59 +1041,59 @@
 		</data>
 		<key>www/Download.html</key>
 		<data>
-		vdgrXHYkShZq4pTrwUiZtoqsbao=
+		0ynaqXWfOrp8XZTxTUC2vu4B+nw=
 		</data>
 		<key>www/Infothek.html</key>
 		<data>
-		/U+chQMEZ9knuMrFl+RV60SQGRA=
+		eDR5xfW9DEInwilhRrkJSuk5MxA=
 		</data>
 		<key>www/Kalender.html</key>
 		<data>
-		Btn2PoHXZvyZx7J+0BRFbKsUuNA=
+		nzU9xKVaNaNxIoKYnX+gAF2maiw=
 		</data>
 		<key>www/LoginPage.html</key>
 		<data>
-		e+tNkg46bLFJ7AjydgMx/Pd9cIA=
+		JCMyMaHKFk/RXcIweEb2S/Ktr4k=
 		</data>
 		<key>www/MPLProdukt.html</key>
 		<data>
-		ATybzEDHbmceS6IgfYW3QOU95lI=
+		B5+Tvl5E2PBss0UuHrt4INRNfPY=
 		</data>
 		<key>www/MPLProduktfamilien.html</key>
 		<data>
-		KShkZ5JDImc9txwn6STbmGUn7o4=
+		pu9c4weUiWyJeeUskDwtXiFRHQI=
 		</data>
 		<key>www/MPLProduktgruppen.html</key>
 		<data>
-		s9XIFqPyWTJt++j5G8zWVBeVFMU=
+		1/zeceH+1M5JPamAbF7SqoAObl8=
 		</data>
 		<key>www/MPLProduktplattformen.html</key>
 		<data>
-		1J9/mvHVisGWO3qGjfgUkHcuT2I=
+		4giNrQKav4u1UGQIx+81gEGQwPE=
 		</data>
 		<key>www/MPLStammdaten.html</key>
 		<data>
-		2GlK+ue0mkqQiiTTx6d/V9gJX7w=
+		30ThEy2Z0v3aS5KVvmpE5hWsuFA=
 		</data>
 		<key>www/News.html</key>
 		<data>
-		YimY6ozEJGxb0YmQIE/ZB3q6yqY=
+		9zHYFWkc0xAsSmVRgO/rRyfjpHg=
 		</data>
 		<key>www/Search.html</key>
 		<data>
-		WkiutuCDAalneks/V8Ag64VL8N8=
+		DpwUS4wq9Ns7GQUf9yApDS7jlPc=
 		</data>
 		<key>www/Telefonbuch.html</key>
 		<data>
-		iRKzdAiEbvk/IX1lyZR6jbsNEhI=
+		nA8GRAKbCpTIqHQIXAC84wBQagY=
 		</data>
 		<key>www/Template.html</key>
 		<data>
-		EcVKgpJF1xzsBzJsetAboXZOxVk=
+		CJ4NPztOa/Dd30lRl5MUtOfzLXs=
 		</data>
 		<key>www/WichtigeLinks.html</key>
 		<data>
-		Pos7q2BKl4C8UySlOnTSgErdK7k=
+		euz9ayK0nVIJ8vi6FNOLKHlI56k=
 		</data>
 		<key>www/config.xml</key>
 		<data>
@@ -1301,7 +1305,7 @@
 		</data>
 		<key>www/js/dbsetup.js</key>
 		<data>
-		sFf91wlIn4H/TERBVjdKeLb2GCE=
+		RPSIxMgBPs1/OrOziFKRIGB5fUc=
 		</data>
 		<key>www/js/i18n.js</key>
 		<data>
@@ -1317,11 +1321,11 @@
 		</data>
 		<key>www/js/model/calendar.js</key>
 		<data>
-		L9C3phBfpI/+Vci4AP5m0CD0MRI=
+		/yttVnCx6qvf2NQvezoq/JzX9Eg=
 		</data>
 		<key>www/js/model/contacts.js</key>
 		<data>
-		PT4l/y/Vqf7HtYIU9KbBqMGPXB8=
+		fxr9X2VF8QSNENMwrccPVvKJBwg=
 		</data>
 		<key>www/js/model/documents.js</key>
 		<data>
@@ -1381,11 +1385,11 @@
 		</data>
 		<key>www/js/ui/calendar.js</key>
 		<data>
-		iMFUMKUxuA1VnxQWGxb3dzYMl7U=
+		Iy41pm4O0LtEYgAEffUAZIsgqHA=
 		</data>
 		<key>www/js/ui/contacts.js</key>
 		<data>
-		0QirYocjsgeS5/kwHXcpm75PjSA=
+		RoN/tyctfKgk1J4LwUh6SShLb8I=
 		</data>
 		<key>www/js/ui/downloads.js</key>
 		<data>
@@ -1433,7 +1437,7 @@
 		</data>
 		<key>www/js/utils.js</key>
 		<data>
-		Q+In598fZkdB9izBOVSopGXg5i0=
+		CfOgp7UnKL9LDxUorNtRn1QFtkc=
 		</data>
 		<key>www/lib/bootstrap.js</key>
 		<data>
@@ -1462,6 +1466,10 @@
 		<key>www/lib/persistence.js</key>
 		<data>
 		uZwMhKr60lAoalqDkpAzQAoZMfs=
+		</data>
+		<key>www/lib/persistence.migrations.js</key>
+		<data>
+		WQHllRPx89Y8QwlVK36HNM5TR5I=
 		</data>
 		<key>www/lib/persistence.search.js</key>
 		<data>

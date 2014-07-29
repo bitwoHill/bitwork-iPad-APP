@@ -3,7 +3,7 @@ var CONTACTS_CONTAINER = "#contact-items-container",
     CONTACTS_FOLDER_TEMPLATE = "#contacts-folder-item-template",
     CONTACTS_DETAILS_TEMPLATE = "#contacts-details-template",
     CONTACTS_EMPTY_CONTAINER = "#contacts-empty-container",
-    CONTACTS_ROOT_FOLDER = "Telefonbuch";
+    CONTACTS_ROOT_FOLDER = "/Telefonbuch";
 
 var ContactsUI = {
 
@@ -37,7 +37,8 @@ var ContactsUI = {
                         $('.tree-nav-item-name', newItem).html(data.forename + " " + data.name);
                         $('.tree-nav-link', newItem).attr("data-item-id", data.contactId);
                         $('.tree-nav-link', newItem).attr("data-item-name", data.name);
-
+                        $('.tree-nav-link', newItem).attr("data-item-path", data.path);
+                     console.log(data.path);
 
                         $container.append(newItem.removeClass('hidden'));
                     });
@@ -76,6 +77,10 @@ var ContactsUI = {
                     $('.tree-nav-item-name', newItem).html(data.forename + " " + data.name);
                     $('.tree-nav-link', newItem).attr("data-item-id", data.contactId);
                     $('.tree-nav-link', newItem).attr("data-item-name", data.name);
+                    $('.tree-nav-link', newItem).attr("data-item-path", data.path);
+console.log(data.path);
+
+
 
 
                     container.append(newItem.removeClass('hidden'));
@@ -203,10 +208,11 @@ var ContactsUI = {
         $('body').on('click', '.tree-nav-link.folder', function (e) {
             e.preventDefault();
             var $this = $(this),
-                nodeId = $this.attr("data-item-name"),
+                nodeId = $this.attr("data-item-path"),
                 container = $this.siblings("ul.tree-nav"),
                 $icon = $('.fa', $this);
 
+console.log(nodeId);
             if (container.length && $('li', container).length === 0) {
                 ContactsUI.updateContactTree(container, nodeId);
             }

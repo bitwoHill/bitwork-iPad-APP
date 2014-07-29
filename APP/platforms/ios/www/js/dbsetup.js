@@ -25,11 +25,44 @@ var appUser;
         //init User
         appUser = new User();
         //setup DB connection
-        persistence.schemaSync(function() {
-            appUser.initUser(function() {
+   //     persistence.schemaSync(function() {
+
+//Alter Tables if necessary
+persistence.defineMigration(1, {
+    up: function() {
+        this.addColumn('Contacts', 'path', 'TEXT');
+    },
+    down: function() {
+        this.removeColumn('Contacts', 'path');
+    }
+});
+
+function migrate( callback ){
+    console.log('migrating...');
+    persistence.migrations.init( function(){
+        console.log('migration init');
+        persistence.migrate( function(){
+            console.debug('migration complete!');
+            callback();
+        } );
+    });
+};
+
+migrate( onMigrationComplete );
+
+function onMigrationComplete(){
+    // database is ready. do amazing things...
+    appUser.initUser(function() {
                 $('body').trigger('db-schema-ready');
             });
-        });
+};
+
+
+
+
+//start app
+          
+      //  });
     };
 
     var sharePointSync = function() 

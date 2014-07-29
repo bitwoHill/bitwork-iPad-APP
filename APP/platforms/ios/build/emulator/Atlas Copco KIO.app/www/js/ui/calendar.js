@@ -2,10 +2,10 @@ var CALENDAR_CONTAINER = "#calendar-items-container",
     CALENDAR_ITEM_TEMPLATE = "#calendar-item-template",
     CALENDAR_EMPTY_CONTAINER = "#calendar-empty-container";
 
-//		Date.prototype.addHours = function(h) {    
-//		   this.setTime(this.getTime() + (h*60*60*1000)); 
-//		   return this;   
-//		};
+	Date.prototype.addHours = function(h) {    
+	   this.setTime(this.getTime() + (h*60*60*1000)); 
+	   return this;   
+	};
 
 var CalendarUI = {
     resetCalendar: function () {
@@ -25,7 +25,7 @@ var CalendarUI = {
         if ($container.length && $template.length) {
             CalendarUI.resetCalendar();
 
- var calendarList = (requestParam !== "") ? Calendar.all().filter("nodeId", "=", parseInt(requestParam, 10)) : Calendar.all();
+ var calendarList = (requestParam !== "") ? Calendar2.all().filter("nodeId", "=", parseInt(requestParam, 10)) : Calendar2.all();
 
 
      //       var calendarList;
@@ -62,13 +62,15 @@ var CalendarUI = {
                         }
 
                         if (data.startDate) {
-                            $('.calendar-item-startdate', $newItem).html(utils.dateFormat(new Date(data.startDate).addHours(-2), "l, d F y, H:M"));
+                        //    $('.calendar-item-startdate', $newItem).html(utils.dateFormat(new Date(data.startDate).addHours(-2), "l, d F y, H:M"));
+                             $('.calendar-item-startdate', $newItem).html(utils.dateFormat(new Date(data.startDate).addHours(-2), "d.m.y, H:M"));
                         } else {
                             $('.calendar-item-startdate-container', $newItem).addClass('hidden');
                         }
 
                         if (data.expirationDate) {
-                            $('.calendar-item-enddate', $newItem).html(utils.dateFormat(new Date(data.expirationDate).addHours(-2), "l, d F y, H:M"));
+                          //  $('.calendar-item-enddate', $newItem).html(utils.dateFormat(new Date(data.expirationDate).addHours(-2), "l, d F y, H:M"));
+                             $('.calendar-item-enddate', $newItem).html(utils.dateFormat(new Date(data.expirationDate).addHours(-2), "d.m.y, H:M"));
                         } else {
                             $('.calendar-item-enddate-container', $newItem).addClass('hidden');
                         }
