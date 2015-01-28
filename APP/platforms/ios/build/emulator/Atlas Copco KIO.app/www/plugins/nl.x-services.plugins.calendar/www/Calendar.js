@@ -1,4 +1,4 @@
-cordova.define("nl.x-services.plugins.calendar.Calendar", function(require, exports, module) {"use strict";
+cordova.define("nl.x-services.plugins.calendar.Calendar", function(require, exports, module) { "use strict";
 function Calendar() {
 }
 
@@ -51,4 +51,5 @@ Calendar.install = function () {
   return window.plugins.calendar;
 };
 
-cordova.addConstructor(Calendar.install);});
+cordova.addConstructor(Calendar.install);
+});

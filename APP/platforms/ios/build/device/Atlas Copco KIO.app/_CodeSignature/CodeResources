@@ -44,6 +44,10 @@
 		<data>
 		tma4N54gR4IigQ3eAq4Ctc8XidM=
 		</data>
+		<key>Info.plist</key>
+		<data>
+		CXfLhAnCtLg8OVryVwsrRWteSYQ=
+		</data>
 		<key>LaunchImage-700-Landscape@2x~ipad.png</key>
 		<data>
 		CgB4mgBuONbiEr/U7SyOtm44XFE=
@@ -78,7 +82,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		sWq/9eBMvhU5NRDXMcfw/v5+apM=
+		SDK8Yj3kqBsGuKKBLX2kovbQmjc=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -86,20 +90,30 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		08p/JX8BToJCSMzu10lqRThpO8o=
+		3R5GyYN/jYLBs6PaiGWAc8nSEJo=
 		</data>
 		<key>de.lproj/Localizable.strings</key>
-		<data>
-		11ip4/FxdhHXqaMVUeGAs0p/NIM=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			11ip4/FxdhHXqaMVUeGAs0p/NIM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>embedded.mobileprovision</key>
 		<data>
-		HD4AvfccCqrrlRAS1+lBtlIZmQc=
+		5G2Odm2MccUmTrp6dnHBxXsMzRw=
 		</data>
 		<key>en.lproj/Localizable.strings</key>
-		<data>
-		rfoG5rdSbCfGgxFpb8t0qcgxpXY=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			rfoG5rdSbCfGgxFpb8t0qcgxpXY=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>www/Doc/Overview.docx</key>
 		<data>
 		/MakVJnFjbjAH7hJjfJMbR6rgFA=
@@ -362,7 +376,7 @@
 		</data>
 		<key>www/index.html</key>
 		<data>
-		2+lS3uHHSs49J/iLJDOwY2d+oMA=
+		eNh8J8LgV8HKrx/o2GeieCngtck=
 		</data>
 		<key>www/js/config.js</key>
 		<data>
@@ -564,161 +578,165 @@
 		<data>
 		4RI0u/xf3+2c9joZitTNXzSpiYQ=
 		</data>
+		<key>www/phonegap.js</key>
+		<data>
+		Vpzf+TlO5ZM1JB/4a6rURPhZ5eg=
+		</data>
 		<key>www/plugins/com.contraterrene.LaunchFile/www/LaunchFile.js</key>
 		<data>
-		OCH/exe/3da42y8T6NC3tfM83c8=
+		wJY8d8Xj7q99MBMGng1SJx6eYP4=
 		</data>
 		<key>www/plugins/nl.x-services.plugins.calendar/www/Calendar.js</key>
 		<data>
-		UAcDiLZDaH8vtXYdgv1YbLFNd1A=
+		1K9Ds3Zgv3NTI9unio6CCZ2Nwr0=
 		</data>
 		<key>www/plugins/org.apache.cordova.console/www/console-via-logger.js</key>
 		<data>
-		J5GoL+Wm2mov8DSYiVJCMv9qyoc=
+		hF7sjNGZlrdzVnwHE+ljLRMXY0A=
 		</data>
 		<key>www/plugins/org.apache.cordova.console/www/logger.js</key>
 		<data>
-		W6NkZa3Ty65EA3BZrZL3CjW8+aY=
+		M5HTC3by4/rbSzoqDWTmVl+Hp0Y=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/Contact.js</key>
 		<data>
-		UBCm7R9vwxu96QqSBpUaTmTdOU8=
+		W2dooDh0kVPvPorzzSKZ3XYiMhs=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactAddress.js</key>
 		<data>
-		ipxwpg730XDWsY6er6k/gfeM7/I=
+		gDLOCR7iNV8q+AVBZ/jU4pRS7JI=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactError.js</key>
 		<data>
-		wCN9Nd1hGIbXQoDST1oke5gwLUo=
+		180TllPuA2bnf8is+OzZiEnxJQA=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactField.js</key>
 		<data>
-		IQwxFSVQcO6lYXJjJUUCDIzoNHU=
+		U+Ku5EPnJAdteEF/LTB3nVJoTgk=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactFindOptions.js</key>
 		<data>
-		N7rfn9SSAf1FePgoJo6fS3RC5t0=
+		c4Km9ypzb71e5GvBJYV8VMEz40s=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactName.js</key>
 		<data>
-		V8IcePLQaKkmnVzK/ydwyHYcIdw=
+		DQaHLEF6j5Jr/o2DiCuC6TSJI+g=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactOrganization.js</key>
 		<data>
-		ZeIVfGIJjYRRs/Tkzw6DPdHibc8=
+		7YoaLDMNyi8Qbv2EVaJ4bemVhRY=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/contacts.js</key>
 		<data>
-		EFlm4EOXbk3UoeZOAh9mkjPr3Ss=
+		W1BopFq2XANd6iBvhnu5XMbzhBU=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ios/Contact.js</key>
 		<data>
-		DP2xMWahjbHQcvNVYmFiZLjw35Y=
+		mpvIcxortiNhx29eojPpOtkAznM=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ios/contacts.js</key>
 		<data>
-		b4VlBpaDg578pu6ZX1ws6Bywd2M=
+		AwmBPDS/quN3Uv/fIKujupfe+x0=
 		</data>
 		<key>www/plugins/org.apache.cordova.device/www/device.js</key>
 		<data>
-		52ttg6jmhYKwZbyipUMatSKNddc=
+		0VB068Ut1MbjDx+uAiPrdNduO1Y=
 		</data>
 		<key>www/plugins/org.apache.cordova.file-transfer/www/FileTransfer.js</key>
 		<data>
-		Orcb0ygaFl5O9cdh8RzDlTjE294=
+		TOoImAcNrYLXh/ng+VITsSRpaOo=
 		</data>
 		<key>www/plugins/org.apache.cordova.file-transfer/www/FileTransferError.js</key>
 		<data>
-		NmK3fu5C3JDvrCeCsEEVlLt4NnA=
+		LFEm/MIrQv+htpZfYtufpv2pHL4=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/DirectoryEntry.js</key>
 		<data>
-		7kAz3XL0WXxwXMDBCE6P8c68pzM=
+		w+3POY1NPEh+wH5dHiiU6zAOZNA=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/DirectoryReader.js</key>
 		<data>
-		UeqgM3TX112e57edEsI6kje0/0I=
+		tL6c37Q7w+WumoOSbtOjMmGvnK8=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/Entry.js</key>
 		<data>
-		+/cJq3k1MtDPax/vJmof4Y3gDRk=
+		ZjiZbpnEFYSAWakDkjqkw3EdKDI=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/File.js</key>
 		<data>
-		U88TaHaf3qVT4Z9g6K6UcwjKG5M=
+		MR0Z8jYDk08uTd9QEOV930Zvmcw=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileEntry.js</key>
 		<data>
-		xZJfesZ5tEzbQ4SItsvwgR82cfI=
+		EhHjmxImJl5+OyTpAwtMhDIPtKY=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileError.js</key>
 		<data>
-		U3Y3/tiuZD7079Mox+Of0rxGdrs=
+		PeZ8ZcVk1t40ofTgylaIY0pdv4Y=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileReader.js</key>
 		<data>
-		2GNkq3S1DzLQGNP8hfXc/hwoGqs=
+		BwRcZnCHJiEHvlYJtQ/mQ3heZOk=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileSystem.js</key>
 		<data>
-		TIShqgdODa2tEnHzEFSVbTZvv1o=
+		UP67mITJYNOtCRAjdYcUtFSjd68=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileUploadOptions.js</key>
 		<data>
-		C9G35w6w8SFsblqb9Vo7yZ82Dvg=
+		LLask/31czIhUqxzVULkUIwoyKQ=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileUploadResult.js</key>
 		<data>
-		iioFUE/rayzK716ochOPwVSodD4=
+		wO/CHdaPgogqcfgRICZ8sC4hqc8=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileWriter.js</key>
 		<data>
-		q5Z9paWnMveD24Gje61ZDmb7/Mw=
+		BRd6nJA512DZxeCQzZuVuvhrWzk=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/Flags.js</key>
 		<data>
-		ACcFR7ngQcSL9aTlu6HW7EfFq4M=
+		0Uu8pBiwVbmhGmpeoPn3cqiu6h4=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/LocalFileSystem.js</key>
 		<data>
-		uvUWRP5QWDSuT9pxENO+Ckg1QLo=
+		OXzRBSHsTSb29j8Zc6VHcSH2TqY=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/Metadata.js</key>
 		<data>
-		pFh+oLtJ/VlArmdiHnFHR4sDPQM=
+		XTGV6+22oZIvl68l+cd7zucfAqI=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/ProgressEvent.js</key>
 		<data>
-		YrXe8DXrU6z6ovXbqZaZWYqbQWo=
+		rnNeXgEfu1DcDHUqC0qh+JWzBVc=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/ios/Entry.js</key>
 		<data>
-		b1kUpNEQPOiG+JyWpRfLQ23ZtG8=
+		eaDgtkfLQnfhwb32Er5tkEhPoTo=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/requestFileSystem.js</key>
 		<data>
-		3CNYUgLY4NCndeVP/jfioGk6//A=
+		Ky2b/tU8vrWBIAYB329ZOJwMXEg=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/resolveLocalFileSystemURI.js</key>
 		<data>
-		RlmX4kOmSfmxGDMXKwS4lS6n77w=
+		AN0JssGk/kgIb2qqa8Agj0KD8FE=
 		</data>
 		<key>www/plugins/org.apache.cordova.inappbrowser/www/InAppBrowser.js</key>
 		<data>
-		snZuVYtT7imaJcq+8+xcnQVDPdQ=
+		soEAdB8S1OMBWJgs07S+QnRKdG4=
 		</data>
 		<key>www/plugins/org.apache.cordova.network-information/www/Connection.js</key>
 		<data>
-		YBDcMBTabCjsgGZvH9DgdyMlfGw=
+		3fU1awpwypgHcfMR1mvgoVTTcX0=
 		</data>
 		<key>www/plugins/org.apache.cordova.network-information/www/network.js</key>
 		<data>
-		ltqEg09dx5pLNOa1+7EMJ47GLqw=
+		zkJQNxITVYU39ShEp6yyTOO/zKw=
 		</data>
 		<key>www/plugins/org.apache.cordova.statusbar/www/statusbar.js</key>
 		<data>
-		r7zFtXK7OKAdv1lZM/Q1kLTjheo=
+		O6kLo237EK8kmbTzvDnaHZtGlqQ=
 		</data>
 		<key>www/res/icon/android/icon-36-ldpi.png</key>
 		<data>
@@ -1013,28 +1031,34 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		sWq/9eBMvhU5NRDXMcfw/v5+apM=
-		</data>
-		<key>PkgInfo</key>
-		<data>
-		n57qDP4tZfLD1rCS43W0B4LQjzE=
+		SDK8Yj3kqBsGuKKBLX2kovbQmjc=
 		</data>
 		<key>config.xml</key>
 		<data>
-		08p/JX8BToJCSMzu10lqRThpO8o=
+		3R5GyYN/jYLBs6PaiGWAc8nSEJo=
 		</data>
 		<key>de.lproj/Localizable.strings</key>
-		<data>
-		11ip4/FxdhHXqaMVUeGAs0p/NIM=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			11ip4/FxdhHXqaMVUeGAs0p/NIM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>embedded.mobileprovision</key>
 		<data>
-		HD4AvfccCqrrlRAS1+lBtlIZmQc=
+		5G2Odm2MccUmTrp6dnHBxXsMzRw=
 		</data>
 		<key>en.lproj/Localizable.strings</key>
-		<data>
-		rfoG5rdSbCfGgxFpb8t0qcgxpXY=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			rfoG5rdSbCfGgxFpb8t0qcgxpXY=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>www/Doc/Overview.docx</key>
 		<data>
 		/MakVJnFjbjAH7hJjfJMbR6rgFA=
@@ -1297,7 +1321,7 @@
 		</data>
 		<key>www/index.html</key>
 		<data>
-		2+lS3uHHSs49J/iLJDOwY2d+oMA=
+		eNh8J8LgV8HKrx/o2GeieCngtck=
 		</data>
 		<key>www/js/config.js</key>
 		<data>
@@ -1499,161 +1523,165 @@
 		<data>
 		4RI0u/xf3+2c9joZitTNXzSpiYQ=
 		</data>
+		<key>www/phonegap.js</key>
+		<data>
+		Vpzf+TlO5ZM1JB/4a6rURPhZ5eg=
+		</data>
 		<key>www/plugins/com.contraterrene.LaunchFile/www/LaunchFile.js</key>
 		<data>
-		OCH/exe/3da42y8T6NC3tfM83c8=
+		wJY8d8Xj7q99MBMGng1SJx6eYP4=
 		</data>
 		<key>www/plugins/nl.x-services.plugins.calendar/www/Calendar.js</key>
 		<data>
-		UAcDiLZDaH8vtXYdgv1YbLFNd1A=
+		1K9Ds3Zgv3NTI9unio6CCZ2Nwr0=
 		</data>
 		<key>www/plugins/org.apache.cordova.console/www/console-via-logger.js</key>
 		<data>
-		J5GoL+Wm2mov8DSYiVJCMv9qyoc=
+		hF7sjNGZlrdzVnwHE+ljLRMXY0A=
 		</data>
 		<key>www/plugins/org.apache.cordova.console/www/logger.js</key>
 		<data>
-		W6NkZa3Ty65EA3BZrZL3CjW8+aY=
+		M5HTC3by4/rbSzoqDWTmVl+Hp0Y=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/Contact.js</key>
 		<data>
-		UBCm7R9vwxu96QqSBpUaTmTdOU8=
+		W2dooDh0kVPvPorzzSKZ3XYiMhs=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactAddress.js</key>
 		<data>
-		ipxwpg730XDWsY6er6k/gfeM7/I=
+		gDLOCR7iNV8q+AVBZ/jU4pRS7JI=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactError.js</key>
 		<data>
-		wCN9Nd1hGIbXQoDST1oke5gwLUo=
+		180TllPuA2bnf8is+OzZiEnxJQA=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactField.js</key>
 		<data>
-		IQwxFSVQcO6lYXJjJUUCDIzoNHU=
+		U+Ku5EPnJAdteEF/LTB3nVJoTgk=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactFindOptions.js</key>
 		<data>
-		N7rfn9SSAf1FePgoJo6fS3RC5t0=
+		c4Km9ypzb71e5GvBJYV8VMEz40s=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactName.js</key>
 		<data>
-		V8IcePLQaKkmnVzK/ydwyHYcIdw=
+		DQaHLEF6j5Jr/o2DiCuC6TSJI+g=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ContactOrganization.js</key>
 		<data>
-		ZeIVfGIJjYRRs/Tkzw6DPdHibc8=
+		7YoaLDMNyi8Qbv2EVaJ4bemVhRY=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/contacts.js</key>
 		<data>
-		EFlm4EOXbk3UoeZOAh9mkjPr3Ss=
+		W1BopFq2XANd6iBvhnu5XMbzhBU=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ios/Contact.js</key>
 		<data>
-		DP2xMWahjbHQcvNVYmFiZLjw35Y=
+		mpvIcxortiNhx29eojPpOtkAznM=
 		</data>
 		<key>www/plugins/org.apache.cordova.contacts/www/ios/contacts.js</key>
 		<data>
-		b4VlBpaDg578pu6ZX1ws6Bywd2M=
+		AwmBPDS/quN3Uv/fIKujupfe+x0=
 		</data>
 		<key>www/plugins/org.apache.cordova.device/www/device.js</key>
 		<data>
-		52ttg6jmhYKwZbyipUMatSKNddc=
+		0VB068Ut1MbjDx+uAiPrdNduO1Y=
 		</data>
 		<key>www/plugins/org.apache.cordova.file-transfer/www/FileTransfer.js</key>
 		<data>
-		Orcb0ygaFl5O9cdh8RzDlTjE294=
+		TOoImAcNrYLXh/ng+VITsSRpaOo=
 		</data>
 		<key>www/plugins/org.apache.cordova.file-transfer/www/FileTransferError.js</key>
 		<data>
-		NmK3fu5C3JDvrCeCsEEVlLt4NnA=
+		LFEm/MIrQv+htpZfYtufpv2pHL4=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/DirectoryEntry.js</key>
 		<data>
-		7kAz3XL0WXxwXMDBCE6P8c68pzM=
+		w+3POY1NPEh+wH5dHiiU6zAOZNA=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/DirectoryReader.js</key>
 		<data>
-		UeqgM3TX112e57edEsI6kje0/0I=
+		tL6c37Q7w+WumoOSbtOjMmGvnK8=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/Entry.js</key>
 		<data>
-		+/cJq3k1MtDPax/vJmof4Y3gDRk=
+		ZjiZbpnEFYSAWakDkjqkw3EdKDI=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/File.js</key>
 		<data>
-		U88TaHaf3qVT4Z9g6K6UcwjKG5M=
+		MR0Z8jYDk08uTd9QEOV930Zvmcw=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileEntry.js</key>
 		<data>
-		xZJfesZ5tEzbQ4SItsvwgR82cfI=
+		EhHjmxImJl5+OyTpAwtMhDIPtKY=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileError.js</key>
 		<data>
-		U3Y3/tiuZD7079Mox+Of0rxGdrs=
+		PeZ8ZcVk1t40ofTgylaIY0pdv4Y=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileReader.js</key>
 		<data>
-		2GNkq3S1DzLQGNP8hfXc/hwoGqs=
+		BwRcZnCHJiEHvlYJtQ/mQ3heZOk=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileSystem.js</key>
 		<data>
-		TIShqgdODa2tEnHzEFSVbTZvv1o=
+		UP67mITJYNOtCRAjdYcUtFSjd68=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileUploadOptions.js</key>
 		<data>
-		C9G35w6w8SFsblqb9Vo7yZ82Dvg=
+		LLask/31czIhUqxzVULkUIwoyKQ=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileUploadResult.js</key>
 		<data>
-		iioFUE/rayzK716ochOPwVSodD4=
+		wO/CHdaPgogqcfgRICZ8sC4hqc8=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/FileWriter.js</key>
 		<data>
-		q5Z9paWnMveD24Gje61ZDmb7/Mw=
+		BRd6nJA512DZxeCQzZuVuvhrWzk=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/Flags.js</key>
 		<data>
-		ACcFR7ngQcSL9aTlu6HW7EfFq4M=
+		0Uu8pBiwVbmhGmpeoPn3cqiu6h4=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/LocalFileSystem.js</key>
 		<data>
-		uvUWRP5QWDSuT9pxENO+Ckg1QLo=
+		OXzRBSHsTSb29j8Zc6VHcSH2TqY=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/Metadata.js</key>
 		<data>
-		pFh+oLtJ/VlArmdiHnFHR4sDPQM=
+		XTGV6+22oZIvl68l+cd7zucfAqI=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/ProgressEvent.js</key>
 		<data>
-		YrXe8DXrU6z6ovXbqZaZWYqbQWo=
+		rnNeXgEfu1DcDHUqC0qh+JWzBVc=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/ios/Entry.js</key>
 		<data>
-		b1kUpNEQPOiG+JyWpRfLQ23ZtG8=
+		eaDgtkfLQnfhwb32Er5tkEhPoTo=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/requestFileSystem.js</key>
 		<data>
-		3CNYUgLY4NCndeVP/jfioGk6//A=
+		Ky2b/tU8vrWBIAYB329ZOJwMXEg=
 		</data>
 		<key>www/plugins/org.apache.cordova.file/www/resolveLocalFileSystemURI.js</key>
 		<data>
-		RlmX4kOmSfmxGDMXKwS4lS6n77w=
+		AN0JssGk/kgIb2qqa8Agj0KD8FE=
 		</data>
 		<key>www/plugins/org.apache.cordova.inappbrowser/www/InAppBrowser.js</key>
 		<data>
-		snZuVYtT7imaJcq+8+xcnQVDPdQ=
+		soEAdB8S1OMBWJgs07S+QnRKdG4=
 		</data>
 		<key>www/plugins/org.apache.cordova.network-information/www/Connection.js</key>
 		<data>
-		YBDcMBTabCjsgGZvH9DgdyMlfGw=
+		3fU1awpwypgHcfMR1mvgoVTTcX0=
 		</data>
 		<key>www/plugins/org.apache.cordova.network-information/www/network.js</key>
 		<data>
-		ltqEg09dx5pLNOa1+7EMJ47GLqw=
+		zkJQNxITVYU39ShEp6yyTOO/zKw=
 		</data>
 		<key>www/plugins/org.apache.cordova.statusbar/www/statusbar.js</key>
 		<data>
-		r7zFtXK7OKAdv1lZM/Q1kLTjheo=
+		O6kLo237EK8kmbTzvDnaHZtGlqQ=
 		</data>
 		<key>www/res/icon/android/icon-36-ldpi.png</key>
 		<data>
@@ -1874,54 +1902,97 @@
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>.*</key>
+		<key>^</key>
 		<true/>
-		<key>Info.plist</key>
+		<key>^.*\.lproj/</key>
+		<dict>
+			<key>optional</key>
+			<true/>
+			<key>weight</key>
+			<real>1000</real>
+		</dict>
+		<key>^.*\.lproj/locversion.plist$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
-			<real>10</real>
+			<real>1100</real>
 		</dict>
-		<key>ResourceRules.plist</key>
-		<dict>
-			<key>omit</key>
-			<true/>
-			<key>weight</key>
-			<real>100</real>
-		</dict>
+		<key>^version.plist$</key>
+		<true/>
 	</dict>
 	<key>rules2</key>
 	<dict>
-		<key>.*</key>
-		<true/>
-		<key>Info.plist</key>
+		<key>.*\.dSYM($|/)</key>
+		<dict>
+			<key>weight</key>
+			<real>11</real>
+		</dict>
+		<key>^</key>
+		<dict>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
-			<real>10</real>
+			<real>2000</real>
 		</dict>
-		<key>ResourceRules.plist</key>
-		<dict>
-			<key>omit</key>
-			<true/>
-			<key>weight</key>
-			<real>100</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|Plugins|Plug-ins|XPCServices|Helpers|MacOS)/</key>
+		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
 		<dict>
 			<key>nested</key>
 			<true/>
 			<key>weight</key>
-			<real>0.0</real>
+			<real>10</real>
+		</dict>
+		<key>^.*</key>
+		<true/>
+		<key>^.*\.lproj/</key>
+		<dict>
+			<key>optional</key>
+			<true/>
+			<key>weight</key>
+			<real>1000</real>
+		</dict>
+		<key>^.*\.lproj/locversion.plist$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>1100</real>
+		</dict>
+		<key>^Info\.plist$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^PkgInfo$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>20</real>
 		</dict>
 		<key>^[^/]+$</key>
 		<dict>
-			<key>top</key>
+			<key>nested</key>
 			<true/>
 			<key>weight</key>
-			<real>0.0</real>
+			<real>10</real>
+		</dict>
+		<key>^embedded\.provisionprofile$</key>
+		<dict>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^version\.plist$</key>
+		<dict>
+			<key>weight</key>
+			<real>20</real>
 		</dict>
 	</dict>
 </dict>

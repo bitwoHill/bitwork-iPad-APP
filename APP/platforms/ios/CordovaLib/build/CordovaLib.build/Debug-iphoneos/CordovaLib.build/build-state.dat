@@ -1,1172 +1,0 @@
-TCordovaLib
-v6
-r1
-cCheck dependencies
-cCpHeader Classes/NSDictionary+Extensions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSDictionary+Extensions.h
-cCpHeader Classes/CDVInvokedUrlCommand.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVInvokedUrlCommand.h
-cCpHeader Classes/NSData+Base64.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSData+Base64.h
-cCpHeader Classes/CDVPluginResult.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPluginResult.h
-cCpHeader Classes/CDVPlugin.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPlugin.h
-cCpHeader Classes/CDVDebug.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVDebug.h
-cCpHeader Classes/NSMutableArray+QueueAdditions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSMutableArray+QueueAdditions.h
-cCpHeader Classes/CDVWhitelist.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWhitelist.h
-cCpHeader Classes/CDVURLProtocol.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVURLProtocol.h
-cCpHeader Classes/CDVViewController.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVViewController.h
-cCpHeader Classes/CDVCommandDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegate.h
-cCpHeader Classes/CDV.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDV.h
-cCpHeader Classes/CDVAvailability.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVAvailability.h
-cCpHeader Classes/CDVLocalStorage.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVLocalStorage.h
-cCpHeader Classes/UIDevice+Extensions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/UIDevice+Extensions.h
-cCpHeader Classes/NSArray+Comparisons.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSArray+Comparisons.h
-cCpHeader Classes/CDVCommandQueue.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandQueue.h
-cCpHeader Classes/CDVCommandDelegateImpl.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegateImpl.h
-cCpHeader Classes/CDVShared.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVShared.h
-cCpHeader Classes/CDVScreenOrientationDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVScreenOrientationDelegate.h
-cCpHeader Classes/CDVConfigParser.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVConfigParser.h
-cCpHeader Classes/CDVJSON.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVJSON.h
-cCpHeader Classes/CDVWebViewDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWebViewDelegate.h
-cCpHeader Classes/CDVUserAgentUtil.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVUserAgentUtil.h
-cCpHeader Classes/CDVTimer.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVTimer.h
-cProcessPCH /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch.pch CordovaLib_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVJSON.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVUserAgentUtil.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWebViewDelegate.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVTimer.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVShared.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cLibtool /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/libCordova.a normal armv7
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk
-c00000000534BB7540000000000000132
-t1397471060
-s306
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/SDKSettings.plist
-c0000000053332F63000000000000036B
-t1395863395
-s875
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/CoreServices/SystemVersion.plist
-c0000000053332F63000000000000019E
-t1395863395
-s414
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDV.h
-c0000000052CEBDFB0000000000000516
-t1389280763
-s1302
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailability.h
-c0000000052CEBDFB0000000000000CBF
-t1389280763
-s3263
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
-c0000000052CEBDFB00000000000008BA
-t1389280763
-s2234
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h
-c0000000052CEBDFB0000000000000473
-t1389280763
-s1139
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m
-c0000000052CEBDFB000000000000127C
-t1389280763
-s4732
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
-c0000000052CEBDFB0000000000000501
-t1389280763
-s1281
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m
-c0000000052CEBDFB00000000000017C5
-t1389280763
-s6085
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.h
-c0000000052CEBDFB00000000000004CB
-t1389280763
-s1227
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.m
-c0000000052CEBDFB0000000000000EB2
-t1389280763
-s3762
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVDebug.h
-c0000000052CEBDFB0000000000000401
-t1389280763
-s1025
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
-c0000000052CEBDFB00000000000007E6
-t1389280763
-s2022
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m
-c0000000052CEBDFB0000000000000DDE
-t1389280763
-s3550
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.h
-c0000000052CEBDFB00000000000003DA
-t1389280763
-s986
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.m
-c0000000052CEBDFB000000000000098E
-t1389280763
-s2446
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h
-c0000000052CEBDFB00000000000006CF
-t1389280763
-s1743
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m
-c0000000052CEBDFB0000000000004C7E
-t1389280763
-s19582
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.h
-c0000000052CEBDFB0000000000000892
-t1389280763
-s2194
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.m
-c0000000052CEBDFB00000000000016AE
-t1389280763
-s5806
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
-c0000000052CEBDFB0000000000000C13
-t1389280763
-s3091
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.m
-c0000000052CEBDFB0000000000001B29
-t1389280763
-s6953
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
-c0000000052CEBDFB0000000000000408
-t1389280763
-s1032
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.h
-c0000000052CEBDFB00000000000003E6
-t1389280763
-s998
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.m
-c0000000052CEBDFB00000000000006B6
-t1389280763
-s1718
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.h
-c0000000052CEBDFB000000000000038D
-t1389280763
-s909
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.m
-c0000000052CEBDFB0000000000000AA2
-t1389280763
-s2722
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h
-c0000000052CEBDFB000000000000041C
-t1389280763
-s1052
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m
-c0000000052CEBDFB0000000000002514
-t1389280763
-s9492
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h
-c0000000052CEBDFB0000000000000421
-t1389280763
-s1057
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m
-c0000000052CEBDFB00000000000012A2
-t1389280763
-s4770
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.h
-c0000000052CEBDFB0000000000000ACC
-t1389280763
-s2764
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.m
-c0000000052CEBDFB000000000000879D
-t1389280763
-s34717
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.h
-c0000000052CEBDFB00000000000005A2
-t1389280763
-s1442
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m
-c0000000052CEBDFB0000000000003804
-t1389280763
-s14340
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
-c0000000052CEBDFB00000000000004B4
-t1389280763
-s1204
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.m
-c0000000052CEBDFB00000000000027D3
-t1389280763
-s10195
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
-c0000000052CEBDFB0000000000000392
-t1389280763
-s914
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m
-c0000000052CEBDFB00000000000004D8
-t1389280763
-s1240
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.h
-c0000000052CEBDFB000000000000037D
-t1389280763
-s893
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.m
-c0000000052CEBDFB00000000000022CC
-t1389280763
-s8908
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h
-c0000000052CEBDFB00000000000005DA
-t1389280763
-s1498
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m
-c0000000052CEBDFB0000000000001059
-t1389280763
-s4185
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
-c0000000052CEBDFB00000000000003A0
-t1389280763
-s928
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m
-c0000000052CEBDFB0000000000000584
-t1389280763
-s1412
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h
-c0000000052CEBDFB0000000000000476
-t1389280763
-s1142
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m
-c0000000052CEBDFB0000000000000620
-t1389280763
-s1568
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/CordovaLib_Prefix.pch
-c0000000052CEBDFB0000000000000346
-t1389280763
-s838
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.o
-t1406623851
-s61128
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.o
-t1406623851
-s57788
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.o
-t1406623851
-s29160
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.o
-t1406623850
-s18316
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVJSON.o
-t1406623851
-s10932
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.o
-t1406623851
-s109492
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.o
-t1406623851
-s56812
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.o
-t1406623850
-s36596
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVShared.o
-t1406623851
-s9176
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVTimer.o
-t1406623851
-s22924
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.o
-t1406623851
-s70412
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVUserAgentUtil.o
-t1406623851
-s52252
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.o
-t1406623851
-s174216
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWebViewDelegate.o
-t1406623851
-s72548
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.o
-t1406623851
-s43964
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/Cordova.LinkFileList
-c0000000053D7606A0000000000000DE3
-t1406623850
-s3555
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.o
-t1406623850
-s7404
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.o
-t1406623850
-s10544
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.o
-t1406623850
-s17168
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.o
-t1406623850
-s6960
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.o
-t1406623851
-s9440
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDV.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVAvailability.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegate.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegateImpl.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandQueue.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVConfigParser.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVDebug.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVInvokedUrlCommand.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVJSON.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVLocalStorage.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPlugin.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPluginResult.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVScreenOrientationDelegate.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVShared.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVTimer.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVURLProtocol.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVUserAgentUtil.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVViewController.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWebViewDelegate.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWhitelist.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSArray+Comparisons.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSData+Base64.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSDictionary+Extensions.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSMutableArray+QueueAdditions.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/UIDevice+Extensions.h
-t2
-s0
-
-N/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/libCordova.a
-t2
-s0
-
-N/var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch.pch
-t1399898491
-s3180240
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies72a4d7ea9787b941^50fbe5ea9787b941^---0#1#1#--18"Check dependencies36"F10DD0B8-1715-41CD-9442-7DF2C9EA09E4-
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316651.005329
-e428316651.275280
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailability.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection123"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m211"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.o Classes/CDVCommandDelegateImpl.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilerdd7a01eb9787b941^a56647eb9787b941^---0#0#1#-19%DVTDocumentLocation2@122"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m0000000000000000^3858"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.o Classes/CDVCommandDelegateImpl.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.o36"D8E05C04-6C61-44D8-8018-E6CD37BFC957-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.997720
-e428316651.274858
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDV.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailability.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVDebug.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection116"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m197"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.o Classes/CDVCommandQueue.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler249a00eb9787b941^471c46eb9787b941^---0#0#1#-19%DVTDocumentLocation2@115"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m0000000000000000^3816"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.o Classes/CDVCommandQueue.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.o36"9D2B2140-4D91-4736-83DC-29DA02F49DA6-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316651.032987
-e428316651.085484
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection116"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.m197"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.o Classes/CDVConfigParser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler8a8e08eb9787b941^1d5a24eb9787b941^---0#0#1#-19%DVTDocumentLocation2@115"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.m0000000000000000^3816"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.o Classes/CDVConfigParser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.o36"382C5316-FE59-4DE5-B1E6-DC7FD49BC937-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.910484
-e428316650.957437
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection121"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m207"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.o Classes/CDVInvokedUrlCommand.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler3830e9ea9787b941^fb3cf6ea9787b941^---0#0#1#-19%DVTDocumentLocation2@120"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m0000000000000000^3846"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.o Classes/CDVInvokedUrlCommand.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.o36"E9445A3D-EE59-4C35-B5D0-0C4ABC396173-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVJSON.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316651.087461
-e428316651.124902
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVJSON.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection108"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.m181"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVJSON.o Classes/CDVJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler159016eb9787b941^e96524eb9787b941^---0#0#1#-19%DVTDocumentLocation2@107"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.m0000000000000000^3768"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVJSON.o Classes/CDVJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVJSON.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVJSON.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVJSON.o36"129F8CB6-9D30-45DA-8217-FA811EDAF844-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.953581
-e428316651.319416
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailability.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDV.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVDebug.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection116"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m197"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.o Classes/CDVLocalStorage.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler4d2ff5ea9787b941^b0c651eb9787b941^---0#0#1#-19%DVTDocumentLocation2@115"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m0000000000000000^3816"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.o Classes/CDVLocalStorage.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.o36"B7666F7B-8A4C-4666-A8A6-88FA9C418A1D-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.911881
-e428316651.228844
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailability.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection110"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.m185"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.o Classes/CDVPlugin.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilerbf9ce9ea9787b941^c0b23aeb9787b941^---0#0#1#-19%DVTDocumentLocation2@109"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.m0000000000000000^3780"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.o Classes/CDVPlugin.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.o36"8DB3E8D3-88E8-48A3-A609-60DEFA5BECA1-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.911244
-e428316651.004052
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVDebug.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection116"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.m197"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.o Classes/CDVPluginResult.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilerd768e9ea9787b941^20ed23eb9787b941^---0#0#1#-19%DVTDocumentLocation2@115"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.m0000000000000000^3816"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.o Classes/CDVPluginResult.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.o36"B6DACBAB-224C-4492-AF4C-17DC23707AF6-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVShared.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316651.275063
-e428316651.317521
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVShared.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection110"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.m185"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVShared.o Classes/CDVShared.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilerafd146eb9787b941^5f5d51eb9787b941^---0#0#1#-19%DVTDocumentLocation2@109"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.m0000000000000000^3780"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVShared.o Classes/CDVShared.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVShared.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVShared.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVShared.o36"6932AAD5-7B75-41C5-8454-02228101F905-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVTimer.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316651.229113
-e428316651.277659
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVTimer.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.m183"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVTimer.o Classes/CDVTimer.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilerc9c73aeb9787b941^7f6b47eb9787b941^---0#0#1#-19%DVTDocumentLocation2@108"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.m0000000000000000^3774"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVTimer.o Classes/CDVTimer.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVTimer.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVTimer.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVTimer.o36"12762A2F-85EB-47B5-9BAD-ED6F13E3E884-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.914376
-e428316651.274810
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailability.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m195"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.o Classes/CDVURLProtocol.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler3238eaea9787b941^09c546eb9787b941^---0#0#1#-19%DVTDocumentLocation2@114"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m0000000000000000^3810"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.o Classes/CDVURLProtocol.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.o36"74502151-18E8-402F-834C-2AC09767741C-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVUserAgentUtil.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316651.125169
-e428316651.343196
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVUserAgentUtil.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m199"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVUserAgentUtil.o Classes/CDVUserAgentUtil.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilere52820eb9787b941^59dc57eb9787b941^---0#0#1#-19%DVTDocumentLocation2@116"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m0000000000000000^3822"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVUserAgentUtil.o Classes/CDVUserAgentUtil.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVUserAgentUtil.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVUserAgentUtil.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVUserAgentUtil.o36"ECEE6172-F943-417D-AC5E-4C42F792471D-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.940067
-e428316651.446751
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDV.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailability.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVDebug.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection118"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.m201"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.o Classes/CDVViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler61c6f0ea9787b941^a26072eb9787b941^---0#0#1#-19%DVTDocumentLocation2@117"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.m0000000000000000^3828"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.o Classes/CDVViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.o36"AFD0D968-1A86-4DC8-9754-C89DAEF12B96-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWebViewDelegate.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316651.177469
-e428316651.400000
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWebViewDelegate.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.h
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailability.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m203"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWebViewDelegate.o Classes/CDVWebViewDelegate.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilere38c2deb9787b941^886666eb9787b941^---0#0#1#-19%DVTDocumentLocation2@118"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m0000000000000000^3834"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWebViewDelegate.o Classes/CDVWebViewDelegate.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWebViewDelegate.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWebViewDelegate.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWebViewDelegate.o36"5A9125A3-AC67-434A-BBA9-C88C1AC92207-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.912728
-e428316651.031622
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection113"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.m191"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.o Classes/CDVWhitelist.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler38f9e9ea9787b941^e54724eb9787b941^---0#0#1#-19%DVTDocumentLocation2@112"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.m0000000000000000^3798"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.o Classes/CDVWhitelist.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.o36"37D07D7E-68A3-4E7C-A2A7-55EA23C126CF-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.960604
-e428316650.995237
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection120"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m205"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.o Classes/NSArray+Comparisons.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler6b0cf6ea9787b941^eee823eb9787b941^---0#0#1#-19%DVTDocumentLocation2@119"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m0000000000000000^3840"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.o Classes/NSArray+Comparisons.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.o36"173DB89C-FF1A-4011-8222-89E831CB9991-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.910769
-e428316650.953309
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection114"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.m193"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.o Classes/NSData+Base64.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilerfa45e9ea9787b941^d520f4ea9787b941^---0#0#1#-19%DVTDocumentLocation2@113"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.m0000000000000000^3804"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.o Classes/NSData+Base64.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.o36"E62DF230-C830-4776-B115-0F859F623971-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.910269
-e428316650.956590
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection124"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m213"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.o Classes/NSDictionary+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler1c27e9ea9787b941^f580f5ea9787b941^---0#0#1#-19%DVTDocumentLocation2@123"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m0000000000000000^3864"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.o Classes/NSDictionary+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.o36"BCDD239D-B30F-4D20-A091-9A7E2C5069F8-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.912186
-e428316650.939826
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection130"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m225"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.o Classes/NSMutableArray+QueueAdditions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilerc0afe9ea9787b941^4609f2ea9787b941^---0#0#1#-19%DVTDocumentLocation2@129"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m0000000000000000^3900"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.o Classes/NSMutableArray+QueueAdditions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.o36"850B7AF2-EEDB-4A2E-A83D-CC3C44A28B80-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s428316650.956818
-e428316651.177193
-r1
-xCompileC
-xbuild/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.o
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m
-d/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection120"Compile /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m205"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.o Classes/UIDevice+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler4d10f5ea9787b941^a79631eb9787b941^---0#0#1#-19%DVTDocumentLocation2@119"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m0000000000000000^3840"CompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.o Classes/UIDevice+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-generated-files.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Cordova-project-headers.hmap -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources/armv7 -I/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/DerivedSources -F/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -DDEBUG -include /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.d --serialize-diagnostics /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.dia -c /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.o36"6861B810-F7F8-4F27-A0EE-7209A81F0104-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDV.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDV.h
-s428316650.904084
-e428316650.904998
-r1
-xCpHeader
-xClasses/CDV.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDV.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDV.h129"CpHeader Classes/CDV.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDV.h5588e7ea9787b941^d8d6e7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@113"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDV.h0034d81cddffdf42^733"CpHeader Classes/CDV.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDV.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDV.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"2429FFB4-9558-4712-BAE7-EB96819C20BF-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVAvailability.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVAvailability.h
-s428316650.904461
-e428316650.905449
-r1
-xCpHeader
-xClasses/CDVAvailability.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVAvailability.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection123"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVAvailability.h153"CpHeader Classes/CDVAvailability.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVAvailability.h129fe7ea9787b941^ba32e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@125"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVAvailability.h0034d81cddffdf42^769"CpHeader Classes/CDVAvailability.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVAvailability.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailability.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"0F0C6674-146C-41EA-A1F8-06BD277E1852-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVCommandDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegate.h
-s428316650.903731
-e428316650.904959
-r1
-xCpHeader
-xClasses/CDVCommandDelegate.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegate.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection126"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegate.h159"CpHeader Classes/CDVCommandDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegate.h4279e7ea9787b941^5ccce7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@128"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegate.h0034d81cddffdf42^778"CpHeader Classes/CDVCommandDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegate.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"BB688442-24DF-4DAA-9CDF-6EBD17B3DD6A-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVCommandDelegateImpl.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegateImpl.h
-s428316650.906097
-e428316650.906948
-r1
-xCpHeader
-xClasses/CDVCommandDelegateImpl.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegateImpl.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection130"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegateImpl.h167"CpHeader Classes/CDVCommandDelegateImpl.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegateImpl.h7408e8ea9787b941^f086e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@132"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegateImpl.h0034d81cddffdf42^790"CpHeader Classes/CDVCommandDelegateImpl.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandDelegateImpl.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"0406C728-9353-4B36-B963-0C9488D611C2-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVCommandQueue.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandQueue.h
-s428316650.905818
-e428316650.906728
-r1
-xCpHeader
-xClasses/CDVCommandQueue.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandQueue.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection123"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandQueue.h153"CpHeader Classes/CDVCommandQueue.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandQueue.hdbf8e7ea9787b941^7574e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@125"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandQueue.h0034d81cddffdf42^769"CpHeader Classes/CDVCommandQueue.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVCommandQueue.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"E80CE9B9-AD28-4313-86B2-D3DC1D04637D-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVConfigParser.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVConfigParser.h
-s428316650.907234
-e428316650.908226
-r1
-xCpHeader
-xClasses/CDVConfigParser.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVConfigParser.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection123"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVConfigParser.h153"CpHeader Classes/CDVConfigParser.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVConfigParser.heb55e8ea9787b941^cbb9e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@125"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVConfigParser.h0034d81cddffdf42^769"CpHeader Classes/CDVConfigParser.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVConfigParser.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVConfigParser.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"601AF46E-6DA9-4FF3-BEAB-5DBA103DFDF2-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVDebug.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVDebug.h
-s428316650.901708
-e428316650.902729
-r1
-xCpHeader
-xClasses/CDVDebug.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVDebug.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection116"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVDebug.h139"CpHeader Classes/CDVDebug.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVDebug.hc0e8e6ea9787b941^836ee7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@118"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVDebug.h0034d81cddffdf42^748"CpHeader Classes/CDVDebug.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVDebug.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVDebug.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"4A0FD3D0-9E5B-474A-BE3D-9F8097B83584-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVInvokedUrlCommand.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVInvokedUrlCommand.h
-s428316650.900807
-e428316650.902334
-r1
-xCpHeader
-xClasses/CDVInvokedUrlCommand.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVInvokedUrlCommand.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection128"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVInvokedUrlCommand.h163"CpHeader Classes/CDVInvokedUrlCommand.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVInvokedUrlCommand.h6daee6ea9787b941^ef00e7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@130"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVInvokedUrlCommand.h0034d81cddffdf42^784"CpHeader Classes/CDVInvokedUrlCommand.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVInvokedUrlCommand.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"450DB66B-C6A6-4B79-ABFD-FEB384D83108-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVJSON.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVJSON.h
-s428316650.907567
-e428316650.908571
-r1
-xCpHeader
-xClasses/CDVJSON.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVJSON.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVJSON.h137"CpHeader Classes/CDVJSON.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVJSON.h2f69e8ea9787b941^1ec6e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@117"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVJSON.h0034d81cddffdf42^745"CpHeader Classes/CDVJSON.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVJSON.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"7EEF0F8C-388F-4C34-8160-81FD5040CEFD-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVLocalStorage.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVLocalStorage.h
-s428316650.904799
-e428316650.905881
-r1
-xCpHeader
-xClasses/CDVLocalStorage.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVLocalStorage.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection123"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVLocalStorage.h153"CpHeader Classes/CDVLocalStorage.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVLocalStorage.hcbbee7ea9787b941^0744e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@125"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVLocalStorage.h0034d81cddffdf42^769"CpHeader Classes/CDVLocalStorage.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVLocalStorage.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"489C6FE4-26C4-4141-B391-38F3605E9877-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVPlugin.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPlugin.h
-s428316650.901417
-e428316650.902622
-r1
-xCpHeader
-xClasses/CDVPlugin.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPlugin.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPlugin.h141"CpHeader Classes/CDVPlugin.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPlugin.h24d6e6ea9787b941^b75ee7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@119"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPlugin.h0034d81cddffdf42^751"CpHeader Classes/CDVPlugin.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPlugin.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"6C1B0C89-A007-411B-9987-AE44C80E09DC-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVPluginResult.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPluginResult.h
-s428316650.901226
-e428316650.902540
-r1
-xCpHeader
-xClasses/CDVPluginResult.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPluginResult.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection123"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPluginResult.h153"CpHeader Classes/CDVPluginResult.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPluginResult.h21cbe6ea9787b941^4c50e7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@125"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPluginResult.h0034d81cddffdf42^769"CpHeader Classes/CDVPluginResult.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVPluginResult.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"F5C8880B-F9EA-4E7E-9E19-15352D1734FB-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVScreenOrientationDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVScreenOrientationDelegate.h
-s428316650.906921
-e428316650.907979
-r1
-xCpHeader
-xClasses/CDVScreenOrientationDelegate.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVScreenOrientationDelegate.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection136"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVScreenOrientationDelegate.h179"CpHeader Classes/CDVScreenOrientationDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVScreenOrientationDelegate.h1844e8ea9787b941^3ab0e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@138"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVScreenOrientationDelegate.h0034d81cddffdf42^808"CpHeader Classes/CDVScreenOrientationDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVScreenOrientationDelegate.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"6A1EDC38-6A69-4EFB-BF3D-B3E48451846F-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVShared.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVShared.h
-s428316650.906547
-e428316650.907493
-r1
-xCpHeader
-xClasses/CDVShared.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVShared.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVShared.h141"CpHeader Classes/CDVShared.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVShared.h172de8ea9787b941^1899e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@119"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVShared.h0034d81cddffdf42^751"CpHeader Classes/CDVShared.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVShared.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVShared.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"E6A288BE-B8AB-40A2-8859-EC510BDAD8DA-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVTimer.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVTimer.h
-s428316650.908711
-e428316650.909520
-r1
-xCpHeader
-xClasses/CDVTimer.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVTimer.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection116"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVTimer.h139"CpHeader Classes/CDVTimer.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVTimer.hd8b6e8ea9787b941^fce0e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@118"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVTimer.h0034d81cddffdf42^748"CpHeader Classes/CDVTimer.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVTimer.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVTimer.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"AA0B2461-0B39-461A-9BAB-0BDAF523EA68-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVURLProtocol.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVURLProtocol.h
-s428316650.902846
-e428316650.904111
-r1
-xCpHeader
-xClasses/CDVURLProtocol.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVURLProtocol.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection122"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVURLProtocol.h151"CpHeader Classes/CDVURLProtocol.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVURLProtocol.h5e48e7ea9787b941^61a8e7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@124"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVURLProtocol.h0034d81cddffdf42^766"CpHeader Classes/CDVURLProtocol.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVURLProtocol.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"2466C082-97A0-40EB-A723-A822447EF9FF-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVUserAgentUtil.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVUserAgentUtil.h
-s428316650.908244
-e428316650.909215
-r1
-xCpHeader
-xClasses/CDVUserAgentUtil.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVUserAgentUtil.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection124"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVUserAgentUtil.h155"CpHeader Classes/CDVUserAgentUtil.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVUserAgentUtil.h499de8ea9787b941^f9d9e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@126"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVUserAgentUtil.h0034d81cddffdf42^772"CpHeader Classes/CDVUserAgentUtil.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVUserAgentUtil.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"EFC892A1-6B1B-4377-AF1E-FB6AF6AF90ED-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVViewController.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVViewController.h
-s428316650.903338
-e428316650.904242
-r1
-xCpHeader
-xClasses/CDVViewController.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVViewController.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection125"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVViewController.h157"CpHeader Classes/CDVViewController.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVViewController.hac55e7ea9787b941^84bbe7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@127"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVViewController.h0034d81cddffdf42^775"CpHeader Classes/CDVViewController.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVViewController.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVViewController.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"D1A02975-4632-4B78-95D0-F1C9A8B6C722-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVWebViewDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWebViewDelegate.h
-s428316650.907971
-e428316650.908939
-r1
-xCpHeader
-xClasses/CDVWebViewDelegate.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWebViewDelegate.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection126"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWebViewDelegate.h159"CpHeader Classes/CDVWebViewDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWebViewDelegate.he888e8ea9787b941^0bd2e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@128"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWebViewDelegate.h0034d81cddffdf42^778"CpHeader Classes/CDVWebViewDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWebViewDelegate.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"01143154-1092-47EA-93CE-9E010F2D713E-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/CDVWhitelist.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWhitelist.h
-s428316650.902477
-e428316650.903621
-r1
-xCpHeader
-xClasses/CDVWhitelist.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWhitelist.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection120"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWhitelist.h147"CpHeader Classes/CDVWhitelist.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWhitelist.h282ae7ea9787b941^d192e7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@122"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWhitelist.h0034d81cddffdf42^760"CpHeader Classes/CDVWhitelist.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/CDVWhitelist.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVWhitelist.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"3CC9E744-EC68-45BB-B1C0-26EBBD3D49D9-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/NSArray+Comparisons.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSArray+Comparisons.h
-s428316650.905507
-e428316650.906547
-r1
-xCpHeader
-xClasses/NSArray+Comparisons.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSArray+Comparisons.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection127"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSArray+Comparisons.h161"CpHeader Classes/NSArray+Comparisons.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSArray+Comparisons.h9aece7ea9787b941^5261e8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@129"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSArray+Comparisons.h0034d81cddffdf42^781"CpHeader Classes/NSArray+Comparisons.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSArray+Comparisons.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"C1E4B0EB-A06A-4970-8E66-AA76E6CA15F8-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/NSData+Base64.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSData+Base64.h
-s428316650.900970
-e428316650.902569
-r1
-xCpHeader
-xClasses/NSData+Base64.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSData+Base64.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection121"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSData+Base64.h149"CpHeader Classes/NSData+Base64.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSData+Base64.h78b3e6ea9787b941^3b39e7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@123"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSData+Base64.h0034d81cddffdf42^763"CpHeader Classes/NSData+Base64.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSData+Base64.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSData+Base64.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"10EE7991-9F84-4E1C-BE35-4E35E8C08F54-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/NSDictionary+Extensions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSDictionary+Extensions.h
-s428316650.900664
-e428316650.902320
-r1
-xCpHeader
-xClasses/NSDictionary+Extensions.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSDictionary+Extensions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection131"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSDictionary+Extensions.h169"CpHeader Classes/NSDictionary+Extensions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSDictionary+Extensions.h08aae6ea9787b941^9b1fe7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@133"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSDictionary+Extensions.h0034d81cddffdf42^793"CpHeader Classes/NSDictionary+Extensions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSDictionary+Extensions.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"CDDA39F3-C839-40E6-88D3-BE2DB1FCE215-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/NSMutableArray+QueueAdditions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSMutableArray+QueueAdditions.h
-s428316650.902208
-e428316650.903269
-r1
-xCpHeader
-xClasses/NSMutableArray+QueueAdditions.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSMutableArray+QueueAdditions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection137"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSMutableArray+QueueAdditions.h181"CpHeader Classes/NSMutableArray+QueueAdditions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSMutableArray+QueueAdditions.had13e7ea9787b941^c382e7ea9787b941^---0#0#1#-19%DVTDocumentLocation2@139"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSMutableArray+QueueAdditions.h0034d81cddffdf42^811"CpHeader Classes/NSMutableArray+QueueAdditions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/NSMutableArray+QueueAdditions.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"1D716499-6062-4BCA-B7B6-094BAA645494-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CCpHeader Classes/UIDevice+Extensions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/UIDevice+Extensions.h
-s428316650.905153
-e428316650.906170
-r1
-xCpHeader
-xClasses/UIDevice+Extensions.h
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/UIDevice+Extensions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection127"Copy /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/UIDevice+Extensions.h161"CpHeader Classes/UIDevice+Extensions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/UIDevice+Extensions.h52d2e7ea9787b941^9d4ce8ea9787b941^---0#0#1#-19%DVTDocumentLocation2@129"file:///Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/UIDevice+Extensions.h0034d81cddffdf42^781"CpHeader Classes/UIDevice+Extensions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova/UIDevice+Extensions.h    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/include/Cordova36"676CE4D7-D718-4B32-A74C-C3AE213BBDC0-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CLibtool /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/libCordova.a normal armv7
-s428316651.448075
-e428316651.458135
-r1
-xLibtool
-x/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/libCordova.a
-xnormal
-xarmv7
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection118"Libtool /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/libCordova.a normal armv7118"Libtool /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/libCordova.a normal armv782c472eb9787b941^4d4a75eb9787b941^---0#0#1#--1070"Libtool /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/libCordova.a normal armv7    cd /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib    export IPHONEOS_DEPLOYMENT_TARGET=5.0    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only armv7 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device -filelist /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/Cordova.LinkFileList -o /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/build/device/libCordova.a36"488EB8C3-16D5-4481-BF9B-7AE41F32853B-
-b28D5C5BF-6791-4B7E-9411-A91D1D04C815
-
-CProcessPCH /var/folders/6y/b73z845947d7x3418xtrfw3m0000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-egezixdkyuzhfgcxwtxbsaeuasql/CordovaLib_Prefix.pch.pch CordovaLib_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-

@@ -10,29 +10,29 @@
 	<string>Atlas Copco KIO</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>C08F1D8B-BD50-430B-8FE7-9098A36037BF</key>
+		<key>26136362771295DCB1539EBACA7F811530111CE3</key>
 		<string>https://github.com/bitwork/bitwork-iPad-APP.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>APP/platforms/ios/Atlas Copco KIO.xcodeproj/project.xcworkspace</string>
+	<string>APP/platforms/ios/Atlas Copco KIO.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>C08F1D8B-BD50-430B-8FE7-9098A36037BF</key>
+		<key>26136362771295DCB1539EBACA7F811530111CE3</key>
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/bitwork/bitwork-iPad-APP.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C08F1D8B-BD50-430B-8FE7-9098A36037BF</string>
+	<string>26136362771295DCB1539EBACA7F811530111CE3</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C08F1D8B-BD50-430B-8FE7-9098A36037BF</string>
+			<string>26136362771295DCB1539EBACA7F811530111CE3</string>
 			<key>IDESourceControlWCCName</key>
 			<string>bitwork-iPad-APP</string>
 		</dict>
