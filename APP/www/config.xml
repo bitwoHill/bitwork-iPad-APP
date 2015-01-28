@@ -32,6 +32,9 @@
     <feature name="Contacts">
         <param name="ios-package" value="CDVContacts" />
     </feature>
+ <feature name="LaunchFile">
+        <param name="ios-package" value="LaunchFile" />
+    </feature>
     <feature name="File">
         <param name="ios-package" value="CDVFile" />
     </feature>
