@@ -31,6 +31,7 @@ var Contacts = persistence.define('Contacts', {
     jobFunction : "TEXT",
     profilePicture : "TEXT",
     description : "TEXT",
+    jobdescription : "TEXT",
     representative : "TEXT",
     isFolder : "BOOL",
     path : "TEXT",
@@ -46,6 +47,7 @@ Contacts.textIndex('forename');
 Contacts.textIndex('department');
 Contacts.textIndex('jobFunction');
 Contacts.textIndex('description');
+Contacts.textIndex('jobdescription');
 
 var ContactsModel = {
     syncContacts : function() {
@@ -77,6 +79,7 @@ var ContactsModel = {
         newItem.department = (value.Abteilung) ? value.Abteilung : "";
 
         newItem.description = (value.Beschreibung) ? value.Beschreibung : "";
+        newItem.jobdescription = (value.Stellenbeschreibung) ? value.Stellenbeschreibung : "";
 
         newItem.isFolder = (value.Inhaltstyp == "Bild") ? false : true;
 
@@ -105,7 +108,7 @@ var ContactsModel = {
                 if (value.Bildbreite !== 241 && value.Bildhöhe !== 160) {
 
                     var img = new Image();
-                    img.src = Settings.spContent + value.Pfad + "/" + value.Name;
+                    img.src = Settings.spDownloadURL + value.Pfad + "/" + value.Name;
                     //console.log("ID: " + value.ID + " " + value.Bildbreite + " " + value.Bildhöhe);
 
                     img.onload = function() {
@@ -116,7 +119,7 @@ var ContactsModel = {
 
                     };
                     img.onerror = function() {
-                        newItem.profilePicture = Settings.spContent + value.Pfad + "/" + value.Name;
+                        newItem.profilePicture = Settings.spDownloadURL + value.Pfad + "/" + value.Name;
                         persistence.add(new Contacts(newItem));
 
                         callback();

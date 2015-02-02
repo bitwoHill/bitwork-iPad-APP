@@ -68,7 +68,7 @@ var DownloadModel = {};
 
                     try {
                         //console.debug(downloadData);
-                        var folderName = downloadData.folderName, fileName = downloadData.fileName, folderDir, fileDir, uri = encodeURI("http://" + appUser.username + ":" + appUser.password + "@www.atlas-cms.com" + downloadData.path), ft = new FileTransfer();
+                        var folderName = downloadData.folderName, fileName = downloadData.fileName, folderDir, fileDir, uri = encodeURI("http://" + appUser.username + ":" + appUser.password + "@" + Settings.spDownloadURL + downloadData.path), ft = new FileTransfer();
 
                         fs.root.getDirectory(folderName, {
                             create : true,

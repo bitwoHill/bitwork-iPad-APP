@@ -16,9 +16,16 @@ SyncModel.getSyncDateYDM(listName, function(FilterDate)
 //console.log("finished filter:" + DateFilter1);
 //};
  //see if sharepoint Paging is intact if so - recursive call
+
+ //Filter needs to be expanded in order to get multilookup values
+ var ExpandFilter = "";
+if (listName == "Dokumente") 
+ ExpandFilter = "?$expand=Equipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,Equipment/ID";
+
+
         var jqXHR = $.ajax({
             type: 'GET',
-            url: Settings.spDomain + "/" + listName + DateFilter1,
+            url: Settings.spDomain + "/" + listName + ExpandFilter,
             crossDomain: true,
             username: encodeURIComponent(appUser.username),
             password: encodeURIComponent(appUser.password),

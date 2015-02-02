@@ -37,7 +37,20 @@ persistence.defineMigration(1, {
         this.executeSql('CREATE TABLE IF NOT EXISTS Contacts (contactId TEXT PRIMARY KEY, name TEXT, forename TEXT, phone TEXT, mobilePhone TEXT, fax TEXT, email TEXT, department TEXT, jobFunction TEXT, profilePicture TEXT, description TEXT, representative TEXT, isFolder BOOL, parentFolder TEXT)');
 
     }
-});
+})
+
+persistence.defineMigration(2, {
+    up: function() {
+           this.dropTable('Contacts');
+            },
+    down: function() {
+        this.executeSql('CREATE TABLE IF NOT EXISTS Contacts (contactId TEXT PRIMARY KEY, name TEXT, forename TEXT, phone TEXT, mobilePhone TEXT, fax TEXT, email TEXT, department TEXT, jobFunction TEXT, profilePicture TEXT, description TEXT, jobdescription TEXT, representative TEXT, isFolder BOOL, parentFolder TEXT)');
+
+    }
+})
+
+
+;
 
 ////Alter Tables if necessary
 //persistence.defineMigration(2, {

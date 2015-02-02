@@ -1,8 +1,9 @@
 var INFOTHEK_CONTAINER = "#infothek-items-container",
-   INFOTHEK_ITEM_TEMPLATE = "#infothek-person-item-template",
-   INFOTHEK_FOLDER_TEMPLATE = "#infothek-folder-item-template",
-   INFOTHEK_EMPTY_CONTAINER = "#infothek-empty-container",
-   localFileSystemRoot;
+    INFOTHEK_ITEM_TEMPLATE = "#infothek-person-item-template",
+    INFOTHEK_FOLDER_TEMPLATE = "#infothek-folder-item-template",
+    INFOTHEK_EMPTY_CONTAINER = "#infothek-empty-container",
+    INFOTHEK_ROOT_FOLDER =  "/Infothek",
+    localFileSystemRoot;
 
 var InfothekUI = {
     resetInfothek: function () {
@@ -14,11 +15,11 @@ var InfothekUI = {
             $templateItem = $(INFOTHEK_ITEM_TEMPLATE),
             $templateFolder = $(INFOTHEK_FOLDER_TEMPLATE),
             $emptyContainer = $(INFOTHEK_EMPTY_CONTAINER);
-
+INFOTHEK_ROOT_FOLDER = Settings.spWebName +  "/Infothek";
         if ($container.length && $templateFolder.length && $templateItem.length) {
             InfothekUI.resetInfothek();
 
-            Infothek.all().filter("parentFolder", "=", '/InfothekHaendler').order('isFolder', false).order('title', true).list(null, function (results) {
+            Infothek.all().filter("parentFolder", "=", INFOTHEK_ROOT_FOLDER).order('isFolder', false).order('title', true).list(null, function (results) {
 
                 if (results.length) {
                     $emptyContainer.addClass("hidden");

@@ -102,6 +102,10 @@ else if (username == 'spfadmin')
 {
 appUser.doLogin(username, 'bit@SP2010!', rememberUser);	
 }
+else if (username == 'sysuser')
+{
+appUser.doLogin(username, 'bit@SP2010', rememberUser); 
+}
 else
 {
 	appUser.doLogin(username, password, rememberUser);

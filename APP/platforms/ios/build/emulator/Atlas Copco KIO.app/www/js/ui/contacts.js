@@ -3,7 +3,7 @@ var CONTACTS_CONTAINER = "#contact-items-container",
     CONTACTS_FOLDER_TEMPLATE = "#contacts-folder-item-template",
     CONTACTS_DETAILS_TEMPLATE = "#contacts-details-template",
     CONTACTS_EMPTY_CONTAINER = "#contacts-empty-container",
-    CONTACTS_ROOT_FOLDER = "/Telefonbuch";
+    CONTACTS_ROOT_FOLDER =  "/Telefonbuch";
 
 var ContactsUI = {
 
@@ -16,6 +16,7 @@ var ContactsUI = {
         var $container = $(CONTACTS_CONTAINER),
             $templatePerson = $(CONTACTS_PERSON_TEMPLATE),
             $templateFolder = $(CONTACTS_FOLDER_TEMPLATE);
+            CONTACTS_ROOT_FOLDER = Settings.spWebName + "/Telefonbuch"
 
         if ($container.length && $templateFolder.length && $templatePerson.length) {
             ContactsUI.resetContactTree();
@@ -150,6 +151,13 @@ console.log(data.path);
                     } else {
                         $("hr:first", $templateContactInfo).addClass("hidden");
                         $(".contact-details-description", $templateContactInfo).html(" ").addClass("hidden");
+                    }
+                      if (data.jobdescription) {
+                        $(".contact-details-jobdescription", $templateContactInfo).html(data.jobdescription).removeClass("hidden");
+                        $("hr:first", $templateContactInfo).removeClass("hidden");
+                    } else {
+                        $("hr:first", $templateContactInfo).addClass("hidden");
+                        $(".contact-details-jobdescription", $templateContactInfo).html(" ").addClass("hidden");
                     }
 
                     $templateContactInfo.show(300);

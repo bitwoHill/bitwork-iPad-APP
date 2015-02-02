@@ -336,8 +336,8 @@ if (!OtherProductPar) {
                 Documents.all().order('documentname', true, false).list(null, function(results2) {
                     if (results2.length) {
                         //get all types in found documents
-                        console.log("found documents");
-
+                     //   console.log("found documents");
+console.log("Documenttypes");
  console.debug("Produktgruppe:" + ProduktgruppePar);
         console.debug("ProduktfamiliePar:" + ProduktfamiliePar);
         console.debug("ProduktplatformPar:" + ProduktplatformPar);
@@ -350,7 +350,28 @@ if (!OtherProductPar) {
                             var data = value._data;
 
 
+//Aufbrechen der FK Strings, da diese durch ; getrennt sind
 
+
+//search if ; seperated FKs contain needed FK
+if (data.equipmentFK.search("_" + EquipmentProductPar + ";") >= 0)
+data.equipmentFK = EquipmentProductPar;
+
+//search if ; seperated FKs contain needed FK
+if (data.productFK.search("_" + ProduktPar + ";") >= 0)
+data.equipmentFK = ProduktPar;
+
+//search if ; seperated FKs contain needed FK
+if (data.productfamilyFK.search("_" + ProduktfamiliePar + ";") >= 0)
+data.productfamilyFK = ProduktfamiliePar;
+
+//search if ; seperated FKs contain needed FK
+if (data.productgroupFK.search("_" + ProduktgruppePar + ";") >= 0)
+data.productgroupFK = ProduktgruppePar;
+
+//search if ; seperated FKs contain needed FK
+if (data.productplatformFK.search("_" + ProduktplatformPar + ";") >= 0)
+data.productplatformFK = ProduktplatformPar;
 
 
                             if (data.equipmentFK == EquipmentProductPar && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || 
@@ -490,78 +511,6 @@ if (!OtherProductPar) {
 
                 $.each(results, function(index, value) {
                     var data = value._data;
-
-
-
-
-
-//TEST
-
-
-  //   if (data.equipmentFK == EquipmentProductPar && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar)
-  //    {
-  //    	alert(1);
-  //   }
-
-  //    if (  data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar ) 
-  //     {
-  //    	alert(2);
-  //   }
-
-
-  //    if (data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar ) 
-  //     
-  //     {
-  //    	alert(3);
-  //   }
-
-  //  if (data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar ) 
-  //                          {
-  //                         	alert(4);
-  //                        }
-
-  //                         if (data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == ProduktgruppePar ) 
-  //                          {
-  //                         	alert(5);
-  //                        }
-
-  //                         if ( data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == 0 ) 
-  //                          {
-  //                         	alert(6);
-  //                        }
-
-  //                         if ( data.equipmentFK == 0 && data.productFK == 0 && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == 0 && data.productgroupFK == 0 ) 
-  //                          {
-  //                         	alert(7);
-  //                        }
-
-  //                         if (   data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 ) 
-  //                          {
-  //                         	alert(8);
-  //                        }
-
-  //                        if (data.equipmentFK == EquipmentProductPar && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0)
-  //                        {
-  //                        	alert(9);
-  //                        }
-
-  //                         if ( data.productFK == ProduktAlternativeID )
-  //                        {
-  //                        	alert(10);
-  //                        }
-
-  //                         if ( data.productFK == ProduktPar)
-  //                        {
-  //                        	alert(11);
-  //                        }
-
-  //                   
-                        
-                                
-
-
-// ENDE TEEST
-
 
          
                     if (data.equipmentFK == EquipmentProductPar && data.productFK == ProduktPar && data.productplatformFK == ProduktplatformPar && data.productfamilyFK == ProduktfamiliePar && data.productgroupFK == ProduktgruppePar || 

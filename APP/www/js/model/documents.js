@@ -7,11 +7,11 @@ var Documents = persistence.define('Documents', {
     documentname : "TEXT",
     documenttypeFK : "INT",
     path : "TEXT",
-    productgroupFK : "INT",
-    productfamilyFK : "INT",
-    productplatformFK : "INT",
-    productFK : "INT",
-    equipmentFK : "INT",
+    productgroupFK : "TEXT",
+    productfamilyFK : "TEXT",
+    productplatformFK : "TEXT",
+    productFK : "TEXT",
+    equipmentFK : "TEXT",
     spModifiedDate : "DATE",
     localPath : "TEXT",
     localModifiedDate : "DATE"
@@ -75,42 +75,118 @@ var documentsModel = {
     mapSharePointData : function(data) {
         //SharePoint Item Array
         var spData = data.d;
+        //console.log(spData);
         //create lookup Array with all SP Items stored by ID. This is used to compare the Local Document IDs to those on Sharepoint
         var lookupIDsSharePoint = {};
         //One specific SharePoint Item used for Adding to local DB
         var spItemAdd;
 
+        console.log("spData");
+        console.log(spData.results);
         //For each SharePoint Resultitem- get all IDs which still exists on SP in order to delete local Documents not in this list.
         for (var i = 0, len = spData.results.length; i < len; i++) {
-            //add element to Array of SPItems Indexed by ID
-            spItemAdd = spData.results[i];
-            lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
+            console.log("i");
+            console.log(i);
+            console.log("len");
+            console.log(len);
+
+            try {
+                //add element to Array of SPItems Indexed by ID
+                console.log("counter");
+                spItemAdd = spData.results[i];
+                lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
+                console.log(i);
+
+                //Get Multilookup IDS for Productgroups,platforms,families and product and equipment
+
+             if (spItemAdd) {
+                 console.log("spitemADD");
+                 console.log(spItemAdd);
+
+                 var productgroupFKs = "";
+                 console.log("spItemAdd.Produktgruppe.results.length");
+                 console.log(spItemAdd.Produktgruppe.results.length);
+                 if (spItemAdd.Produktgruppe.results.length > 0) {
+
+                     for (var i2 = 0, len2 = spItemAdd.Produktgruppe.results.length; i2 < len2; i2++) {
+                         productgroupFKs += "_" + spItemAdd.Produktgruppe.results[i2].ID + ";";
+                     }
+                 }
+                    console.log("spItemAdd.Produktfamilie.results.length");
+                 console.log(spItemAdd.Produktfamilie.results.length);
+                 var productfamilieFKs = "";
+                 if (spItemAdd.Produktfamilie.results.length > 0) {
+                     for (var i3 = 0, len3 = spItemAdd.Produktfamilie.results.length; i3 < len3; i3++) {
+                         productfamilieFKs += "_" + spItemAdd.Produktfamilie.results[i3].ID + ";";
+                     }
+                 }
+                    console.log("spItemAdd.Produktplattform.results.length ");
+                 console.log(spItemAdd.Produktplattform.results.length );
+                 var productplattformFKs = "";
+                 if (spItemAdd.Produktplattform.results.length > 0) {
+                     for (var i4 = 0, len4 = spItemAdd.Produktplattform.results.length; i4 < len4; i4++) {
+                         productplattformFKs += "_" + spItemAdd.Produktplattform.results[i4].ID + ";";
+                     }
+                 }
+                    console.log("spItemAdd.Produkt.results.length ");
+                 console.log(spItemAdd.Produkt.results.length );
+                 var productFKs = "";
+                 if (spItemAdd.Produkt.results.length > 0) {
+                     for (var i5 = 0, len5 = spItemAdd.Produkt.results.length; i5 < len5; i5++) {
+                         productFKs += "_" + spItemAdd.Produkt.results[i5].ID + ";";
+                     }
+                 }
+                    console.log("spItemAdd.Equipment.results.length");
+                 console.log(spItemAdd.Equipment.results.length);
+                 var equipmentFKs = "";
+                 if (spItemAdd.Equipment.results.length > 0) {
+                     for (var i6 = 0, len6 = spItemAdd.Equipment.results.length; i6 < len6; i6++) {
+                         equipmentFKs += "_" + spItemAdd.Equipment.results[i6].ID + ";";
+                     }
+                 }
+
+             }
+
+      //     console.log(productgroupFKs);
+      //     console.log(productFKs);
+      //     console.log(productfamilieFKs);
+      //     console.log(equipmentFKs);
+      //     console.log(productplattformFKs);
+
             //add all items => to create new items
             var doc = {
                 documentId : spItemAdd.ID,
                 documentname : (spItemAdd.Name) ? spItemAdd.Name : "",
                 documenttypeFK : (spItemAdd.DokumenttypId) ? spItemAdd.DokumenttypId : "",
                 path : (spItemAdd.Pfad) ? spItemAdd.Pfad + "/" + spItemAdd.Name : "",
-                productgroupFK : (spItemAdd.ProduktgruppeId) ? spItemAdd.ProduktgruppeId : "",
-                productfamilyFK : (spItemAdd.ProduktfamilieId) ? spItemAdd.ProduktfamilieId : "",
-                productplatformFK : (spItemAdd.ProduktplattformId) ? spItemAdd.ProduktplattformId : "",
-                productFK : (spItemAdd.ProduktId) ? spItemAdd.ProduktId : "",
-                equipmentFK : (spItemAdd.EquipmentId) ? spItemAdd.EquipmentId : ""
+                productgroupFK : (productgroupFKs) ? productgroupFKs : "",
+                productfamilyFK : (productfamilieFKs) ? productfamilieFKs : "",
+                productplatformFK : (productplattformFKs) ? productplattformFKs : "",
+                productFK : (productFKs) ? productFKs : "",
+                equipmentFK : (equipmentFKs) ? equipmentFKs : ""
             };
             //Parse modified date
 
             if (spItemAdd.Geändert) {
                 doc.spModifiedDate = utils.parseSharePointDate(spItemAdd.Geändert);
             }
+         
             //add to persistence instance
             persistence.add(new Documents(doc));
 
-          //  console.log("adding " + spItemAdd.ID);
-        }
+            console.log("adding " + spItemAdd.ID);
+
+            } catch (e) {
+
+                console.log(e);
+                alert("error");
+            }
+        
+       }
 
         //persist new items to DB
         persistence.flush(function() {
-          
+
             console.log("done adding new");
 
             //iterate all local files. If Document in LookupID List update, else delete by SP Item
@@ -127,6 +203,39 @@ var documentsModel = {
                             //get SP Item stored in Array by ID of current local Item
                             spItem = lookupIDsSharePoint[value._data.documentId];
                             if (spItem) {
+
+                                //Get Multilookup IDS for Productgroups,platforms,families and product and equipment
+                                var productgroupFKs = "";
+                                if (spItem.Produktgruppe) {
+                                    for (var i2 = 0, len2 = spItem.Produktgruppe.results.length; i2 < len2; i2++) {
+                                        productgroupFKs += "_" + spItem.Produktgruppe.results[i2].ID + ";";
+                                    }
+                                }
+                                var productfamilieFKs = "";
+                                if (spItem.Produktfamilie) {
+                                    for (var i2 = 0, len3 = spItem.Produktfamilie.results.length; i2 < len3; i2++) {
+                                        productfamilieFKs += "_" + spItem.Produktfamilie.results[i2].ID + ";";
+                                    }
+                                }
+                                var productplattformFKs = "";
+                                if (spItem.Produktfamilie) {
+                                    for (var i2 = 0, len4 = spItem.Produktplattform.results.length; i2 < len4; i2++) {
+                                        productplattformFKs += "_" + spItem.Produktplattform.results[i2].ID + ";";
+                                    }
+                                }
+                                var productFKs = "";
+                                if (spItem.Produkt) {
+                                    for (var i2 = 0, len5 = spItem.Produkt.results.length; i2 < len5; i2++) {
+                                        productFKs += "_" + spItem.Produkt.results[i2].ID + ";";
+                                    }
+                                }
+                                var equipmentFKs = "";
+                                if (spItem.Equipment) {
+                                    for (var i2 = 0, len6 = spItem.Equipment.results.length; i2 < len6; i2++) {
+                                        equipmentFKs += "_" + spItem.Equipment.results[i2].ID + ";";
+                                    }
+                                }
+
                                 //  console.log("Updating Item");
                                 if (spItem.Name)
                                     value.documentname(spItem.Name);
@@ -140,37 +249,37 @@ var documentsModel = {
                                     value.path(spItem.Pfad + "/" + spItem.Name);
                                 else
                                     value.path("");
-                                if (spItem.ProduktgruppeId)
-                                    value.productgroupFK(spItem.ProduktgruppeId);
+                                if (productgroupFKs)
+                                    value.productgroupFK(productgroupFKs);
                                 else
                                     value.productgroupFK("");
-                                if (spItem.ProduktfamilieId)
-                                    value.productfamilyFK(spItem.ProduktfamilieId);
+                                if (productfamilieFKs)
+                                    value.productfamilyFK(productfamilieFKs);
                                 else
                                     value.productfamilyFK("");
-                                if (spItem.ProduktplattformId)
-                                    value.productplatformFK(spItem.ProduktplattformId);
+                                if (productplattformFKs)
+                                    value.productplatformFK(productplattformFKs);
                                 else
                                     value.productplatformFK("");
-                                if (spItem.ProduktId)
-                                    value.productFK(spItem.ProduktId);
+                                if (productFKs)
+                                    value.productFK(productFKs);
                                 else
                                     value.productFK("");
-                                if (spItem.EquipmentId)
-                                    value.equipmentFK(spItem.EquipmentId);
+                                if (equipmentFKs)
+                                    value.equipmentFK(equipmentFKs);
                                 else
                                     value.equipmentFK("");
                                 if (spItem.Geändert)
                                     value.spModifiedDate(utils.parseSharePointDate(spItem.Geändert));
 
-                           //     console.log("updated item: " + value._data.documentId);
+                                //     console.log("updated item: " + value._data.documentId);
 
                             }
                             delete spItem;
                         } else//delete
                         {
-                           // console.debug("lokales element wurde nicht mehr gefunden: ");
-                          //  console.debug(value._data.documentId);
+                            // console.debug("lokales element wurde nicht mehr gefunden: ");
+                            //  console.debug(value._data.documentId);
                             // delete local file from filesystem
                             if (value.localPath) {
                                 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -187,7 +296,7 @@ var documentsModel = {
 
                                         function onError() {
                                             console.log('Local File not Found');
-                                        //    console.log(value);
+                                            //    console.log(value);
                                         }
 
                                     } catch (e) {
@@ -203,23 +312,21 @@ var documentsModel = {
                         }
                     });
                 }
- console.log("done overwriting");
+                console.log("done overwriting");
 
-        persistence.flush(function() {
-            console.log("done flushing");
+                persistence.flush(function() {
+                    console.log("done flushing");
 
-            SyncModel.addSync(DOCUMENTS_LIST);
-            $('body').trigger('sync-end');
-            $('body').trigger('documents-sync-ready');
-            $('#msgDocuments').removeClass('in');
-        });
-        delete lookupIDsSharePoint;
-        delete spItemAdd;
-        });
+                    SyncModel.addSync(DOCUMENTS_LIST);
+                    $('body').trigger('sync-end');
+                    $('body').trigger('documents-sync-ready');
+                    $('#msgDocuments').removeClass('in');
+                });
+                delete lookupIDsSharePoint;
+                delete spItemAdd;
             });
- 
+        });
 
-      
     },
 
     downloadSharePointFiles : function() {
