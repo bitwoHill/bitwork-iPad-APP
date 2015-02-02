@@ -236,16 +236,32 @@ var productoptionsUI = {
             var OtherProductPar = utils.getUrlParameter('SonstigesProdukt');
 
             //if its an equipment page the otherproduct is empty (or the other way around) -  this would cause problems in the SQL query - hence its set to -1)
-
             if (!EquipmentProductPar) {
                 EquipmentProductPar = "-1";
             }
             if (!OtherProductPar) {
                 OtherProductPar = "-1";
             }
-            //check wheter there is an option to either the current equipment / other product or one of its lower level items (group, family, platform, product)
-            ProductOptions.all().filter("equipmentFK", "=", EquipmentProductPar).or(new persistence.PropertyFilter("productgroupFK", "=", ProduktgruppePar)).or(new persistence.PropertyFilter("productfamilyFK", "=", ProduktfamiliePar)).or(new persistence.PropertyFilter("productplatformFK", "=", ProduktplatformPar)).or(new persistence.PropertyFilter("productFK", "=", ProduktPar)).order('productDescription', true, false).list(null, function(results) {
 
+
+//Change TH: The SharePoint Lookupfields are set to Multichoice instead of single lookup. The Database stores the FKs as _ID; Hence the Produktpars need to be tweaked, to be used in a contain query
+ProduktgruppePar =    "%" + "_" +  ProduktgruppePar  + ";"     + "%";
+ProduktfamiliePar =   "%" +"_" +  ProduktfamiliePar + ";" + "%";
+ProduktplatformPar =  "%" +"_" +  ProduktplatformPar + ";" + "%";
+ProduktPar =          "%" +"_" +  ProduktPar  + ";" + "%";
+EquipmentProductPar = "%" +"_" +  EquipmentProductPar + ";" + "%";
+OtherProductPar =     "%" +"_" +  OtherProductPar  + ";" + "%";
+
+console.log(ProduktgruppePar );
+console.log(ProduktfamiliePar );
+console.log(ProduktplatformPar );
+console.log(ProduktPar       );
+console.log(EquipmentProductPar );
+console.log(OtherProductPar );
+
+            //check wheter there is an option to either the current equipment / other product or one of its lower level items (group, family, platform, product)
+            ProductOptions.all().filter("equipmentFK", "LIKE", EquipmentProductPar).or(new persistence.PropertyFilter("productgroupFK", "LIKE", ProduktgruppePar)).or(new persistence.PropertyFilter("productfamilyFK", "LIKE", ProduktfamiliePar)).or(new persistence.PropertyFilter("productplatformFK", "LIKE", ProduktplatformPar)).or(new persistence.PropertyFilter("productFK", "LIKE", ProduktPar)).order('productDescription', true, false).list(null, function(results) {
+console.log(results);
                 if (results.length != 0) {
                     $container.removeClass('hidden');
                 }
@@ -253,6 +269,10 @@ var productoptionsUI = {
                 $.each(results, function(index, value) {
 
                     var data = value._data;
+
+
+
+
                     var $newItem = $template.clone();
                     $newItem.removeAttr('id');
                     $('.productoption-item-optionsbezeichnung', $newItem).html(data.productDescription);

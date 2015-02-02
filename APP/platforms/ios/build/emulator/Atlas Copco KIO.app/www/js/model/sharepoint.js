@@ -22,6 +22,10 @@ SyncModel.getSyncDateYDM(listName, function(FilterDate)
 if (listName == "Dokumente") 
  ExpandFilter = "?$expand=Equipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,Equipment/ID";
 
+if ( listName == "ProduktbezeichnungOptionen") 
+    ExpandFilter = "?$expand=ProduktbezeichnungEquipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,ProduktbezeichnungEquipment/ID";
+
+
 
         var jqXHR = $.ajax({
             type: 'GET',
