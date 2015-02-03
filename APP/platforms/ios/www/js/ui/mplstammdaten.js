@@ -636,5 +636,11 @@ if (!OtherProductPar) {
                 $icon.removeClass('fa-folder-open').addClass('fa-folder');
             }
         });
+
+         $('body').on('sync-error', function(e) {
+          alert("Es gab einen Fehler beim synchronisieren. Versuchen Sie es später erneut.");
+           $('body').trigger('sync-end');
+                    $('body').trigger('documents-sync-ready');
+        });
     });
 })(jQuery);

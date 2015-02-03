@@ -1,9 +1,9 @@
 var Settings = {
-    spDomain: "http://192.168.1.188:40000/MPL/_vti_bin/ListData.svc",// spDomain: "http://www.atlas-cms.com/_vti_bin/ListData.svc",
-    spContent: "http://192.168.1.188:40000/MPL",// spContent: "http://www.atlas-cms.com",
-    spListsWebservice: "192.168.1.188:40000/MPL/_vti_bin/Lists.asmx",  // spListsWebservice: "http://www.atlas-cms.com/_vti_bin/Lists.asmx",
-    spDownloadURL:  "http://192.168.1.188:40000",// spContent: "http://www.atlas-cms.com",
-    spWebName: "/MPL", // "",
+    spDomain: "http://www.atlas-cms.com/_vti_bin/ListData.svc",// "http://192.168.1.188:40000/MPL/_vti_bin/ListData.svc",// spDomain: "http://www.atlas-cms.com/_vti_bin/ListData.svc",
+    spContent: "http://www.atlas-cms.com", //"http://192.168.1.188:40000/MPL",// spContent: "http://www.atlas-cms.com",
+    spListsWebservice:  "http://www.atlas-cms.com/_vti_bin/Lists.asmx",//"192.168.1.188:40000/MPL/_vti_bin/Lists.asmx",  // spListsWebservice: "http://www.atlas-cms.com/_vti_bin/Lists.asmx",
+    spDownloadURL: "http://www.atlas-cms.com",// "http://192.168.1.188:40000",// spContent: "http://www.atlas-cms.com",
+    spWebName: "",// /MPL", // "",
     loginExpiration: 1, //login cookie expiration [hours]
     loginExpirationExtended: 24, //login cookie expiration extended (automatic login) [hours]
     loginFailedAttempts: 7, //max number of login failed attempts

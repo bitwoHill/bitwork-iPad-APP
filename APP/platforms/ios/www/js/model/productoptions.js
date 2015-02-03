@@ -21,7 +21,7 @@ var productoptionsModel = {
         $('body').trigger('sync-start');
         $('#msgProductOptions').toggleClass('in');
 
-        SharePoint.sharePointRequest(PRODUCTOPTIONS_LIST, productoptionsModel.mapSharePointData);
+        SharePoint.sharePointRequest(PRODUCTOPTIONS_LIST, productoptionsModel.mapSharePointData, true);
     },
     //maps SharePoint data to current model
     mapSharePointData: function (data) {

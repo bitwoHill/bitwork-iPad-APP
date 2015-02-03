@@ -121,6 +121,6 @@ var DOWNLOADS_CONTAINER = "#downloads-container",
         $('body').on('click', '.sync-btn', DownloadsUI.doDownload);
 
 
-    })
+    });
 
 })(jQuery)

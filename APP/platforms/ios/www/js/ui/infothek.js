@@ -2,7 +2,7 @@ var INFOTHEK_CONTAINER = "#infothek-items-container",
     INFOTHEK_ITEM_TEMPLATE = "#infothek-person-item-template",
     INFOTHEK_FOLDER_TEMPLATE = "#infothek-folder-item-template",
     INFOTHEK_EMPTY_CONTAINER = "#infothek-empty-container",
-    INFOTHEK_ROOT_FOLDER =  "/Infothek",
+    INFOTHEK_ROOT_FOLDER =  "/InfothekHaendler",
     localFileSystemRoot;
 
 var InfothekUI = {
@@ -15,7 +15,7 @@ var InfothekUI = {
             $templateItem = $(INFOTHEK_ITEM_TEMPLATE),
             $templateFolder = $(INFOTHEK_FOLDER_TEMPLATE),
             $emptyContainer = $(INFOTHEK_EMPTY_CONTAINER);
-INFOTHEK_ROOT_FOLDER = Settings.spWebName +  "/Infothek";
+INFOTHEK_ROOT_FOLDER = Settings.spWebName +  "/InfothekHaendler";
         if ($container.length && $templateFolder.length && $templateItem.length) {
             InfothekUI.resetInfothek();
 

@@ -1,6 +1,6 @@
 var SharePoint = {
 
-    sharePointRequest: function (listName, callback) {
+    sharePointRequest: function (listName, callback, bolLoadLookups) {
         var DateFilter1 = "", DateFilter2 = "";
           //get latest sync date
 
@@ -19,11 +19,14 @@ SyncModel.getSyncDateYDM(listName, function(FilterDate)
 
  //Filter needs to be expanded in order to get multilookup values
  var ExpandFilter = "";
-if (listName == "Dokumente") 
+ if (bolLoadLookups && bolLoadLookups == true) {
+    if (listName == "Dokumente") 
  ExpandFilter = "?$expand=Equipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,Equipment/ID";
 
 if ( listName == "ProduktbezeichnungOptionen") 
     ExpandFilter = "?$expand=ProduktbezeichnungEquipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,ProduktbezeichnungEquipment/ID";
+ }
+
 
 
 
@@ -90,6 +93,7 @@ if ( listName == "ProduktbezeichnungOptionen")
                         if (responseData && responseData.status && responseData.status === 401) {
                             appUser.doLogout();
                         }
+                      
                     });
                 }
 
@@ -99,10 +103,24 @@ if ( listName == "ProduktbezeichnungOptionen")
         }).fail(
             function (responseData, textStatus, errorThrown) {
                 console.warn(responseData, textStatus, errorThrown);
+
+                  if (responseData && responseData.status && responseData.status === 500) {
+                    console.log(bolLoadLookups);
+
+                            if (bolLoadLookups && bolLoadLookups == true)
+                                {
+                                       console.log("retrying");
+                            SyncModel.getSyncDateYDM(listName,false);
+                            return;
+                                }
+                                    
+                        }
+                        else{
                 $('body').trigger('sync-error');
                 //if auth failed
                 if (responseData && responseData.status && responseData.status === 401) {
                     appUser.doLogout();
+                }
                 }
             }
         );
