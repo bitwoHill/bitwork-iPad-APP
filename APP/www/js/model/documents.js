@@ -37,7 +37,7 @@ var documentsModel = {
         //  $('body').trigger('sync-start');
         $('#msgDocuments').toggleClass('in');
 
-        SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes,true);
+        SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes);
     },
     //maps SharePoint data to current model
     mapSharePointDataDocumentTypes : function(data) {
@@ -59,12 +59,12 @@ var documentsModel = {
                     SyncModel.addSync(DOCUMENTTYPES_LIST);
                     //get documents
 
-                    SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData);
+                    SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData,true);
                 });
 
             } else {
                 //get documents
-                SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData);
+                SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData,true);
             }
 
         });
@@ -98,46 +98,57 @@ var documentsModel = {
 
                  var productgroupFKs = "";
                  if (spItemAdd.Produktgruppe) {
-if  ( spItemAdd.Produktgruppe.results.length > 0){
+            
+                    if  (spItemAdd.Produktgruppe.results.length){
+if  (spItemAdd.Produktgruppe.results.length > 0){
                      for (var i2 = 0, len2 = spItemAdd.Produktgruppe.results.length; i2 < len2; i2++) {
                          productgroupFKs += "_" + spItemAdd.Produktgruppe.results[i2].ID + ";";
                      }
+                 }
                      }
                  }
                 
                  var productfamilieFKs = "";
                  if (spItemAdd.Produktfamilie ) {
+                     if  (spItemAdd.Produktfamilie.results.length){
                     if  (spItemAdd.Produktfamilie.results.length > 0)
                     {
                      for (var i3 = 0, len3 = spItemAdd.Produktfamilie.results.length; i3 < len3; i3++) {
                          productfamilieFKs += "_" + spItemAdd.Produktfamilie.results[i3].ID + ";";
                      }
                      }
+                     }
                  }
                    
                  var productplattformFKs = "";
                  if (spItemAdd.Produktplattform  ) {
+                      if (spItemAdd.Produktplattform.results.length){
                     if (spItemAdd.Produktplattform.results.length > 0){
                      for (var i4 = 0, len4 = spItemAdd.Produktplattform.results.length; i4 < len4; i4++) {
                          productplattformFKs += "_" + spItemAdd.Produktplattform.results[i4].ID + ";";
+                     }
                      }
                      }
                  }
                 
                  var productFKs = "";
                  if (spItemAdd.Produkt  ) {
+                       if( spItemAdd.Produkt.results.length){
                     if( spItemAdd.Produkt.results.length > 0) {
                      for (var i5 = 0, len5 = spItemAdd.Produkt.results.length; i5 < len5; i5++) {
                          productFKs += "_" + spItemAdd.Produkt.results[i5].ID + ";";
+                     }
                      }
                      }
                  }
                
                  var equipmentFKs = "";
                  if (spItemAdd.Equipment ) {
+                          if( spItemAdd.Equipment.results.length ){
                     if( spItemAdd.Equipment.results.length > 0){
                      for (var i6 = 0, len6 = spItemAdd.Equipment.results.length; i6 < len6; i6++) {
                          equipmentFKs += "_" + spItemAdd.Equipment.results[i6].ID + ";";
+                     }
                      }
                      }
                  }
@@ -204,31 +215,31 @@ if  ( spItemAdd.Produktgruppe.results.length > 0){
 
                                 //Get Multilookup IDS for Productgroups,platforms,families and product and equipment
                                 var productgroupFKs = "";
-                                if (spItem.Produktgruppe.results) {
+                                if (spItem.Produktgruppe) {
                                     for (var i2 = 0, len2 = spItem.Produktgruppe.results.length; i2 < len2; i2++) {
                                         productgroupFKs += "_" + spItem.Produktgruppe.results[i2].ID + ";";
                                     }
                                 }
                                 var productfamilieFKs = "";
-                                if (spItem.Produktfamilie.results) {
+                                if (spItem.Produktfamilie) {
                                     for (var i2 = 0, len3 = spItem.Produktfamilie.results.length; i2 < len3; i2++) {
                                         productfamilieFKs += "_" + spItem.Produktfamilie.results[i2].ID + ";";
                                     }
                                 }
                                 var productplattformFKs = "";
-                                if (spItem.Produktplattform.results) {
+                                if (spItem.Produktplattform) {
                                     for (var i2 = 0, len4 = spItem.Produktplattform.results.length; i2 < len4; i2++) {
                                         productplattformFKs += "_" + spItem.Produktplattform.results[i2].ID + ";";
                                     }
                                 }
                                 var productFKs = "";
-                                if (spItem.Produkt.results) {
+                                if (spItem.Produkt) {
                                     for (var i2 = 0, len5 = spItem.Produkt.results.length; i2 < len5; i2++) {
                                         productFKs += "_" + spItem.Produkt.results[i2].ID + ";";
                                     }
                                 }
                                 var equipmentFKs = "";
-                                if (spItem.Equipment.results) {
+                                if (spItem.Equipment) {
                                     for (var i2 = 0, len6 = spItem.Equipment.results.length; i2 < len6; i2++) {
                                         equipmentFKs += "_" + spItem.Equipment.results[i2].ID + ";";
                                     }

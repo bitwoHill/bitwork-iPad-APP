@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		02E299EF27394D9FA9D80E7D /* LaunchFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FF83C49E0F8940E0A73B089B /* LaunchFile.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -470,6 +471,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Atlas Copco KIO/Atlas Copco KIO-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -505,7 +507,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Atlas Copco KIO/Atlas Copco KIO-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,

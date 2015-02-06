@@ -20,12 +20,20 @@ SyncModel.getSyncDateYDM(listName, function(FilterDate)
  //Filter needs to be expanded in order to get multilookup values
  var ExpandFilter = "";
  if (bolLoadLookups && bolLoadLookups == true) {
+    console.log("bolLoadLookups");
+    console.log(bolLoadLookups);
+    console.log("listName");
+    console.log(listName);
+
     if (listName == "Dokumente") 
  ExpandFilter = "?$expand=Equipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,Equipment/ID";
 
 if ( listName == "ProduktbezeichnungOptionen") 
     ExpandFilter = "?$expand=ProduktbezeichnungEquipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,ProduktbezeichnungEquipment/ID";
  }
+
+ console.log("ExpandFilter");
+ console.log(ExpandFilter);
 
 
 
@@ -110,8 +118,10 @@ if ( listName == "ProduktbezeichnungOptionen")
                             if (bolLoadLookups && bolLoadLookups == true)
                                 {
                                        console.log("retrying");
-                            SyncModel.getSyncDateYDM(listName,false);
-                            return;
+                                       bolLoadLookups = false;
+                            //get documents
+                SharePoint.sharePointRequest(listName, documentsModel.mapSharePointData,false);
+                return;
                                 }
                                     
                         }
