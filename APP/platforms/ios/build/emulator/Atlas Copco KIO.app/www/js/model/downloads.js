@@ -68,7 +68,8 @@ var DownloadModel = {};
 
                     try {
                         //console.debug(downloadData);
-                        var folderName = downloadData.folderName, fileName = downloadData.fileName, folderDir, fileDir, uri = encodeURI("http://" + appUser.username + ":" + appUser.password + "@" + Settings.spDownloadURL + downloadData.path), ft = new FileTransfer();
+                      //  var folderName = downloadData.folderName, fileName = downloadData.fileName, folderDir, fileDir, uri = encodeURI("http://" + appUser.username + ":" + appUser.password + "@" + Settings.spDownloadURL + downloadData.path), ft = new FileTransfer();
+  var folderName = downloadData.folderName, fileName = downloadData.fileName, folderDir, fileDir, uri = encodeURI(Settings.spDownloadURL + downloadData.path), ft = new FileTransfer();
 
                         fs.root.getDirectory(folderName, {
                             create : true,
@@ -100,7 +101,10 @@ var DownloadModel = {};
 
                                 // now delete the file (for what ever reason)
                                 fileDir.remove();
-                                ft.download(uri, fullpath + fileName, function(entry) {
+
+                                
+                                ft.download(uri, fullpath + fileName, function(entry) 
+                                {
 
                                     console.debug("Download success!" + entry.fullPath);
 
@@ -130,10 +134,18 @@ var DownloadModel = {};
                                     } else {
                                         // alert("Fehler beim Herunterladen. Zeitüberschreitung " + error.code);
                                         console.debug(error);
+                                        console.log(ft);
+console.log("Basic " + Base64.encode(appUser.username + ":" + appUser.password));
                                         download.reject(error);
                                     }
 
-                                }, true);
+                                }, true,
+                                {
+                                    headers: {
+                                                "Authorization": "Basic " + Base64.encode(appUser.username + ":" + appUser.password)
+                                                }
+    }
+    );
                             }, function(error) {
                                 download.reject(error);
                                 // Base64.encode(appUser.username + ":" + appUser.password)

@@ -182,7 +182,7 @@ if  (spItemAdd.Produktgruppe.results.length > 0){
             //add to persistence instance
             persistence.add(new Documents(doc));
 
-            console.log("adding " + spItemAdd.ID);
+           // console.log("adding " + spItemAdd.ID);
 
             } catch (e) {
 

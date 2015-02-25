@@ -41,6 +41,7 @@ var LoginUI = {
                     $.each(results, function (index, value) {
                         var data = value._data;
                         document.getElementById("txtUsername").value = data.username;
+
                     });
                 }
             });
@@ -55,10 +56,14 @@ var LoginUI = {
     }
 };
 
+
+
 (function ($) {
     //Display news when sync is ready
     $('body').on('db-schema-ready',LoginUI.fillInLastSuccessfulUsername);
     
+
+
     $(document).ready(function () {
         var $loginForm = $(LOGIN_FORM_ID);
         //alert(window.location.pathname);
