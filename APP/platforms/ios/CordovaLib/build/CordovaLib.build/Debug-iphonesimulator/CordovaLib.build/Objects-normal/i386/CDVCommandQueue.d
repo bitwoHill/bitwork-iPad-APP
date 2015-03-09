@@ -2,6 +2,7 @@ dependencies: \
   /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m \
   /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDV.h \
   /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailability.h \
+  /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVAvailabilityDeprecated.h \
   /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPlugin.h \
   /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVPluginResult.h \
   /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h \
@@ -20,4 +21,5 @@ dependencies: \
   /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h \
   /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h \
   /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON.h \
-  /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h
+  /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h \
+  /Users/timhill/Documents/Development/bitwork-iPad-APP/APP/platforms/ios/CordovaLib/Classes/CDVJSON_private.h

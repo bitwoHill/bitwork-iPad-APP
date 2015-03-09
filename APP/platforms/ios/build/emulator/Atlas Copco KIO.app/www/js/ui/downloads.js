@@ -10,6 +10,7 @@ var DOWNLOADS_CONTAINER = "#downloads-container",
         //check connection type if not on wifi restrict user to use
         try {
             var networkState = navigator.connection.type;
+            console.log("Networkstate: " + networkState);
             if (networkState == Connection.WIFI) {
                 DownloadModal.show();
 

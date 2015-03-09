@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		02E299EF27394D9FA9D80E7D /* LaunchFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FF83C49E0F8940E0A73B089B /* LaunchFile.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -490,7 +489,7 @@
 				PRODUCT_NAME = "Atlas Copco KIO";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
-				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT) ";
+				VALID_ARCHS = "armv7 arm64 armv7s";
 			};
 			name = Debug;
 		};
@@ -528,7 +527,7 @@
 				PRODUCT_NAME = "Atlas Copco KIO";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
-				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT) ";
+				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT) arm64 armv7s";
 			};
 			name = Release;
 		};
@@ -557,7 +556,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
