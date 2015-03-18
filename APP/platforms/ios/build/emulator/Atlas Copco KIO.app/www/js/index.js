@@ -21,6 +21,12 @@ var app = {
     initialize: function () {
         this.bindEvents();
     },
+     SetStatusbar: function(bolShow) {  
+        if (parseFloat(device.version) >= 7.0) {
+    console.log("webview " + bolShow);
+    StatusBar.overlaysWebView(bolShow);};
+
+    },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
@@ -58,9 +64,10 @@ var app = {
   app.setFolderMetadata(LocalFileSystem.PERSISTENT, "Dokumente", "com.apple.MobileBackup", 1);
   app.setFolderMetadata(LocalFileSystem.PERSISTENT, "Infothek", "com.apple.MobileBackup", 1);
 
-         if (parseFloat(device.version) >= 7.0) {
+        if (parseFloat(device.version) >= 7.0) {
+            console.log("webview false");
        StatusBar.overlaysWebView(false);
-    }
+   }
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {

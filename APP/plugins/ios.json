@@ -97,15 +97,23 @@
                             "count": 1
                         },
                         {
-                            "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
-                            "count": 1
-                        },
-                        {
                             "xml": "<preference name=\"StatusBarBackgroundColor\" value=\"#000000\" />",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"LaunchFile\"><param name=\"ios-package\" value=\"LaunchFile\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"CDVStatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
                             "count": 1
                         }
                     ]
@@ -138,10 +146,10 @@
         "org.apache.cordova.network-information": {
             "PACKAGE_NAME": "com.bitwork.iPadApp"
         },
-        "org.apache.cordova.statusbar": {
-            "PACKAGE_NAME": "com.bitwork.iPadApp"
-        },
         "com.contraterrene.LaunchFile": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "org.apache.cordova.statusbar": {
             "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         }
     },

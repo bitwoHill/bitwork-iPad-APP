@@ -74,6 +74,7 @@ var LoginUI = {
         });
 
         $('body').on('login-successful', function () {
+           // app.SetStatusbar(false);
             var redirectURL = decodeURIComponent(utils.getUrlParameter("returnURL"));
             if (redirectURL && redirectURL !== "") {
                 window.open(redirectURL, "_self");
@@ -85,6 +86,10 @@ var LoginUI = {
         $('body').on('submit', LOGIN_FORM_ID, function (e) {
             e.preventDefault();
 
+         if (parseFloat(device.version) >= 7.0 && parseFloat(device.version) < 8.0) {
+            console.log("webview false");
+       StatusBar.overlaysWebView(false);
+    }
             if (!LoginUI.validateLoginForm($(this))) {
                 return;
             }
