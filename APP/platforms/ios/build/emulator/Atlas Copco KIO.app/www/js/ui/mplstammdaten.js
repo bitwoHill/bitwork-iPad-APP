@@ -379,7 +379,7 @@ data.equipmentFK = EquipmentProductPar;
 
 //search if ; seperated FKs contain needed FK
 if (data.productFK.search("_" + ProduktPar + ";") >= 0)
-data.equipmentFK = ProduktPar;
+data.productFK = ProduktPar;
 
 //search if ; seperated FKs contain needed FK
 if (data.productfamilyFK.search("_" + ProduktfamiliePar + ";") >= 0)
