@@ -1,9 +1,8 @@
 var Settings = {
-    spDomain: "http://www.atlas-cms.com/_vti_bin/ListData.svc",// "http://192.168.1.188:40000/MPL/_vti_bin/ListData.svc",// spDomain: "http://www.atlas-cms.com/_vti_bin/ListData.svc",
-    spContent: "http://www.atlas-cms.com", //"http://192.168.1.188:40000/MPL",// spContent: "http://www.atlas-cms.com",
-    spListsWebservice:  "http://www.atlas-cms.com/_vti_bin/Lists.asmx",//"192.168.1.188:40000/MPL/_vti_bin/Lists.asmx",  // spListsWebservice: "http://www.atlas-cms.com/_vti_bin/Lists.asmx",
-    spDownloadURL: "http://www.atlas-cms.com",// "http://192.168.1.188:40000",// spContent: "http://www.atlas-cms.com",
-    spWebName: "",// /MPL", // "",
+    spDomain: "https://www.atlas-cms.com/_vti_bin/ListData.svc",
+    spContent: "https://www.atlas-cms.com",
+    spListsWebservice: "https://www.atlas-cms.com/_vti_bin/Lists.asmx",
+    spAuthentification: "https://www.atlas-cms.com/_vti_bin/authentication.asmx",
     loginExpiration: 1, //login cookie expiration [hours]
     loginExpirationExtended: 24, //login cookie expiration extended (automatic login) [hours]
     loginFailedAttempts: 7, //max number of login failed attempts
@@ -27,12 +26,12 @@ var Settings = {
         spContent: "content"
     };
 
-(function ($) {
-    //custom settings will overwrite default settings on desktop browsers
-    if (!("ontouchstart" in document.documentElement)) {
-        $.extend(Settings, proxySettings);
-    }
+//(function ($) {
+//    //custom settings will overwrite default settings on desktop browsers
+//    if (!("ontouchstart" in document.documentElement)) {
+//        $.extend(Settings, proxySettings);
+//    }
 
-    //To use mockdata please un-comment next line
-    //$.extend(Settings, mockSettings);
-})(jQuery);
+//    //To use mockdata please un-comment next line
+//    //$.extend(Settings, mockSettings);
+//})(jQuery);

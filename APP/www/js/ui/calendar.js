@@ -25,17 +25,10 @@ var CalendarUI = {
         if ($container.length && $template.length) {
             CalendarUI.resetCalendar();
 
- var calendarList = (requestParam !== "") ? Calendar2.all().filter("nodeId", "=", parseInt(requestParam, 10)) : Calendar2.all();
+ var calendarList = (requestParam !== "") ? CalendarEntity.all().filter("nodeId", "=", parseInt(requestParam, 10)) : CalendarEntity.all();
 
 
-     //       var calendarList;
-     //       if (requestParam == "") {
-     //           calendarList = Calendar.all();
-//
-     //       }
-     //       else {
-     //           calendarList = Calendar.all().filter('nodeId', '=', parseInt(requestParam, 10));
-     //       }
+    
 
             calendarList.order('startDate', false).list(null, function (results) {
                 if (results.length) {
