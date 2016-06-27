@@ -1,0 +1,82 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-calendar": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "com.contraterrene.LaunchFile": {
+            "PACKAGE_NAME": "AtlasNeu"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "AtlasNeu"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "AtlasNeu"
+        }
+    }
+}

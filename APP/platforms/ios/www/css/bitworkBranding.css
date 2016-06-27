@@ -1,0 +1,386 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #4c4c4c; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(76, 76, 76, 1)), color-stop(100%, rgba(19, 19, 19, 1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+a {
+    color: rgb(76, 76, 76);
+
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+h3 {
+    color: inherit;
+}
+
+.thumbnail h3 {
+    margin-top: 30px;
+}
+
+h4 {
+    color: white;
+}
+
+h4.modal-title {
+    color: #333;
+    text-shadow: 1px 1px 0 #efefef;
+}
+
+mark {
+    color: #4c4c4c;
+    text-shadow: 1px 0 1px rgba(0,0,0,0.1);
+    background: #efefef;
+    background: rgba(0,0,0,0.1);
+}
+
+.modal .alert {
+    margin-bottom: 0;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.page-header,
+.page-header > h1 {
+    margin-top: 0;
+}
+
+.page-header {
+    border-bottom: 1px solid #2e2e2e;
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+}
+
+.page-header-title {
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+/*search textbox */
+#txtSuche {
+    width: 190px;
+}
+
+/*button Farbe auf bitwork grau anpassen*/
+.btn-primary {
+     color: #fff;
+     border-color: rgb(108, 108, 108);
+     background: rgb(108, 108, 108); /* Old browsers */
+     background: -moz-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* FF3.6+ */
+     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(108, 108, 108, 1)), color-stop(44%, rgba(97, 97, 97, 1)), color-stop(100%, rgba(81, 81, 81, 1))); /* Chrome,Safari4+ */
+     background: -webkit-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Chrome10+,Safari5.1+ */
+     background: -o-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Opera 12+ */
+     background: -ms-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* IE10+ */
+     background: radial-gradient(ellipse at center, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* W3C */
+     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c6c6c', endColorstr='#515151', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+    background: rgba(108, 108, 108, 0.8 );
+    border-color: #2e2e2e;
+}
+
+/*Farbe und h�he der pills �ndern*/
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background: rgb(108, 108, 108); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(108, 108, 108, 1)), color-stop(44%, rgba(97, 97, 97, 1)), color-stop(100%, rgba(81, 81, 81, 1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c6c6c', endColorstr='#515151', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+    height: 100%;
+}
+
+/*h�he der nav pills �ndern*/
+.nav-stacked > li {
+    float: none;
+    height: 85px;
+}
+
+.nav-stacked > li + li {
+    margin-top: 2px;
+    margin-left: 0;
+    height: 85px;
+}
+
+/*Anpassen der maximalen THumbnail gr�se, damit unterschiedliche Bilder das Layout nicht zerreissen*/
+.thumbnail {
+    min-height: 200px;
+    max-height: 200px;
+    z-index: 1000;
+    /*border-color:  rgba(0,0,0,0.95);*/
+    border: none;
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.95);
+    -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.95);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.95);
+    /*box-shadow: 10px -7px 15px darkgray, darkgray 0px 0px 3px inset;*/
+}
+
+.thumbnail.box {
+    max-height: none;
+    min-height: 50px;
+}
+
+/*anpassen der bild gr��e in den thumbnails*/
+.thumbnail img {
+    border-style: solid;
+    border-width: 4px;
+    border-color: white;
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.95);
+    -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.95);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.95);
+
+    float: left;
+    max-width: 150px;
+    height: auto;
+    margin: 20px 15px 0 0;
+}
+
+.label.label-custom {
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 85%;
+    color: #222;
+    text-align: left;
+    border-radius: 0;
+    min-width: 100px;
+}
+
+.box {
+    position: relative;
+    z-index: 1;
+}
+
+.box-content {
+    margin-bottom: 20px;
+}
+
+.box-actions {
+    margin-top: 15px;
+}
+
+.box-content.with-image {
+    margin-left: 165px;
+}
+
+.box-label {
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 0;
+    background-color: #2f2f2f;
+    color: #bbbbbb;
+    text-shadow: 1px 1px 0 #000;
+    padding: 5px 10px;
+
+    -webkit-border-radius: 0px 3px 0px 3px;
+    border-radius: 0px 3px 0px 3px;
+
+    -webkit-box-shadow: inset 2px -2px 5px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 2px -2px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.empty-page {
+    color: #bbbbbb;
+    text-shadow: 1px 1px 0 #000;
+    padding: 50px 0;
+}
+
+#infothek-page .empty-page,
+.empty-page.invert {
+    color: #333;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+/* News */
+.news-item-body img {
+
+}
+
+.news-item-body p:empty,
+.news-item-body div:empty {
+    display: none;
+}
+
+/*button for backwards navigation*/
+#DivNavigateBackwards {
+    visibility: hidden;
+}
+
+.merged .input-group-addon {
+    border-right: 0px;
+    background: rgb(108, 108, 108); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(108, 108, 108, 1)), color-stop(44%, rgba(97, 97, 97, 1)), color-stop(100%, rgba(81, 81, 81, 1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c6c6c', endColorstr='#515151', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+.merged input {
+    border-left: 0px;
+    background: rgb(108, 108, 108); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(108, 108, 108, 1)), color-stop(44%, rgba(97, 97, 97, 1)), color-stop(100%, rgba(81, 81, 81, 1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c6c6c', endColorstr='#515151', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+    width: 50%;
+}
+
+/*half hight*/
+.half {
+    width: 25%;
+}
+
+/*main button*/
+#btnSubmit {
+    background: rgb(108, 108, 108); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(108, 108, 108, 1)), color-stop(44%, rgba(97, 97, 97, 1)), color-stop(100%, rgba(81, 81, 81, 1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, rgba(108, 108, 108, 1) 0%, rgba(97, 97, 97, 1) 44%, rgba(81, 81, 81, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c6c6c', endColorstr='#515151', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+    background-repeat: no-repeat;
+}
+
+.side-nav .fa {
+    margin-right: 10px;
+}
+
+.well hr {
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #FFF;
+}
+
+/* Tabs */
+.tab-content {
+    background: #FFF;
+    padding: 10px 0;
+    border-radius: 0 0 4px 4px;
+}
+
+.nav-tabs>li>a {
+    margin-right: 3px;
+    color: #bbbbbb;
+    font-size: 16px;
+}
+
+.nav-tabs>li>a:hover {
+    color: #333;
+}
+
+.nav-tabs > li > a > .badge {
+    font-size: 11px;
+    border-radius: 9px;
+    vertical-align: text-top;
+}
+
+/* Search */
+a.result-item {
+    display: block;
+    position: relative;
+
+    padding: 0 40px 0 15px;
+    border-bottom: 1px solid #dddddd;
+    text-decoration: none;
+}
+
+a.result-item:last-of-type {
+    border-bottom: none;
+}
+
+a.result-item:hover {
+    text-decoration: none;
+}
+
+h3.result-item-title {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.result-item > .fa {
+    position: absolute;
+    display: block;
+    right: 15px;
+    top: 50%;
+
+    margin-top: -7px;
+}
+
+.result-item-title > .fa {
+    font-size: 14px;
+    color: #a2a2a2;
+    margin-right: 10px;
+}
+
+.progress-bar {
+    background-color: #545454;
+}
+
+.alert-info {
+    color: #545454;
+    background-color: #EAEAEA;
+    border-color: #DFDFDF;
+}
+.flyover {
+   left: 180%;
+   overflow: hidden;
+   position: fixed;
+   width: 50%;
+   opacity: 0.9;
+   z-index: 1050;
+   transition: left 0.6s ease-out 0s;
+}
+ 
+.flyover-centered {
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
+.flyover.in {
+   left: 50%;
+}
+.flyover-bottom {
+   bottom: 10px;
+}
+.modal.fade .modal-dialog {
+    transform: translate(0px, -25%);
+    transition: transform 0.3s ease-out 0s;
+}
+.modal.fade.in .modal-dialog {
+    transform: translate(0px, 0px);
+}
