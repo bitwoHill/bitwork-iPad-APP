@@ -36,6 +36,7 @@
     <string>1.4.0</string>
     <key>LSApplicationQueriesSchemes</key>
     <array>
+      <string>mailto</string>
       <string>File</string>
       <string>Mail</string>
       <string>whatsapp</string>

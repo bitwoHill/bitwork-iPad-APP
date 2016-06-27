@@ -82,7 +82,7 @@ var utils = {
     },
 
     dateFormat: function (date, format) {
-    	 console.log(date);
+   // 	 console.log(date);
         var zeroPad = function (number) {
             return ("0" + number).substr(-2, 2);
         },
@@ -106,7 +106,7 @@ var utils = {
                 format = format.replace(k, o[k]);
             }
         }
-console.log(format);
+//console.log(format);
         return format;
     },
 

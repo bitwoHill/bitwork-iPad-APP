@@ -24,9 +24,11 @@ var app = {
        
     },
      SetStatusbar: function(bolShow) {  
-        if (parseFloat(device.version) >= 7.0) {
-    console.log("webview setstatusbar " + bolShow);
-    StatusBar.overlaysWebView(bolShow);};
+  //     if (parseFloat(device.version) >= 7.0) {
+  //  console.log("webview setstatusbar " + bolShow);
+//    StatusBar.overlaysWebView(bolShow);
+//}
+;
 
     },
     // Bind Event Listeners

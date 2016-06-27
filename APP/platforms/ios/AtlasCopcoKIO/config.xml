@@ -141,4 +141,7 @@
     <preference name="android-minSdkVersion" value="14" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="1500" />
+    <preference name="FadeSplashScreenDuration" value="1000" />
 </widget>
