@@ -54,7 +54,8 @@ persistence.defineMigration(3, {
     up: function() {
           this.dropTable('News');
           this.dropTable('Contacts');
-          
+            this.dropTable('ProductOptions');
+            
             },
     down: function() {
     

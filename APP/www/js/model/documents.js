@@ -42,13 +42,14 @@ var documentsModel = {
 
     syncSharePointDocumentsWithoutDelete: function () {
         $('#msgDocuments').toggleClass('in');
-        
+
         SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes, true);
     },
 
     //maps SharePoint data to current model
     mapSharePointDataDocumentTypes: function (data, syncAll) {
         var spData = data.d;
+        console.log("mapSharePointDataDocumentTypes syncall " + syncAll);
         Documenttypes.all().destroyAll(function (ele) {// cant delete the whole list because of local path
 
             if (spData && spData.results.length) {
@@ -69,17 +70,19 @@ var documentsModel = {
                         SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
                     else {
                         var queryLatestItem = Documents.all().order("spModifiedDate", false).limit(1);
-
+                        console.log("latest item Documents");
+                        console.log(queryLatestItem);
                         queryLatestItem.list(null, function (results) {
-                            if (!results)
-                        SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
+                            console.log(results.length);
+                            if (results.length == 0)
+                                SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true, utils.parseLocalDateToSharePointDate(new Date(0)));
                             else
                                 results.forEach(function (r) {
                                     var latestItem = r
                                     var latestDate = latestItem.spModifiedDate();
 
                                     console.log("Document latest Date:");
-console.log(latestDate);
+                                    console.log(latestDate);
                                     //  console.log(utils.parseLocalDateToSharePointDate(latestDate));
                                     SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true, utils.parseLocalDateToSharePointDate(latestDate));
                                 });
@@ -97,7 +100,9 @@ console.log(latestDate);
 
     },
     //maps SharePoint data to current model
-    mapSharePointData: function (data,DeleteItems) {
+    mapSharePointData: function (data, DeleteItems) {
+        console.log("mapSharePointDataDocumentTypes DeleteItems " + DeleteItems);
+
         //SharePoint Item Array
         var spData = data.d;
         //console.log(spData);
@@ -305,64 +310,64 @@ console.log(latestDate);
                                 if (spItem.Geändert)
                                     value.spModifiedDate(utils.parseSharePointDate(spItem.Geändert));
 
-                                    console.log("updated item: " + value._data.documentId);
+                             //   console.log("updated item: " + value._data.documentId);
 
                             }
                             delete spItem;
                         } else//delete
                         {
-                              if (DeleteItems){
-                            // console.debug("lokales element wurde nicht mehr gefunden: ");
-                            //  console.debug(value._data.documentId);
-                            // delete local file from filesystem
-                            if (value.localPath) {
-                                window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-                                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
-                                    localFileSystemRoot = fileSystem.root.fullPath;
-                                    try {
-                                        //request filesystem to delete files if not found on SP anymore
-                                        window.resolveLocalFileSystemURI(localFileSystemRoot + "/Dokumente/" + value.localPath, onSuccess, onError);
+                            if (DeleteItems) {
+                                // console.debug("lokales element wurde nicht mehr gefunden: ");
+                                //  console.debug(value._data.documentId);
+                                // delete local file from filesystem
+                                if (value.localPath) {
+                                    window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+                                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
+                                        localFileSystemRoot = fileSystem.root.fullPath;
+                                        try {
+                                            //request filesystem to delete files if not found on SP anymore
+                                            window.resolveLocalFileSystemURI(localFileSystemRoot + "/Dokumente/" + value.localPath, onSuccess, onError);
 
-                                        function onSuccess(fileEntry) {
-                                            fileEntry.remove();
-                                            console.log('Deleted local file');
+                                            function onSuccess(fileEntry) {
+                                                fileEntry.remove();
+                                                console.log('Deleted local file');
+                                            }
+
+                                            function onError() {
+                                                console.log('Local File not Found');
+                                                //    console.log(value);
+                                            }
+
+                                        } catch (e) {
+                                            console.log('An error (exception) occured with the filesystem object');
+                                            console.log(value);
+                                            console.log(e);
                                         }
+                                    });
+                                }
 
-                                        function onError() {
-                                            console.log('Local File not Found');
-                                            //    console.log(value);
-                                        }
-
-                                    } catch (e) {
-                                        console.log('An error (exception) occured with the filesystem object');
-                                        console.log(value);
-                                        console.log(e);
-                                    }
-                                });
+                                // remove entity from persistence layer
+                                persistence.remove(value);
                             }
-
-                            // remove entity from persistence layer
-                            persistence.remove(value);
-                              }
                         }
                     });
                 }
                 console.log("done overwriting");
 
                 persistence.flush(function () {
-                    console.log("done flushing");
+                    console.log("done flushing documents final");
 
                     SyncModel.addSync(DOCUMENTS_LIST);
-                    $('body').trigger('sync-end');
+                    // $('body').trigger('sync-end');
                     $('body').trigger('documents-sync-ready');
                     $('#msgDocuments').removeClass('in');
                 });
                 delete lookupIDsSharePoint;
                 delete spItemAdd;
 
-                 if (DeleteItems){
-                documentsModel.downloadSharePointFiles();
-                 }
+                if (DeleteItems) {
+                    documentsModel.downloadSharePointFiles();
+                }
             });
         });
 

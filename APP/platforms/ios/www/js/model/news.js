@@ -13,8 +13,8 @@ var News = persistence.define('News', {
 });
 
 News.index('nodeId', { unique: true });
-//News.textIndex('title');
-//News.textIndex('bodySearch');
+News.textIndex('title');
+News.textIndex('bodySearch');
 
 var NewsModel = {
     syncNews: function () {

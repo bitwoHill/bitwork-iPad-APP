@@ -31,7 +31,11 @@ var InfothekModel = {
             var queryLatestItem = Infothek.all().order("spModifiedDate", false).limit(1);
 
             queryLatestItem.list(null, function (results) {
-                if (!results)
+              
+                console.log(results.length);
+              
+                
+                if (results.length == 0)
                     SharePoint.sharePointRequest(INFOTHEK_LIST, InfothekModel.mapSharePointData);
                 else
                     results.forEach(function (r) {
