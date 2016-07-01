@@ -131,10 +131,18 @@ var utils = {
         return new Date(parseInt(spDate.match(/\/Date\(([0-9]+)(?:.*)\)\//)[1]));
     },
 
+    parseLocalDateToSharePointDate: function (localDate)
+    {
+	var local = new Date(localDate);
+	local.setMinutes(localDate.getMinutes() - localDate.getTimezoneOffset());
+	return local.toJSON().slice(0, 10);
+    },
     setCookie: function (name, value, expirationDate) {
         var c_value = encodeURIComponent(value) + ((expirationDate == null) ? "" : "; expires=" + expirationDate.toUTCString());
         document.cookie = name + "=" + c_value;
     },
+ 
+
 
     getCookie: function (c_name) {
         var c_value = document.cookie,
