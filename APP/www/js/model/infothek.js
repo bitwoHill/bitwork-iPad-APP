@@ -38,7 +38,7 @@ var InfothekModel = {
                         var latestItem = r
                         var latestDate = latestItem.spModifiedDate();
 
-                        console.log(utils.parseLocalDateToSharePointDate(latestDate));
+                      //  console.log(utils.parseLocalDateToSharePointDate(latestDate));
                         SharePoint.sharePointRequest(INFOTHEK_LIST, InfothekModel.mapSharePointData, true, utils.parseLocalDateToSharePointDate(latestDate));
                     });
             });

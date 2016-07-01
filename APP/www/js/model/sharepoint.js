@@ -35,11 +35,12 @@ var SharePoint = {
                     deleteItems = false; // bei dem sync (fast sync) werden nur die aktuellsten elemente geladen. deswegen muss im callback das löschen der elemente unterbunden werden, die nicht vom SP zurück gekommen sind                    
 
 
-                if (listName == "Dokumente")
+                if (listName == "Dokumente") {
                     ExpandFilter = "?$expand=Equipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,Equipment/ID";
-                if (dateFilter) {
-                    ExpandFilter += "&$filter=Geändert%20ge%20datetime%27" + dateFilter + "%27";
-                    deleteItems = false; // bei dem sync (fast sync) werden nur die aktuellsten elemente geladen. deswegen muss im callback das löschen der elemente unterbunden werden, die nicht vom SP zurück gekommen sind                    
+                    if (dateFilter) {
+                        ExpandFilter += "&$filter=Geändert%20ge%20datetime%27" + dateFilter + "%27";
+                        deleteItems = false; // bei dem sync (fast sync) werden nur die aktuellsten elemente geladen. deswegen muss im callback das löschen der elemente unterbunden werden, die nicht vom SP zurück gekommen sind                    
+                    }
                 }
                 if (listName == "ProduktbezeichnungOptionen")
                     ExpandFilter = "?$expand=ProduktbezeichnungEquipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,ProduktbezeichnungEquipment/ID";
