@@ -1,12 +1,12 @@
 var SharePoint = {
 
-    sharePointRequest : function(listName, callback, bolLoadLookups) {
-        var DateFilter1 = "", DateFilter2 = "";
+    sharePointRequest: function (listName, callback, bolLoadLookups, dateFilter) {
+        // var DateFilter1 = "", DateFilter2 = "";
         //get latest sync date
 
         //console.log("Build Date Filter");
         //filter Database based on ID of SP Item
-        SyncModel.getSyncDateYDM(listName, function(FilterDate) {
+        SyncModel.getSyncDateYDM(listName, function (FilterDate) {
             //  console.log("List: " + listName);
             //  if (listName === "Dokumente" || listName === "Infothek")
             //{
@@ -17,29 +17,44 @@ var SharePoint = {
 
             //Filter needs to be expanded in order to get multilookup values
             var ExpandFilter = "";
+            var deleteItems = true;
             if (bolLoadLookups && bolLoadLookups == true) {
-                console.log("bolLoadLookups");
-                console.log(bolLoadLookups);
-                console.log("listName");
-                console.log(listName);
+                // console.log("bolLoadLookups");
+                // console.log(bolLoadLookups);
+                // console.log("listName");
+                // console.log(listName);
+
+
+                if (listName == "Infothek") {
+                    if (dateFilter) {
+                        ExpandFilter = "?$filter=Geändert%20ge%20datetime%27" + dateFilter + "%27";
+                        deleteItems = false; // bei dem sync (fast sync) werden nur die aktuellsten elemente geladen. deswegen muss im callback das löschen der elemente unterbunden werden, die nicht vom SP zurück gekommen sind
+                    }
+                }
+                if (listName == "Dokumenttypen")
+                    deleteItems = false; // bei dem sync (fast sync) werden nur die aktuellsten elemente geladen. deswegen muss im callback das löschen der elemente unterbunden werden, die nicht vom SP zurück gekommen sind                    
+
 
                 if (listName == "Dokumente")
                     ExpandFilter = "?$expand=Equipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,Equipment/ID";
-
+                if (dateFilter) {
+                    ExpandFilter += "&$filter=Geändert%20ge%20datetime%27" + dateFilter + "%27";
+                    deleteItems = false; // bei dem sync (fast sync) werden nur die aktuellsten elemente geladen. deswegen muss im callback das löschen der elemente unterbunden werden, die nicht vom SP zurück gekommen sind                    
+                }
                 if (listName == "ProduktbezeichnungOptionen")
                     ExpandFilter = "?$expand=ProduktbezeichnungEquipment,Produktgruppe,Produktfamilie,Produktplattform,Produkt&$select=*,Produktgruppe/ID,Produktfamilie/ID,Produktplattform/ID,Produkt/ID,ProduktbezeichnungEquipment/ID";
             }
 
             var jqXHR = $.ajax({
-                type : 'GET',
-                url : Settings.spDomain + "/" + listName + ExpandFilter,
-                crossDomain : true,
-                username : encodeURIComponent(appUser.username),
-                password : encodeURIComponent(appUser.password),
-                timeout : 600000,
-                dataType : 'json',
-                contentType : "application/json; charset=utf-8"
-            }).done(function(responseData, textStatus, jqXHR) {
+                type: 'GET',
+                url: Settings.spDomain + "/" + listName + ExpandFilter,
+                crossDomain: true,
+                username: encodeURIComponent(appUser.username),
+                password: encodeURIComponent(appUser.password),
+                timeout: 600000,
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8"
+            }).done(function (responseData, textStatus, jqXHR) {
                 var newResponseData = responseData;
                 //console.debug("lenght before " + responseData.d.results.length + " of " + newResponseData.d.__next);
                 var bFoundToken = true;
@@ -53,15 +68,15 @@ var SharePoint = {
 
                     // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
                     var jqXHR2 = $.ajax({
-                        type : 'GET',
-                        url : turl,
-                        crossDomain : true,
-                        username : encodeURIComponent(appUser.username),
-                        password : encodeURIComponent(appUser.password),
-                        timeout : 600000,
-                        dataType : 'json',
-                        contentType : "application/json; charset=utf-8"
-                    }).done(function(responseDataSubQuery, textStatus, jqXHR2) {
+                        type: 'GET',
+                        url: turl,
+                        crossDomain: true,
+                        username: encodeURIComponent(appUser.username),
+                        password: encodeURIComponent(appUser.password),
+                        timeout: 600000,
+                        dataType: 'json',
+                        contentType: "application/json; charset=utf-8"
+                    }).done(function (responseDataSubQuery, textStatus, jqXHR2) {
 
                         //check i the new result also contains a skiptoken - > if so keep loop running
                         if (responseDataSubQuery.d.__next) {
@@ -72,7 +87,7 @@ var SharePoint = {
                         }
 
                         //add new results to old response array
-                        $.each(responseDataSubQuery.d.results, function(index, value) {
+                        $.each(responseDataSubQuery.d.results, function (index, value) {
                             responseData.d.results.push(value);
                         });
                         //console.debug("lenght after " + responseData.d.results.length);
@@ -88,15 +103,15 @@ var SharePoint = {
 
                             // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
                             var jqXHR3 = $.ajax({
-                                type : 'GET',
-                                url : turl,
-                                crossDomain : true,
-                                username : encodeURIComponent(appUser.username),
-                                password : encodeURIComponent(appUser.password),
-                                timeout : 600000,
-                                dataType : 'json',
-                                contentType : "application/json; charset=utf-8"
-                            }).done(function(responseDataSubQuery2, textStatus, jqXHR3) {
+                                type: 'GET',
+                                url: turl,
+                                crossDomain: true,
+                                username: encodeURIComponent(appUser.username),
+                                password: encodeURIComponent(appUser.password),
+                                timeout: 600000,
+                                dataType: 'json',
+                                contentType: "application/json; charset=utf-8"
+                            }).done(function (responseDataSubQuery2, textStatus, jqXHR3) {
                                 bFoundToken = false;
 
                                 //check i the new result also contains a skiptoken - > if so keep loop running
@@ -108,7 +123,7 @@ var SharePoint = {
                                 }
 
                                 //add new results to old response array
-                                $.each(responseDataSubQuery2.d.results, function(index, value) {
+                                $.each(responseDataSubQuery2.d.results, function (index, value) {
                                     responseData.d.results.push(value);
                                 });
 
@@ -125,15 +140,15 @@ var SharePoint = {
 
                                     // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
                                     var jqXHR4 = $.ajax({
-                                        type : 'GET',
-                                        url : turl,
-                                        crossDomain : true,
-                                        username : encodeURIComponent(appUser.username),
-                                        password : encodeURIComponent(appUser.password),
-                                        timeout : 600000,
-                                        dataType : 'json',
-                                        contentType : "application/json; charset=utf-8"
-                                    }).done(function(responseDataSubQuery3, textStatus, jqXHR3) {
+                                        type: 'GET',
+                                        url: turl,
+                                        crossDomain: true,
+                                        username: encodeURIComponent(appUser.username),
+                                        password: encodeURIComponent(appUser.password),
+                                        timeout: 600000,
+                                        dataType: 'json',
+                                        contentType: "application/json; charset=utf-8"
+                                    }).done(function (responseDataSubQuery3, textStatus, jqXHR3) {
                                         bFoundToken = false;
 
                                         //check i the new result also contains a skiptoken - > if so keep loop running
@@ -145,7 +160,7 @@ var SharePoint = {
                                         }
 
                                         //add new results to old response array
-                                        $.each(responseDataSubQuery3.d.results, function(index, value) {
+                                        $.each(responseDataSubQuery3.d.results, function (index, value) {
                                             responseData.d.results.push(value);
                                         });
 
@@ -162,15 +177,15 @@ var SharePoint = {
 
                                             // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
                                             var jqXHR5 = $.ajax({
-                                                type : 'GET',
-                                                url : turl,
-                                                crossDomain : true,
-                                                username : encodeURIComponent(appUser.username),
-                                                password : encodeURIComponent(appUser.password),
-                                                timeout : 600000,
-                                                dataType : 'json',
-                                                contentType : "application/json; charset=utf-8"
-                                            }).done(function(responseDataSubQuery4, textStatus, jqXHR5) {
+                                                type: 'GET',
+                                                url: turl,
+                                                crossDomain: true,
+                                                username: encodeURIComponent(appUser.username),
+                                                password: encodeURIComponent(appUser.password),
+                                                timeout: 600000,
+                                                dataType: 'json',
+                                                contentType: "application/json; charset=utf-8"
+                                            }).done(function (responseDataSubQuery4, textStatus, jqXHR5) {
                                                 bFoundToken = false;
 
                                                 //check i the new result also contains a skiptoken - > if so keep loop running
@@ -182,7 +197,7 @@ var SharePoint = {
                                                 }
 
                                                 //add new results to old response array
-                                                $.each(responseDataSubQuery4.d.results, function(index, value) {
+                                                $.each(responseDataSubQuery4.d.results, function (index, value) {
                                                     responseData.d.results.push(value);
                                                 });
 
@@ -199,15 +214,15 @@ var SharePoint = {
 
                                                     // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
                                                     var jqXHR6 = $.ajax({
-                                                        type : 'GET',
-                                                        url : turl,
-                                                        crossDomain : true,
-                                                        username : encodeURIComponent(appUser.username),
-                                                        password : encodeURIComponent(appUser.password),
-                                                        timeout : 600000,
-                                                        dataType : 'json',
-                                                        contentType : "application/json; charset=utf-8"
-                                                    }).done(function(responseDataSubQuery5, textStatus, jqXHR6) {
+                                                        type: 'GET',
+                                                        url: turl,
+                                                        crossDomain: true,
+                                                        username: encodeURIComponent(appUser.username),
+                                                        password: encodeURIComponent(appUser.password),
+                                                        timeout: 600000,
+                                                        dataType: 'json',
+                                                        contentType: "application/json; charset=utf-8"
+                                                    }).done(function (responseDataSubQuery5, textStatus, jqXHR6) {
                                                         bFoundToken = false;
 
                                                         //check i the new result also contains a skiptoken - > if so keep loop running
@@ -219,7 +234,7 @@ var SharePoint = {
                                                         }
 
                                                         //add new results to old response array
-                                                        $.each(responseDataSubQuery5.d.results, function(index, value) {
+                                                        $.each(responseDataSubQuery5.d.results, function (index, value) {
                                                             responseData.d.results.push(value);
                                                         });
                                                         //console.debug("lenght after " + responseData.d.results.length);
@@ -235,15 +250,15 @@ var SharePoint = {
 
                                                             // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
                                                             var jqXHR7 = $.ajax({
-                                                                type : 'GET',
-                                                                url : turl,
-                                                                crossDomain : true,
-                                                                username : encodeURIComponent(appUser.username),
-                                                                password : encodeURIComponent(appUser.password),
-                                                                timeout : 600000,
-                                                                dataType : 'json',
-                                                                contentType : "application/json; charset=utf-8"
-                                                            }).done(function(responseDataSubQuery6, textStatus, jqXHR7) {
+                                                                type: 'GET',
+                                                                url: turl,
+                                                                crossDomain: true,
+                                                                username: encodeURIComponent(appUser.username),
+                                                                password: encodeURIComponent(appUser.password),
+                                                                timeout: 600000,
+                                                                dataType: 'json',
+                                                                contentType: "application/json; charset=utf-8"
+                                                            }).done(function (responseDataSubQuery6, textStatus, jqXHR7) {
                                                                 bFoundToken = false;
 
                                                                 //check i the new result also contains a skiptoken - > if so keep loop running
@@ -255,7 +270,7 @@ var SharePoint = {
                                                                 }
 
                                                                 //add new results to old response array
-                                                                $.each(responseDataSubQuery6.d.results, function(index, value) {
+                                                                $.each(responseDataSubQuery6.d.results, function (index, value) {
                                                                     responseData.d.results.push(value);
                                                                 });
 
@@ -265,245 +280,252 @@ var SharePoint = {
                                                                 newResponseData = null;
                                                                 newResponseData = responseDataSubQuery6;
                                                                 turl = newResponseData.d.__next;
-                                                        console.log(turl);
+                                                                console.log(turl);
 
-                                                                if ( bFoundToken === true) {
+                                                                if (bFoundToken === true) {
 
- console.log("8th attempt");
+                                                                    console.log("8th attempt");
 
-                                                            // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
-                                                            var jqXHR8 = $.ajax({
-                                                                type : 'GET',
-                                                                url : turl,
-                                                                crossDomain : true,
-                                                                username : encodeURIComponent(appUser.username),
-                                                                password : encodeURIComponent(appUser.password),
-                                                                timeout : 600000,
-                                                                dataType : 'json',
-                                                                contentType : "application/json; charset=utf-8"
-                                                            }).done(function(responseDataSubQuery7, textStatus, jqXHR8) {
-                                                                bFoundToken = false;
+                                                                    // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
+                                                                    var jqXHR8 = $.ajax({
+                                                                        type: 'GET',
+                                                                        url: turl,
+                                                                        crossDomain: true,
+                                                                        username: encodeURIComponent(appUser.username),
+                                                                        password: encodeURIComponent(appUser.password),
+                                                                        timeout: 600000,
+                                                                        dataType: 'json',
+                                                                        contentType: "application/json; charset=utf-8"
+                                                                    }).done(function (responseDataSubQuery7, textStatus, jqXHR8) {
+                                                                        bFoundToken = false;
 
-                                                                //check i the new result also contains a skiptoken - > if so keep loop running
-                                                                if (responseDataSubQuery7.d.__next) {
-                                                                    //    console.debug("found new one" & responseDataSubQuery.d.__next);
-                                                                    bFoundToken = true;
+                                                                        //check i the new result also contains a skiptoken - > if so keep loop running
+                                                                        if (responseDataSubQuery7.d.__next) {
+                                                                            //    console.debug("found new one" & responseDataSubQuery.d.__next);
+                                                                            bFoundToken = true;
+                                                                        } else {
+                                                                            bFoundToken = false;
+                                                                        }
+
+                                                                        //add new results to old response array
+                                                                        $.each(responseDataSubQuery7.d.results, function (index, value) {
+                                                                            responseData.d.results.push(value);
+                                                                        });
+
+                                                                        //console.debug("lenght after " + responseData.d.results.length);
+
+                                                                        //overwrite New Reponsedata for next loop
+                                                                        newResponseData = null;
+                                                                        newResponseData = responseDataSubQuery7;
+                                                                        turl = newResponseData.d.__next;
+                                                                        console.log(turl);
+
+                                                                        if (bFoundToken === true) {
+
+                                                                            console.log("9th attempt");
+
+                                                                            // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
+                                                                            var jqXHR9 = $.ajax({
+                                                                                type: 'GET',
+                                                                                url: turl,
+                                                                                crossDomain: true,
+                                                                                username: encodeURIComponent(appUser.username),
+                                                                                password: encodeURIComponent(appUser.password),
+                                                                                timeout: 600000,
+                                                                                dataType: 'json',
+                                                                                contentType: "application/json; charset=utf-8"
+                                                                            }).done(function (responseDataSubQuery8, textStatus, jqXHR9) {
+                                                                                bFoundToken = false;
+
+                                                                                //check i the new result also contains a skiptoken - > if so keep loop running
+                                                                                if (responseDataSubQuery8.d.__next) {
+                                                                                    //    console.debug("found new one" & responseDataSubQuery.d.__next);
+                                                                                    bFoundToken = true;
+                                                                                } else {
+                                                                                    bFoundToken = false;
+                                                                                }
+
+                                                                                //add new results to old response array
+                                                                                $.each(responseDataSubQuery8.d.results, function (index, value) {
+                                                                                    responseData.d.results.push(value);
+                                                                                });
+
+                                                                                //console.debug("lenght after " + responseData.d.results.length);
+
+                                                                                //overwrite New Reponsedata for next loop
+                                                                                newResponseData = null;
+                                                                                newResponseData = responseDataSubQuery8;
+                                                                                turl = newResponseData.d.__next;
+                                                                                console.log(turl);
+
+                                                                                if (bFoundToken === true) {
+
+
+                                                                                    console.log("10th attempt");
+
+                                                                                    // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
+                                                                                    var jqXHR10 = $.ajax({
+                                                                                        type: 'GET',
+                                                                                        url: turl,
+                                                                                        crossDomain: true,
+                                                                                        username: encodeURIComponent(appUser.username),
+                                                                                        password: encodeURIComponent(appUser.password),
+                                                                                        timeout: 600000,
+                                                                                        dataType: 'json',
+                                                                                        contentType: "application/json; charset=utf-8"
+                                                                                    }).done(function (responseDataSubQuery9, textStatus, jqXHR10) {
+                                                                                        bFoundToken = false;
+
+                                                                                        //check i the new result also contains a skiptoken - > if so keep loop running
+                                                                                        if (responseDataSubQuery9.d.__next) {
+                                                                                            //    console.debug("found new one" & responseDataSubQuery.d.__next);
+                                                                                            bFoundToken = true;
+                                                                                        } else {
+                                                                                            bFoundToken = false;
+                                                                                        }
+
+                                                                                        //add new results to old response array
+                                                                                        $.each(responseDataSubQuery9.d.results, function (index, value) {
+                                                                                            responseData.d.results.push(value);
+                                                                                        });
+
+                                                                                        //console.debug("lenght after " + responseData.d.results.length);
+
+                                                                                        //overwrite New Reponsedata for next loop
+                                                                                        newResponseData = null;
+                                                                                        newResponseData = responseDataSubQuery9;
+                                                                                        turl = newResponseData.d.__next;
+                                                                                        console.log(turl);
+
+                                                                                        if (bFoundToken === true) {
+
+                                                                                            console.log("11th attempt");
+
+                                                                                            // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
+                                                                                            var jqXHR11 = $.ajax({
+                                                                                                type: 'GET',
+                                                                                                url: turl,
+                                                                                                crossDomain: true,
+                                                                                                username: encodeURIComponent(appUser.username),
+                                                                                                password: encodeURIComponent(appUser.password),
+                                                                                                timeout: 600000,
+                                                                                                dataType: 'json',
+                                                                                                contentType: "application/json; charset=utf-8"
+                                                                                            }).done(function (responseDataSubQuery10, textStatus, jqXHR11) {
+                                                                                                bFoundToken = false;
+
+                                                                                                //check i the new result also contains a skiptoken - > if so keep loop running
+                                                                                                if (responseDataSubQuery10.d.__next) {
+                                                                                                    //    console.debug("found new one" & responseDataSubQuery.d.__next);
+                                                                                                    bFoundToken = true;
+                                                                                                } else {
+                                                                                                    bFoundToken = false;
+                                                                                                }
+
+                                                                                                //add new results to old response array
+                                                                                                $.each(responseDataSubQuery10.d.results, function (index, value) {
+                                                                                                    responseData.d.results.push(value);
+                                                                                                });
+
+                                                                                                //console.debug("lenght after " + responseData.d.results.length);
+
+                                                                                                //overwrite New Reponsedata for next loop
+                                                                                                newResponseData = null;
+                                                                                                newResponseData = responseDataSubQuery10;
+                                                                                                turl = newResponseData.d.__next;
+                                                                                                console.log(turl);
+
+                                                                                                if (bFoundToken === true) {
+
+
+                                                                                                    //add more or finally capsule it into a function
+
+
+
+
+                                                                                                } else {
+                                                                                                    callback(responseData, deleteItems);
+                                                                                                }
+
+                                                                                            });
+
+
+
+
+
+                                                                                        } else {
+                                                                                            callback(responseData, deleteItems);
+                                                                                        }
+
+                                                                                    });
+
+
+
+
+                                                                                } else {
+                                                                                    callback(responseData, deleteItems);
+                                                                                }
+
+                                                                            });
+
+
+
+
+
+
+                                                                        } else {
+                                                                            callback(responseData, deleteItems);
+
+                                                                        }
+
+                                                                    });
+
+
+
+
+
+
                                                                 } else {
-                                                                    bFoundToken = false;
-                                                                }
+                                                                    callback(responseData, deleteItems);
 
-                                                                //add new results to old response array
-                                                                $.each(responseDataSubQuery7.d.results, function(index, value) {
-                                                                    responseData.d.results.push(value);
-                                                                });
-
-                                                                //console.debug("lenght after " + responseData.d.results.length);
-
-                                                                //overwrite New Reponsedata for next loop
-                                                                newResponseData = null;
-                                                                newResponseData = responseDataSubQuery7;
-                                                                turl = newResponseData.d.__next;
-                                                        console.log(turl);
-                                                                
-                                                                if ( bFoundToken === true) {
-
- console.log("9th attempt");
-
-                                                            // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
-                                                            var jqXHR9 = $.ajax({
-                                                                type : 'GET',
-                                                                url : turl,
-                                                                crossDomain : true,
-                                                                username : encodeURIComponent(appUser.username),
-                                                                password : encodeURIComponent(appUser.password),
-                                                                timeout : 600000,
-                                                                dataType : 'json',
-                                                                contentType : "application/json; charset=utf-8"
-                                                            }).done(function(responseDataSubQuery8, textStatus, jqXHR9) {
-                                                                bFoundToken = false;
-
-                                                                //check i the new result also contains a skiptoken - > if so keep loop running
-                                                                if (responseDataSubQuery8.d.__next) {
-                                                                    //    console.debug("found new one" & responseDataSubQuery.d.__next);
-                                                                    bFoundToken = true;
-                                                                } else {
-                                                                    bFoundToken = false;
-                                                                }
-
-                                                                //add new results to old response array
-                                                                $.each(responseDataSubQuery8.d.results, function(index, value) {
-                                                                    responseData.d.results.push(value);
-                                                                });
-
-                                                                //console.debug("lenght after " + responseData.d.results.length);
-
-                                                                //overwrite New Reponsedata for next loop
-                                                                newResponseData = null;
-                                                                newResponseData = responseDataSubQuery8;
-                                                                turl = newResponseData.d.__next;
-                                                        console.log(turl);
-                                                                
-                                                                if ( bFoundToken === true) {
-
-
- console.log("10th attempt");
-
-                                                            // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
-                                                            var jqXHR10 = $.ajax({
-                                                                type : 'GET',
-                                                                url : turl,
-                                                                crossDomain : true,
-                                                                username : encodeURIComponent(appUser.username),
-                                                                password : encodeURIComponent(appUser.password),
-                                                                timeout : 600000,
-                                                                dataType : 'json',
-                                                                contentType : "application/json; charset=utf-8"
-                                                            }).done(function(responseDataSubQuery9, textStatus, jqXHR10) {
-                                                                bFoundToken = false;
-
-                                                                //check i the new result also contains a skiptoken - > if so keep loop running
-                                                                if (responseDataSubQuery9.d.__next) {
-                                                                    //    console.debug("found new one" & responseDataSubQuery.d.__next);
-                                                                    bFoundToken = true;
-                                                                } else {
-                                                                    bFoundToken = false;
-                                                                }
-
-                                                                //add new results to old response array
-                                                                $.each(responseDataSubQuery9.d.results, function(index, value) {
-                                                                    responseData.d.results.push(value);
-                                                                });
-
-                                                                //console.debug("lenght after " + responseData.d.results.length);
-
-                                                                //overwrite New Reponsedata for next loop
-                                                                newResponseData = null;
-                                                                newResponseData = responseDataSubQuery9;
-                                                                turl = newResponseData.d.__next;
-                                                        console.log(turl);
-                                                                
-                                                                if ( bFoundToken === true) {
-
- console.log("11th attempt");
-
-                                                            // request new results based on skiptoken parameter - > call them synchronous to stay in while loop
-                                                            var jqXHR11 = $.ajax({
-                                                                type : 'GET',
-                                                                url : turl,
-                                                                crossDomain : true,
-                                                                username : encodeURIComponent(appUser.username),
-                                                                password : encodeURIComponent(appUser.password),
-                                                                timeout : 600000,
-                                                                dataType : 'json',
-                                                                contentType : "application/json; charset=utf-8"
-                                                            }).done(function(responseDataSubQuery10, textStatus, jqXHR11) {
-                                                                bFoundToken = false;
-
-                                                                //check i the new result also contains a skiptoken - > if so keep loop running
-                                                                if (responseDataSubQuery10.d.__next) {
-                                                                    //    console.debug("found new one" & responseDataSubQuery.d.__next);
-                                                                    bFoundToken = true;
-                                                                } else {
-                                                                    bFoundToken = false;
-                                                                }
-
-                                                                //add new results to old response array
-                                                                $.each(responseDataSubQuery10.d.results, function(index, value) {
-                                                                    responseData.d.results.push(value);
-                                                                });
-
-                                                                //console.debug("lenght after " + responseData.d.results.length);
-
-                                                                //overwrite New Reponsedata for next loop
-                                                                newResponseData = null;
-                                                                newResponseData = responseDataSubQuery10;
-                                                                turl = newResponseData.d.__next;
-                                                        console.log(turl);
-                                                                
-                                                                if ( bFoundToken === true) {
-
-
-//add more or finally capsule it into a function
-
-
-
-
-                                                                } else {
-                                                                    callback(responseData);
-                                                                }
-
-                                                            });
-
-
-
-
-
-                                                                } else {
-                                                                    callback(responseData);
-                                                                }
-
-                                                            });
-
-
-
-
-                                                                } else {
-                                                                    callback(responseData);
-                                                                }
-
-                                                            });
-
-
-
-
-
-
-                                                                } else {
-                                                                    callback(responseData);
-                                                                }
-
-                                                            });
-
-
-
-
-
-
-                                                                } else {
-                                                                    callback(responseData);
                                                                 }
 
                                                             });
 
                                                         } else {
-                                                            callback(responseData);
+                                                            callback(responseData, deleteItems);
+
                                                         }
 
                                                     });
 
                                                 } else {
-                                                    callback(responseData);
+                                                    callback(responseData, deleteItems);
+
                                                 }
 
                                             });
 
                                         } else {
-                                            callback(responseData);
+                                            callback(responseData, deleteItems);
+
                                         }
 
                                     });
 
                                 } else {
-                                    callback(responseData);
+                                    callback(responseData, deleteItems);
+
                                 }
 
                             });
 
                         } else {
-                            callback(responseData);
+                            callback(responseData, deleteItems);
+
                         }
 
-                    }).fail(function(responseDataSubQuery, textStatus, errorThrown) {
+                    }).fail(function (responseDataSubQuery, textStatus, errorThrown) {
                         alert("error:" + textStatus + errorThrown);
                         console.debug(responseDataSubQuery, textStatus, errorThrown);
                         bFoundToken = false;
@@ -519,10 +541,10 @@ var SharePoint = {
                     });
 
                 } else {
-                    callback(responseData);
+                    callback(responseData, deleteItems);
                 }
 
-            }).fail(function(responseData, textStatus, errorThrown) {
+            }).fail(function (responseData, textStatus, errorThrown) {
                 console.warn(responseData, textStatus, errorThrown);
 
                 if (responseData && responseData.status && responseData.status === 500) {
@@ -551,30 +573,30 @@ var SharePoint = {
 };
 
 var Sync = persistence.define('Sync', {
-    syncType : "TEXT",
-    syncDate : "DATE",
-    userId : "INT"
+    syncType: "TEXT",
+    syncDate: "DATE",
+    userId: "INT"
 });
 
 Sync.index('syncType', {
-    unique : true
+    unique: true
 });
 
 var SyncModel = {
-    addSync : function(type) {
+    addSync: function (type) {
         var syncItem = {
-            syncType : (type) ? type : "ALL",
-            syncDate : new Date()
+            syncType: (type) ? type : "ALL",
+            syncDate: new Date()
         };
         console.log("Adding Synctype: " + type);
-        Sync.all().filter("syncType", "=", type).destroyAll(function() {
+        Sync.all().filter("syncType", "=", type).destroyAll(function () {
             persistence.add(new Sync(syncItem));
             persistence.flush();
         });
     },
 
-    getSyncDate : function(type, callback) {
-        Sync.all().filter("syncType", "=", type).limit(1).list(function(res) {
+    getSyncDate: function (type, callback) {
+        Sync.all().filter("syncType", "=", type).limit(1).list(function (res) {
             try {
                 var syncDate;
                 //console.log(res[0]);
@@ -589,8 +611,8 @@ var SyncModel = {
             }
         });
     },
-    getSyncDateYDM : function(type, callback) {
-        Sync.all().filter("syncType", "=", type).limit(1).list(function(res) {
+    getSyncDateYDM: function (type, callback) {
+        Sync.all().filter("syncType", "=", type).limit(1).list(function (res) {
             try {
                 var syncDate;
                 //console.log(res[0]);

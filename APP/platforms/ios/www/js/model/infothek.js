@@ -18,14 +18,36 @@ Infothek.index('nodeId', {
 
 var InfothekModel = {
 
-    syncInfothek: function () {
+    syncInfothek: function (syncAll) {
         $('body').trigger('sync-start');
         $('#msgInfothek').toggleClass('in');
 
-        SharePoint.sharePointRequest(INFOTHEK_LIST, InfothekModel.mapSharePointData);
+        if (syncAll) { //alles synchronisieren und alte Daten löschen
+            
+            SharePoint.sharePointRequest(INFOTHEK_LIST, InfothekModel.mapSharePointData);
+        }
+        else { // fast sync ohne löschen
+            //check last sync date by latest spModifiedDate
+            var queryLatestItem = Infothek.all().order("spModifiedDate", false).limit(1);
+
+            queryLatestItem.list(null, function (results) {
+                if (!results)
+                    SharePoint.sharePointRequest(INFOTHEK_LIST, InfothekModel.mapSharePointData);
+                else
+                    results.forEach(function (r) {
+                        var latestItem = r
+                        var latestDate = latestItem.spModifiedDate();
+
+                        console.log(utils.parseLocalDateToSharePointDate(latestDate));
+                        SharePoint.sharePointRequest(INFOTHEK_LIST, InfothekModel.mapSharePointData, true, utils.parseLocalDateToSharePointDate(latestDate));
+                    });
+            });
+        }
+
+
     },
 
-    mapSharePointData: function (data) {
+    mapSharePointData: function (data, DeleteItems) {
         //persistence.debug = true;
 
         //SharePoint Item Array
@@ -103,10 +125,7 @@ var InfothekModel = {
                                     value.spModifiedDate(utils.parseSharePointDate(spItem.Geändert));
 
                                 if (spItem.Pfad) {
-
                                     value.parentFolder(spItem.Pfad);
-
-
                                 }
                                 //  console.log("updated item: " + value._data.nodeId);
 
@@ -114,6 +133,7 @@ var InfothekModel = {
                             delete spItem;
                         } else//delete
                         {
+                            if (DeleteItems){
                             //  console.debug("lokales element wurde nicht mehr gefunden und wird gelöscht: ");
                             //console.debug(value._data.nodeId);
 
@@ -150,6 +170,7 @@ var InfothekModel = {
                             }
                             // remove entity from persistence layer
                             persistence.remove(value);
+                            }
                         }
                     });
                 }
@@ -166,6 +187,10 @@ var InfothekModel = {
                 });
                 delete lookupIDsSharePoint;
                 delete spItemAdd;
+
+                if (DeleteItems){
+                InfothekModel.downloadSharePointFiles();
+                 }
             });
         });
 
@@ -178,168 +203,169 @@ var InfothekModel = {
 
 
 
-    mapSharePointData2: function (data) {
-        //persistence.debug = true;
-        var spData = data.d || false;
-        //   Infothek.all().destroyAll(function (ele) {  // cant delete the whole list because of local path
+    // mapSharePointData2: function (data) {
+    //     //persistence.debug = true;
+    //     var spData = data.d || false;
+    //     //   Infothek.all().destroyAll(function (ele) {  // cant delete the whole list because of local path
 
-        //clear search index. its rebuild completly everytime items get added. we did not yet find a way to rebuild it partly
-        utils.emptySearchIndex("Infothek");
+    //     //clear search index. its rebuild completly everytime items get added. we did not yet find a way to rebuild it partly
+    //     utils.emptySearchIndex("Infothek");
 
-        //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to them on Sharepoint
-        var lookupIDsSharePoint = {};
-        var spItem;
+    //     //create lookup Array with all IDs from SharePoint. This is used to compare the Local Document IDs to them on Sharepoint
+    //     var lookupIDsSharePoint = {};
+    //     var spItem;
 
-        for (var i = 0, len = spData.results.length; i < len; i++) {
-            lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
+    //     for (var i = 0, len = spData.results.length; i < len; i++) {
+    //         lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
 
-            //overwrite Item for easier use
-            spItem = spData.results[i];
+    //         //overwrite Item for easier use
+    //         spItem = spData.results[i];
 
-            var newItem = {
-                nodeId: spItem.ID,
-                title: spItem.Name
-            };
+    //         var newItem = {
+    //             nodeId: spItem.ID,
+    //             title: spItem.Name
+    //         };
 
-            newItem.isFolder = (spItem.Inhaltstyp === "Ordner") ? true : false;
+    //         newItem.isFolder = (spItem.Inhaltstyp === "Ordner") ? true : false;
 
-            if (spItem.Pfad) {
-                var tmpPath = (spItem.Pfad).split("/").slice(1);
-                if (tmpPath.length) {
-                    newItem.parentFolder = tmpPath[tmpPath.length - 1];
-                }
-            }
+    //         if (spItem.Pfad) {
+    //             var tmpPath = (spItem.Pfad).split("/").slice(1);
+    //             if (tmpPath.length) {
+    //                 newItem.parentFolder = tmpPath[tmpPath.length - 1];
+    //             }
+    //         }
 
-            if (!newItem.isFolder) {
-                newItem.path = spItem.Pfad + "/" + spItem.Name;
-                if (spItem.Geändert) {
-                    newItem.spModifiedDate = utils.parseSharePointDate(spItem.Geändert);
-                }
+    //         if (!newItem.isFolder) {
+    //             newItem.path = spItem.Pfad + "/" + spItem.Name;
+    //             if (spItem.Geändert) {
+    //                 newItem.spModifiedDate = utils.parseSharePointDate(spItem.Geändert);
+    //             }
 
-            }
+    //         }
 
-            persistence.add(new Infothek(newItem));
+    //         persistence.add(new Infothek(newItem));
 
-            //filter Database based on ID of SP Item
-            Infothek.findBy("nodeId", spItem.ID, function (item) {
-                //If item not found add new, else update
-                if (!item) {
+    //         //filter Database based on ID of SP Item
+    //         Infothek.findBy("nodeId", spItem.ID, function (item) {
+    //             //If item not found add new, else update
+    //             if (!item) {
 
-                } else {//update Item
+    //             } else {//update Item
 
-                    //because of threading and instancing we now need to get the SP Item back
-                    //=> Grep gets data based on the function where the ID matches our current DB ID
-                    var resultSPList = $.grep(spData.results, function (e) {
-                        return e.ID === item._data.nodeId;
-                    });
-                    //&& utils.parseSharePointDate(e.Geändert) > item._data.spModifiedDate
+    //                 //because of threading and instancing we now need to get the SP Item back
+    //                 //=> Grep gets data based on the function where the ID matches our current DB ID
+    //                 var resultSPList = $.grep(spData.results, function (e) {
+    //                     return e.ID === item._data.nodeId;
+    //                 });
+    //                 //&& utils.parseSharePointDate(e.Geändert) > item._data.spModifiedDate
 
-                    //Grep gets a result set. but all we need is one item. we get the first (this should also be the only result!!)
-                    var resultSP = resultSPList[0];
+    //                 //Grep gets a result set. but all we need is one item. we get the first (this should also be the only result!!)
+    //                 var resultSP = resultSPList[0];
 
-                    if (resultSP) {
-                        //   console.log("Updating Item");
-                        if (resultSP.Name)
-                            item.title(resultSP.Name);
-                        else
-                            item.title("");
+    //                 if (resultSP) {
+    //                     //   console.log("Updating Item");
+    //                     if (resultSP.Name)
+    //                         item.title(resultSP.Name);
+    //                     else
+    //                         item.title("");
 
-                        if (resultSP.Pfad)
-                            item.path(resultSP.Pfad + "/" + resultSP.Name);
-                        else
-                            item.path("");
+    //                     if (resultSP.Pfad)
+    //                         item.path(resultSP.Pfad + "/" + resultSP.Name);
+    //                     else
+    //                         item.path("");
 
-                        if (resultSP.Geändert)
-                            item.spModifiedDate(utils.parseSharePointDate(resultSP.Geändert));
+    //                     if (resultSP.Geändert)
+    //                         item.spModifiedDate(utils.parseSharePointDate(resultSP.Geändert));
 
-                        delete resultSPList;
-                        delete resultSP;
-                    }
+    //                     delete resultSPList;
+    //                     delete resultSP;
+    //                 }
 
-                }
+    //             }
 
-            });
-        }
+    //         });
+    //     }
 
-        console.log("done overwriting");
+    //     console.log("done overwriting");
 
-        //upate db to reflect the deleted items
-        persistence.flush(function () {
-            //check wheter files need to be deleted
-            //get all local files and check wheter its in the collection of the new SP files
-            Infothek.all().list(null, function (results) {
-                if (results.length) {
-                    $.each(results, function (index, value) {
-                        //check if an object with the current ID exists. If Not delete it
-                        if (!lookupIDsSharePoint[value._data.nodeId]) {
-                            console.debug("lokales element wurde nicht mehr gefunden und wird gelöscht: ");
-                            console.debug(value);
+    //     //upate db to reflect the deleted items
+    //     persistence.flush(function () {
+    //         //check wheter files need to be deleted
+    //         //get all local files and check wheter its in the collection of the new SP files
+    //         Infothek.all().list(null, function (results) {
+    //             if (results.length) {
+    //                 $.each(results, function (index, value) {
+    //                     //check if an object with the current ID exists. If Not delete it
+    //                     if (!lookupIDsSharePoint[value._data.nodeId]) {
+    //                         console.debug("lokales element wurde nicht mehr gefunden und wird gelöscht: ");
+    //                         console.debug(value);
 
-                            // delete local file from filesystem
-                            if (value.localPath) {
+    //                         // delete local file from filesystem
+    //                         if (value.localPath) {
 
-                                window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+    //                             window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
-                                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
-                                    localFileSystemRoot = fileSystem.root.fullPath;
+    //                             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
+    //                                 localFileSystemRoot = fileSystem.root.fullPath;
 
-                                    try {
-                                        //request filesystem to delete files if not found on SP anymore
+    //                                 try {
+    //                                     //request filesystem to delete files if not found on SP anymore
 
-                                        window.resolveLocalFileSystemURI(localFileSystemRoot + "/Infothek/" + value.localPath, onSuccess, onError);
+    //                                     window.resolveLocalFileSystemURI(localFileSystemRoot + "/Infothek/" + value.localPath, onSuccess, onError);
 
-                                        function onSuccess(fileEntry) {
-                                            fileEntry.remove();
-                                            console.debug("deleted element");
+    //                                     function onSuccess(fileEntry) {
+    //                                         fileEntry.remove();
+    //                                         console.debug("deleted element");
 
-                                        }
+    //                                     }
 
-                                        function onError() {
-                                            console.log('An error (on error) occured with the filesystem object');
-                                            //  console.log(value);
-                                            //alert("Could not create Filesystem. No Files will be deleted");
-                                        }
+    //                                     function onError() {
+    //                                         console.log('An error (on error) occured with the filesystem object');
+    //                                         //  console.log(value);
+    //                                         //alert("Could not create Filesystem. No Files will be deleted");
+    //                                     }
 
-                                    } catch (e) {
-                                        console.log('An error (exception) occured with the filesystem object');
-                                        //        console.log(value);
-                                        console.log(e);
+    //                                 } catch (e) {
+    //                                     console.log('An error (exception) occured with the filesystem object');
+    //                                     //        console.log(value);
+    //                                     console.log(e);
 
-                                    }
-                                });
+    //                                 }
+    //                             });
 
-                            }
+    //                         }
 
-                            // remove entity from persistence layer
-                            persistence.remove(value);
+    //                         // remove entity from persistence layer
+    //                         persistence.remove(value);
 
-                        }
-                    });
-                }
+    //                     }
+    //                 });
+    //             }
 
-                console.log("done overwriting");
+    //             console.log("done overwriting");
 
-                persistence.flush(function () {
-                    console.log("done flushing");
-                    SyncModel.addSync(INFOTHEK_LIST);
-                    $('body').trigger('sync-end');
-                    $('body').trigger('infothek-sync-ready');
-                    $('#msgInfothek').removeClass('in');
+    //             persistence.flush(function () {
+    //                 console.log("done flushing");
+    //                 SyncModel.addSync(INFOTHEK_LIST);
+    //                 $('body').trigger('sync-end');
+    //                 $('body').trigger('infothek-sync-ready');
+    //                 $('#msgInfothek').removeClass('in');
 
-                });
-                delete spData;
-                delete lookupIDsSharePoint;
-                delete spItem;
-            });
-        });
+    //             });
+    //             delete spData;
+    //             delete lookupIDsSharePoint;
+    //             delete spItem;
+    //         });
+    //     });
 
 
 
-    },
+    // },
 
 
     downloadSharePointFiles: function () {
         //search only files in infothek
+      
         Infothek.all().filter("isFolder", "=", false).list(null, function (results) {
             if (results.length) {
                 var queueProgress = {

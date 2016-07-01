@@ -16,10 +16,11 @@ var DOWNLOADS_CONTAINER = "#downloads-container",
 
                 switch (downloadType) {
                     case "Infothek":
-                        InfothekModel.downloadSharePointFiles();
+                        var loadAllWithDeleteAndDocuments = true;
+                        InfothekModel.syncInfothek(loadAllWithDeleteAndDocuments);
                         break;
                     case "Products":
-                        documentsModel.downloadSharePointFiles();
+                        documentsModel.sharePointDocuments();
                         break
                     default:
                         DownloadModal.hide();
@@ -66,7 +67,7 @@ var DOWNLOADS_CONTAINER = "#downloads-container",
             $('.close', elem).addClass('hidden');
             downloadMessage.addClass('hidden');
             progressBarContainer.addClass("progress-striped");
-         //   closeBtn.attr("disabled", "disabled");
+            //   closeBtn.attr("disabled", "disabled");
             updateProgressBar(0);
             destroyEventHandlers();
         }
@@ -86,7 +87,7 @@ var DOWNLOADS_CONTAINER = "#downloads-container",
             $('.badge-download-fail', downloadMessage).text(data.qFail);
             downloadMessage.removeClass("hidden");
             progressBarContainer.removeClass("progress-striped");
-         //   closeBtn.removeAttr("disabled");
+            //   closeBtn.removeAttr("disabled");
         }
 
         function initEventsHandlers() {

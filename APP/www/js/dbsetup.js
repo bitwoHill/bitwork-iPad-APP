@@ -249,7 +249,7 @@ persistence.schemaSync(function() {
                 $('body').off('documents-sync-ready sync-error', next);
                 next();
             });
-            documentsModel.sharePointDocuments();
+            documentsModel.syncSharePointDocumentsWithoutDelete();
         });
 
         syncQueue.queue("sync-queue", function(next) {

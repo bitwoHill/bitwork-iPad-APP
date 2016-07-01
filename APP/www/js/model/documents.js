@@ -3,68 +3,93 @@ var DOCUMENTS_LIST = "Dokumente", DOCUMENTTYPES_LIST = "Dokumenttypen", localFil
 
 //in this case the foreignkeys are Text, because there can be a relation to several items
 var Documents = persistence.define('Documents', {
-    documentId : "INT",
-    documentname : "TEXT",
-    documenttypeFK : "INT",
-    path : "TEXT",
-    productgroupFK : "TEXT",
-    productfamilyFK : "TEXT",
-    productplatformFK : "TEXT",
-    productFK : "TEXT",
-    equipmentFK : "TEXT",
-    spModifiedDate : "DATE",
-    localPath : "TEXT",
-    localModifiedDate : "DATE"
+    documentId: "INT",
+    documentname: "TEXT",
+    documenttypeFK: "INT",
+    path: "TEXT",
+    productgroupFK: "TEXT",
+    productfamilyFK: "TEXT",
+    productplatformFK: "TEXT",
+    productFK: "TEXT",
+    equipmentFK: "TEXT",
+    spModifiedDate: "DATE",
+    localPath: "TEXT",
+    localModifiedDate: "DATE"
 });
 
 Documents.index(['documentId'], {
-    unique : true
+    unique: true
 });
 
 //Documenttypes
 var Documenttypes = persistence.define('Documenttypes', {
-    documenttypeId : "INT",
-    name : "TEXT"
+    documenttypeId: "INT",
+    name: "TEXT"
 });
 Documenttypes.index(['documenttypeId'], {
-    unique : true
+    unique: true
 });
 
 //create mock data for Documents and Documenttypes
 var documentsModel = {
-    sharePointDocuments : function() {
+    sharePointDocuments: function () {
         //get documenttypes
         //  $('body').trigger('sync-start');
         $('#msgDocuments').toggleClass('in');
 
         SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes);
     },
+
+    syncSharePointDocumentsWithoutDelete: function () {
+        $('#msgDocuments').toggleClass('in');
+        
+        SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes, true);
+    },
+
     //maps SharePoint data to current model
-    mapSharePointDataDocumentTypes : function(data) {
+    mapSharePointDataDocumentTypes: function (data, syncAll) {
         var spData = data.d;
-        Documenttypes.all().destroyAll(function(ele) {// cant delete the whole list because of local path
+        Documenttypes.all().destroyAll(function (ele) {// cant delete the whole list because of local path
 
             if (spData && spData.results.length) {
-                $.each(spData.results, function(index, value) {
+                $.each(spData.results, function (index, value) {
                     var documenttypeItem = {
-                        documenttypeId : value.ID,
-                        name : (value.Dokumenttyp) ? value.Dokumenttyp : ""
+                        documenttypeId: value.ID,
+                        name: (value.Dokumenttyp) ? value.Dokumenttyp : ""
                     };
 
                     persistence.add(new Documenttypes(documenttypeItem));
 
                 });
 
-                persistence.flush(function() {
+                persistence.flush(function () {
                     SyncModel.addSync(DOCUMENTTYPES_LIST);
                     //get documents
+                    if (syncAll) //alles synchronisieren und alte Daten löschen
+                        SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
+                    else {
+                        var queryLatestItem = Documents.all().order("spModifiedDate", false).limit(1);
 
-                    SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData,true);
+                        queryLatestItem.list(null, function (results) {
+                            if (!results)
+                        SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
+                            else
+                                results.forEach(function (r) {
+                                    var latestItem = r
+                                    var latestDate = latestItem.spModifiedDate();
+
+                                    console.log("Document latest Date:");
+console.log(latestDate);
+                                    //  console.log(utils.parseLocalDateToSharePointDate(latestDate));
+                                    SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true, utils.parseLocalDateToSharePointDate(latestDate));
+                                });
+                        });
+                    }
                 });
 
             } else {
                 //get documents
-                SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData,true);
+                SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
             }
 
         });
@@ -72,7 +97,7 @@ var documentsModel = {
 
     },
     //maps SharePoint data to current model
-    mapSharePointData : function(data) {
+    mapSharePointData: function (data,DeleteItems) {
         //SharePoint Item Array
         var spData = data.d;
         //console.log(spData);
@@ -81,128 +106,127 @@ var documentsModel = {
         //One specific SharePoint Item used for Adding to local DB
         var spItemAdd;
 
-      
+
         //For each SharePoint Resultitem- get all IDs which still exists on SP in order to delete local Documents not in this list.
         for (var i = 0, len = spData.results.length; i < len; i++) {
 
             try {
                 //add element to Array of SPItems Indexed by ID
-            
+
                 spItemAdd = spData.results[i];
                 lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
-            
+
                 //Get Multilookup IDS for Productgroups,platforms,families and product and equipment
 
-             if (spItemAdd) {
-               
+                if (spItemAdd) {
 
-                 var productgroupFKs = "";
-                 if (spItemAdd.Produktgruppe) {
-            
-                    if  (spItemAdd.Produktgruppe.results.length){
-if  (spItemAdd.Produktgruppe.results.length > 0){
-                     for (var i2 = 0, len2 = spItemAdd.Produktgruppe.results.length; i2 < len2; i2++) {
-                         productgroupFKs += "_" + spItemAdd.Produktgruppe.results[i2].ID + ";";
-                     }
-                 }
-                     }
-                 }
-                
-                 var productfamilieFKs = "";
-                 if (spItemAdd.Produktfamilie ) {
-                     if  (spItemAdd.Produktfamilie.results.length){
-                    if  (spItemAdd.Produktfamilie.results.length > 0)
-                    {
-                     for (var i3 = 0, len3 = spItemAdd.Produktfamilie.results.length; i3 < len3; i3++) {
-                         productfamilieFKs += "_" + spItemAdd.Produktfamilie.results[i3].ID + ";";
-                     }
-                     }
-                     }
-                 }
-                   
-                 var productplattformFKs = "";
-                 if (spItemAdd.Produktplattform  ) {
-                      if (spItemAdd.Produktplattform.results.length){
-                    if (spItemAdd.Produktplattform.results.length > 0){
-                     for (var i4 = 0, len4 = spItemAdd.Produktplattform.results.length; i4 < len4; i4++) {
-                         productplattformFKs += "_" + spItemAdd.Produktplattform.results[i4].ID + ";";
-                     }
-                     }
-                     }
-                 }
-                
-                 var productFKs = "";
-                 if (spItemAdd.Produkt  ) {
-                       if( spItemAdd.Produkt.results.length){
-                    if( spItemAdd.Produkt.results.length > 0) {
-                     for (var i5 = 0, len5 = spItemAdd.Produkt.results.length; i5 < len5; i5++) {
-                         productFKs += "_" + spItemAdd.Produkt.results[i5].ID + ";";
-                     }
-                     }
-                     }
-                 }
-               
-                 var equipmentFKs = "";
-                 if (spItemAdd.Equipment ) {
-                          if( spItemAdd.Equipment.results.length ){
-                    if( spItemAdd.Equipment.results.length > 0){
-                     for (var i6 = 0, len6 = spItemAdd.Equipment.results.length; i6 < len6; i6++) {
-                         equipmentFKs += "_" + spItemAdd.Equipment.results[i6].ID + ";";
-                     }
-                     }
-                     }
-                 }
 
-             }
+                    var productgroupFKs = "";
+                    if (spItemAdd.Produktgruppe) {
 
-      //     console.log(productgroupFKs);
-      //     console.log(productFKs);
-      //     console.log(productfamilieFKs);
-      //     console.log(equipmentFKs);
-      //     console.log(productplattformFKs);
+                        if (spItemAdd.Produktgruppe.results.length) {
+                            if (spItemAdd.Produktgruppe.results.length > 0) {
+                                for (var i2 = 0, len2 = spItemAdd.Produktgruppe.results.length; i2 < len2; i2++) {
+                                    productgroupFKs += "_" + spItemAdd.Produktgruppe.results[i2].ID + ";";
+                                }
+                            }
+                        }
+                    }
 
-            //add all items => to create new items
-            var doc = {
-                documentId : spItemAdd.ID,
-                documentname : (spItemAdd.Name) ? spItemAdd.Name : "",
-                documenttypeFK : (spItemAdd.DokumenttypId) ? spItemAdd.DokumenttypId : "",
-                path : (spItemAdd.Pfad) ? spItemAdd.Pfad + "/" + spItemAdd.Name : "",
-                productgroupFK : (productgroupFKs) ? productgroupFKs : "",
-                productfamilyFK : (productfamilieFKs) ? productfamilieFKs : "",
-                productplatformFK : (productplattformFKs) ? productplattformFKs : "",
-                productFK : (productFKs) ? productFKs : "",
-                equipmentFK : (equipmentFKs) ? equipmentFKs : ""
-            };
-            //Parse modified date
+                    var productfamilieFKs = "";
+                    if (spItemAdd.Produktfamilie) {
+                        if (spItemAdd.Produktfamilie.results.length) {
+                            if (spItemAdd.Produktfamilie.results.length > 0) {
+                                for (var i3 = 0, len3 = spItemAdd.Produktfamilie.results.length; i3 < len3; i3++) {
+                                    productfamilieFKs += "_" + spItemAdd.Produktfamilie.results[i3].ID + ";";
+                                }
+                            }
+                        }
+                    }
 
-            if (spItemAdd.Geändert) {
-                doc.spModifiedDate = utils.parseSharePointDate(spItemAdd.Geändert);
-            }
-         
-            //add to persistence instance
-            persistence.add(new Documents(doc));
+                    var productplattformFKs = "";
+                    if (spItemAdd.Produktplattform) {
+                        if (spItemAdd.Produktplattform.results.length) {
+                            if (spItemAdd.Produktplattform.results.length > 0) {
+                                for (var i4 = 0, len4 = spItemAdd.Produktplattform.results.length; i4 < len4; i4++) {
+                                    productplattformFKs += "_" + spItemAdd.Produktplattform.results[i4].ID + ";";
+                                }
+                            }
+                        }
+                    }
 
-           // console.log("adding " + spItemAdd.ID);
+                    var productFKs = "";
+                    if (spItemAdd.Produkt) {
+                        if (spItemAdd.Produkt.results.length) {
+                            if (spItemAdd.Produkt.results.length > 0) {
+                                for (var i5 = 0, len5 = spItemAdd.Produkt.results.length; i5 < len5; i5++) {
+                                    productFKs += "_" + spItemAdd.Produkt.results[i5].ID + ";";
+                                }
+                            }
+                        }
+                    }
+
+                    var equipmentFKs = "";
+                    if (spItemAdd.Equipment) {
+                        if (spItemAdd.Equipment.results.length) {
+                            if (spItemAdd.Equipment.results.length > 0) {
+                                for (var i6 = 0, len6 = spItemAdd.Equipment.results.length; i6 < len6; i6++) {
+                                    equipmentFKs += "_" + spItemAdd.Equipment.results[i6].ID + ";";
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                //     console.log(productgroupFKs);
+                //     console.log(productFKs);
+                //     console.log(productfamilieFKs);
+                //     console.log(equipmentFKs);
+                //     console.log(productplattformFKs);
+
+                //add all items => to create new items
+                var doc = {
+                    documentId: spItemAdd.ID,
+                    documentname: (spItemAdd.Name) ? spItemAdd.Name : "",
+                    documenttypeFK: (spItemAdd.DokumenttypId) ? spItemAdd.DokumenttypId : "",
+                    path: (spItemAdd.Pfad) ? spItemAdd.Pfad + "/" + spItemAdd.Name : "",
+                    productgroupFK: (productgroupFKs) ? productgroupFKs : "",
+                    productfamilyFK: (productfamilieFKs) ? productfamilieFKs : "",
+                    productplatformFK: (productplattformFKs) ? productplattformFKs : "",
+                    productFK: (productFKs) ? productFKs : "",
+                    equipmentFK: (equipmentFKs) ? equipmentFKs : ""
+                };
+                //Parse modified date
+
+                if (spItemAdd.Geändert) {
+                    doc.spModifiedDate = utils.parseSharePointDate(spItemAdd.Geändert);
+                }
+
+                //add to persistence instance
+                persistence.add(new Documents(doc));
+
+                // console.log("adding " + spItemAdd.ID);
 
             } catch (e) {
 
                 console.log(e);
-                   console.log(e.message);
+                console.log(e.message);
                 //alert("error");
             }
-        
-       }
+
+        }
 
         //persist new items to DB
-        persistence.flush(function() {
+        persistence.flush(function () {
 
             console.log("done adding new");
 
             //iterate all local files. If Document in LookupID List update, else delete by SP Item
-            Documents.all().list(null, function(results) {
+            Documents.all().list(null, function (results) {
                 if (results.length) {
 
-                    $.each(results, function(index, value) {
+                    $.each(results, function (index, value) {
 
                         //check if ID still exists on SharePoint
                         if (lookupIDsSharePoint[value._data.documentId]) {
@@ -281,18 +305,19 @@ if  (spItemAdd.Produktgruppe.results.length > 0){
                                 if (spItem.Geändert)
                                     value.spModifiedDate(utils.parseSharePointDate(spItem.Geändert));
 
-                                //     console.log("updated item: " + value._data.documentId);
+                                    console.log("updated item: " + value._data.documentId);
 
                             }
                             delete spItem;
                         } else//delete
                         {
+                              if (DeleteItems){
                             // console.debug("lokales element wurde nicht mehr gefunden: ");
                             //  console.debug(value._data.documentId);
                             // delete local file from filesystem
                             if (value.localPath) {
                                 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-                                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
                                     localFileSystemRoot = fileSystem.root.fullPath;
                                     try {
                                         //request filesystem to delete files if not found on SP anymore
@@ -318,12 +343,13 @@ if  (spItemAdd.Produktgruppe.results.length > 0){
 
                             // remove entity from persistence layer
                             persistence.remove(value);
+                              }
                         }
                     });
                 }
                 console.log("done overwriting");
 
-                persistence.flush(function() {
+                persistence.flush(function () {
                     console.log("done flushing");
 
                     SyncModel.addSync(DOCUMENTS_LIST);
@@ -333,28 +359,32 @@ if  (spItemAdd.Produktgruppe.results.length > 0){
                 });
                 delete lookupIDsSharePoint;
                 delete spItemAdd;
+
+                 if (DeleteItems){
+                documentsModel.downloadSharePointFiles();
+                 }
             });
         });
 
     },
 
-    downloadSharePointFiles : function() {
-        Documents.all().list(null, function(results) {
+    downloadSharePointFiles: function () {
+        Documents.all().list(null, function (results) {
             if (results.length) {
                 var queueProgress = {
-                    qLength : results.length,
-                    qIndex : 0,
-                    qSuccess : 0,
-                    qFail : 0
+                    qLength: results.length,
+                    qIndex: 0,
+                    qSuccess: 0,
+                    qFail: 0
                 };
 
                 $('body').trigger('download-queue-started', queueProgress);
 
-                $.each(results, function(index, value) {
+                $.each(results, function (index, value) {
                     var data = value._data, downloadData = {
-                        folderName : "Dokumente",
-                        fileName : data.documentname,
-                        path : data.path
+                        folderName: "Dokumente",
+                        fileName: data.documentname,
+                        path: data.path
                     };
                     //check if the file needs to be downloaed (if no local modified date exists or the spmod date is newer then local
 
@@ -379,7 +409,7 @@ if  (spItemAdd.Produktgruppe.results.length > 0){
                     }
 
                     //end if download necessary
-                    $.downloadQueue(downloadData).done(function(entrie) {
+                    $.downloadQueue(downloadData).done(function (entrie) {
                         queueProgress.qSuccess++;
 
                         results[index].localPath(entrie.name);
@@ -397,10 +427,10 @@ if  (spItemAdd.Produktgruppe.results.length > 0){
                         }
 
                         persistence.flush();
-                    }).fail(function(entrie) {
+                    }).fail(function (entrie) {
                         queueProgress.qFail++;
                         //console.log("cnt f:" + index);
-                    }).always(function() {
+                    }).always(function () {
                         queueProgress.qIndex = index + 1;
                         if (queueProgress.qIndex === queueProgress.qLength) {
                             $('body').trigger('download-queue-ended', queueProgress);
@@ -413,22 +443,22 @@ if  (spItemAdd.Produktgruppe.results.length > 0){
             } else {
 
                 $('body').trigger('download-queue-ended', {
-                    qLength : 1,
-                    qIndex : 1,
-                    qSuccess : 0,
-                    qFail : 0
+                    qLength: 1,
+                    qIndex: 1,
+                    qSuccess: 0,
+                    qFail: 0
                 });
             }
         });
     },
 
-    searchDocuments : function(key) {
+    searchDocuments: function (key) {
         var DocumentsSearch = $.Deferred();
         key = "%" + key.replace("*", "") + "%";
         key = key.replace(/ /g, '%');
         //replace changes only first instance . thats why the global modifier "g" of a regular expression was used. find all whitepaces and change to %
 
-        Documents.all().filter("documentname", "LIKE", key).order("documentname", true, false).list(function(res) {
+        Documents.all().filter("documentname", "LIKE", key).order("documentname", true, false).list(function (res) {
             DocumentsSearch.resolve(res);
         });
 

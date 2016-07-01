@@ -611,7 +611,7 @@ if (!OtherProductPar) {
                 if (networkState != Connection.NONE) {
                     productoptionsModel.sharePointProductOptions();
 
-                    documentsModel.sharePointDocuments();
+                    documentsModel.syncSharePointDocumentsWithoutDelete();
                 } else {
                     alert("Sie sind nicht mit dem Internet verbunden. Der Vorgang wird abgebrochen.");
                 }
