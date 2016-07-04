@@ -43,6 +43,7 @@ Contacts.index('contactId', {
     unique: true
 });
 //search indexed fields
+
 Contacts.textIndex('name');
 Contacts.textIndex('forename');
 Contacts.textIndex('department');
@@ -310,7 +311,7 @@ var ContactsModel = {
         console.log("DataLength: " + spData.results.length);
         // Contacts.all().destroyAll(function(ele) {
         //     console.log("Deleted Contacts list");
-        utils.emptySearchIndex("Contacts");
+        //utils.emptySearchIndex("Contacts");
         console.log("Deleted Contacts Search Index list");
         if (spData && spData.results.length) {
 

@@ -32,7 +32,7 @@ var NewsModel = {
         //One specific SharePoint Item used for Adding to local DB
         var spItemAdd;
         //Suchindex leeren
-        utils.emptySearchIndex("News");
+       // utils.emptySearchIndex("News");
 
         //For each SharePoint Resultitem- get all IDs which still exists on SP in order to delete local Documents not in this list.
         for (var i = 0, len = spData.results.length; i < len; i++) {

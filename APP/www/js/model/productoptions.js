@@ -32,7 +32,7 @@ var productoptionsModel = {
         var lookupIDsSharePoint = {};
         //One specific SharePoint Item used for Adding to local DB
         //Suchindex leeren
-        utils.emptySearchIndex("ProductOptions");
+       // utils.emptySearchIndex("ProductOptions");
 
         if (spData && spData.results.length) {
             $.each(spData.results, function (index, value) {

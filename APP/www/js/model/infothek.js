@@ -63,7 +63,7 @@ var InfothekModel = {
         var spItemAdd;
 
         //clear search index. its rebuild completly everytime items get added. we did not yet find a way to rebuild it partly
-        utils.emptySearchIndex("Infothek");
+        //utils.emptySearchIndex("Infothek");
 
 
         //For each SharePoint Resultitem- get all IDs which still exists on SP in order to delete local Documents not in this list.
