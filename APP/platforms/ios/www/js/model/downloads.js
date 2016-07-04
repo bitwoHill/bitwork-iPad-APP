@@ -109,7 +109,7 @@ var fileURL = fileEntry.toURL();
                                 ft.download(uri, fileURL, function(entry) 
                                 {
 
-                                    console.debug("Download success!" + entry.toURL());
+                                  //  console.debug("Download success!" + entry.toURL());
 
                                     //Set donotbackup Attribute for iCloud. This is needed by Apple
 

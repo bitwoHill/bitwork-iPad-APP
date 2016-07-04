@@ -21,14 +21,14 @@ var app = {
     initialize: function () {
         this.bindEvents();
         console.log("intitialized");
-       
+
     },
-     SetStatusbar: function(bolShow) {  
-  //     if (parseFloat(device.version) >= 7.0) {
-  //  console.log("webview setstatusbar " + bolShow);
-//    StatusBar.overlaysWebView(bolShow);
-//}
-;
+    SetStatusbar: function (bolShow) {
+        //     if (parseFloat(device.version) >= 7.0) {
+        //  console.log("webview setstatusbar " + bolShow);
+        //    StatusBar.overlaysWebView(bolShow);
+        //}
+        ;
 
     },
     // Bind Event Listeners
@@ -39,7 +39,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     setFolderMetadata: function () {
-       
+
         var onSetMetadataWin = function () {
             console.log("success setting metadata com.apple.MobileBackup");
         };
@@ -47,7 +47,7 @@ var app = {
             console.log("error setting metadata com.apple.MobileBackup");
         };
         var onGetDirectoryWin = function (parent) {
-             console.log('folder  open: ' + parent.toURL());
+            console.log('folder  open: ' + parent.toURL());
 
             parent.setMetadata(onSetMetadataWin, onSetMetadataFail, { "com.apple.MobileBackup": 1 });
         };
@@ -55,11 +55,11 @@ var app = {
             console.log("error getting dir");
         };
         var onFSWin = function (fileSystem) {
-             console.log('file system open: ' + fileSystem.name);
+            console.log('file system open: ' + fileSystem.name);
 
             fileSystem.root.getDirectory("Dokumente", { create: true, exclusive: false }, onGetDirectoryWin, onGetDirectoryFail);
             fileSystem.root.getDirectory("Infothek", { create: true, exclusive: false }, onGetDirectoryWin, onGetDirectoryFail);
-      window.open("LoginPage.html", "_self");
+            window.open("LoginPage.html", "_self");
         };
         var onFSFail = function (evt) {
             console.log(evt.target.error.code);
@@ -73,18 +73,18 @@ var app = {
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
         console.debug("Device Ready");
-  app.setFolderMetadata();
+        app.setFolderMetadata();
 
         if (parseFloat(device.version) >= 7.0) {
             console.log("webview true");
-       StatusBar.overlaysWebView(true);    
-   }
+            StatusBar.overlaysWebView(true);
+        }
 
-   // window.open("LoginPage.html", "_self");
+        // window.open("LoginPage.html", "_self");
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-          console.log('Received Event: ' + id);
+        console.log('Received Event: ' + id);
         var parentElement = document.getElementById(id);
 
         if (parentElement) {
@@ -95,7 +95,7 @@ var app = {
             receivedElement.setAttribute('style', 'display:block;');
         }
 
-      
+
     },
     onContactSaveSuccess: function (contract) {
         console.log("Save success");
