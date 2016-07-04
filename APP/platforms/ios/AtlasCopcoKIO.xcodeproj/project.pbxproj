@@ -24,9 +24,6 @@
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
-		3047A5121AB8059700498E2A /* build-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A50F1AB8059700498E2A /* build-debug.xcconfig */; };
-		3047A5131AB8059700498E2A /* build-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5101AB8059700498E2A /* build-release.xcconfig */; };
-		3047A5141AB8059700498E2A /* build.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5111AB8059700498E2A /* build.xcconfig */; };
 		3717DCD543DA4CA3A86680B0 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FADBA4F8D4F73951F3C4E /* CDVFileTransfer.m */; };
 		3AF59120F63E43C79D256275 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF116A8D1C74D5A817FCB59 /* CDVLocalFilesystem.m */; };
 		42ED59A2259549E68EB13181 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E183DDB60F42CB9DDD91E0 /* CDVJpegHeaderWriter.m */; };
@@ -391,7 +388,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 510;
+				LastUpgradeCheck = 0730;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 9K658VBP6G;
@@ -436,10 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
-				3047A5131AB8059700498E2A /* build-release.xcconfig in Resources */,
-				3047A5141AB8059700498E2A /* build.xcconfig in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
-				3047A5121AB8059700498E2A /* build-debug.xcconfig in Resources */,
 				7B4070BF0F644FEF93D3E0E0 /* CDVCapture.bundle in Resources */,
 				45243251D712439AAED897A5 /* CDVNotification.bundle in Resources */,
 			);
@@ -535,6 +529,7 @@
 				INFOPLIST_FILE = "AtlasCopcoKIO/AtlasCopcoKIO-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.bitwork.AtlasCopco.KIO;
 				PRODUCT_NAME = AtlasCopcoKIO;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -557,6 +552,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "AtlasCopcoKIO/AtlasCopcoKIO-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.bitwork.AtlasCopco.KIO;
 				PRODUCT_NAME = AtlasCopcoKIO;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -574,6 +570,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
