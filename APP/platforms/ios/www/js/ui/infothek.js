@@ -83,7 +83,7 @@ $('.tree-nav-link', newItem).attr("data-item-path", data.path);
 
                 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
                     function (fileSystem) {
-                        localFileSystemRoot = fileSystem.root.fullPath;
+                        localFileSystemRoot = fileSystem.root.toURL();
 
 
 
