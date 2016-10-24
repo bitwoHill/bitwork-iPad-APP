@@ -12,9 +12,36 @@ var DOWNLOADS_CONTAINER = "#downloads-container",
             var networkState = navigator.connection.type;
             console.log("Networkstate: " + networkState);
             if (networkState == Connection.WIFI) {
-                DownloadModal.show();
 
-                switch (downloadType) {
+                Sync.all().filter("syncType", "=", "Dokumente").limit(1).list(function (res) {
+            try {
+                var syncDate = new Date();
+                syncDate.setDate(syncDate.getDate() - 99); // 99 Tage zurueck damit falls noch nicht gesynched wurde auch defintiiv gesynched wird
+                var currentDate = new Date();
+                var difference = 0;
+                //console.log(res[0]);
+                if (res.length && res[0]._data.syncDate) 
+                    syncDate = new Date(res[0]._data.syncDate);
+                    //abstand in tagen berechnen
+                difference= Math.floor((currentDate - syncDate) / (1000*60*60*24));
+                
+                if (difference < 10)
+                {
+                     switch (downloadType) {
+                    case "Infothek":
+                        var loadAllWithDeleteAndDocuments = false;
+                        InfothekModel.downloadSharePointFiles();
+                        break;
+                    case "Products":
+                        documentsModel.downloadSharePointFiles();
+                        break
+                    default:
+                        DownloadModal.hide();
+                }
+                }
+                else
+                {
+                     switch (downloadType) {
                     case "Infothek":
                         var loadAllWithDeleteAndDocuments = true;
                         InfothekModel.syncInfothek(loadAllWithDeleteAndDocuments);
@@ -25,6 +52,17 @@ var DOWNLOADS_CONTAINER = "#downloads-container",
                     default:
                         DownloadModal.hide();
                 }
+                }
+
+
+            } catch (e) {
+               
+            }
+        });
+
+                DownloadModal.show();
+
+               
 
             }
             else {
