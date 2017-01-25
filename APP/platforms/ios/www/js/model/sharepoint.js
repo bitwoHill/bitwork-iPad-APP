@@ -52,7 +52,7 @@ var SharePoint = {
                 crossDomain: true,
                 username: encodeURIComponent(appUser.username),
                 password: encodeURIComponent(appUser.password),
-                timeout: 600000,
+                timeout: 0,
                 dataType: 'json',
                 contentType: "application/json; charset=utf-8"
             }).done(function (responseData, textStatus, jqXHR) {
@@ -74,7 +74,7 @@ var SharePoint = {
                         crossDomain: true,
                         username: encodeURIComponent(appUser.username),
                         password: encodeURIComponent(appUser.password),
-                        timeout: 600000,
+                        timeout: 0,
                         dataType: 'json',
                         contentType: "application/json; charset=utf-8"
                     }).done(function (responseDataSubQuery, textStatus, jqXHR2) {
@@ -109,7 +109,7 @@ var SharePoint = {
                                 crossDomain: true,
                                 username: encodeURIComponent(appUser.username),
                                 password: encodeURIComponent(appUser.password),
-                                timeout: 600000,
+                                timeout: 0,
                                 dataType: 'json',
                                 contentType: "application/json; charset=utf-8"
                             }).done(function (responseDataSubQuery2, textStatus, jqXHR3) {
@@ -146,7 +146,7 @@ var SharePoint = {
                                         crossDomain: true,
                                         username: encodeURIComponent(appUser.username),
                                         password: encodeURIComponent(appUser.password),
-                                        timeout: 600000,
+                                        timeout: 0,
                                         dataType: 'json',
                                         contentType: "application/json; charset=utf-8"
                                     }).done(function (responseDataSubQuery3, textStatus, jqXHR3) {
@@ -183,7 +183,7 @@ var SharePoint = {
                                                 crossDomain: true,
                                                 username: encodeURIComponent(appUser.username),
                                                 password: encodeURIComponent(appUser.password),
-                                                timeout: 600000,
+                                                timeout: 0,
                                                 dataType: 'json',
                                                 contentType: "application/json; charset=utf-8"
                                             }).done(function (responseDataSubQuery4, textStatus, jqXHR5) {
@@ -220,7 +220,7 @@ var SharePoint = {
                                                         crossDomain: true,
                                                         username: encodeURIComponent(appUser.username),
                                                         password: encodeURIComponent(appUser.password),
-                                                        timeout: 600000,
+                                                        timeout: 0,
                                                         dataType: 'json',
                                                         contentType: "application/json; charset=utf-8"
                                                     }).done(function (responseDataSubQuery5, textStatus, jqXHR6) {
@@ -256,7 +256,7 @@ var SharePoint = {
                                                                 crossDomain: true,
                                                                 username: encodeURIComponent(appUser.username),
                                                                 password: encodeURIComponent(appUser.password),
-                                                                timeout: 600000,
+                                                                timeout: 0,
                                                                 dataType: 'json',
                                                                 contentType: "application/json; charset=utf-8"
                                                             }).done(function (responseDataSubQuery6, textStatus, jqXHR7) {
@@ -294,7 +294,7 @@ var SharePoint = {
                                                                         crossDomain: true,
                                                                         username: encodeURIComponent(appUser.username),
                                                                         password: encodeURIComponent(appUser.password),
-                                                                        timeout: 600000,
+                                                                        timeout: 0,
                                                                         dataType: 'json',
                                                                         contentType: "application/json; charset=utf-8"
                                                                     }).done(function (responseDataSubQuery7, textStatus, jqXHR8) {
@@ -332,7 +332,7 @@ var SharePoint = {
                                                                                 crossDomain: true,
                                                                                 username: encodeURIComponent(appUser.username),
                                                                                 password: encodeURIComponent(appUser.password),
-                                                                                timeout: 600000,
+                                                                                timeout: 0,
                                                                                 dataType: 'json',
                                                                                 contentType: "application/json; charset=utf-8"
                                                                             }).done(function (responseDataSubQuery8, textStatus, jqXHR9) {
@@ -371,7 +371,7 @@ var SharePoint = {
                                                                                         crossDomain: true,
                                                                                         username: encodeURIComponent(appUser.username),
                                                                                         password: encodeURIComponent(appUser.password),
-                                                                                        timeout: 600000,
+                                                                                        timeout: 0,
                                                                                         dataType: 'json',
                                                                                         contentType: "application/json; charset=utf-8"
                                                                                     }).done(function (responseDataSubQuery9, textStatus, jqXHR10) {
@@ -409,7 +409,7 @@ var SharePoint = {
                                                                                                 crossDomain: true,
                                                                                                 username: encodeURIComponent(appUser.username),
                                                                                                 password: encodeURIComponent(appUser.password),
-                                                                                                timeout: 600000,
+                                                                                                timeout: 0,
                                                                                                 dataType: 'json',
                                                                                                 contentType: "application/json; charset=utf-8"
                                                                                             }).done(function (responseDataSubQuery10, textStatus, jqXHR11) {

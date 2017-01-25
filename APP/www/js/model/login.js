@@ -19,7 +19,7 @@ console.log(user + ' ' + pass);
                 type: 'GET',
                 url: Settings.spDomain + "/" + SPTestList,
                 crossDomain: true,
-                timeout: 10000,
+                timeout: 15000,
                 username: encodeURIComponent(user),
                 password: encodeURIComponent(pass),
                 contentType: "application/json; charset=utf-8",

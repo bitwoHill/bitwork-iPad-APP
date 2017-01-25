@@ -117,7 +117,7 @@ var appUser;
         var syncQueue = $({});
         var syncQueue2 = $({});
         var syncQueue3 = $({});
-        var syncQueue4 = $({});
+        //var syncQueue4 = $({});
         //product options
         syncQueue2.queue("sync-queue2", function (next) {
             //bind event
@@ -141,7 +141,7 @@ var appUser;
             documentsModel.syncSharePointDocumentsWithoutDelete();
         });
         //infothek
-        syncQueue4.queue("sync-queue4", function (next) {
+        syncQueue3.queue("sync-queue3", function (next) {
             //bind event
             console.log("sync Infothek");
             $('body').on('infothek-sync-ready sync-error', function () {
@@ -271,7 +271,7 @@ var appUser;
         syncQueue.dequeue("sync-queue");
         syncQueue2.dequeue("sync-queue2");
         syncQueue3.dequeue("sync-queue3");
-        syncQueue4.dequeue("sync-queue4");
+       // syncQueue4.dequeue("sync-queue4");
     };
 
 
@@ -303,7 +303,7 @@ var appUser;
        syncQueue.dequeue("sync-queue");
         syncQueue2.dequeue("sync-queue2");
         syncQueue3.dequeue("sync-queue3");
-        syncQueue4.dequeue("sync-queue4");
+       // syncQueue4.dequeue("sync-queue4");
     });
 
 })(jQuery); 
