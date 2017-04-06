@@ -7,76 +7,76 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "AtlasNeu"
+        "com.contraterrene.LaunchFile": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-battery-status": {
-            "PACKAGE_NAME": "AtlasNeu"
-        },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "AtlasNeu"
-        },
-        "cordova-plugin-media-capture": {
-            "PACKAGE_NAME": "AtlasNeu"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-calendar": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-contacts": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-device-motion": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-device-orientation": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-globalization": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-media": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-vibration": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
-        "com.contraterrene.LaunchFile": {
-            "PACKAGE_NAME": "AtlasNeu"
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "AtlasNeu"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         }
     }
 }

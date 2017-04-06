@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/timhill/Documents/Development/Atlas-Copco-iPAD-KIO-Development/APP/platforms/ios/AtlasCopcoKIO.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

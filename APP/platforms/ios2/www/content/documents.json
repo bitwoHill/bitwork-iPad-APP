@@ -1,0 +1,68 @@
+[
+    {
+	  "documentId": 1,
+        "documentname": "Dokument 1",
+			"documenttypeFK": "1",
+        "path": "file://Documents/Dokument 1.pdf",
+		"productgroupFK": "1",
+		"productfamilyFK": "1",
+		"productplatformFK": "1",
+		"productFK": "1",
+		"equipmentFK": "1"
+    },
+	   {
+	  "documentId": 2,
+        "documentname": "Dokument 2",
+		"documenttypeFK": "2",
+         "path": "file://Documents/Dokument 2.pdf",
+		"productgroupFK": "1",
+		"productfamilyFK": "",
+		"productplatformFK": "",
+		"productFK": "",
+		"equipmentFK": ""
+    },
+	   {
+	  "documentId": 3,
+        "documentname": "Dokument 3",
+			"documenttypeFK": "1",
+         "path": "file://Documents/Dokument 3.pdf",
+		"productgroupFK": "1",
+		"productfamilyFK": "1",
+		"productplatformFK": "",
+		"productFK": "1",
+		"equipmentFK": ""
+    },
+	   {
+	  "documentId": 4,
+        "documentname": "Dokument 4",
+			"documenttypeFK": "1",
+       "path": "file://Documents/Dokument 4.pdf",
+		"productgroupFK": "1;2",
+		"productfamilyFK": "1;2",
+		"productplatformFK": "1;2",
+		"productFK": "",
+		"equipmentFK": ""
+    },
+	   {
+	  "documentId": 5,
+        "documentname": "Dokument 5",
+			"documenttypeFK": "1",
+       "path": "file://Documents/Dokument 5.pdf",
+		"productgroupFK": "1",
+		"productfamilyFK": "1",
+		"productplatformFK": "1",
+		"productFK": "1",
+		"equipmentFK": "1"
+    },
+	   {
+	 "documentId": 6,
+        "documentname": "Dokument 6",
+			"documenttypeFK": "3",
+         "path": "file://Documents/Dokument 6.pdf",
+		"productgroupFK": "2",
+		"productfamilyFK": "3",
+		"productplatformFK": "4",
+		"productFK": "5",
+		"equipmentFK": "6"
+    }
+]

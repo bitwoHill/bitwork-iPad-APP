@@ -119,6 +119,7 @@ var documentsModel = {
                 //add element to Array of SPItems Indexed by ID
 
                 spItemAdd = spData.results[i];
+                //console.log(spItemAdd);
                 lookupIDsSharePoint[spData.results[i].ID] = spData.results[i];
 
                 //Get Multilookup IDS for Productgroups,platforms,families and product and equipment
@@ -207,11 +208,11 @@ var documentsModel = {
                 if (spItemAdd.Geändert) {
                     doc.spModifiedDate = utils.parseSharePointDate(spItemAdd.Geändert);
                 }
-
+//console.log(doc);
                 //add to persistence instance
                 persistence.add(new Documents(doc));
-
-                // console.log("adding " + spItemAdd.ID);
+persistence.flush();
+                // console.log("adding " + spItemAdd);
 
             } catch (e) {
 
@@ -228,10 +229,11 @@ var documentsModel = {
             console.log("done adding new");
 
             //iterate all local files. If Document in LookupID List update, else delete by SP Item
-            Documents.all().list(null, function (results) {
-                if (results.length) {
+            Documents.all().list(null, function (results99) {
+                console.log("results99" + results99.length);
+                if (results99.length) {
 
-                    $.each(results, function (index, value) {
+                    $.each(results99, function (index, value) {
 
                         //check if ID still exists on SharePoint
                         if (lookupIDsSharePoint[value._data.documentId]) {
@@ -317,7 +319,7 @@ var documentsModel = {
                         } else//delete
                         {
                             if (DeleteItems) {
-                                // console.debug("lokales element wurde nicht mehr gefunden: ");
+                                console.debug("lokales element wurde nicht mehr gefunden: ");
                                 //  console.debug(value._data.documentId);
                                 // delete local file from filesystem
                                 if (value.localPath) {
@@ -366,6 +368,7 @@ var documentsModel = {
                 delete spItemAdd;
 
                 if (DeleteItems) {
+                     console.log("trigger resync");
                     documentsModel.downloadSharePointFiles();
                 }
             });

@@ -80,7 +80,7 @@ var DownloadModel = {};
                             });
 
                             function success2() {
-                                console.log("The metadata was successfully set.1");
+                                //console.log("The metadata was successfully set.1");
                             }
 
                             function fail2() {
@@ -121,7 +121,7 @@ var fileURL = fileEntry.toURL();
                                     });
 
                                     function success() {
-                                        console.log("The metadata was successfully set.2");
+                                       // console.log("The metadata was successfully set.2");
                                     }
 
                                     function fail() {
