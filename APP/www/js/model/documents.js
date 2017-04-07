@@ -35,21 +35,39 @@ var documentsModel = {
     sharePointDocuments: function () {
         //get documenttypes
         //  $('body').trigger('sync-start');
-        $('#msgDocuments').toggleClass('in');
- //persistence.debug = true;
+        $('#msgFullDocuments').toggleClass('in');
+        //persistence.debug = true;
 
         SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes);
     },
 
     syncSharePointDocumentsWithoutDelete: function () {
-        $('#msgDocuments').toggleClass('in');
- //persistence.debug = true;
-        SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes, true);
+
+        SyncModel.getSyncCounter("Dokumente", function (Counter) {
+
+            if (Counter == undefined)
+                Counter = 1;
+
+
+            if (Counter % 20 !== 0 && Counter !== 1) {
+                $('#msgDocuments').toggleClass('in');
+                //persistence.debug = true;
+                SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes, true);
+            }
+            else {
+                $('#msgFullDocuments').toggleClass('in');
+
+                SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes);
+            }
+
+        });
+
+
     },
 
     //maps SharePoint data to current model
     mapSharePointDataDocumentTypes: function (data, syncAll) {
-         $('body').trigger('sync-start');
+        $('body').trigger('sync-start');
         var spData = data.d;
         console.log("mapSharePointDataDocumentTypes syncall " + syncAll);
         Documenttypes.all().destroyAll(function (ele) {// cant delete the whole list because of local path
@@ -72,29 +90,29 @@ var documentsModel = {
                         SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
                     else {
                         var queryLatestItem = Documents.all().order("spModifiedDate", false).limit(1);
-                     
+
                         queryLatestItem.list(null, function (results) {
                             console.log("Latest document Item exists: " + results.length);
                             console.log(results);
-                            if (results.length == 0){
-                            console.log("no last item so fetch all");
-                              SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
+                            if (results.length == 0) {
+                                console.log("no last item so fetch all");
+                                SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
                             }
                             else
-                            console.log("fetching by latest Date")
-                                results.forEach(function (r) {
-                                    var latestItem = r
-                                    var latestDate = latestItem.spModifiedDate();
+                                console.log("fetching by latest Date")
+                            results.forEach(function (r) {
+                                var latestItem = r
+                                var latestDate = latestItem.spModifiedDate();
 
-                                    console.log("Document latest Date:");
-                                    console.log(latestDate);
-                                    //  console.log(utils.parseLocalDateToSharePointDate(latestDate));
-                                    if (latestDate)
+                                console.log("Document latest Date:");
+                                console.log(latestDate);
+                                //  console.log(utils.parseLocalDateToSharePointDate(latestDate));
+                                if (latestDate)
                                     SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true, utils.parseLocalDateToSharePointDate(latestDate));
-                                    else
-                                SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
-                                    
-                                });
+                                else
+                                    SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
+
+                            });
                         });
                     }
                 });
@@ -106,11 +124,12 @@ var documentsModel = {
 
         });
         delete spData;
+        $('body').trigger('sync-end');
 
     },
     //maps SharePoint data to current model
     mapSharePointData: function (data, DeleteItems) {
-         $('body').trigger('sync-start');
+        $('body').trigger('sync-start');
         console.log("mapSharePointDataDocumentTypes DeleteItems " + DeleteItems);
 
         //SharePoint Item Array
@@ -218,10 +237,10 @@ var documentsModel = {
                 if (spItemAdd.Geändert) {
                     doc.spModifiedDate = utils.parseSharePointDate(spItemAdd.Geändert);
                 }
-//console.log(doc);
+                //console.log(doc);
                 //add to persistence instance
                 persistence.add(new Documents(doc));
-persistence.flush();
+                // persistence.flush();
                 // console.log("adding " + spItemAdd);
 
             } catch (e) {
@@ -240,7 +259,7 @@ persistence.flush();
 
             //iterate all local files. If Document in LookupID List update, else delete by SP Item
             Documents.all().list(null, function (results99) {
-                console.log("results99" + results99.length);
+                console.log("results99 " + results99.length);
                 if (results99.length) {
 
                     $.each(results99, function (index, value) {
@@ -322,7 +341,7 @@ persistence.flush();
                                 if (spItem.Geändert)
                                     value.spModifiedDate(utils.parseSharePointDate(spItem.Geändert));
 
-                             //   console.log("updated item: " + value._data.documentId);
+                                //   console.log("updated item: " + value._data.documentId);
 
                             }
                             delete spItem;
@@ -373,13 +392,24 @@ persistence.flush();
                     // $('body').trigger('sync-end');
                     $('body').trigger('documents-sync-ready');
                     $('#msgDocuments').removeClass('in');
+                    $('#msgFullDocuments').removeClass('in');
+                    $('body').trigger('sync-end');
+
                 });
                 delete lookupIDsSharePoint;
                 delete spItemAdd;
 
                 if (DeleteItems) {
-                     console.log("trigger resync");
-                    documentsModel.downloadSharePointFiles();
+                    $('#msgDocuments').removeClass('in');
+                    $('#msgFullDocuments').removeClass('in');
+           $('body').trigger('sync-end');
+
+                    if (window.location.href.indexOf("Download.html") !== -1) {
+
+                        console.log("trigger resync");
+                        documentsModel.downloadSharePointFiles();
+                    }
+
                 }
             });
         });
@@ -410,7 +440,7 @@ persistence.flush();
 
                         if (data.localModifiedDate.getTime() === data.spModifiedDate.getTime()) {
 
-                            console.debug("skipped " + data.documentname);
+                            // console.debug("skipped " + data.documentname);
                             queueProgress.qSuccess++;
 
                             //trigger event, as if downloaded
@@ -466,6 +496,10 @@ persistence.flush();
                     qSuccess: 0,
                     qFail: 0
                 });
+
+                $('#msgDocuments').removeClass('in');
+                $('#msgFullDocuments').removeClass('in');
+
             }
         });
     },

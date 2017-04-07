@@ -117,7 +117,11 @@ var i18n = {
         "infothek-documents-sync-text": "Hiermit starten Sie die Synchronisierung der Infothek Dokumente. <br> Es werden alle im SharePoint befindlichen Dokumente der Infotheksbibliothek heruntergeladen. <br> <br> Die Datenmenge beträgt mehrere Gigabyte und der Download kann sehr lange dauern. Der Download der Dateien ist nur über eine WLAN Verbindung möglich. <br> <br>",
         "metadata-sync": "Metadaten aus SharePoint laden",
         "metadata-sync-text": "Hiermit starten Sie die Synchronisierung der SharePoint Metadaten. Dabei handelt es sich um alle im SharePoint befindlichen Daten, wie Produktinformationen und News und Telefonbuchdaten - aber keine Dateien.",
+        "resetDB": "Daten zurücksetzen",
+        "resetDB-text": "Hiermit setzen Sie die Datenbank zurück. Bitte wählen Sie die Option nur, wenn Sie dazu aufgefordert werden. <br> Es werden alle synchronisierten Daten gelöscht.",
+        "resetDB-Button-text": "Zurücksetzen",
    
+
         //Search
         "search-results": "Suchergebnis für: ",
         "search-input-error": "Suchkriterium muss mindestens zwei Zeichen lang sein",
@@ -131,7 +135,8 @@ var i18n = {
         //Sync Notifications
         "msgContacts-sync": "Kontakte werden geladen",
         "msgCalendar-sync": "Kalendereinträge werden geladen",
-        "msgDocuments-sync": "Dokumente werden geladen",
+        "msgDocuments-sync": "Letzte Dokumente werden geladen",
+        "msgFullDocuments-sync": "Alle Dokumente werden geladen",
         "msgEquipmentProducts-sync": "Equipment wird geladen",
         "msgInfothek-sync": "Infothekdokumente werden geladen",
         "msgLinks-sync": "Wichtige Links werden geladen",

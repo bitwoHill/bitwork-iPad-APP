@@ -21,6 +21,15 @@ var appUser;
         $.getScript(modelDependencies[i], jsLoadHelper);
     }
 
+    var resetDB = function () {
+      persistence.reset(function() {
+  console.log("Reset!");
+     appUser.doLogout();
+});
+        
+    };
+
+
     var dbSetup = function () {
         //init User
         appUser = new User();
@@ -63,10 +72,10 @@ var appUser;
                 }
             })
 
-             persistence.defineMigration(4, {
+            persistence.defineMigration(4, {
                 up: function () {
                     this.dropTable('Documents');
-                   
+                    this.dropTable('Sync');
 
                 },
                 down: function () {
@@ -283,7 +292,7 @@ var appUser;
         syncQueue.dequeue("sync-queue");
         syncQueue2.dequeue("sync-queue2");
         syncQueue3.dequeue("sync-queue3");
-       // syncQueue4.dequeue("sync-queue4");
+        // syncQueue4.dequeue("sync-queue4");
     };
 
 
@@ -298,24 +307,31 @@ var appUser;
 
     //Sync on demand
     $('body').on('click', '.sync-btn-metadata', function () {
-     
+
         var networkState = navigator.connection.type;
         if (networkState != Connection.NONE) {
-               $('body').removeClass('side-menu-active');
+            $('body').removeClass('side-menu-active');
             sharePointSync();
         } else {
             alert("Es besteht keine Internetverbindung. Der Vorgang wird abgebrochen.");
         }
     });
 
+    $('body').on('click', '.sync-btn-reset', function () {
+        if (confirm("Sind Sie Sicher?")) {
+            resetDB();
+        }
+
+    });
+
 
 
     $('body').on('sync-error', function (e) {
         alert("Es gab einen Fehler beim synchronisieren. Versuchen Sie es später erneut.");
-       syncQueue.dequeue("sync-queue");
+        syncQueue.dequeue("sync-queue");
         syncQueue2.dequeue("sync-queue2");
         syncQueue3.dequeue("sync-queue3");
-       // syncQueue4.dequeue("sync-queue4");
+        // syncQueue4.dequeue("sync-queue4");
     });
 
 })(jQuery); 

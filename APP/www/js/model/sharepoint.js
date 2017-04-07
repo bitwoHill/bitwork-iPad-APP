@@ -16,71 +16,76 @@ var SharePoint = {
         }
 
         var tUrl = "";
-        tUrl = Settings.spDomain + "/" + listName + "?$orderby=ID&$skip=" + totalSoFar + "&$top=300";
+        tUrl = Settings.spDomain + "/" + listName + "?$orderby=ID&$skip=" + totalSoFar + "&$top=1000";
         tUrl = tUrl + ExpandFilter;
 
         console.log(tUrl);
         console.log(listName + " Total: " + totalSoFar);
 
         if (listName == "Dokumente") {
-            SharePoint.sleep(3000);
+            console.log("sleeping");
+            SharePoint.sleep(300);
+            console.log("resumeing");
             tUrl = Settings.spDomain + "/" + listName + "?$orderby=ID&$skip=" + totalSoFar + "&$top=800";
             tUrl = tUrl + ExpandFilter;
         }
+        try {
+            var jqXHR = $.ajax({
+                type: 'GET',
+                url: tUrl,
+                crossDomain: true,
+                username: encodeURIComponent(appUser.username),
+                password: encodeURIComponent(appUser.password),
+                timeout: 0,
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8"
+            }).done(function (responseData, textStatus, jqXHR) {
+                //  console.log(responseData);
+                // console.log(responseData.d.length);
 
-        var jqXHR = $.ajax({
-            type: 'GET',
-            url: tUrl,
-            crossDomain: true,
-            username: encodeURIComponent(appUser.username),
-            password: encodeURIComponent(appUser.password),
-            timeout: 0,
-            dataType: 'json',
-            contentType: "application/json; charset=utf-8"
-        }).done(function (responseData, textStatus, jqXHR) {
-            //  console.log(responseData);
-            // console.log(responseData.d.length);
 
-
-            var count = responseData.d.length;
-
-            if (responseData.d.results)
-                count = responseData.d.results.length;
-            if (count > 0) {
-
+                var count = responseData.d.length;
 
                 if (responseData.d.results)
-                    $.each(responseData.d.results, function (index, value) {
-                        completeData.d.results.push(value);
-                    });
-                else
-                    $.each(responseData.d, function (index, value) {
-                        completeData.d.results.push(value);
-                    });
+                    count = responseData.d.results.length;
+                if (count > 0) {
 
 
-                SharePoint.getNextBatch(listName, ExpandFilter, deleteItems, totalSoFar + count, completeData, onCompleteCallback); // fetch next page
-            } else {
-                console.log(listName + " finished Total: " + completeData.d.results.length);
-                // console.log(completeData);
-                try {
-                    $('body').trigger('sync-end');
+                    if (responseData.d.results)
+                        $.each(responseData.d.results, function (index, value) {
+                            completeData.d.results.push(value);
+                        });
+                    else
+                        $.each(responseData.d, function (index, value) {
+                            completeData.d.results.push(value);
+                        });
 
-                } catch (error) {
+
+                    SharePoint.getNextBatch(listName, ExpandFilter, deleteItems, totalSoFar + count, completeData, onCompleteCallback); // fetch next page
+                } else {
+                    console.log(listName + " finished Total: " + completeData.d.results.length);
+                    // console.log(completeData);
+                    try {
+                        $('body').trigger('sync-end');
+
+                    } catch (error) {
+
+                    }
+                    onCompleteCallback(completeData, deleteItems);
 
                 }
-                onCompleteCallback(completeData, deleteItems);
 
+            }).fail(function (x, t, m) {
+                if (t === "timeout") {
+                    alert("got timeout");
+                } else {
+                    alert(t);
+                }
             }
-
-        }).fail(function (x, t, m) {
-            if (t === "timeout") {
-                alert("got timeout");
-            } else {
-                alert(t);
-            }
+                );
+        } catch (error) {
+            alert("error");
         }
-            );
     },
     sharePointRequest: function (listName, callback, bolLoadLookups, dateFilter) {
 
@@ -125,7 +130,7 @@ var SharePoint = {
             }
             //   console.log(Settings.spDomain + "/" + listName + ExpandFilter + "?$orderby=ID&$top=100");
             var tUrl = "";
-            tUrl = Settings.spDomain + "/" + listName + "?$orderby=ID&$top=300";
+            tUrl = Settings.spDomain + "/" + listName + "?$orderby=ID&$top=1000";
             tUrl = tUrl + ExpandFilter;
 
             console.log(tUrl);
@@ -199,12 +204,16 @@ var SharePoint = {
 var Sync = persistence.define('Sync', {
     syncType: "TEXT",
     syncDate: "DATE",
+    syncCounter: "INT",
     userId: "INT"
 });
+
 
 Sync.index('syncType', {
     unique: true
 });
+
+
 
 var SyncModel = {
     addSync: function (type) {
@@ -212,6 +221,48 @@ var SyncModel = {
             syncType: (type) ? type : "ALL",
             syncDate: new Date()
         };
+
+        SyncModel.getSyncCounter(type, function (Counter) {
+            var syncCounter = 1;
+            if (Counter !== undefined)
+                syncCounter = Counter + 1;
+                console.log("new synccounter for " + type + " " + syncCounter);
+            syncItem.syncCounter = syncCounter;
+
+            if (syncCounter > 11)
+            {
+                  console.log("reset synccounter for " + type );
+            syncItem.syncCounter = 1;
+            }
+        });
+
+
+
+
+        // try {
+        //     if (type == "Dokumente") {
+
+        //         var queryLatestItem = Documents.all().order("spModifiedDate", false).limit(1);
+
+        //         queryLatestItem.list(null, function (results) {
+
+        //             if (results.length !== 0) {
+        //                 results.forEach(function (r) {
+        //                     var latestItem = r
+        //                     var latestDate = latestItem.spModifiedDate();
+        //                     if (latestDate) {
+        //                         console.log("SyncDate by SP Modified Date")
+        //                         syncItem.syncDate = latestDate
+        //                     }
+        //                 });
+
+        //             };
+        //         });
+
+        //     }
+        // } catch (error) {
+
+        // }
         console.log("Adding Synctype: " + type);
         Sync.all().filter("syncType", "=", type).destroyAll(function () {
             persistence.add(new Sync(syncItem));
@@ -232,6 +283,21 @@ var SyncModel = {
                 }
             } catch (e) {
                 callback(i18n.strings["na"]);
+            }
+        });
+    },
+    getSyncCounter: function (type, callback) {
+        Sync.all().filter("syncType", "=", type).limit(1).list(function (res) {
+            try {
+                var syncCounter;
+                if (res.length && res[0]._data.syncCounter) {
+                    syncCounter = res[0]._data.syncCounter;
+                    callback(syncCounter);
+                } else {
+                    callback(1);
+                }
+            } catch (e) {
+                callback(1);
             }
         });
     },
