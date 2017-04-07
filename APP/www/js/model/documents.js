@@ -36,18 +36,20 @@ var documentsModel = {
         //get documenttypes
         //  $('body').trigger('sync-start');
         $('#msgDocuments').toggleClass('in');
+ //persistence.debug = true;
 
         SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes);
     },
 
     syncSharePointDocumentsWithoutDelete: function () {
         $('#msgDocuments').toggleClass('in');
-
+ //persistence.debug = true;
         SharePoint.sharePointRequest(DOCUMENTTYPES_LIST, documentsModel.mapSharePointDataDocumentTypes, true);
     },
 
     //maps SharePoint data to current model
     mapSharePointDataDocumentTypes: function (data, syncAll) {
+         $('body').trigger('sync-start');
         var spData = data.d;
         console.log("mapSharePointDataDocumentTypes syncall " + syncAll);
         Documenttypes.all().destroyAll(function (ele) {// cant delete the whole list because of local path
@@ -70,13 +72,16 @@ var documentsModel = {
                         SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
                     else {
                         var queryLatestItem = Documents.all().order("spModifiedDate", false).limit(1);
-                        console.log("latest item Documents");
-                        console.log(queryLatestItem);
+                     
                         queryLatestItem.list(null, function (results) {
-                            console.log(results.length);
-                            if (results.length == 0)
-                                SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true, utils.parseLocalDateToSharePointDate(new Date(0)));
+                            console.log("Latest document Item exists: " + results.length);
+                            console.log(results);
+                            if (results.length == 0){
+                            console.log("no last item so fetch all");
+                              SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
+                            }
                             else
+                            console.log("fetching by latest Date")
                                 results.forEach(function (r) {
                                     var latestItem = r
                                     var latestDate = latestItem.spModifiedDate();
@@ -84,7 +89,11 @@ var documentsModel = {
                                     console.log("Document latest Date:");
                                     console.log(latestDate);
                                     //  console.log(utils.parseLocalDateToSharePointDate(latestDate));
+                                    if (latestDate)
                                     SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true, utils.parseLocalDateToSharePointDate(latestDate));
+                                    else
+                                SharePoint.sharePointRequest(DOCUMENTS_LIST, documentsModel.mapSharePointData, true);
+                                    
                                 });
                         });
                     }
@@ -101,6 +110,7 @@ var documentsModel = {
     },
     //maps SharePoint data to current model
     mapSharePointData: function (data, DeleteItems) {
+         $('body').trigger('sync-start');
         console.log("mapSharePointDataDocumentTypes DeleteItems " + DeleteItems);
 
         //SharePoint Item Array

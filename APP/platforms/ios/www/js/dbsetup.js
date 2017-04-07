@@ -63,7 +63,7 @@ var appUser;
                 }
             })
 
-             persistence.defineMigration(5, {
+             persistence.defineMigration(4, {
                 up: function () {
                     this.dropTable('Documents');
                    
