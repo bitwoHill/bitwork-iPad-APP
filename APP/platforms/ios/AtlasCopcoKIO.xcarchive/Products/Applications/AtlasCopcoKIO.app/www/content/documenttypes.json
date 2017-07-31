@@ -1,0 +1,14 @@
+[
+    {
+	    "documenttypeId": 1,
+        "name": "Dokumentart 1"
+       },
+	   {
+	    "documenttypeId": 2,
+        "name": "Dokumentart 2"
+		},
+	   {
+	    "documenttypeId": 3,
+        "name": "Dokumentart 3"
+		}
+]

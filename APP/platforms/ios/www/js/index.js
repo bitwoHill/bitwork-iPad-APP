@@ -20,11 +20,15 @@ var app = {
     // Application Constructor
     initialize: function () {
         this.bindEvents();
+        console.log("intitialized");
+
     },
-     SetStatusbar: function(bolShow) {  
-        if (parseFloat(device.version) >= 7.0) {
-    console.log("webview " + bolShow);
-    StatusBar.overlaysWebView(bolShow);};
+    SetStatusbar: function (bolShow) {
+        //     if (parseFloat(device.version) >= 7.0) {
+        //  console.log("webview setstatusbar " + bolShow);
+        //    StatusBar.overlaysWebView(bolShow);
+        //}
+        ;
 
     },
     // Bind Event Listeners
@@ -34,26 +38,33 @@ var app = {
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    setFolderMetadata: function (localFileSystem, subFolder, metadataKey, metadataValue) {
+    setFolderMetadata: function () {
+
         var onSetMetadataWin = function () {
-            console.log("success setting metadata");
+            console.log("success setting metadata com.apple.MobileBackup");
         };
         var onSetMetadataFail = function () {
-            console.log("error setting metadata");
+            console.log("error setting metadata com.apple.MobileBackup");
         };
         var onGetDirectoryWin = function (parent) {
-            parent.setMetadata(onSetMetadataWin, onSetMetadataFail, { metadataKey: metadataValue });
+            console.log('folder  open: ' + parent.toURL());
+
+            parent.setMetadata(onSetMetadataWin, onSetMetadataFail, { "com.apple.MobileBackup": 1 });
         };
         var onGetDirectoryFail = function () {
             console.log("error getting dir");
         };
         var onFSWin = function (fileSystem) {
-            fileSystem.root.getDirectory(subFolder, { create: true, exclusive: false }, onGetDirectoryWin, onGetDirectoryFail);
+            console.log('file system open: ' + fileSystem.name);
+
+            fileSystem.root.getDirectory("Dokumente", { create: true, exclusive: false }, onGetDirectoryWin, onGetDirectoryFail);
+            fileSystem.root.getDirectory("Infothek", { create: true, exclusive: false }, onGetDirectoryWin, onGetDirectoryFail);
+            window.open("LoginPage.html", "_self");
         };
         var onFSFail = function (evt) {
             console.log(evt.target.error.code);
         };
-        window.requestFileSystem(localFileSystem, 0, onFSWin, onFSFail);
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSWin, onFSFail);
     },
     // deviceready Event Handler
     //
@@ -61,17 +72,19 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
-  app.setFolderMetadata(LocalFileSystem.PERSISTENT, "Dokumente", "com.apple.MobileBackup", 1);
-  app.setFolderMetadata(LocalFileSystem.PERSISTENT, "Infothek", "com.apple.MobileBackup", 1);
+        console.debug("Device Ready");
+        app.setFolderMetadata();
 
         if (parseFloat(device.version) >= 7.0) {
-            console.log("webview false");
-       StatusBar.overlaysWebView(false);
-   }
+            console.log("webview true");
+            StatusBar.overlaysWebView(true);
+        }
+
+        // window.open("LoginPage.html", "_self");
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-          console.log('Received Event: ' + id);
+        console.log('Received Event: ' + id);
         var parentElement = document.getElementById(id);
 
         if (parentElement) {
@@ -82,7 +95,7 @@ var app = {
             receivedElement.setAttribute('style', 'display:block;');
         }
 
-      
+
     },
     onContactSaveSuccess: function (contract) {
         console.log("Save success");

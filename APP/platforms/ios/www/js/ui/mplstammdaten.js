@@ -41,8 +41,8 @@ var equipmentproductsUI = {
                             neededProductFK = value._data.productFK;
                             neededEquipmentProductID = value._data.equipmentId;
                             EquipmentProductPar = neededEquipmentProductID;
-                            console.debug("found Equipment: " + neededEquipmentProductID);
-                            console.debug("found Product: " + neededProductFK);
+                          //  console.debug("found Equipment: " + neededEquipmentProductID);
+                            //   console.debug("found Product: " + neededProductFK);
 
                             if (neededProductFK)//dig further for Platform
                             {
@@ -53,7 +53,7 @@ var equipmentproductsUI = {
                                         //dig further for Family
                                         if (neededProductPlatformFK)//dig further for Platform
                                         {
-                                            console.debug("found Productplatform: " + neededProductPlatformFK);
+                                           //    console.debug("found Productplatform: " + neededProductPlatformFK);
                                             Productplatforms.all().filter("productplatformid", "=", neededProductPlatformFK).list(null, function(results) {
                                                 $.each(results, function(index, value) {
                                                     //check products with product FK
@@ -62,14 +62,14 @@ var equipmentproductsUI = {
                                                     //dig further for Group
                                                     if (neededProductFamilyFK)//dig further for Platform
                                                     {
-                                                        console.debug("found productfamily: " + neededProductFamilyFK);
+                                                 //          console.debug("found productfamily: " + neededProductFamilyFK);
 
                                                         Productfamilies.all().filter("productfamilyid", "=", neededProductFamilyFK).list(null, function(results) {
                                                             $.each(results, function(index, value) {
                                                                 //check products with product FK
 
                                                                 neededProductGroupFK = value._data.productgroupFK;
-                                                                console.debug("found Productgroup: " + neededProductGroupFK);
+                                                               //    console.debug("found Productgroup: " + neededProductGroupFK);
 
                                                                 //create new url
                                                                 window.location.href = "MPLStammdaten.html?Produktgruppe=" + neededProductGroupFK + "&Produktfamilie=" + neededProductFamilyFK + "&Produktplattform=" + neededProductPlatformFK + "&Produkt=" + neededProductFK + "&EquipmentProdukt=" + neededEquipmentProductID + "&SearchPar=" + SearchPar;
@@ -93,8 +93,8 @@ var equipmentproductsUI = {
                                 neededProductFK = value._data.productFK;
                                 neededOtherProductID = value._data.otherProductId;
                                 OtherProductPar = neededOtherProductID;
-                                console.debug("found Other Product: " + neededOtherProductID);
-                                console.debug("found Product: " + neededProductFK);
+                             //      console.debug("found Other Product: " + neededOtherProductID);
+                             //      console.debug("found Product: " + neededProductFK);
 
                                 if (neededProductFK)//dig further for Platform
                                 {
@@ -114,14 +114,14 @@ var equipmentproductsUI = {
                                                         //dig further for Group
                                                         if (neededProductFamilyFK)//dig further for Platform
                                                         {
-                                                            console.debug("found productfamily: " + neededProductFamilyFK);
+                                                          //     console.debug("found productfamily: " + neededProductFamilyFK);
 
                                                             Productfamilies.all().filter("productfamilyid", "=", neededProductFamilyFK).list(null, function(results) {
                                                                 $.each(results, function(index, value) {
                                                                     //check products with product FK
 
                                                                     neededProductGroupFK = value._data.productgroupFK;
-                                                                    console.debug("found Productgroup: " + neededProductGroupFK);
+                                                              //         console.debug("found Productgroup: " + neededProductGroupFK);
 
                                                                     window.location.href = "MPLStammdaten.html?Produktgruppe=" + neededProductGroupFK + "&Produktfamilie=" + neededProductFamilyFK + "&Produktplattform=" + neededProductPlatformFK + "&Produkt=" + neededProductFK + "&SonstigesProdukt=" + neededOtherProductID + "&SearchPar=" + SearchPar;
                                                                     return;
@@ -252,16 +252,16 @@ ProduktPar =          "%" +"_" +  ProduktPar  + ";" + "%";
 EquipmentProductPar = "%" +"_" +  EquipmentProductPar + ";" + "%";
 OtherProductPar =     "%" +"_" +  OtherProductPar  + ";" + "%";
 
-console.log(ProduktgruppePar );
-console.log(ProduktfamiliePar );
-console.log(ProduktplatformPar );
-console.log(ProduktPar       );
-console.log(EquipmentProductPar );
-console.log(OtherProductPar );
+  // console.log(ProduktgruppePar );
+  // console.log(ProduktfamiliePar );
+  // console.log(ProduktplatformPar );
+  // console.log(ProduktPar       );
+  // console.log(EquipmentProductPar );
+  // console.log(OtherProductPar );
 
             //check wheter there is an option to either the current equipment / other product or one of its lower level items (group, family, platform, product)
             ProductOptions.all().filter("equipmentFK", "LIKE", EquipmentProductPar).or(new persistence.PropertyFilter("productgroupFK", "LIKE", ProduktgruppePar)).or(new persistence.PropertyFilter("productfamilyFK", "LIKE", ProduktfamiliePar)).or(new persistence.PropertyFilter("productplatformFK", "LIKE", ProduktplatformPar)).or(new persistence.PropertyFilter("productFK", "LIKE", ProduktPar)).order('productDescription', true, false).list(null, function(results) {
-console.log(results);
+  // console.log(results);
                 if (results.length != 0) {
                     $container.removeClass('hidden');
                 }
@@ -301,7 +301,7 @@ var DocumentsUI = {
         console.debug("hole sync date");
         SyncModel.getSyncDate(DOCUMENTS_LIST, function(date) {
             //update last sync date
-            console.debug("date");
+         //      console.debug("date");
 
             $('.page-sync-btn-date').html(date);
             $('.page-sync-btn').removeClass('hidden');
@@ -357,14 +357,14 @@ if (!OtherProductPar) {
                     if (results2.length) {
                         //get all types in found documents
                      //   console.log("found documents");
-console.log("Documenttypes");
- console.debug("Produktgruppe:" + ProduktgruppePar);
-        console.debug("ProduktfamiliePar:" + ProduktfamiliePar);
-        console.debug("ProduktplatformPar:" + ProduktplatformPar);
-        console.debug("ProduktPar:" + ProduktPar);
-        console.debug("ProduktNamePar:" + ProduktNamePar);
-        console.debug("EquipmentProductPar:" + EquipmentProductPar);
- console.debug("OtherProductPar:" + OtherProductPar);
+  // console.log("Documenttypes");
+   // console.debug("Produktgruppe:" + ProduktgruppePar);
+    //       console.debug("ProduktfamiliePar:" + ProduktfamiliePar);
+    //       console.debug("ProduktplatformPar:" + ProduktplatformPar);
+    //       console.debug("ProduktPar:" + ProduktPar);
+   //        console.debug("ProduktNamePar:" + ProduktNamePar);
+    //       console.debug("EquipmentProductPar:" + EquipmentProductPar);
+   // console.debug("OtherProductPar:" + OtherProductPar);
 
                         $.each(results2, function(index, value) {
                             var data = value._data;
@@ -404,7 +404,7 @@ data.productplatformFK = ProduktplatformPar;
                                 data.equipmentFK == 0 && data.productFK == ProduktPar && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0 || 
                                 data.equipmentFK == EquipmentProductPar && data.productFK == 0 && data.productplatformFK == 0 && data.productfamilyFK == 0 && data.productgroupFK == 0) {
                                 
-                                 console.log(data);
+                             //       console.log(data);
                                 if ($.inArray(data.documenttypeFK, documenttypeslist) === -1) {
                                     documenttypeslist[counter] = data.documenttypeFK;
                                     counter++;
@@ -483,13 +483,13 @@ data.productplatformFK = ProduktplatformPar;
         var EquipmentProductPar = utils.getUrlParameter('EquipmentProdukt');
           var OtherProductPar = utils.getUrlParameter('SonstigesProdukt');
 
-        console.debug("Produktgruppe:" + ProduktgruppePar);
-        console.debug("ProduktfamiliePar:" + ProduktfamiliePar);
-        console.debug("ProduktplatformPar:" + ProduktplatformPar);
-        console.debug("ProduktPar:" + ProduktPar);
-        console.debug("ProduktNamePar:" + ProduktNamePar);
-        console.debug("EquipmentProductPar:" + EquipmentProductPar);
- console.debug("OtherProductPar:" + OtherProductPar);
+     //      console.debug("Produktgruppe:" + ProduktgruppePar);
+     //      console.debug("ProduktfamiliePar:" + ProduktfamiliePar);
+      //     console.debug("ProduktplatformPar:" + ProduktplatformPar);
+     //      console.debug("ProduktPar:" + ProduktPar);
+     //      console.debug("ProduktNamePar:" + ProduktNamePar);
+       //    console.debug("EquipmentProductPar:" + EquipmentProductPar);
+  //  console.debug("OtherProductPar:" + OtherProductPar);
 
 if (!OtherProductPar) {
                     OtherProductPar = "-1";
@@ -506,7 +506,7 @@ if (!OtherProductPar) {
 
             //check if there is a associated product which "exists" two times = two different products but same name => add as well
             Products.all().filter("product", "=", ProduktNamePar).list(null, function(results3) {
-                console.log(results3);
+           //        console.log(results3);
                 if (results3.length) {
                     //get all types in found documents
                     console.log("found products by parameter");
@@ -560,7 +560,7 @@ if (!OtherProductPar) {
                                 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
                                 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-                                    localFileSystemRoot = fileSystem.root.fullPath;
+                                    localFileSystemRoot = fileSystem.root.toURL();
                                 }, function() {
                                     console.debug("could not create filesystem");
                                 });
@@ -611,7 +611,7 @@ if (!OtherProductPar) {
                 if (networkState != Connection.NONE) {
                     productoptionsModel.sharePointProductOptions();
 
-                    documentsModel.sharePointDocuments();
+                    documentsModel.syncSharePointDocumentsWithoutDelete();
                 } else {
                     alert("Sie sind nicht mit dem Internet verbunden. Der Vorgang wird abgebrochen.");
                 }

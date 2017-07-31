@@ -8,42 +8,75 @@
     },
     "installed_plugins": {
         "com.contraterrene.LaunchFile": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-calendar": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-contacts": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.cordova.myapp51a513"
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "net.bitwork.AtlasCopco.KIO"
         }
     }
 }

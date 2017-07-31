@@ -38,7 +38,7 @@ var ProductsUI = {
 
 						ProduktPars[counter] = data.productid;
 						ProduktNames[counter] = data.product;
-						console.log(ProduktNames[counter]);
+					//	console.log(ProduktNames[counter]);
 						counter++;
 
 					});
@@ -66,7 +66,7 @@ var ProductsUI = {
 									//formatting of price
 									//var formattedPrice = parseFloat(parseFloat(data.price)).toFixed(2).toLocaleString() + ' €';
 var formattedPrice = utils.number_format(data.price, 2,",",".")  + ' €';
-console.log(formattedPrice);
+// console.log(formattedPrice);
 									$newItem.removeAttr('id');
 									$('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK + "&ProduktName=" + ProduktName + "&EquipmentProdukt=" + data.equipmentId);
 
@@ -101,7 +101,7 @@ console.log(formattedPrice);
 
 									//var formattedPrice = parseFloat(parseFloat(data.price)).toFixed(2).toLocaleString() + ' €';
 var formattedPrice = utils.number_format(data.price, 2,",",".")  + ' €';
-console.log(formattedPrice);
+// console.log(formattedPrice);
 									$newItem.removeAttr('id');
 									$('.products-item-title', $newItem).html(data.productDescription).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK  + "&ProduktName=" + ProduktName + "&SonstigesProdukt=" + data.otherProductId);
 									$('.products-item-piecenumber', $newItem).html(data.pieceNumber).attr("href", "MPLStammdaten.html?Produktgruppe=" + ProduktgruppePar + "&Produktfamilie=" + ProduktfamiliePar + "&Produktplattform=" + ProduktplatformPar + "&Produkt=" + data.productFK  + "&ProduktName=" + ProduktName + "&SonstigesProdukt=" + data.otherProductId);

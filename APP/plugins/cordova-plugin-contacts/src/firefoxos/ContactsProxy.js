@@ -19,8 +19,6 @@
  *
 */ 
 
-/* global mozContact */
-
 // Cordova contact definition: 
 // http://cordova.apache.org/docs/en/2.5.0/cordova_contacts_contacts.md.html#Contact
 // FxOS contact definition:
@@ -29,6 +27,7 @@
 
 var Contact = require('./Contact');
 var ContactField = require('./ContactField');
+var ContactAddress = require('./ContactAddress');
 var ContactName = require('./ContactName');
 
 // XXX: a hack to check if id is "empty". Cordova inserts a
@@ -47,13 +46,13 @@ function updateFromCordova(contact, fromContact) {
     function exportContactFieldArray(contactFieldArray, key) {
         if (!key) {
             key = 'value';
-        }
+        }                 
         var arr = [];
         for (var i=0; i < contactFieldArray.length; i++) {
             arr.push(contactFieldArray[i][key]);
-        }
+        };                                       
         return arr;
-    }
+    }              
 
     function exportAddress(addresses) {
         // TODO: check moz address format
@@ -67,15 +66,15 @@ function updateFromCordova(contact, fromContact) {
                 } else if (key == 'type') {
                     addr[key] = [addresses[i][key]];
                 } else if (key == 'country') {
-                    addr.countryName = addresses[i][key];
+                    addr['countryName'] = addresses[i][key];
                 } else {
-                    addr[key] = addresses[i][key];
+                    addr[key] = addresses[i][key];    
                 }
-            }
+            } 
             arr.push(addr);
-        }
+        }                                 
         return arr;
-    }
+    } 
 
     function exportContactField(data) {
         var contactFields = [];
@@ -100,17 +99,17 @@ function updateFromCordova(contact, fromContact) {
                       ['middleName', 'additionalName']];
     var baseArrayFields = [['displayName', 'name'], ['nickname']];
     var baseStringFields = [];
-    var j = 0, field; while(field = nameFields[j++]) { // jshint ignore:line
+    var j = 0; while(field = nameFields[j++]) {
       if (fromContact.name[field[0]]) {
         contact[field[1] || field[0]] = fromContact.name[field[0]].split(' ');
       }
     }
-    j = 0; while(field = baseArrayFields[j++]) { // jshint ignore:line
+    j = 0; while(field = baseArrayFields[j++]) {
       if (fromContact[field[0]]) {
         contact[field[1] || field[0]] = fromContact[field[0]].split(' ');
       }
     }
-    j = 0; while(field = baseStringFields[j++]) { // jshint ignore:line
+    j = 0; while(field = baseStringFields[j++]) {
       if (fromContact[field[0]]) {
         contact[field[1] || field[0]] = fromContact[field[0]];
       }
@@ -119,7 +118,7 @@ function updateFromCordova(contact, fromContact) {
       contact.bday = new Date(fromContact.birthday);
     }
     if (fromContact.emails) {
-        var emails = exportContactField(fromContact.emails);
+        var emails = exportContactField(fromContact.emails)
         contact.email = emails;
     }
     if (fromContact.categories) {
@@ -173,17 +172,17 @@ Contact.prototype.updateFromMozilla = function(moz) {
             var addr = {};
             for (var key in addresses[i]) {
                 if (key == 'countryName') {
-                    addr.country = addresses[i][key];
+                    addr['country'] = addresses[i][key];
                 } else if (key == 'type') {
                     addr[key] = addresses[i][key].join(' ');
                 } else {
-                    addr[key] = addresses[i][key];
+                    addr[key] = addresses[i][key];    
                 }
-            }
+            } 
             arr.push(addr);
         }
         return arr;
-    }
+    } 
 
     function createOrganizations(orgs, jobs) {
         orgs = (orgs) ? orgs : [];
@@ -222,18 +221,18 @@ Contact.prototype.updateFromMozilla = function(moz) {
     var baseArrayFields = [['name', 'displayName'], 'nickname', ['note']];
     var baseStringFields = [];
     var name = new ContactName();
-    var j = 0, field; while(field = nameFields[j++]) { // jshint ignore:line
+    var j = 0; while(field = nameFields[j++]) {
         if (moz[field[0]]) {
             name[field[1] || field[0]] = moz[field[0]].join(' ');
         }
     }
     this.name = name;
-    j = 0; while(field = baseArrayFields[j++]) { // jshint ignore:line
+    j = 0; while(field = baseArrayFields[j++]) {
         if (moz[field[0]]) {
             this[field[1] || field[0]] = moz[field[0]].join(' ');
         }
     }
-    j = 0; while(field = baseStringFields[j++]) { // jshint ignore:line
+    j = 0; while(field = baseStringFields[j++]) {
         if (moz[field[0]]) {
             this[field[1] || field[0]] = moz[field[0]];
         }
@@ -277,7 +276,7 @@ Contact.prototype.updateFromMozilla = function(moz) {
         // genderIdentity
         // key
     */
-};
+}
 
 
 function createMozillaFromCordova(successCB, errorCB, contact) {
@@ -324,28 +323,26 @@ function saveContacts(successCB, errorCB, contacts) {
             var contact = createCordovaFromMozilla(moz);
             // call callback
             successCB(contact);
-        };
+        }
     }
     var i=0;
     var contact;
-    /*jshint -W083 */
-    while(contact = contacts[i++]) { // jshint ignore:line
-        createMozillaFromCordova(function(moz) {
-            var request = navigator.mozContacts.save(moz);
-            // success and/or fail will be called every time a contact is saved
-            request.onsuccess = makeSaveSuccessCB(moz);
-            request.onerror = errorCB;
+    while(contact = contacts[i++]){
+        var moz = createMozillaFromCordova(function(moz) {
+          var request = navigator.mozContacts.save(moz);
+          // success and/or fail will be called every time a contact is saved
+          request.onsuccess = makeSaveSuccessCB(moz);
+          request.onerror = errorCB;                
         }, function() {}, contact);
     }
-    /*jshint +W083 */
-}
+}   
 
 
 // API provides a list of ids to be removed
 function remove(successCB, errorCB, ids) {
-    var i;
-    /*jshint -W083 */
-    for (i = 0; i < ids.length; i++){
+    var i=0;
+    var id;
+    for (var i=0; i < ids.length; i++){
         // throw an error if no id provided
         if (!_hasId(ids[i])) {
             console.error('FFOS: Attempt to remove unsaved contact');
@@ -368,7 +365,6 @@ function remove(successCB, errorCB, ids) {
         };
         search.onerror = errorCB;
     }
-    /*jshint +W083 */
 }
 
 
@@ -449,6 +445,7 @@ function search(successCB, errorCB, params) {
     request.onsuccess = function() {
         var contacts = [];
         var mozContacts = request.result;
+        var moz = mozContacts[0];
         for (var i=0; i < mozContacts.length; i++) {
             contacts.push(createCordovaFromMozilla(mozContacts[i]));
         }

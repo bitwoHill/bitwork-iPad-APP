@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta http-equiv="Content-Security-Policy"  content="default-src 'self' https://rippleapi.herokuapp.com https://* filesystem https://www.atlas-cms.com http://localhost:4400 ; style-src 'self' filesystem https://www.atlas-cms.com http://localhost:4400  'unsafe-inline'; script-src 'self' https://* filesystem https://www.atlas-cms.com http://localhost:4400  'unsafe-inline' 'unsafe-eval' "/>
+    <meta http-equiv="Content-Security-Policy"  content="default-src * gap://ready file:; style-src *  'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * "/>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-xs-4 branding ">
                    <img src="content/logo.png" alt="Atlas Copco" class="toggle-side-menu">
-                         <img src="content/KIO_LOGO.png" alt="KIO" >
+                          
                 </div>
                 <div class="col-xs-8 user-area" role="nav">
                     <ul class="nav navbar-nav navbar-inverse navbar-right">
@@ -63,7 +63,7 @@
                     <li>
                         <form class="form-horizontal slide-menu-form" id="search-form" method="get" action="Search.html">
                             <div class="input-group">
-                                <input type="text" name="search" placeholder="Search ..." class="form-control">
+                                <input type="text" name="search" placeholder="Suchen ..." class="form-control">
                                 <span class="input-group-btn">
                                     <button class="btn btn-toolbar" type="submit"><span class="fa fa-search"></span></button>
                                 </span>

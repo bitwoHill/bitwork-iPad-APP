@@ -3,6 +3,8 @@ var Settings = {
     spContent: "https://www.atlas-cms.com",
     spListsWebservice: "https://www.atlas-cms.com/_vti_bin/Lists.asmx",
     spAuthentification: "https://www.atlas-cms.com/_vti_bin/authentication.asmx",
+    spDownloadURL: "https://www.atlas-cms.com",
+    spWebName: "",
     loginExpiration: 1, //login cookie expiration [hours]
     loginExpirationExtended: 24, //login cookie expiration extended (automatic login) [hours]
     loginFailedAttempts: 7, //max number of login failed attempts

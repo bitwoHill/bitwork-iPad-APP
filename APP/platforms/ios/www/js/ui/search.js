@@ -57,7 +57,7 @@ var SearchUI = {
 
                 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
                     //created filesystem path. use it
-                    localFileSystemRootSearchJs = fileSystem.root.fullPath;
+                    localFileSystemRootSearchJs = fileSystem.root.toURL();
                     //create hyperlink to local file
 
                     //link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Infothek/" + data.localPath, '_blank','EnableViewPortScale=yes', 'location=yes'); });
@@ -115,7 +115,7 @@ var SearchUI = {
 
                 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
                     //created filesystem path. use it
-                    localFileSystemRootSearchJs = fileSystem.root.fullPath;
+                    localFileSystemRootSearchJs = fileSystem.root.toURL();
                     //create hyperlink to local file
 
                     //   link = $newItem.click(function () { window.open(localFileSystemRootSearchJs + "/Dokumente/" + data.localPath, '_blank','EnableViewPortScale=yes', 'location=yes'); });

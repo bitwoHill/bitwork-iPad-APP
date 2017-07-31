@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="de">
 <head>
-        <meta http-equiv="Content-Security-Policy"  content="default-src 'self' https://rippleapi.herokuapp.com https://* filesystem https://www.atlas-cms.com http://localhost:4400 ; style-src 'self' filesystem https://www.atlas-cms.com http://localhost:4400  'unsafe-inline'; script-src 'self' https://* filesystem https://www.atlas-cms.com http://localhost:4400  'unsafe-inline' 'unsafe-eval' "/>
+       <meta http-equiv="Content-Security-Policy"  content="default-src * gap://ready file:; style-src *  'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * "/>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-xs-4 branding ">
                    <img src="content/logo.png" alt="Atlas Copco" class="toggle-side-menu">
-                         <img src="content/KIO_LOGO.png" alt="KIO" >
+                          
                 </div>
                 <div class="col-xs-8 user-area" role="nav">
                     <ul class="nav navbar-nav navbar-inverse navbar-right">
@@ -265,7 +265,63 @@
                 <p class="text-center i18n" data-i18n-key="empty-mpl"></p>
             </div>
 
+<!--notification-->
+    <div id="msgContacts" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgContacts-sync"></p>
+    </div>
 
+    <div id="msgCalendar" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgCalendar-sync"></p>
+    </div>
+
+    <div id="msgDocuments" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgDocuments-sync"></p>
+    </div>
+
+    <div id="msgFullDocuments" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgFullDocuments-sync"></p>
+    </div>
+
+    <div id="msgEquipmentProducts" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgEquipmentProducts-sync"></p>
+    </div>
+
+    <div id="msgInfothek" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgInfothek-sync"></p>
+    </div>
+
+    <div id="msgLinks" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgLinks-sync"></p>
+    </div>
+
+    <div id="msgNews" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgNews-sync"></p>
+    </div>
+
+    <div id="msgOtherProducts" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgOtherProducts-sync"></p>
+    </div>
+
+    <div id="msgProductFamilies" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgProductFamilies-sync"></p>
+    </div>
+
+    <div id="msgProductGroups" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgProductGroups-sync"></p>
+    </div>
+
+    <div id="msgProductOptions" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgProductOptions-sync"></p>
+    </div>
+
+    <div id="msgProductPlatforms" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgProductPlatforms-sync"></p>
+    </div>
+
+    <div id="msgProducts" class="row jumbotron flyover flyover-bottom">
+        <p class="i18n" data-i18n-key="msgProducts-sync"></p>
+    </div>
+    <!--end notifictaions-->
         </div>
     </div>
     <!--Content Ende-->

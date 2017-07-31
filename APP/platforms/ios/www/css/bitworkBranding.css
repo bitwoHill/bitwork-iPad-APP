@@ -377,6 +377,19 @@ h3.result-item-title {
 .flyover-bottom {
    bottom: 10px;
 }
+.flyover-bottom2 {
+   bottom: 160px;
+}
+
+.flyover-bottom3 {
+   bottom: 310px;
+}
+.flyover-bottom4 {
+   bottom: 460px;
+}
+
+
+
 .modal.fade .modal-dialog {
     transform: translate(0px, -25%);
     transition: transform 0.3s ease-out 0s;

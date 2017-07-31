@@ -80,7 +80,7 @@ var DownloadModel = {};
                             });
 
                             function success2() {
-                                console.log("The metadata was successfully set.");
+                                //console.log("The metadata was successfully set.1");
                             }
 
                             function fail2() {
@@ -94,19 +94,22 @@ var DownloadModel = {};
                                 create : true,
                                 exclusive : false
                             }, function(fileEntry) {
-                                fileDir = fileEntry;
+                                //fileDir = fileEntry;
 
                                 //created the files hull needed for download. Save the path.
-                                var fullpath = fileDir.fullPath.replace(fileName, "");
-
+                                //var fullpath = fileDir.toURL().replace(fileName, "");
+//console.log("fullpath " + fullpath);
+//console.log("alt " + fileDir.fullPath);
+//console.log("fullpath+filename" + fullpath + fileName);
+//alert();
                                 // now delete the file (for what ever reason)
-                                fileDir.remove();
-
+                               // fileDir.remove();
+var fileURL = fileEntry.toURL();
                                 
-                                ft.download(uri, fullpath + fileName, function(entry) 
+                                ft.download(uri, fileURL, function(entry) 
                                 {
 
-                                    console.debug("Download success!" + entry.fullPath);
+                                  //  console.debug("Download success!" + entry.toURL());
 
                                     //Set donotbackup Attribute for iCloud. This is needed by Apple
 
@@ -118,7 +121,7 @@ var DownloadModel = {};
                                     });
 
                                     function success() {
-                                        console.log("The metadata was successfully set.");
+                                       // console.log("The metadata was successfully set.2");
                                     }
 
                                     function fail() {
@@ -133,9 +136,10 @@ var DownloadModel = {};
                                         download.reject(error);
                                     } else {
                                         // alert("Fehler beim Herunterladen. Zeitüberschreitung " + error.code);
-                                        console.debug(error);
+                                        console.log(error);
                                         console.log(ft);
-console.log("Basic " + Base64.encode(appUser.username + ":" + appUser.password));
+
+
                                         download.reject(error);
                                     }
 
