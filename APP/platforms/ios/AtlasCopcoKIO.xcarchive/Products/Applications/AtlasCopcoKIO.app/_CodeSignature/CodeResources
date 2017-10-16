@@ -50,7 +50,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		r4bn9ZUku8DTyAgz4qqzfCRdt/E=
+		BwuYDDf2K0ND5BHehiqqt4cu1jk=
 		</data>
 		<key>CDVCapture.bundle/controls_bg.png</key>
 		<data>
@@ -174,7 +174,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		xL/AncUBL8ujsluGCnWOkkyC/7E=
+		kDuISzhEU1/EbeIImyZ306LhFZU=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -182,7 +182,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		xo14VRONRSExMgT/SqIXFu/XlWM=
+		iDP1nZfcn8m35BOePswQH23lEro=
 		</data>
 		<key>CDVNotification.bundle/beep.wav</key>
 		<data>
@@ -190,7 +190,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		sqO1btnodI48wCdpLDtXBC+rqs0=
+		fz1qg0QaAy3x59hHooh8xRf09+4=
 		</data>
 		<key>LaunchImage-700-Landscape@2x~ipad.png</key>
 		<data>
@@ -214,7 +214,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		MqPS55gCjI+RjD3tGp3Mm/bjTss=
+		1IFoB392OMJoiqGcxdaHAiz0nFk=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -226,7 +226,7 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		BY+WBqwjoamyVs0Se3A10xXKUP4=
+		hiAjG6zuCw4UNnJQhCkLZ/jdA9w=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
@@ -406,7 +406,7 @@
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
-		MYUd9/6KDrq/POWU0D/7mPYC5sI=
+		lO/3EVYcRWB1kXeUWi7+vLLeZt4=
 		</data>
 		<key>www/css/Glyphicons.css</key>
 		<data>
@@ -712,13 +712,9 @@
 		<data>
 		fixhZYuFr27a+/WujkTwmHcRv4Y=
 		</data>
-		<key>www/plugins/cordova-plugin-calendar/test/tests.js</key>
-		<data>
-		neeurmVW6T31kUEks1bNVE/Qirw=
-		</data>
 		<key>www/plugins/cordova-plugin-calendar/www/Calendar.js</key>
 		<data>
-		UkWyf4O0yeMdipriIyA/Rd0trm4=
+		gK8bQKOyTTj1vATh2cTAQqvX5UA=
 		</data>
 		<key>www/plugins/cordova-plugin-camera/www/Camera.js</key>
 		<data>
@@ -994,7 +990,7 @@
 		</data>
 		<key>www/plugins/cordova-plugin-vibration/www/vibration.js</key>
 		<data>
-		jyiXOwbr1mprCCQNiRvbH2ODCb8=
+		j3i/p9i/Hek1cLdtoLxMNfeU5Tw=
 		</data>
 		<key>www/res/icon/android/icon-36-ldpi.png</key>
 		<data>
@@ -1452,11 +1448,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			r4bn9ZUku8DTyAgz4qqzfCRdt/E=
+			BwuYDDf2K0ND5BHehiqqt4cu1jk=
 			</data>
 			<key>hash2</key>
 			<data>
-			PcX+TR8+5L2INiwIleX1q/KmCNiYGbu6bdMDlVcMbpk=
+			iA91C31OktzfAMpuy/2EnaMbx0yGU/HnRn3sDnutFCc=
 			</data>
 		</dict>
 		<key>CDVCapture.bundle/controls_bg.png</key>
@@ -1746,11 +1742,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xL/AncUBL8ujsluGCnWOkkyC/7E=
+			kDuISzhEU1/EbeIImyZ306LhFZU=
 			</data>
 			<key>hash2</key>
 			<data>
-			sx5w2HgZJxxidRPNEQ3Wc63xA8VPNmzgr4zHOzAY300=
+			grVmBZ0m2T3cSCq+eTN7SIqI8pUTCGKp8CkQRuz9cPo=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -1768,11 +1764,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xo14VRONRSExMgT/SqIXFu/XlWM=
+			iDP1nZfcn8m35BOePswQH23lEro=
 			</data>
 			<key>hash2</key>
 			<data>
-			F7wEB+XHKRcDKhYkBYhueLVUYDIeFLegz7jpCz3NJ5Q=
+			fnldiNq9ZUEWuRdFGlXLRueMe+9/fFO73DRemWBT8KA=
 			</data>
 		</dict>
 		<key>CDVNotification.bundle/beep.wav</key>
@@ -1845,11 +1841,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MqPS55gCjI+RjD3tGp3Mm/bjTss=
+			1IFoB392OMJoiqGcxdaHAiz0nFk=
 			</data>
 			<key>hash2</key>
 			<data>
-			vuF3hD8K7MCfc8jQyhhjnVWm7eBAVZY2+bNAbwweI4A=
+			tOSauI5GNMxyf6ix0F1j7LVlAaT/+FbQm/I86BThG6U=
 			</data>
 		</dict>
 		<key>archived-expanded-entitlements.xcent</key>
@@ -1867,11 +1863,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BY+WBqwjoamyVs0Se3A10xXKUP4=
+			hiAjG6zuCw4UNnJQhCkLZ/jdA9w=
 			</data>
 			<key>hash2</key>
 			<data>
-			7CDupY0+Kjvay6dKbAvqG30KZBrzIhsGW2l9eDBEjrI=
+			W/bRCnVgako3DEnJJWr04IQciTECsy21io3Xd1i2Y8E=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
@@ -2362,11 +2358,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MYUd9/6KDrq/POWU0D/7mPYC5sI=
+			lO/3EVYcRWB1kXeUWi7+vLLeZt4=
 			</data>
 			<key>hash2</key>
 			<data>
-			2e6TqHA+8O1NV4ryM4A3LVVAC1SKPHLI3w2UTy5KlIE=
+			B2C7Vi9QmGaphy7A1El9a43rXUQ3eIDjH0Xs9gdAgsU=
 			</data>
 		</dict>
 		<key>www/css/Glyphicons.css</key>
@@ -3205,26 +3201,15 @@
 			RTKM9DSMzJXaT6yRXZll9nuaGgxGV7xBgWzPxjo2yns=
 			</data>
 		</dict>
-		<key>www/plugins/cordova-plugin-calendar/test/tests.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			neeurmVW6T31kUEks1bNVE/Qirw=
-			</data>
-			<key>hash2</key>
-			<data>
-			zDEqTcZlenweYkTF+NfLWvE//tFByQPzgg0O/+Wz+/w=
-			</data>
-		</dict>
 		<key>www/plugins/cordova-plugin-calendar/www/Calendar.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			UkWyf4O0yeMdipriIyA/Rd0trm4=
+			gK8bQKOyTTj1vATh2cTAQqvX5UA=
 			</data>
 			<key>hash2</key>
 			<data>
-			/V8uSoQus9Ct6KuXU1aFzJ4rWWDetCfE3zp3dnXwR98=
+			R5Z4y9e8Wt8n74hnolnMxNQcUThtiCJS5e03JXB3EHU=
 			</data>
 		</dict>
 		<key>www/plugins/cordova-plugin-camera/www/Camera.js</key>
@@ -3979,11 +3964,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jyiXOwbr1mprCCQNiRvbH2ODCb8=
+			j3i/p9i/Hek1cLdtoLxMNfeU5Tw=
 			</data>
 			<key>hash2</key>
 			<data>
-			/moOaI6MO919YrKNxRsfn4pYJxaO0PORloztlH9GMX0=
+			mgNzVHxjBPhcGRwGCVxOQRj7jj8PwnaQpJeHL9EDlWs=
 			</data>
 		</dict>
 		<key>www/res/icon/android/icon-36-ldpi.png</key>

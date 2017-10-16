@@ -17,19 +17,6 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-calendar.Calendar",
-        "file": "plugins/cordova-plugin-calendar/www/Calendar.js",
-        "pluginId": "cordova-plugin-calendar",
-        "clobbers": [
-            "Calendar"
-        ]
-    },
-    {
-        "id": "cordova-plugin-calendar.tests",
-        "file": "plugins/cordova-plugin-calendar/test/tests.js",
-        "pluginId": "cordova-plugin-calendar"
-    },
-    {
         "id": "cordova-plugin-camera.Camera",
         "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
         "pluginId": "cordova-plugin-camera",
@@ -59,22 +46,6 @@ module.exports = [
         "pluginId": "cordova-plugin-camera",
         "clobbers": [
             "CameraPopoverHandle"
-        ]
-    },
-    {
-        "id": "cordova-plugin-console.console",
-        "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
-        "pluginId": "cordova-plugin-console",
-        "clobbers": [
-            "console"
-        ]
-    },
-    {
-        "id": "cordova-plugin-console.logger",
-        "file": "plugins/cordova-plugin-console/www/logger.js",
-        "pluginId": "cordova-plugin-console",
-        "clobbers": [
-            "cordova.logger"
         ]
     },
     {
@@ -163,54 +134,6 @@ module.exports = [
         "pluginId": "cordova-plugin-contacts",
         "merges": [
             "Contact"
-        ]
-    },
-    {
-        "id": "cordova-plugin-device.device",
-        "file": "plugins/cordova-plugin-device/www/device.js",
-        "pluginId": "cordova-plugin-device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
-        "id": "cordova-plugin-device-motion.Acceleration",
-        "file": "plugins/cordova-plugin-device-motion/www/Acceleration.js",
-        "pluginId": "cordova-plugin-device-motion",
-        "clobbers": [
-            "Acceleration"
-        ]
-    },
-    {
-        "id": "cordova-plugin-device-motion.accelerometer",
-        "file": "plugins/cordova-plugin-device-motion/www/accelerometer.js",
-        "pluginId": "cordova-plugin-device-motion",
-        "clobbers": [
-            "navigator.accelerometer"
-        ]
-    },
-    {
-        "id": "cordova-plugin-device-orientation.CompassError",
-        "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
-        "pluginId": "cordova-plugin-device-orientation",
-        "clobbers": [
-            "CompassError"
-        ]
-    },
-    {
-        "id": "cordova-plugin-device-orientation.CompassHeading",
-        "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
-        "pluginId": "cordova-plugin-device-orientation",
-        "clobbers": [
-            "CompassHeading"
-        ]
-    },
-    {
-        "id": "cordova-plugin-device-orientation.compass",
-        "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
-        "pluginId": "cordova-plugin-device-orientation",
-        "clobbers": [
-            "navigator.compass"
         ]
     },
     {
@@ -443,22 +366,6 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-globalization.GlobalizationError",
-        "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
-        "pluginId": "cordova-plugin-globalization",
-        "clobbers": [
-            "window.GlobalizationError"
-        ]
-    },
-    {
-        "id": "cordova-plugin-globalization.globalization",
-        "file": "plugins/cordova-plugin-globalization/www/globalization.js",
-        "pluginId": "cordova-plugin-globalization",
-        "clobbers": [
-            "navigator.globalization"
-        ]
-    },
-    {
         "id": "cordova-plugin-inappbrowser.inappbrowser",
         "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
         "pluginId": "cordova-plugin-inappbrowser",
@@ -580,6 +487,94 @@ module.exports = [
             "navigator.notification",
             "navigator"
         ]
+    },
+    {
+        "id": "cordova-plugin-globalization.GlobalizationError",
+        "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
+        "pluginId": "cordova-plugin-globalization",
+        "clobbers": [
+            "window.GlobalizationError"
+        ]
+    },
+    {
+        "id": "cordova-plugin-globalization.globalization",
+        "file": "plugins/cordova-plugin-globalization/www/globalization.js",
+        "pluginId": "cordova-plugin-globalization",
+        "clobbers": [
+            "navigator.globalization"
+        ]
+    },
+    {
+        "id": "cordova-plugin-device-orientation.CompassError",
+        "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
+        "pluginId": "cordova-plugin-device-orientation",
+        "clobbers": [
+            "CompassError"
+        ]
+    },
+    {
+        "id": "cordova-plugin-device-orientation.CompassHeading",
+        "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
+        "pluginId": "cordova-plugin-device-orientation",
+        "clobbers": [
+            "CompassHeading"
+        ]
+    },
+    {
+        "id": "cordova-plugin-device-orientation.compass",
+        "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
+        "pluginId": "cordova-plugin-device-orientation",
+        "clobbers": [
+            "navigator.compass"
+        ]
+    },
+    {
+        "id": "cordova-plugin-device-motion.Acceleration",
+        "file": "plugins/cordova-plugin-device-motion/www/Acceleration.js",
+        "pluginId": "cordova-plugin-device-motion",
+        "clobbers": [
+            "Acceleration"
+        ]
+    },
+    {
+        "id": "cordova-plugin-device-motion.accelerometer",
+        "file": "plugins/cordova-plugin-device-motion/www/accelerometer.js",
+        "pluginId": "cordova-plugin-device-motion",
+        "clobbers": [
+            "navigator.accelerometer"
+        ]
+    },
+    {
+        "id": "cordova-plugin-device.device",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
+        "id": "cordova-plugin-calendar.Calendar",
+        "file": "plugins/cordova-plugin-calendar/www/Calendar.js",
+        "pluginId": "cordova-plugin-calendar",
+        "clobbers": [
+            "Calendar"
+        ]
+    },
+    {
+        "id": "cordova-plugin-console.console",
+        "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
+        "pluginId": "cordova-plugin-console",
+        "clobbers": [
+            "console"
+        ]
+    },
+    {
+        "id": "cordova-plugin-console.logger",
+        "file": "plugins/cordova-plugin-console/www/logger.js",
+        "pluginId": "cordova-plugin-console",
+        "clobbers": [
+            "cordova.logger"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -587,27 +582,27 @@ module.exports.metadata =
 {
     "com.contraterrene.LaunchFile": "1.0.0",
     "cordova-plugin-battery-status": "1.1.2",
-    "cordova-plugin-calendar": "4.5.0",
     "cordova-plugin-camera": "2.1.1",
     "cordova-plugin-compat": "1.0.0",
-    "cordova-plugin-console": "1.0.3",
     "cordova-plugin-contacts": "2.0.1",
-    "cordova-plugin-device": "1.1.2",
-    "cordova-plugin-device-motion": "1.2.1",
-    "cordova-plugin-device-orientation": "1.0.3",
     "cordova-plugin-dialogs": "1.2.1",
     "cordova-plugin-file": "4.2.0",
     "cordova-plugin-file-transfer": "1.5.1",
     "cordova-plugin-geolocation": "2.1.0",
-    "cordova-plugin-globalization": "1.0.3",
     "cordova-plugin-inappbrowser": "1.3.0",
     "cordova-plugin-media": "2.2.0",
     "cordova-plugin-media-capture": "1.2.0",
     "cordova-plugin-network-information": "1.2.1",
     "cordova-plugin-splashscreen": "3.2.2",
     "cordova-plugin-statusbar": "2.1.3",
-    "cordova-plugin-vibration": "2.1.1",
-    "cordova-plugin-whitelist": "1.2.2"
+    "cordova-plugin-vibration": "2.1.5",
+    "cordova-plugin-globalization": "1.0.7",
+    "cordova-plugin-device-orientation": "1.0.7",
+    "cordova-plugin-device-motion": "1.2.5",
+    "cordova-plugin-device": "1.1.6",
+    "cordova-plugin-calendar": "4.6.0",
+    "cordova-plugin-console": "1.0.7",
+    "cordova-plugin-whitelist": "1.3.2"
 };
 // BOTTOM OF METADATA
 });

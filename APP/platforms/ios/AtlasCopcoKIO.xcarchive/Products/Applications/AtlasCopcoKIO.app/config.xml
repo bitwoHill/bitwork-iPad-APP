@@ -21,26 +21,11 @@
     <feature name="Battery">
         <param name="ios-package" value="CDVBattery" />
     </feature>
-    <feature name="Calendar">
-        <param name="ios-package" value="Calendar" />
-    </feature>
     <feature name="Camera">
         <param name="ios-package" value="CDVCamera" />
     </feature>
-    <feature name="Console">
-        <param name="ios-package" value="CDVLogger" />
-    </feature>
     <feature name="Contacts">
         <param name="ios-package" value="CDVContacts" />
-    </feature>
-    <feature name="Device">
-        <param name="ios-package" value="CDVDevice" />
-    </feature>
-    <feature name="Accelerometer">
-        <param name="ios-package" value="CDVAccelerometer" />
-    </feature>
-    <feature name="Compass">
-        <param name="ios-package" value="CDVCompass" />
     </feature>
     <feature name="Notification">
         <param name="ios-package" value="CDVNotification" />
@@ -54,9 +39,6 @@
     </feature>
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
-    </feature>
-    <feature name="Globalization">
-        <param name="ios-package" value="CDVGlobalization" />
     </feature>
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
@@ -80,6 +62,24 @@
     </feature>
     <feature name="Vibration">
         <param name="ios-package" value="CDVVibration" />
+    </feature>
+    <feature name="Globalization">
+        <param name="ios-package" value="CDVGlobalization" />
+    </feature>
+    <feature name="Compass">
+        <param name="ios-package" value="CDVCompass" />
+    </feature>
+    <feature name="Accelerometer">
+        <param name="ios-package" value="CDVAccelerometer" />
+    </feature>
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
+    </feature>
+    <feature name="Calendar">
+        <param name="ios-package" value="Calendar" />
+    </feature>
+    <feature name="Console">
+        <param name="ios-package" value="CDVLogger" />
     </feature>
     <name>AtlasCopcoKIO</name>
     <description>iPad App die Zugriff auf KIO Portal ermöglicht</description>
