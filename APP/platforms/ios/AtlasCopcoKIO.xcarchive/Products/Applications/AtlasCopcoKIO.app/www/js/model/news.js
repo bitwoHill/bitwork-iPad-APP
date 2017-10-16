@@ -166,50 +166,6 @@ var NewsModel = {
 
                     delete lookupIDsSharePoint;
                     delete spItemAdd;
-
-                
-
-            //wipe database of old entries
-            //        News.all().destroyAll(function (ele) {
-            //            utils.emptySearchIndex("News");
-            //            if (spData && spData.results.length) {
-            //                $.each(spData.results, function (index, value) {
-            //
-            //                    var bodyContent = (value.Textkörper) ? NewsModel.formatBodyText(value.Textkörper) : false,
-            //                    newsItem = {
-            //                        nodeId: value.ID,
-            //                        title: value.Titel,
-            //                        body: (bodyContent) ? bodyContent["bodyFormatted"] : "",
-            //                        bodySearch: (bodyContent) ? bodyContent["bodyFormattedSearch"] : ""
-            //                    };
-            //
-            //                    if (value.LäuftAb) {
-            //                        newsItem.expirationDate = utils.parseSharePointDate(value.LäuftAb);
-            //                    }
-            //
-            //                    if (value.Erstellt) {
-            //                        newsItem.createdDate = utils.parseSharePointDate(value.Geändert);
-            //                    }
-            //
-            //                     //Parse modified date
-            //                     if (value.Geändert) {
-            //                        newsItem.spModifiedDate = utils.parseSharePointDate(value.Geändert);
-            //                    }
-            //
-            //persistence.add(new News(newsItem));
-            //});
-
-            //                persistence.flush(
-            //                                  function () {
-            //                                    SyncModel.addSync(NEWS_LIST);
-            //                                    $('body').trigger('sync-end');
-            //                                    $('body').trigger('news-sync-ready');
-            //                                    $('#msgNews').removeClass('in');
-            //
-            //                                    }
-            //                                );
-            //            }
-            //       });
         },
 
         formatBodyText: function (body) {
@@ -231,10 +187,6 @@ var NewsModel = {
                     var newhref = $body.find('a').attr('href');
                     //  console.debug(newhref);
                 }
-
-
-
-
             }
             catch (e)
             { }

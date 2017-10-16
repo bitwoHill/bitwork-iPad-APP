@@ -27,13 +27,3 @@ var Settings = {
         spDomain: "content/mockdata",
         spContent: "content"
     };
-
-//(function ($) {
-//    //custom settings will overwrite default settings on desktop browsers
-//    if (!("ontouchstart" in document.documentElement)) {
-//        $.extend(Settings, proxySettings);
-//    }
-
-//    //To use mockdata please un-comment next line
-//    //$.extend(Settings, mockSettings);
-//})(jQuery);

@@ -9,16 +9,16 @@
 		<key>CFBundleIdentifier</key>
 		<string>net.bitwork.AtlasCopco.KIO</string>
 		<key>CFBundleShortVersionString</key>
-		<string>1.4.2</string>
+		<string>1.4.3</string>
 		<key>CFBundleVersion</key>
-		<string>1.4.2</string>
+		<string>1.4.3</string>
 		<key>SigningIdentity</key>
 		<string>iPhone Developer: Thomas Jurr (YSH9BKK8TQ)</string>
 	</dict>
 	<key>ArchiveVersion</key>
 	<integer>2</integer>
 	<key>CreationDate</key>
-	<date>2017-01-25T18:45:35Z</date>
+	<date>2017-10-16T11:53:20Z</date>
 	<key>Name</key>
 	<string>AtlasCopcoKIO</string>
 	<key>SchemeName</key>

@@ -1,7 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta http-equiv="Content-Security-Policy"  content="default-src * gap://ready file: ; style-src *  'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * "/>
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file: ; style-src *  'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * "
+    />
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,24 +47,29 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-close-modal i18n" data-i18n-key="label-close" data-dismiss="modal"></button>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
     <div id="wrapper">
 
         <header id="header" class="header">
             <div class="row">
                 <div class="col-xs-4 branding ">
-                   <img src="content/logo.png" alt="Atlas Copco" class="toggle-side-menu">
-                          
+                    <img src="content/logo.png" alt="Atlas Copco" class="toggle-side-menu">
+
                 </div>
                 <div class="col-xs-8 user-area" role="nav">
                     <ul class="nav navbar-nav navbar-inverse navbar-right">
                         <li class="dropdown">
                             <a href="#" id="user-menu-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown"><span class="i18n hidden-phone" data-i18n-key="user-message"></span> <span id="username-container"></span> <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="user-menu-dropdown">
-                                <li><a href="LoginPage.html" class="i18n" data-i18n-key="login-different-user"></a></li>
+                                <li>
+                                    <a href="LoginPage.html" class="i18n" data-i18n-key="login-different-user"></a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -103,7 +110,7 @@
                     <li><a href="WichtigeLinks.html"><i class="fa fa-link"></i><span class="i18n" data-i18n-key="menu-links"></span></a></li>
                     <li><a href="MPLProduktgruppen.html"><i class="fa fa-list"></i><span class="i18n" data-i18n-key="menu-mpl"></span></a></li>
                     <li><a href="Infothek.html"><i class="fa fa-info-circle"></i><span class="i18n" data-i18n-key="menu-info"></span></a></li>
-                  
+
                 </ul>
             </div>
 
@@ -126,7 +133,7 @@
                 <h1 class="page-header-title"><span class="i18n" data-i18n-key="downloads-title"></span></h1>
             </div>
 
-               <div id="Div1" class="row ">
+            <div id="Div1" class="row ">
 
                 <div class="col-xs-12">
                     <div class="well well-sm">
@@ -155,16 +162,29 @@
                         <a class="btn btn-primary sync-btn i18n" data-i18n-key="label-download" data-sync-type="Infothek"></a>
                     </div>
                 </div>
+
+
                 <br />
                 <br />
+
+
+
+            </div>
+            <div id="Div1" class="row ">
+                <div class="col-xs-12">
+                    <div class="well well-sm">
+                        <h3 class="i18n" data-i18n-key="resetDB"></h3>
+                        <p class="i18n" data-i18n-key="resetDB-text"></p>
+                        <a class="btn btn-warning sync-btn-reset i18n" data-i18n-key="resetDB-Button-text" data-sync-type="ResetDB"></a>
+                    </div>
+                </div>
             </div>
         </div>
 
 
-
     </div>
 
-<!--notification-->
+    <!--notification-->
     <div id="msgContacts" class="row jumbotron flyover flyover-bottom">
         <p class="i18n" data-i18n-key="msgContacts-sync"></p>
     </div>
@@ -175,6 +195,10 @@
 
     <div id="msgDocuments" class="row jumbotron flyover flyover-bottom4">
         <p class="i18n" data-i18n-key="msgDocuments-sync"></p>
+    </div>
+
+    <div id="msgFullDocuments" class="row jumbotron flyover flyover-bottom4">
+        <p class="i18n" data-i18n-key="msgFullDocuments-sync"></p>
     </div>
 
     <div id="msgEquipmentProducts" class="row jumbotron flyover flyover-bottom">
@@ -226,14 +250,16 @@
     <script src="lib/persistence.js" type="text/javascript"></script>
     <script src="lib/persistence.store.sql.js" type="text/javascript"></script>
     <script src="lib/persistence.store.websql.js" type="text/javascript"></script>
-    <script src="lib/persistence.migrations.js" type="text/javascript"></script><script src="lib/persistence.search.js" type="text/javascript"></script>
+    <script src="lib/persistence.migrations.js" type="text/javascript"></script>
+    <script src="lib/persistence.search.js" type="text/javascript"></script>
     <script src="lib/persistence.jquery.js" type="text/javascript"></script>
     <script src="js/lang/de.js" type="text/javascript"></script>
     <script src="js/i18n.js" type="text/javascript"></script>
     <script src="js/utils.js" type="text/javascript"></script>
-    <script  src="cordova.js" type="text/javascript"></script>
+    <script src="cordova.js" type="text/javascript"></script>
     <script src="js/dbsetup.js" type="text/javascript"></script>
     <script src="js/ui/downloads.js" type="text/javascript"></script>
     <script src="js/index.js" type="text/javascript"></script>
 </body>
+
 </html>
